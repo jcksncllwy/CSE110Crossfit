@@ -54,7 +54,7 @@ public class User {
 	 * @return whether or not the username is valid
 	 */
 	public boolean validateUsername(String username){
-		
+		//TODO
 		return true;
 	}
 	
@@ -63,7 +63,7 @@ public class User {
 	 * @return whether or not the password is valid
 	 */
 	public boolean validatePassword(String password){
-		
+		//TODO
 		return true;
 	}
 	
@@ -73,7 +73,7 @@ public class User {
 	 * @return whether or not the email is valid
 	 */
 	public boolean validateEmail(String email){
-		
+		//TODO
 		return true;
 	}
 

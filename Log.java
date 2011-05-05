@@ -50,7 +50,7 @@ public class Log {
 	 * 
 	 * @param logType the of log to search, "WOD", "Biometric", or "Notes"
 	 * @param date the date to search for
-	 * @return
+	 * @return the results that match the search
 	 * @throws Exception 
 	 */
 	public LinkedList<?> searchByDate(String logType, GregorianCalendar date) throws Exception{
@@ -67,7 +67,54 @@ public class Log {
 		else{
 			throw new Exception("logType must be \"WOD\", \"Biometric\", or \"Notes\"");
 		}
-		//TODO
+		return results;
+	}
+	
+	/**
+	 * 
+	 * @param logType the type of log to search
+	 * @param tags all the tags to search for
+	 * @return the results that match the search
+	 * @throws Exception
+	 */
+	public LinkedList<?> searchByTags(String logType, String[] tags) throws Exception{
+		LinkedList<?> results = new LinkedList();
+		if(logType == "WOD"){
+			//TODO
+		}
+		else if(logType == "Biometric"){
+			//TODO
+		}
+		else if(logType == "Notes"){
+			//TODO
+		}
+		else{
+			throw new Exception("logType must be \"WOD\", \"Biometric\", or \"Notes\"");
+		}
+		return results;
+	}
+	
+	/**
+	 * 
+	 * @param logType the type of log to search
+	 * @param keyWords the words to search text for
+	 * @return the results that match the search
+	 * @throws Exception
+	 */
+	public LinkedList<?> searchByContent(String logType, String[] keyWords) throws Exception{
+		LinkedList<?> results = new LinkedList();
+		if(logType == "WOD"){
+			//TODO
+		}
+		else if(logType == "Biometric"){
+			//TODO
+		}
+		else if(logType == "Notes"){
+			//TODO
+		}
+		else{
+			throw new Exception("logType must be \"WOD\", \"Biometric\", or \"Notes\"");
+		}
 		return results;
 	}
 	
