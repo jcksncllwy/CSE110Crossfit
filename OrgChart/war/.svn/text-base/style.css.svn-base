@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  font-family: Verdana;
+  font-size: 10pt;
+}
+
+#page {
+  margin: 8px 8% 0;
+}
+
+#header {
+  background: orange;
+  height: 24px;
+  overflow: hidden;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+#logo img {
+  margin: 2px;
+  border: 1px solid white;
+  padding: 1px;
+}
+
+.menu {
+  margin: 4px 5px 0;
+}
+
+#title {
+  font-weight: bold;
+}
+
+#links ul, #userlinks ul {
+  margin: 0;
+  padding: 0;
+}
+
+#links li, #userlinks li {
+  list-style: none;
+  display: inline;
+  border-right: 1px solid black;
+  padding-right: 5px;
+}
+
+#links li.last, #userlinks li.last {
+  border-right: 0;
+  padding-right: 0;
+}
+
+#header a {
+  text-decoration: none;
+  color: black;
+}
+
+.item {
+  margin: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.item a {
+  text-decoration: none;
+  color: black;
+}
+
+.node {
+  margin: 10px;
+}
+
+.meta {
+  font-size: 8pt;
+  color: dimgrey;
+}
