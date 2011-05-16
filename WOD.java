@@ -13,8 +13,13 @@ public class WOD {
 	
 	//FIELDS
     private String title;
-	private String description;
+	private LinkedList<String> exercises;
+	private LinkedList<int> reps;
+	private LinkedList<double> weight;
+	private boolean benchmark;
+	private boolean prescribed;
 	private String type;
+	private int timeMin;
 	private int timeSec;
 	private int rounds;
 	private LinkedList<String> tags;
@@ -26,7 +31,11 @@ public class WOD {
 	 */
 	public WOD() {
 		title = "";
-		description = "";
+		exercises = new LinkedList();
+		reps = new LinkedList();
+		weight = newLinkedList();
+		benchmark = true;
+		prescribed = true;
 		date = new GregorianCalendar();
 		type = "";
 		timeSec = 0;
@@ -39,7 +48,17 @@ public class WOD {
 	 * @return whether or not autoTag was successful
 	 */
 	public boolean autoTag(){
-		//TODO
+		tags.add(title);
+		tags.add(type);
+		for(int i = 0; i < exercises.size(); i++) {
+			tags.add(exercises.get(i));
+		}
+		if(benchmark == true) {
+			tags.add("benchmark");
+		}
+		if(rounds != 0) {
+			tags.add("AMRAP");
+		}
 		return true;
 	}
 
@@ -56,19 +75,45 @@ public class WOD {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
+	
+	public LinkedList<String> getExercises() {
+		return exercises;
 	}
 
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public setExercises(String exerName) {
+		this.exercises.add(exerName);
+	}
+	
+	public LinkedList<int> getReps() {
+		return reps;
+	}
+
+	public void setReps(int repNum) {
+		this.reps.add(repNum);
+	}
+	
+	public LinkedList<double> getWeight() {
+		return weight;
+	}
+	
+	public void setWeight(double wei) {
+		this.weight.add(wei);
+	}
+	
+	public boolean getBenchmark() {
+		return benchmark;
+	}
+	
+	public void setBenchmark(boolean isBenchmark) {
+		this.benchmark = isBenchmark;
+	}
+	
+	public boolean getPrescribed() {
+		return prescribed;
+	}
+	
+	public void setPrescribed(boolean isPrescribed) {
+		this.prescribed = isPrescribed;
 	}
 
 	/**
@@ -114,6 +159,20 @@ public class WOD {
 	}
 
 	/**
+	 * @return the timeMin
+	 */
+	public int getTimeMin() {
+		return timeMin;
+	}
+
+	/**
+	 * @param timeMin the timeMin to set
+	 */
+	public void setTimeMin(int timeMin) {
+		this.timeMin = timeMin;
+	}
+		
+	/**
 	 * @return the rounds
 	 */
 	public int getRounds() {
@@ -137,8 +196,10 @@ public class WOD {
 	/**
 	 * @param tags the tags to set
 	 */
-	public void setTags(LinkedList<String> tags) {
-		this.tags = tags;
+	public void setTags(String tags) {
+		String[] tagArr = tags.split(",");
+		for(int i = 0; i < tagArr.size(); i++) {
+			this.tags.add(tagArr[i].trim());
 	}
 
 }
