@@ -23,7 +23,7 @@ public class WOD {
 	private int timeSec;
 	private int rounds;
 	private LinkedList<String> tags;
-	private GregorianCalendar date;
+	private String date;
     
 	//CONSTRUCTORS
 	/**
@@ -36,7 +36,7 @@ public class WOD {
 		weight = newLinkedList();
 		benchmark = true;
 		prescribed = true;
-		date = new GregorianCalendar();
+		date = "";
 		type = "";
 		timeSec = 0;
 		rounds = 0;
@@ -119,14 +119,14 @@ public class WOD {
 	/**
 	 * @return the date
 	 */
-	public GregorianCalendar getDate() {
+	public String getDate() {
 		return date;
 	}
 
 	/**
 	 * @param date the date to set
 	 */
-	public void setDate(GregorianCalendar date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -202,4 +202,43 @@ public class WOD {
 			this.tags.add(tagArr[i].trim());
 	}
 
+	/**
+	 * Changes date String from MMDDYY to MM/DD/YY
+	 */
+	public String toDate() {
+		String newDate;
+		newDate += date.charAt(0) + date.charAt(1) + "/";
+		newDate += date.charAt(2) + date.charAt(3) + "/";
+		newDate += date.charAt(4) + date.charAt(5);
+		return newDate;
+	}
+	/**
+	 * toString() method to be used for text dump;
+	 */
+	public String toString()
+		String wodInfo;
+		wodInfo += "WOD Title: " + title + "\n";
+		wodInfo += "Date of WOD: " + toDate() + "\n";
+		wodInfo += "Exercises Done:" + "\n";
+		for(int i = 0; i < exercises.size(); i++) {
+			wodInfo += "\n\t" + "Name: " + exercises.get(i) + "-";
+			wodInfo += "\t" + "Reps: " + reps.get(i) + ",";
+			wodInfo += "\t" + "Weight: " + weight.get(i) + ";";
+		}
+		if(benchmark == true){
+			wodInfo += "\n" + "Benchmark workout.";
+		}
+		if(prescribed == true){
+			wodInfo += "\n" + "Prescribed workout.";
+		}
+		else {
+			wodInfo += "\n" + "Scaled workout.";
+		}
+		if(timeMin > 0 || timeSec > 0) {
+			wodInfo += "Time taken: " + timeMin + ":" + timeSec;
+		}
+		if(rounds > 0) {
+			wodInfo += "Rounds completed " + rounds;
+		}
+		wodInfo += "\n" + "_________________________________";
 }
