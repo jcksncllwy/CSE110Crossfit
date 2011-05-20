@@ -37,7 +37,7 @@ public class Biometric {
 	 * @return whether or not autoTag was successful
 	 */
 	public boolean autoTag(){
-		//TODO
+		
 		return true;
 	}
 	
@@ -61,7 +61,10 @@ public class Biometric {
 	 * @param weight the weight to set
 	 */
 	public void setWeight(double weight) {
-		this.weight = weight;
+		if(weight > 0.0)
+		{
+			this.weight = weight;
+		}
 	}
 
 	/**
@@ -75,7 +78,10 @@ public class Biometric {
 	 * @param bFP the bFP to set
 	 */
 	public void setbFP(double bFP) {
-		this.bFP = bFP;
+		if(bFP > 0.0)
+		{
+			this.bFP = bFP;
+		}
 	}
 
 	/**
@@ -89,7 +95,10 @@ public class Biometric {
 	 * @param heartRate the heartRate to set
 	 */
 	public void setHeartRate(int heartRate) {
-		this.heartRate = heartRate;
+		if(heartRate > 0)
+		{
+			this.heartRate = heartRate;
+		}
 	}
 
 	/**
@@ -103,7 +112,12 @@ public class Biometric {
 	 * @param bMI the bMI to set
 	 */
 	public void setbMI(double bMI) {
-		this.bMI = bMI;
+		{
+			if(bMI > 0)
+			{
+				this.bMI = bMI;
+			}
+		}
 	}
 
 	/**
@@ -123,15 +137,19 @@ public class Biometric {
 	/**
 	 * @return the tags
 	 */
-	public LinkedList<String> getTags() {
+	public String[] getTags() {
 		return tags;
 	}
 
 	/**
 	 * @param tags the tags to set
 	 */
-	public void setTags(LinkedList<String> tags) {
-		this.tags = tags;
+	public void setTags(String tagstring) {
+		String[] t = tagstring.split(",");
+		for(int i = 0;i < t.size();i++)
+		{
+			tags.add(t[i].trim());
+		}
 	}
 	
 	
