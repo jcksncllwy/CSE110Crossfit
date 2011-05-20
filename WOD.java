@@ -163,70 +163,75 @@ public class WOD {
 
 	/**
 	 * Method to set date of WOD
-	 * @return - true if autotag was successful, false otherwise
 	 */
 	public void setDate(String date) {
 		this.date = date;
 	}
 
 	/**
-	 * @return the type
+	 * Method to get the type of WOD
+	 * @return - type of WOD
 	 */
 	public String getType() {
 		return type;
 	}
 
 	/**
-	 * @param type the type to set
+	 * Method to set the type of WOD
 	 */
 	public void setType(String type) {
 		this.type = type;
 	}
 
 	/**
-	 * @return the timeSec
+	 * Method to get seconds portion of time to complete WOD
+	 * @return - seconds portion of time
 	 */
 	public int getTimeSec() {
 		return timeSec;
 	}
 
 	/**
-	 * @param timeSec the timeSec to set
+	 * Method to set seconds portion of time to complete WOD
 	 */
 	public void setTimeSec(int timeSec) {
 		this.timeSec = timeSec;
 	}
 
 	/**
-	 * @return the timeMin
+	 * Method to get minutes portion of time to complete WOD
+	 * @return - minutes portion of time
 	 */
 	public int getTimeMin() {
 		return timeMin;
 	}
 
 	/**
-	 * @param timeMin the timeMin to set
+	 * Method to set minutes portion of time to complete WOD
 	 */
 	public void setTimeMin(int timeMin) {
 		this.timeMin = timeMin;
 	}
 		
 	/**
-	 * @return the rounds
+	 * Method to get number of rounds of WOD
+	 * @return - number of rounds
 	 */
 	public int getRounds() {
 		return rounds;
 	}
 
 	/**
-	 * @param rounds the rounds to set
+	 * Method to set number of rounds 
+	 * @param - number of rounds to be set
 	 */
 	public void setRounds(int rounds) {
 		this.rounds = rounds;
 	}
 
 	/**
-	 * @return the tags
+	 * Method to autotag a WOD
+	 * @return - true if autotag was successful, false otherwise
 	 */
 	public LinkedList<String> getTags() {
 		return tags;
