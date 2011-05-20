@@ -1,14 +1,14 @@
 /**
+ * Standard Deviation (STDev)
+ * DATE
  * 
+ * This class is designed to create a Workout of the Day (WOD) object, 
+ * which holds all of the info for a WOD.
  */
 package crossfitPlusPlus;
 
 import java.util.*;
 
-/**
- * @author Jackson Callaway
- *
- */
 public class WOD {
 	
 	//FIELDS
@@ -73,6 +73,7 @@ public class WOD {
 
 	/**
 	 * Method to set name of WOD
+	 * @param - name of WOD to be set
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -87,7 +88,8 @@ public class WOD {
 	}
 
 	/**
-	 * Method to set list of exercises associated with WOD
+	 * Method to set name of exercise associated with WOD
+	 * @param - name of exercise to be set
 	 */
 	public void setExercises(String exerName) {
 		this.exercises.add(exerName);
@@ -102,7 +104,8 @@ public class WOD {
 	}
 
 	/**
-	 * Method to set reps for each exercise for WOD
+	 * Method to set number of reps for exercise in WOD
+	 * @param - number of reps to be set
 	 */
 	public void setReps(int repNum) {
 		this.reps.add(repNum);
@@ -117,7 +120,8 @@ public class WOD {
 	}
 	
 	/**
-	 * Method to set weights used for each exercise for WOD
+	 * Method to set weights used for exercise in WOD
+	 * @param - weights to be set
 	 */
 	public void setWeight(double wei) {
 		this.weight.add(wei);
@@ -133,6 +137,7 @@ public class WOD {
 	
 	/**
 	 * Method to set WOD to be a benchmark
+	 * @param - benchmark to be set
 	 */
 	public void setBenchmark(boolean isBenchmark) {
 		this.benchmark = isBenchmark;
@@ -148,6 +153,7 @@ public class WOD {
 	
 	/**
 	 * Method to set WOD to have used scaled weights
+	 * @param - scaled weights to be set
 	 */
 	public void setScaled(boolean isScaled) {
 		this.scaled = isScaled;
@@ -163,6 +169,7 @@ public class WOD {
 
 	/**
 	 * Method to set date of WOD
+	 * @param - date to be set
 	 */
 	public void setDate(String date) {
 		this.date = date;
@@ -178,6 +185,7 @@ public class WOD {
 
 	/**
 	 * Method to set the type of WOD
+	 * @param - type to be set
 	 */
 	public void setType(String type) {
 		this.type = type;
@@ -193,6 +201,7 @@ public class WOD {
 
 	/**
 	 * Method to set seconds portion of time to complete WOD
+	 * @param - seconds to be set
 	 */
 	public void setTimeSec(int timeSec) {
 		this.timeSec = timeSec;
@@ -208,6 +217,7 @@ public class WOD {
 
 	/**
 	 * Method to set minutes portion of time to complete WOD
+	 * @param - minutes to be set
 	 */
 	public void setTimeMin(int timeMin) {
 		this.timeMin = timeMin;
@@ -230,15 +240,16 @@ public class WOD {
 	}
 
 	/**
-	 * Method to autotag a WOD
-	 * @return - true if autotag was successful, false otherwise
+	 * Method to get list of tags for WOD
+	 * @return - list of tags
 	 */
 	public LinkedList<String> getTags() {
 		return tags;
 	}
 
 	/**
-	 * @param tags the tags to set
+	 * Method to append tag to list of tags for WOD
+	 * @param - tags to be tag
 	 */
 	public void setTags(String tags) {
 		String[] tagArr = tags.split(",");
@@ -247,7 +258,8 @@ public class WOD {
 	}
 
 	/**
-	 * Changes date String from MMDDYY to MM/DD/YY
+	 * Method to convert date from MMDDYY to MM/DD/YY
+	 * @return - date (MM/DD/YY)
 	 */
 	public String toDate() {
 		String newDate;
@@ -256,8 +268,10 @@ public class WOD {
 		newDate += date.charAt(4) + date.charAt(5);
 		return newDate;
 	}
+	
 	/**
-	 * toString() method to be used for text dump;
+	 * Method to convert all of WOD info to String for text dump
+	 * @return - String of WOD info
 	 */
 	public String toString()
 		String wodInfo;
