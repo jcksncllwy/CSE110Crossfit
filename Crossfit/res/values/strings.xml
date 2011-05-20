@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrossFit++</string>
+    <string name="login">Login</string>
+    <string name="buttonEnterWOD">Enter WOD</string>
+    <string name="viewWOD">View WOD</string>
+    <string name="height">Height (in inches):</string>
+    <string name="bodyfat">Body Fat %:</string>
+    <string name="createprofile">Create Profile</string>
+    <string name="amrap">AMRAP</string>
+    <string name="tabata">Tabata</string>
+    <string name="other">Other</string>
+    <string name="benchmark">Benchmark</string>
+    <string name="wodlength">Length of WOD:</string>
+    <string name="prescribed">Prescribed</string>
+    <string name="adjusted">Adjusted</string>
+</resources>
