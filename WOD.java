@@ -17,7 +17,7 @@ public class WOD {
 	private LinkedList<int> reps;
 	private LinkedList<double> weight;
 	private boolean benchmark;
-	private boolean prescribed;
+	private boolean scaled;
 	private String type;
 	private int timeMin;
 	private int timeSec;
@@ -35,7 +35,7 @@ public class WOD {
 		reps = new LinkedList();
 		weight = newLinkedList();
 		benchmark = true;
-		prescribed = true;
+		scaled = true;
 		date = "";
 		type = "";
 		timeSec = 0;
@@ -45,7 +45,8 @@ public class WOD {
 	
 	//METHODS
 	/**
-	 * @return whether or not autoTag was successful
+	 * Method to autotag a WOD
+	 * @return - true if autotag was successful, false otherwise
 	 */
 	public boolean autoTag(){
 		tags.add(title);
@@ -63,68 +64,106 @@ public class WOD {
 	}
 
 	/**
-	 * @return the title
+	 * Method to get name of WOD
+	 * @return - name of WOD
 	 */
 	public String getTitle() {
 		return title;
 	}
 
 	/**
-	 * @param title the title to set
+	 * Method to set name of WOD
 	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 	
+	/**
+	 * Method to get list of exercises associated with WOD
+	 * @return - linked list of exercises
+	 */
 	public LinkedList<String> getExercises() {
 		return exercises;
 	}
 
-	public setExercises(String exerName) {
+	/**
+	 * Method to set list of exercises associated with WOD
+	 */
+	public void setExercises(String exerName) {
 		this.exercises.add(exerName);
 	}
 	
+	/**
+	 * Method to get reps used in each exercise for WOD
+	 * @return - linked list of reps
+	 */
 	public LinkedList<int> getReps() {
 		return reps;
 	}
 
+	/**
+	 * Method to set reps for each exercise for WOD
+	 */
 	public void setReps(int repNum) {
 		this.reps.add(repNum);
 	}
 	
+	/**
+	 * Method to get weights used for each exercise for WOD
+	 * @return - linked list of weights
+	 */
 	public LinkedList<double> getWeight() {
 		return weight;
 	}
 	
+	/**
+	 * Method to set weights used for each exercise for WOD
+	 */
 	public void setWeight(double wei) {
 		this.weight.add(wei);
 	}
 	
-	public boolean getBenchmark() {
+	/**
+	 * Method to check if WOD is a benchmark
+	 * @return - true if WOD is benchmark, false otherwise
+	 */
+	public boolean checkBenchmark() {
 		return benchmark;
 	}
 	
+	/**
+	 * Method to set WOD to be a benchmark
+	 */
 	public void setBenchmark(boolean isBenchmark) {
 		this.benchmark = isBenchmark;
 	}
 	
-	public boolean getPrescribed() {
-		return prescribed;
+	/**
+	 * Method to check if scaled weights were used for WOD
+	 * @return - true if scaled weights used, false otherwise
+	 */
+	public boolean checkScaled() {
+		return scaled;
 	}
 	
-	public void setPrescribed(boolean isPrescribed) {
-		this.prescribed = isPrescribed;
+	/**
+	 * Method to set WOD to have used scaled weights
+	 */
+	public void setScaled(boolean isScaled) {
+		this.scaled = isScaled;
 	}
 
 	/**
-	 * @return the date
+	 * Method to get date of WOD
+	 * @return - date
 	 */
 	public String getDate() {
 		return date;
 	}
 
 	/**
-	 * @param date the date to set
+	 * Method to set date of WOD
+	 * @return - true if autotag was successful, false otherwise
 	 */
 	public void setDate(String date) {
 		this.date = date;
