@@ -152,6 +152,20 @@ public class Biometric {
 		}
 	}
 	
+	/**
+	 * Method to convert all of Biometric data info to string for text dump
+	 * @return - String of Biometric info
+	 */
+	public String toString()
+	{
+		String BioInfo;
+		BioInfo += "Date: " + date + "\n";
+		BioInfo += "Weight " + weight + "\n";
+		BioInfo += "Body Fat Percentage " + bFP + "\n";
+		BioInfo += "Heart Rate " + heatrate + "\n";
+		BioInfo += "Body Mass Index " + bMI + + "\n";
+		BioInfo += "\n" + "_________________________________";
+	}
 	
 	
 	
