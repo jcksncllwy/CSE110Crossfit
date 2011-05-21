@@ -3,7 +3,7 @@
  * DATE
  * 
  * This class is designed to create a User object, which holds all info
- * entered by the user stored in the WOD, Biometric, and Notes classes.
+ * pertaining to the user's account.
  */
 package crossfitPlusPlus;
 
