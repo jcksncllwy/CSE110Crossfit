@@ -54,7 +54,7 @@ public class User {
 	 * @param - username to be validated
 	 * @return - true if valid, false otherwise
 	 */
-	public boolean validateUsername(String username){
+	public boolean validateUsername(String username) {
 		//TODO
 		return true;
 	}
@@ -64,7 +64,7 @@ public class User {
 	 * @param - password to be validated
 	 * @return - true if valid, false otherwise
 	 */
-	public boolean validatePassword(String password){
+	public boolean validatePassword(String password) {
 		//TODO
 		return true;
 	}
@@ -74,7 +74,7 @@ public class User {
 	 * @param - email to be validated
 	 * @return - true if valid, false otherwise
 	 */
-	public boolean validateEmail(String email){
+	public boolean validateEmail(String email) {
 		//TODO
 		return true;
 	}
