@@ -48,18 +48,22 @@ public class WOD {
 	 * Method to autotag a WOD
 	 * @return - true if autotag was successful, false otherwise
 	 */
-	public boolean autoTag(){
+	public boolean autoTag() {
 		tags.add(title);
 		tags.add(type);
+		
 		for(int i = 0; i < exercises.size(); i++) {
 			tags.add(exercises.get(i));
 		}
+		
 		if(benchmark == true) {
 			tags.add("benchmark");
 		}
+		
 		if(rounds != 0) {
 			tags.add("AMRAP");
 		}
+		
 		return true;
 	}
 
@@ -293,11 +297,11 @@ public class WOD {
 			wodInfo += "\t" + "Weight: " + weight.get(i) + ";";
 		}
 		
-		if(benchmark == true){
+		if(benchmark == true) {
 			wodInfo += "\n" + "Benchmark workout.";
 		}
 		
-		if(prescribed == true){
+		if(prescribed == true) {
 			wodInfo += "\n" + "Prescribed workout.";
 		}
 		
@@ -314,5 +318,7 @@ public class WOD {
 		}
 		
 		wodInfo += "\n" + "_________________________________";
+		
+		return wodInfo;
 	}
 }

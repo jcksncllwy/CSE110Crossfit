@@ -179,7 +179,7 @@ public class Log {
 	 * @param (String[] keywords) - list of keywords to search for
 	 * @return - list of WODs, Notes, and Biometrics with said keywords
 	 */
-	public LinkedList<?> searchByContent(String logType, String[] keywords){
+	public LinkedList<?> searchByContent(String logType, String[] keywords) {
 		LinkedList<?> results = new LinkedList();
 		
 		if(logType == "WOD"){

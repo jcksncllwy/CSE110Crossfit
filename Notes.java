@@ -37,7 +37,7 @@ public class Notes {
 	 * Method to autotag a WOD
 	 * @return - true if autotag was successful, false otherwise
 	 */
-	public boolean autoTag(){
+	public boolean autoTag() {
 		//TODO
 		return true;
 	}
@@ -172,5 +172,7 @@ public class Notes {
 		notesInfo += "Injuries:" + injuries + "\n";
 		notesInfo += "Other:" + other + "\n";
 		notesInfo += "\n_________________________________";
+		
+		return notesInfo;
 	}
 }

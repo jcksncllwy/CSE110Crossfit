@@ -38,7 +38,7 @@ public class Biometric {
 	 * Method to autotag a WOD
 	 * @return - true if autotag was successful, false otherwise
 	 */
-	public boolean autoTag(){
+	public boolean autoTag() {
 		if(tags.add(weight) && tags.add(bodyFat) && tags.add(heartRate)
 			&& tags.add(bMI) && tags.add(date)) {
 			return true;
@@ -54,7 +54,7 @@ public class Biometric {
 	 * @param (double height) - height used in calculation
 	 * @return - calculated BMI
 	 */
-	public double calculateBMI(double weight, double height){
+	public double calculateBMI(double weight, double height) {
 		return weight/Math.pow(height, 2.0);
 	}
 
@@ -183,5 +183,7 @@ public class Biometric {
 		bioInfo += "Heart Rate " + heatrate + "\n";
 		bioInfo += "Body Mass Index " + bMI + "\n";
 		bioInfo += "\n_________________________________";
+		
+		return bioInfo;
 	}	
 }
