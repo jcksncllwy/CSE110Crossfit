@@ -12,7 +12,7 @@ import java.util.*;
 public class Notes {
 	
 	//FIELDS
-    private String injuries;
+    private String injury;
 	private String exerciseComments;
 	private String nutrition;
 	private String other;
@@ -24,7 +24,7 @@ public class Notes {
 	 * Default Constructor
 	 */
 	public Notes() {
-		injuries = "";
+		injury = "";
 		exerciseComments = "";
 		nutrition = "";
 		other = "";
@@ -46,16 +46,16 @@ public class Notes {
 	 * Method to get injuries
 	 * @return - injuries
 	 */
-	public String getInjuries() {
-		return injuries;
+	public String getInjury() {
+		return injury;
 	}
 
 	/**
 	 * Method to set injuries
 	 * @param - injuries to be set
 	 */
-	public void setInjuries(String injuries) {
-		this.injuries = injuries;
+	public void setInjury(String newInjury) {
+		this.injury = newInjury;
 	}
 
 	/**
@@ -70,8 +70,8 @@ public class Notes {
 	 * Method to set exercise comments
 	 * @param - exercise comments to be set
 	 */
-	public void setExerciseComments(String exerciseComments) {
-		this.exerciseComments = exerciseComments;
+	public void setExerciseComments(String newExComment) {
+		this.exerciseComments = newExComment;
 	}
 
 	/**
@@ -86,8 +86,8 @@ public class Notes {
 	 * Method to set nutrition
 	 * @param - nutrition to be set
 	 */
-	public void setNutrition(String nutrition) {
-		this.nutrition = nutrition;
+	public void setNutrition(String newNutrition) {
+		this.nutrition = newNutrition;
 	}
 
 	/**
@@ -102,8 +102,8 @@ public class Notes {
 	 * Method to set other type of notes
 	 * @param - other type of notes to be set
 	 */
-	public void setOther(String other) {
-		this.other = other;
+	public void setOther(String newOther) {
+		this.other = newOther;
 	}
 
 	/**
@@ -113,13 +113,22 @@ public class Notes {
 	public LinkedList<String> getTags() {
 		return tags;
 	}
-
+	
 	/**
-	 * Method to set list of tags
-	 * @param - list of tags to be set
+	 * Method to append tag to list of tags
+	 * @param - tags to be tag
 	 */
-	public void setTags(LinkedList<String> tags) {
-		this.tags = tags;
+	public void addTags(String newTag) {
+		this.tags.add(newTag);
+	}
+	
+	/**
+	 * Method to set new list of tags
+	 * @param - tags to be tag
+	 */
+	public void setTags(LinkedList<String> newTags) {
+		this.tags.clear();
+		this.tags = newTags;
 	}
 
 	/**
@@ -134,8 +143,8 @@ public class Notes {
 	 * Method to set data
 	 * @param - date to be set
 	 */
-	public void setDate(String date) {
-		this.date = date;
+	public void setDate(String newDate) {
+		this.date = newDate;
 	}
 
 	/**
@@ -162,6 +171,6 @@ public class Notes {
 		notesInfo += "Nutrition:" + nutrition + "\n";
 		notesInfo += "Injuries:" + injuries + "\n";
 		notesInfo += "Other:" + other + "\n";
-		notesInfo += "_________________________________";
+		notesInfo += "\n_________________________________";
 	}
 }

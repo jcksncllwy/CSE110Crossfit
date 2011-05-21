@@ -1,22 +1,23 @@
 /**
+ * Standard Deviation (STDev)
+ * DATE
  * 
+ * This class is designed to create a Biometric object, which holds all info
+ * pertaining to the user's health. 
  */
 package crossfitPlusPlus;
+
 import java.util.*;
 
-/**
- * @author Jackson Callaway
- *
- */
 public class Biometric {
 	
     //FIELDS
     private double weight;
-    private double bFP;		//Body Fat Percentage
+    private double bodyFat;
     private int heartRate;
     private double bMI;
     private LinkedList<String> tags;
-    private GregorianCalendar date;
+    private String date;
 
     
     //CONSTRUCTORS
@@ -25,151 +26,162 @@ public class Biometric {
 	 */
 	public Biometric() {
 		weight = 0.0;
-		bFP = 0.0;
+		bodyFat = 0.0;
 		heartRate = 0;
 		bMI = 0.0;
-		date = new GregorianCalendar();
+		date = "";
 		tags = new LinkedList<String>();
 	}
 
 	//METHODS
 	/**
-	 * @return whether or not autoTag was successful
+	 * Method to autotag a WOD
+	 * @return - true if autotag was successful, false otherwise
 	 */
 	public boolean autoTag(){
+		if(tags.add(weight) && tags.add(bodyFat) && tags.add(heartRate)
+			&& tags.add(bMI) && tags.add(date)) {
+			return true;
+		}
 		
-		return true;
+		return false;
 	}
 	
 	/**
-	 * @param weight the user's weight
-	 * @param height the user's height
-	 * @return the calculate BMI
+	 * Method to calculate the body mass index (BMI) with
+	 * the given weight and height
+	 * @param (double weight) - weight used in calculation
+	 * @param (double height) - height used in calculation
+	 * @return - calculated BMI
 	 */
 	public double calculateBMI(double weight, double height){
 		return weight/Math.pow(height, 2.0);
 	}
 
 	/**
-	 * @return the weight
+	 * Method to get weight
+	 * @return - weight
 	 */
 	public double getWeight() {
 		return weight;
 	}
 
 	/**
-	 * @param weight the weight to set
+	 * Method to set weight
+	 * @param - weight to be set
 	 */
-	public void setWeight(double weight) {
-		if(weight > 0.0)
-		{
-			this.weight = weight;
+	public void setWeight(double newWeight) {
+		if(weight > 0.0) {
+			this.weight = newWeight;
 		}
 	}
 
 	/**
-	 * @return the bFP
+	 * Method to get body fat
+	 * @return - body fat
 	 */
-	public double getbFP() {
-		return bFP;
+	public double getbodyFat() {
+		return bodyFat;
 	}
 
 	/**
-	 * @param bFP the bFP to set
+	 * Method to set body fat
+	 * @param - body fat to be set
 	 */
-	public void setbFP(double bFP) {
-		if(bFP > 0.0)
-		{
-			this.bFP = bFP;
+	public void setbodyFat(double newBodyFat) {
+		if(bodyFat > 0.0) {
+			this.bodyFat = newBodyFat;
 		}
 	}
 
 	/**
-	 * @return the heartRate
+	 * Method to get heart rate
+	 * @return - heart rate
 	 */
 	public int getHeartRate() {
 		return heartRate;
 	}
 
 	/**
-	 * @param heartRate the heartRate to set
+	 * Method to set heart rate
+	 * @param - heart rate to be set
 	 */
-	public void setHeartRate(int heartRate) {
-		if(heartRate > 0)
-		{
-			this.heartRate = heartRate;
+	public void setHeartRate(int newHeartRate) {
+		if(newHeartRate > 0) {
+			this.heartRate = newHeartRate;
 		}
 	}
 
 	/**
-	 * @return the bMI
+	 * Method to get BMI
+	 * @return - BMI
 	 */
 	public double getbMI() {
 		return bMI;
 	}
 
 	/**
-	 * @param bMI the bMI to set
+	 * Method to set BMI
+	 * @param - BMI to be set
 	 */
-	public void setbMI(double bMI) {
-		{
-			if(bMI > 0)
-			{
-				this.bMI = bMI;
-			}
+	public void setbMI(double newBMI) {
+		if(bMI > 0) {
+				this.bMI = newBMI;
 		}
 	}
 
 	/**
-	 * @return the date
+	 * Method to get date
+	 * @return - date
 	 */
-	public GregorianCalendar getDate() {
+	public String getDate() {
 		return date;
 	}
 
 	/**
-	 * @param date the date to set
+	 * Method to set date
+	 * @param - new date to be set
 	 */
-	public void setDate(GregorianCalendar date) {
-		this.date = date;
+	public void setDate(String newDate) {
+		this.date = newDate;
 	}
 
 	/**
-	 * @return the tags
+	 * Method to get list of tags
+	 * @return - list of tags
 	 */
 	public String[] getTags() {
 		return tags;
 	}
 
 	/**
-	 * @param tags the tags to set
+	 * Method to append tag to list of tags
+	 * @param - tags to be tag
 	 */
-	public void setTags(String tagstring) {
-		String[] t = tagstring.split(",");
-		for(int i = 0;i < t.size();i++)
-		{
-			tags.add(t[i].trim());
-		}
+	public void addTags(String newTag) {
+		this.tags.add(newTag);
+	}
+	
+	/**
+	 * Method to set new list of tags
+	 * @param - tags to be tag
+	 */
+	public void setTags(LinkedList<String> newTags) {
+		this.tags.clear();
+		this.tags = newTags;
 	}
 	
 	/**
 	 * Method to convert all of Biometric data info to string for text dump
 	 * @return - String of Biometric info
 	 */
-	public String toString()
-	{
-		String BioInfo;
-		BioInfo += "Date: " + date + "\n";
-		BioInfo += "Weight " + weight + "\n";
-		BioInfo += "Body Fat Percentage " + bFP + "\n";
-		BioInfo += "Heart Rate " + heatrate + "\n";
-		BioInfo += "Body Mass Index " + bMI + + "\n";
-		BioInfo += "\n" + "_________________________________";
-	}
-	
-	
-	
-	
-	
-	
+	public String toString() {
+		String bioInfo;
+		bioInfo += "Date: " + date + "\n";
+		bioInfo += "Weight " + weight + "\n";
+		bioInfo += "Body Fat Percentage " + bodyFat + "\n";
+		bioInfo += "Heart Rate " + heatrate + "\n";
+		bioInfo += "Body Mass Index " + bMI + "\n";
+		bioInfo += "\n_________________________________";
+	}	
 }

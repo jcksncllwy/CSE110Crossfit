@@ -75,8 +75,8 @@ public class WOD {
 	 * Method to set name of WOD
 	 * @param - name of WOD to be set
 	 */
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTitle(String newTitle) {
+		this.title = newTitle;
 	}
 	
 	/**
@@ -91,8 +91,8 @@ public class WOD {
 	 * Method to set name of exercise associated with WOD
 	 * @param - name of exercise to be set
 	 */
-	public void setExercises(String exerName) {
-		this.exercises.add(exerName);
+	public void setExercises(String newExercise) {
+		this.exercises.add(newExercise);
 	}
 	
 	/**
@@ -107,8 +107,8 @@ public class WOD {
 	 * Method to set number of reps for exercise in WOD
 	 * @param - number of reps to be set
 	 */
-	public void setReps(int repNum) {
-		this.reps.add(repNum);
+	public void setReps(int newRep) {
+		this.reps.add(newRep);
 	}
 	
 	/**
@@ -123,8 +123,8 @@ public class WOD {
 	 * Method to set weights used for exercise in WOD
 	 * @param - weights to be set
 	 */
-	public void setWeight(double wei) {
-		this.weight.add(wei);
+	public void setWeight(double newWeight) {
+		this.weight.add(newWeight);
 	}
 	
 	/**
@@ -171,8 +171,8 @@ public class WOD {
 	 * Method to set date of WOD
 	 * @param - date to be set
 	 */
-	public void setDate(String date) {
-		this.date = date;
+	public void setDate(String newDate) {
+		this.date = newDate;
 	}
 
 	/**
@@ -187,8 +187,8 @@ public class WOD {
 	 * Method to set the type of WOD
 	 * @param - type to be set
 	 */
-	public void setType(String type) {
-		this.type = type;
+	public void setType(String newType) {
+		this.type = newType;
 	}
 
 	/**
@@ -203,8 +203,8 @@ public class WOD {
 	 * Method to set seconds portion of time to complete WOD
 	 * @param - seconds to be set
 	 */
-	public void setTimeSec(int timeSec) {
-		this.timeSec = timeSec;
+	public void setTimeSec(int newTimeSec) {
+		this.timeSec = newTimeSec;
 	}
 
 	/**
@@ -219,12 +219,12 @@ public class WOD {
 	 * Method to set minutes portion of time to complete WOD
 	 * @param - minutes to be set
 	 */
-	public void setTimeMin(int timeMin) {
-		this.timeMin = timeMin;
+	public void setTimeMin(int newTimeMin) {
+		this.timeMin = newTimeMin;
 	}
 		
 	/**
-	 * Method to get number of rounds of WOD
+	 * Method to get number of rounds for WOD
 	 * @return - number of rounds
 	 */
 	public int getRounds() {
@@ -232,15 +232,15 @@ public class WOD {
 	}
 
 	/**
-	 * Method to set number of rounds 
+	 * Method to set number of rounds for WOD
 	 * @param - number of rounds to be set
 	 */
-	public void setRounds(int rounds) {
-		this.rounds = rounds;
+	public void setRounds(int newRounds) {
+		this.rounds = newRounds;
 	}
 
 	/**
-	 * Method to get list of tags for WOD
+	 * Method to get list of tags
 	 * @return - list of tags
 	 */
 	public LinkedList<String> getTags() {
@@ -248,13 +248,20 @@ public class WOD {
 	}
 
 	/**
-	 * Method to append tag to list of tags for WOD
+	 * Method to append tag to list of tags
 	 * @param - tags to be tag
 	 */
-	public void setTags(String tags) {
-		String[] tagArr = tags.split(",");
-		for(int i = 0; i < tagArr.size(); i++) {
-			this.tags.add(tagArr[i].trim());
+	public void addTags(String newTag) {
+		this.tags.add(newTag);
+	}
+	
+	/**
+	 * Method to set new list of tags
+	 * @param - tags to be tag
+	 */
+	public void setTags(LinkedList<String> newTags) {
+		this.tags.clear();
+		this.tags = newTags;
 	}
 
 	/**
