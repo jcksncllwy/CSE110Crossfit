@@ -1,14 +1,11 @@
 /**
- * 
+ * Standard Deviation (STDev)
+ * DATE
  */
 package crossfitPlusPlus;
 
 import java.util.*;
 
-/**
- * @author Jackson Callaway
- *
- */
 public class Log {
 
 	//FIELDS
@@ -28,9 +25,10 @@ public class Log {
 	}
 
 	//METHODS
-	
 	/**
-	 * @return whether or not text dump was successful
+	 * Method to store all of the user's info (WOD, Notes, Biometrics)
+	 * in a text file
+	 * @return - true if successful, false otherwise
 	 */
 	public boolean textDump(){
 		//TODO
@@ -38,8 +36,8 @@ public class Log {
 	}
 	
 	/**
-	 * 
-	 * @return whether or not flush was successful
+	 * Method to clear all log info
+	 * @return - true if successful, false otherwise
 	 */
 	public boolean flush(){
 		//TODO
@@ -47,12 +45,12 @@ public class Log {
 	}
 	
 	/**
-	 * 
-	 * @param logType the of log to search, "WOD", "Biometric", or "Notes"
-	 * @param date the date to search for
-	 * @return the results that match the search
+	 * Method to search through WOD, Notes, and Biometrics by dates
+	 * @param (String logType) - type of log info to search through
+	 * @param (String date) - date to search for
+	 * @return - list of WODs, Notes, and Biometrics with said date
 	 */
-	public LinkedList<?> searchByDate(String logType, GregorianCalendar date){
+	public LinkedList<?> searchByDate(String logType,String date){
 		LinkedList<?> results = new LinkedList();
 		
 		if(logType == "WOD"){
@@ -95,10 +93,10 @@ public class Log {
 	}
 	
 	/**
-	 * 
-	 * @param logType the type of log to search
-	 * @param tags all the tags to search for in WOD (and)
-	 * @return the results that match the search
+	 * Method to search through WOD, Notes, and Biometrics by tags
+	 * @param (String logType) - type of log info to search through
+	 * @param (String[] tags) - list of tags to search for
+	 * @return - list of WODs, Notes, and Biometrics with said tags
 	 */
 	public LinkedList<?> searchByTags(String logType, String[] tags){
 		LinkedList<?> results = new LinkedList();
@@ -194,10 +192,10 @@ public class Log {
 	}
 	
 	/**
-	 * 
-	 * @param logType the type of log to search
-	 * @param keyWords the words to search text for
-	 * @return the results that match the search
+	 * Method to search through WOD, Notes, and Biometrics by content
+	 * @param (String logType) - type of log info to search through
+	 * @param (String[] keywords) - list of keywords to search for
+	 * @return - list of WODs, Notes, and Biometrics with said keywords
 	 */
 	public LinkedList<?> searchByContent(String logType, String[] keywords){
 		LinkedList<?> results = new LinkedList();
@@ -296,49 +294,50 @@ public class Log {
 	
 
 	/**
-	 * @return the wods
+	 * Method to get list of WODS
+	 * @return - list of WODS
 	 */
 	public LinkedList<WOD> getWods() {
 		return wods;
 	}
 
 	/**
-	 * @param wods the wods to set
+	 * Method to set list of WODS
+	 * @param - list of WODS to be set
 	 */
 	public void setWods(LinkedList<WOD> wods) {
 		this.wods = wods;
 	}
 
 	/**
-	 * @return the biometrics
+	 * Method to get list of Biometrics
+	 * @return - list of Biometrics
 	 */
 	public LinkedList<Biometric> getBiometrics() {
 		return biometrics;
 	}
 
 	/**
-	 * @param biometrics the biometrics to set
+	 * Method to set list of Biometrics
+	 * @param - list of Biometrics to be set
 	 */
 	public void setBiometrics(LinkedList<Biometric> biometrics) {
 		this.biometrics = biometrics;
 	}
 
 	/**
-	 * @return the notes
+	 * Method to get list of Notes
+	 * @return - list of Notes
 	 */
 	public LinkedList<Notes> getNotes() {
 		return notes;
 	}
 
 	/**
-	 * @param notes the notes to set
+	 * Method to set list of Notes
+	 * @param - list of Notes to be set
 	 */
 	public void setNotes(LinkedList<Notes> notes) {
 		this.notes = notes;
 	}
-	
-	
-	
-	
-
 }
