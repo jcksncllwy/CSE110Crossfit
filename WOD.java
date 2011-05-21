@@ -273,30 +273,39 @@ public class WOD {
 	 * Method to convert all of WOD info to String for text dump
 	 * @return - String of WOD info
 	 */
-	public String toString()
+	public String toString() {
 		String wodInfo;
+		
 		wodInfo += "WOD Title: " + title + "\n";
 		wodInfo += "Date of WOD: " + toDate() + "\n";
 		wodInfo += "Exercises Done:" + "\n";
+		
 		for(int i = 0; i < exercises.size(); i++) {
 			wodInfo += "\n\t" + "Name: " + exercises.get(i) + "-";
 			wodInfo += "\t" + "Reps: " + reps.get(i) + ",";
 			wodInfo += "\t" + "Weight: " + weight.get(i) + ";";
 		}
+		
 		if(benchmark == true){
 			wodInfo += "\n" + "Benchmark workout.";
 		}
+		
 		if(prescribed == true){
 			wodInfo += "\n" + "Prescribed workout.";
 		}
+		
 		else {
 			wodInfo += "\n" + "Scaled workout.";
 		}
+		
 		if(timeMin > 0 || timeSec > 0) {
 			wodInfo += "Time taken: " + timeMin + ":" + timeSec;
 		}
+		
 		if(rounds > 0) {
 			wodInfo += "Rounds completed " + rounds;
 		}
+		
 		wodInfo += "\n" + "_________________________________";
+	}
 }
