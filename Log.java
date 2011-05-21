@@ -43,8 +43,15 @@ public class Log {
 	 * @return - true if successful, false otherwise
 	 */
 	public boolean flush() {
-		//TODO
-		return true;
+		wods.clear();
+		biometrics.clear();
+		notes.clear();
+		
+		if(wods.size() == 0 && biometrics.size() == 0 && notes.size() == 0){
+			return true;
+		}
+		
+		return false;
 	}
 	
 	/**

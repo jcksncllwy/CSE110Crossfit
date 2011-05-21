@@ -55,7 +55,8 @@ public class Biometric {
 	 * @return - calculated BMI
 	 */
 	public double calculateBMI(double weight, double height) {
-		return weight/Math.pow(height, 2.0);
+		this.bMI = weight/Math.pow(height, 2.0)
+		return this.bMI;
 	}
 
 	/**
@@ -158,7 +159,7 @@ public class Biometric {
 	 * Method to append tag to list of tags
 	 * @param - tags to be tag
 	 */
-	public void addTags(String newTag) {
+	public void addTag(String newTag) {
 		this.tags.add(newTag);
 	}
 	
@@ -180,7 +181,7 @@ public class Biometric {
 		bioInfo += "Date: " + date + "\n";
 		bioInfo += "Weight " + weight + "\n";
 		bioInfo += "Body Fat Percentage " + bodyFat + "\n";
-		bioInfo += "Heart Rate " + heatrate + "\n";
+		bioInfo += "Heart Rate " + heartrate + "\n";
 		bioInfo += "Body Mass Index " + bMI + "\n";
 		bioInfo += "\n_________________________________";
 		
