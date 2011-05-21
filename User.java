@@ -1,13 +1,14 @@
 /**
+ * Standard Deviation (STDev)
+ * DATE
  * 
+ * This class is designed to create a User object, which holds all info
+ * entered by the user stored in the WOD, Biometric, and Notes classes.
  */
 package crossfitPlusPlus;
+
 import java.util.*;
 
-/**
- * @author Jackson Callaway
- *
- */
 public class User {
 
 	//FIELDS
@@ -15,9 +16,9 @@ public class User {
 	private String lastName;
 	private double height;
 	private double weight;
-	private GregorianCalendar birthday;
+	private String birthday;
 	private int age;
-	private double bFP;		//Body Fat Percentage
+	private double bodyFat;
 	private String email;
 	private String username;
 	private String password;
@@ -35,9 +36,9 @@ public class User {
 		lastName = "";
 		height = 0.0;
 		weight = 0.0;
-		birthday = new GregorianCalendar();
+		birthday = "";
 		age = 0;
-		bFP = 0.0;
+		bodyFat = 0.0;
 		email = "";
 		username = "";
 		password = "";
@@ -48,10 +49,10 @@ public class User {
 	}
 	
 	//METHODS
-	
 	/**
-	 * @param username the username to validate
-	 * @return whether or not the username is valid
+	 * Method to check if username is valid
+	 * @param - username to be validated
+	 * @return - true if valid, false otherwise
 	 */
 	public boolean validateUsername(String username){
 		//TODO
@@ -59,8 +60,9 @@ public class User {
 	}
 	
 	/**
-	 * @param password the password to validate
-	 * @return whether or not the password is valid
+	 * Method to check if password is valid
+	 * @param - password to be validated
+	 * @return - true if valid, false otherwise
 	 */
 	public boolean validatePassword(String password){
 		//TODO
@@ -68,9 +70,9 @@ public class User {
 	}
 	
 	/**
-	 * 
-	 * @param email the email to validate
-	 * @return whether or not the email is valid
+	 * Method to check if email is valid
+	 * @param - email to be validated
+	 * @return - true if valid, false otherwise
 	 */
 	public boolean validateEmail(String email){
 		//TODO
@@ -78,228 +80,249 @@ public class User {
 	}
 
 	/**
-	 * @return the firstName
+	 * Method to get user's first name
+	 * @return - user's first name
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
 	/**
-	 * @param firstName the firstName to set
+	 * Method to set user's first name
+	 * @param - new first name to be set
 	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstName(String newFirst) {
+		this.firstName = newFirst;
 	}
 
 	/**
-	 * @return the lastName
+	 * Method to get user's last name
+	 * @return - user's last name
 	 */
 	public String getLastName() {
 		return lastName;
 	}
 
 	/**
-	 * @param lastName the lastName to set
+	 * Method to set user's last name
+	 * @param - new last name to be set
 	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastName(String newLast) {
+		this.lastName = newLast;
 	}
 
 	/**
-	 * @return the height
+	 * Method to get user's height
+	 * @return - user's height
 	 */
 	public double getHeight() {
 		return height;
 	}
 
 	/**
-	 * @param height the height to set
+	 * Method to set user's height
+	 * @param - new height to be set
 	 */
-	public void setHeight(double height) {
-		this.height = height;
+	public void setHeight(double newHeight) {
+		this.height = newHeight;
 	}
 
 	/**
-	 * @return the weight
+	 * Method to get user's weight
+	 * @return - user's weight
 	 */
 	public double getWeight() {
 		return weight;
 	}
 
 	/**
-	 * @param weight the weight to set
+	 * Method to set user's weight
+	 * @param - new weight to be set
 	 */
-	public void setWeight(double weight) {
-		this.weight = weight;
+	public void setWeight(double newWeight) {
+		this.weight = newWeight;
 	}
 
 	/**
-	 * @return the birthday
+	 * Method to get user's birthday
+	 * @return - user's birthday
 	 */
-	public GregorianCalendar getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
 	/**
-	 * @param birthday the birthday to set
+	 * Method to set user's birthday
+	 * @param - new birthday to be set
 	 */
-	public void setBirthday(GregorianCalendar birthday) {
-		this.birthday = birthday;
+	public void setBirthday(String newBirthday) {
+		this.birthday = newBirthday;
 	}
 
 	/**
-	 * @return the age
+	 * Method to get user's age
+	 * @return - user's age
 	 */
 	public int getAge() {
 		return age;
 	}
 
+	//Calculate age based on birthday - Problem = how to get current year to do so?
 	/**
-	 * @param age the age to set
-	 * @throws Exception 
+	 * Method to set user's age
+	 * @param - new age to be set
+	 * @return - true if valid age set, false otherwise
 	 */
-	public void setAge(int age) throws Exception {
+	public boolean setAge(int newAge) {
 		GregorianCalendar now = new GregorianCalendar();
 		if(now.get(now.YEAR) - birthday.get(birthday.YEAR) == age){
-			this.age = age;
+			this.age = newAge;
+			return true;
 		}
-		else{
-			throw new Exception("Age does not correspond to current Birthday");
-		}
+		return false;
 	}
-
+	//---------------------------------------------------------
+	
 	/**
-	 * @return the bFP
+	 * Method to get user's body fat percentage
+	 * @return - user's body fat percentage
 	 */
-	public double getbFP() {
-		return bFP;
+	public double getBodyFat() {
+		return bodyFat;
 	}
 
 	/**
-	 * @param bFP the bFP to set
+	 * Method to set user's body fat percentage
+	 * @param - new body fat percentage to be set
 	 */
-	public void setbFP(double bFP) {
-		this.bFP = bFP;
+	public void setBodyFat(double newBodyFat) {
+		this.bodyFat = newBodyFat;
 	}
 
 	/**
-	 * @return the email
+	 * Method to get user's email
+	 * @return - user's email
 	 */
 	public String getEmail() {
 		return email;
 	}
 
 	/**
-	 * @param email the email to set
-	 * @throws Exception 
+	 * Method to set user's email
+	 * @param - new email to be set
+	 * @return - true if valid email set, false otherwise
 	 */
-	public void setEmail(String email) throws Exception {
-		if(validateEmail(email)){
-			this.email = email;
+	public boolean setEmail(String newEmail) {
+		if(validateEmail(newEmail)){
+			this.email = newEmail;
+			return true;
 		}
-		else{
-			throw new Exception("Invalid Email Address");
-		}
-		
+		return false;
 	}
 
 	/**
-	 * @return the username
+	 * Method to get usernams
+	 * @return - username
 	 */
 	public String getUsername() {
 		return username;
 	}
 
 	/**
-	 * @param username the username to set
-	 * @throws Exception 
+	 * Method to set username
+	 * @param - new username to be set
+	 * @return - true if valid username set, false otherwise
 	 */
-	public void setUsername(String username) throws Exception {
-		if(validateUsername(username)){
-			this.username = username;
+	public boolean setUsername(String newUserName) {
+		if(validateUsername(newUserName)){
+			this.username = newUserName;
+			return true;
 		}
-		else{
-			throw new Exception("Invalid Username");
-		}
+		return false;
 	}
 
 	/**
-	 * @return the password
+	 * Method to get user's password
+	 * @return - user's password
 	 */
 	public String getPassword() {
 		return password;
 	}
 
 	/**
-	 * @param password the password to set
-	 * @throws Exception 
+	 * Method to set user's password
+	 * @param - new password to be set
+	 * @return - true if valid password set, false otherwise
 	 */
-	public void setPassword(String password) throws Exception {
-		if(validatePassword(password)){
-			this.password = password;
+	public boolean setPassword(String newPass) {
+		if(validatePassword(newPass)) {
+			this.password = newPass;
+			return true;
 		}
-		else{
-			throw new Exception("Invalid Password");
-		}
+		return false;
 	}
 
 	/**
-	 * @return the secretQ
+	 * Method to get user's secret question
+	 * @return - user's secret question
 	 */
 	public String getSecretQ() {
 		return secretQ;
 	}
 
 	/**
-	 * @param secretQ the secretQ to set
+	 * Method to set user's secret question
+	 * @param - new secret question to be set
 	 */
-	public void setSecretQ(String secretQ) {
-		this.secretQ = secretQ;
+	public void setSecretQ(String newSecretQ) {
+		this.secretQ = newSecretQ;
 	}
 
 	/**
-	 * @return the secretA
+	 * Method to get user's secret answer to their secret question
+	 * @return - user's secret answer
 	 */
 	public String getSecretA() {
 		return secretA;
 	}
 
 	/**
-	 * @param secretA the secretA to set
+	 * Method to set user's secret answer
+	 * @param - new secret answer to be set
 	 */
-	public void setSecretA(String secretA) {
-		this.secretA = secretA;
+	public void setSecretA(String newSecretA) {
+		this.secretA = newSecretA;
 	}
 
 	/**
-	 * @return the myLog
+	 * Method to get user's log
+	 * @return - user's log
 	 */
 	public Log getMyLog() {
 		return myLog;
 	}
 
 	/**
-	 * @param myLog the myLog to set
+	 * Method to set user's log
+	 * @param - new log to be set
 	 */
-	public void setMyLog(Log myLog) {
-		this.myLog = myLog;
+	public void setMyLog(Log newLog) {
+		this.myLog = newLog;
 	}
 
 	/**
-	 * @return the admin
+	 * Method to check whether user is an administrator
+	 * @return - true if administrator, false otherwise
 	 */
 	public boolean isAdmin() {
 		return admin;
 	}
 
 	/**
-	 * @param admin the admin to set
+	 * Method to set user to be an administrator
+	 * @param - administrator to be set
 	 */
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
+	public void setAdmin(boolean isAdmin) {
+		this.admin = isAdmin;
 	}
-	
-	
-	
-
 }

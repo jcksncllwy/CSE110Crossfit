@@ -131,7 +131,7 @@ public class WOD {
 	 * Method to check if WOD is a benchmark
 	 * @return - true if WOD is benchmark, false otherwise
 	 */
-	public boolean checkBenchmark() {
+	public boolean isBenchmark() {
 		return benchmark;
 	}
 	
@@ -147,7 +147,7 @@ public class WOD {
 	 * Method to check if scaled weights were used for WOD
 	 * @return - true if scaled weights used, false otherwise
 	 */
-	public boolean checkScaled() {
+	public boolean isScaled() {
 		return scaled;
 	}
 	

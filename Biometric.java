@@ -77,16 +77,16 @@ public class Biometric {
 	}
 
 	/**
-	 * Method to get body fat
-	 * @return - body fat
+	 * Method to get body fat percentage
+	 * @return - body fat percentage
 	 */
 	public double getbodyFat() {
 		return bodyFat;
 	}
 
 	/**
-	 * Method to set body fat
-	 * @param - body fat to be set
+	 * Method to set body fat percentage
+	 * @param - body fat percentage to be set
 	 */
 	public void setbodyFat(double newBodyFat) {
 		if(bodyFat > 0.0) {
