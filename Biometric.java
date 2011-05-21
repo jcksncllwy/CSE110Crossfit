@@ -150,7 +150,7 @@ public class Biometric {
 	 * Method to get list of tags
 	 * @return - list of tags
 	 */
-	public String[] getTags() {
+	public LinkedList<String> getTags() {
 		return tags;
 	}
 
