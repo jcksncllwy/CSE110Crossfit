@@ -149,9 +149,9 @@ public class Biometric {
 	
 	/**
 	 * Method to set date using month, day, and year
-	 * @param (int month) - month to be set
-	 * @param (int day) - day to be set
-	 * @param (int year) - year to be set
+	 * @param (int month) - new month to be set
+	 * @param (int day) - new day to be set
+	 * @param (int year) - new year to be set
 	 */
 	public void setDate(int month, int day, int year) {
 		this.date = Integer.toString(month) + Integer.toString(day) + Integer.toString(year);
@@ -202,7 +202,7 @@ public class Biometric {
 	public String toString() {
 		String bioInfo;
 		
-		bioInfo += "Date: " + date + "\n";
+		bioInfo += "Date of Biometrics: " + date + "\n";
 		bioInfo += "Weight " + weight + "\n";
 		bioInfo += "Body Fat Percentage " + bodyFat + "\n";
 		bioInfo += "Heart Rate " + heartrate + "\n";

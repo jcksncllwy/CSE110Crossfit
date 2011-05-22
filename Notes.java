@@ -45,16 +45,16 @@ public class Notes {
 	}
 
 	/**
-	 * Method to get injuries
-	 * @return - injuries
+	 * Method to get injury
+	 * @return - injury
 	 */
 	public String getInjury() {
 		return injury;
 	}
 
 	/**
-	 * Method to set injuries
-	 * @param - injuries to be set
+	 * Method to set injury
+	 * @param - new injury to be set
 	 */
 	public void setInjury(String newInjury) {
 		this.injury = newInjury;
@@ -70,7 +70,7 @@ public class Notes {
 
 	/**
 	 * Method to set exercise comments
-	 * @param - exercise comments to be set
+	 * @param - new exercise comments to be set
 	 */
 	public void setExerciseComments(String newExComment) {
 		this.exerciseComments = newExComment;
@@ -86,7 +86,7 @@ public class Notes {
 
 	/**
 	 * Method to set nutrition
-	 * @param - nutrition to be set
+	 * @param - new nutrition to be set
 	 */
 	public void setNutrition(String newNutrition) {
 		this.nutrition = newNutrition;
@@ -102,7 +102,7 @@ public class Notes {
 
 	/**
 	 * Method to set other type of notes
-	 * @param - other type of notes to be set
+	 * @param - new other type of notes to be set
 	 */
 	public void setOther(String newOther) {
 		this.other = newOther;
@@ -118,7 +118,7 @@ public class Notes {
 	
 	/**
 	 * Method to append tag to list of tags
-	 * @param - tags to be tag
+	 * @param - new tag to be appended
 	 */
 	public void addTags(String newTag) {
 		this.tags.add(newTag);
@@ -126,10 +126,9 @@ public class Notes {
 	
 	/**
 	 * Method to set new list of tags
-	 * @param - tags to be tag
+	 * @param - new list of tags to be set
 	 */
 	public void setTags(LinkedList<String> newTags) {
-		this.tags.clear();
 		this.tags = newTags;
 	}
 
@@ -143,10 +142,20 @@ public class Notes {
 
 	/**
 	 * Method to set data
-	 * @param - date to be set
+	 * @param - new date to be set
 	 */
 	public void setDate(String newDate) {
 		this.date = newDate;
+	}
+	
+	/**
+	 * Method to set date using month, day, and year
+	 * @param (int month) - new month to be set
+	 * @param (int day) - new day to be set
+	 * @param (int year) - new year to be set
+	 */
+	public void setDate(int month, int day, int year) {
+		this.date = Integer.toString(month) + Integer.toString(day) + Integer.toString(year);
 	}
 
 	/**
@@ -155,9 +164,11 @@ public class Notes {
 	 */
 	public String toDate() {
 		String newDate;
+		
 		newDate += date.charAt(0) + date.charAt(1) + "/";
 		newDate += date.charAt(2) + date.charAt(3) + "/";
 		newDate += date.charAt(4) + date.charAt(5);
+		
 		return newDate;
 	}
 	
@@ -171,7 +182,7 @@ public class Notes {
 		notesInfo += "Date of Notes: " + toDate() + "\n";
 		notesInfo += "Comments on Exercises:" + exerciseComments + "\n";
 		notesInfo += "Nutrition:" + nutrition + "\n";
-		notesInfo += "Injuries:" + injuries + "\n";
+		notesInfo += "Injuries:" + injury + "\n";
 		notesInfo += "Other:" + other + "\n";
 		notesInfo += "\n_________________________________";
 		
