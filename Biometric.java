@@ -1,22 +1,23 @@
 /**
+ * Standard Deviation (STDev)
+ * DATE
  * 
+ * This class is designed to create a Biometric object, which holds all info
+ * pertaining to the user's health. 
  */
 package crossfitPlusPlus;
+
 import java.util.*;
 
-/**
- * @author Jackson Callaway
- *
- */
 public class Biometric {
 	
     //FIELDS
     private double weight;
-    private double bFP;		//Body Fat Percentage
+    private double bodyFat;
     private int heartRate;
     private double bMI;
     private LinkedList<String> tags;
-    private GregorianCalendar date;
+    private String date;
 
     
     //CONSTRUCTORS
@@ -25,119 +26,189 @@ public class Biometric {
 	 */
 	public Biometric() {
 		weight = 0.0;
-		bFP = 0.0;
+		bodyFat = 0.0;
 		heartRate = 0;
 		bMI = 0.0;
-		date = new GregorianCalendar();
+		date = "";
 		tags = new LinkedList<String>();
 	}
 
 	//METHODS
 	/**
-	 * @return whether or not autoTag was successful
+	 * Method to autotag info stored in Biometrics
+	 * @return - true if autotag was successful, false otherwise
 	 */
-	public boolean autoTag(){
-		//TODO
-		return true;
+	public boolean autoTag() {
+		if(tags.add(weight) && tags.add(bodyFat) && tags.add(heartRate)
+			&& tags.add(bMI) && tags.add(date)) {
+			return true;
+		}
+		
+		return false;
 	}
 	
 	/**
-	 * @param weight the user's weight
-	 * @param height the user's height
-	 * @return the calculate BMI
+	 * Method to calculate the body mass index (BMI) with
+	 * the given weight and height
+	 * @param (double weight) - weight used in BMI calculation
+	 * @param (double height) - height used in BMI calculation
+	 * @return - calculated BMI
 	 */
-	public double calculateBMI(double weight, double height){
-		return weight/Math.pow(height, 2.0);
+	public double calculateBMI(double calcWeight, double calcHeight) {
+		this.bMI = calcWeight/Math.pow(calcHeight, 2.0)
+		return this.bMI;
 	}
 
 	/**
-	 * @return the weight
+	 * Method to get weight
+	 * @return - weight
 	 */
 	public double getWeight() {
 		return weight;
 	}
 
 	/**
-	 * @param weight the weight to set
+	 * Method to set weight
+	 * @param - new weight to be set
 	 */
-	public void setWeight(double weight) {
-		this.weight = weight;
+	public void setWeight(double newWeight) {
+		if(newWeight > 0.0) {
+			this.weight = newWeight;
+		}
 	}
 
 	/**
-	 * @return the bFP
+	 * Method to get body fat percentage
+	 * @return - body fat percentage
 	 */
-	public double getbFP() {
-		return bFP;
+	public double getbodyFat() {
+		return bodyFat;
 	}
 
 	/**
-	 * @param bFP the bFP to set
+	 * Method to set body fat percentage
+	 * @param - new body fat percentage to be set
 	 */
-	public void setbFP(double bFP) {
-		this.bFP = bFP;
+	public void setBodyFat(double newBodyFat) {
+		if(newBodyFat > 0.0) {
+			this.bodyFat = newBodyFat;
+		}
 	}
 
 	/**
-	 * @return the heartRate
+	 * Method to get heart rate
+	 * @return - heart rate
 	 */
 	public int getHeartRate() {
 		return heartRate;
 	}
 
 	/**
-	 * @param heartRate the heartRate to set
+	 * Method to set heart rate
+	 * @param - new heart rate to be set
 	 */
-	public void setHeartRate(int heartRate) {
-		this.heartRate = heartRate;
+	public void setHeartRate(int newHeartRate) {
+		if(newHeartRate > 0) {
+			this.heartRate = newHeartRate;
+		}
 	}
 
 	/**
-	 * @return the bMI
+	 * Method to get BMI
+	 * @return - BMI
 	 */
 	public double getbMI() {
 		return bMI;
 	}
 
 	/**
-	 * @param bMI the bMI to set
+	 * Method to set BMI
+	 * @param - new BMI to be set
 	 */
-	public void setbMI(double bMI) {
-		this.bMI = bMI;
+	public void setBMI(double newBMI) {
+		if(newBMI > 0) {
+				this.bMI = newBMI;
+		}
 	}
 
 	/**
-	 * @return the date
+	 * Method to get date
+	 * @return - date
 	 */
-	public GregorianCalendar getDate() {
+	public String getDate() {
 		return date;
 	}
 
 	/**
-	 * @param date the date to set
+	 * Method to set date
+	 * @param - new date to be set
 	 */
-	public void setDate(GregorianCalendar date) {
-		this.date = date;
+	public void setDate(String newDate) {
+		this.date = newDate;
+	}
+	
+	/**
+	 * Method to set date using month, day, and year
+	 * @param (int month) - new month to be set
+	 * @param (int day) - new day to be set
+	 * @param (int year) - new year to be set
+	 */
+	public void setDate(int month, int day, int year) {
+		this.date = Integer.toString(month) + Integer.toString(day) + Integer.toString(year);
 	}
 
 	/**
-	 * @return the tags
+	 * Method to get list of tags
+	 * @return - list of tags
 	 */
 	public LinkedList<String> getTags() {
 		return tags;
 	}
 
 	/**
-	 * @param tags the tags to set
+	 * Method to append tag to list of tags
+	 * @param - new tag to be appended
 	 */
-	public void setTags(LinkedList<String> tags) {
-		this.tags = tags;
+	public void addTag(String newTag) {
+		this.tags.add(newTag);
 	}
 	
+	/**
+	 * Method to set new list of tags
+	 * @param - new list of tags to be set
+	 */
+	public void setTags(LinkedList<String> newTags) {
+		this.tags = newTags;
+	}
 	
+	/**
+	 * Method to convert date from MMDDYY to MM/DD/YY
+	 * @return - date (MM/DD/YY)
+	 */
+	public String toDate() {
+		String newDate;
+		
+		newDate += date.charAt(0) + date.charAt(1) + "/";
+		newDate += date.charAt(2) + date.charAt(3) + "/";
+		newDate += date.charAt(4) + date.charAt(5);
+		
+		return newDate;
+	}
 	
-	
-	
-	
-	
+	/**
+	 * Method to convert all of Biometric data info to string for text dump
+	 * @return - String of Biometric info
+	 */
+	public String toString() {
+		String bioInfo;
+		
+		bioInfo += "Date of Biometrics: " + date + "\n";
+		bioInfo += "Weight " + weight + "\n";
+		bioInfo += "Body Fat Percentage " + bodyFat + "\n";
+		bioInfo += "Heart Rate " + heartrate + "\n";
+		bioInfo += "Body Mass Index " + bMI + "\n";
+		bioInfo += "\n_________________________________";
+		
+		return bioInfo;
+	}	
 }

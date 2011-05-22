@@ -1,14 +1,13 @@
 /**
+ * Standard Deviation (STDev)
+ * DATE
  * 
+ * This class is designed to 
  */
 package crossfitPlusPlus;
 
 import java.util.*;
 
-/**
- * @author 0x4655
- *
- */
 public class MainProgram {
 
 	/**

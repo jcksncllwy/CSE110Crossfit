@@ -1,127 +1,191 @@
 /**
+ * Standard Deviation (STDev)
+ * DATE
  * 
+ * This class is designed to create a Notes object, which holds all notes
+ * pertaining to injuries, exercise, nutrition, etc.
  */
 package crossfitPlusPlus;
+
 import java.util.*;
 
-/**
- * @author Jackson Callaway
- *
- */
 public class Notes {
 	
 	//FIELDS
-    private String injuries;
+    private String injury;
 	private String exerciseComments;
 	private String nutrition;
 	private String other;
 	private LinkedList<String> tags;
-	private GregorianCalendar date;
+	private String date;
 
 	//CONSTRUCTORS
 	/**
 	 * Default Constructor
 	 */
 	public Notes() {
-		injuries = "";
+		injury = "";
 		exerciseComments = "";
 		nutrition = "";
 		other = "";
 		tags = new LinkedList<String>();
-		date = new GregorianCalendar();
+		date = "";
 	}
 	
 	//METHODS
 	/**
-	 * @return whether or not autoTag was successful
+	 * Method to autotag info stored in Notes
+	 * @return - true if autotag was successful, false otherwise
 	 */
-	public boolean autoTag(){
-		//TODO
+	public boolean autoTag() {
+		if(exerciseComments.contains("vomit")) {
+			tags.add("vomit");
+		}
 		return true;
 	}
 
 	/**
-	 * @return the injuries
+	 * Method to get injury
+	 * @return - injury
 	 */
-	public String getInjuries() {
-		return injuries;
+	public String getInjury() {
+		return injury;
 	}
 
 	/**
-	 * @param injuries the injuries to set
+	 * Method to set injury
+	 * @param - new injury to be set
 	 */
-	public void setInjuries(String injuries) {
-		this.injuries = injuries;
+	public void setInjury(String newInjury) {
+		this.injury = newInjury;
 	}
 
 	/**
-	 * @return the exerciseComments
+	 * Method to get exercise comments
+	 * @return - exercise comments
 	 */
 	public String getExerciseComments() {
 		return exerciseComments;
 	}
 
 	/**
-	 * @param exerciseComments the exerciseComments to set
+	 * Method to set exercise comments
+	 * @param - new exercise comments to be set
 	 */
-	public void setExerciseComments(String exerciseComments) {
-		this.exerciseComments = exerciseComments;
+	public void setExerciseComments(String newExComment) {
+		this.exerciseComments = newExComment;
 	}
 
 	/**
-	 * @return the nutrition
+	 * Method to get nutrition
+	 * @return - nutrition
 	 */
 	public String getNutrition() {
 		return nutrition;
 	}
 
 	/**
-	 * @param nutrition the nutrition to set
+	 * Method to set nutrition
+	 * @param - new nutrition to be set
 	 */
-	public void setNutrition(String nutrition) {
-		this.nutrition = nutrition;
+	public void setNutrition(String newNutrition) {
+		this.nutrition = newNutrition;
 	}
 
 	/**
-	 * @return the other
+	 * Method get any other type of notes user added
+	 * @return - other type of notes
 	 */
 	public String getOther() {
 		return other;
 	}
 
 	/**
-	 * @param other the other to set
+	 * Method to set other type of notes
+	 * @param - new other type of notes to be set
 	 */
-	public void setOther(String other) {
-		this.other = other;
+	public void setOther(String newOther) {
+		this.other = newOther;
 	}
 
 	/**
-	 * @return the tags
+	 * Method to get list of tags
+	 * @return - list of tags
 	 */
 	public LinkedList<String> getTags() {
 		return tags;
 	}
-
+	
 	/**
-	 * @param tags the tags to set
+	 * Method to append tag to list of tags
+	 * @param - new tag to be appended
 	 */
-	public void setTags(LinkedList<String> tags) {
-		this.tags = tags;
+	public void addTags(String newTag) {
+		this.tags.add(newTag);
+	}
+	
+	/**
+	 * Method to set new list of tags
+	 * @param - new list of tags to be set
+	 */
+	public void setTags(LinkedList<String> newTags) {
+		this.tags = newTags;
 	}
 
 	/**
-	 * @return the date
+	 * Method to get date
+	 * @return - data
 	 */
-	public GregorianCalendar getDate() {
+	public String getDate() {
 		return date;
 	}
 
 	/**
-	 * @param date the date to set
+	 * Method to set data
+	 * @param - new date to be set
 	 */
-	public void setDate(GregorianCalendar date) {
-		this.date = date;
+	public void setDate(String newDate) {
+		this.date = newDate;
+	}
+	
+	/**
+	 * Method to set date using month, day, and year
+	 * @param (int month) - new month to be set
+	 * @param (int day) - new day to be set
+	 * @param (int year) - new year to be set
+	 */
+	public void setDate(int month, int day, int year) {
+		this.date = Integer.toString(month) + Integer.toString(day) + Integer.toString(year);
 	}
 
+	/**
+	 * Method to convert date from MMDDYY to MM/DD/YY
+	 * @return - date (MM/DD/YY)
+	 */
+	public String toDate() {
+		String newDate;
+		
+		newDate += date.charAt(0) + date.charAt(1) + "/";
+		newDate += date.charAt(2) + date.charAt(3) + "/";
+		newDate += date.charAt(4) + date.charAt(5);
+		
+		return newDate;
+	}
+	
+	/**
+	 * Method to convert all of Notes info to String for text dump
+	 * @return - String of Notes info
+	 */
+	public String toString() {
+		String notesInfo;
+		
+		notesInfo += "Date of Notes: " + toDate() + "\n";
+		notesInfo += "Comments on Exercises:" + exerciseComments + "\n";
+		notesInfo += "Nutrition:" + nutrition + "\n";
+		notesInfo += "Injuries:" + injury + "\n";
+		notesInfo += "Other:" + other + "\n";
+		notesInfo += "\n_________________________________";
+		
+		return notesInfo;
+	}
 }

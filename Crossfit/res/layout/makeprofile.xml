@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent" android:layout_height="match_parent"
+	android:orientation="vertical">
+	<ScrollView android:id="@+id/ScrollView01"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<LinearLayout android:id="@+id/LinearLayout02"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:orientation="vertical">
+			<TextView android:text="Profile Information"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_gravity="center" android:textSize="30dp" android:id="@+id/profInfo"></TextView>
+			<TextView android:text="First Name:" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/fname"></TextView>
+			<EditText android:layout_height="wrap_content"
+				android:layout_width="match_parent" android:text="" android:id="@+id/fnameEdit"></EditText>
+			<TextView android:text="Middle Name:" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/mname"></TextView>
+			<EditText android:layout_height="wrap_content"
+				android:layout_width="match_parent" android:text="" android:id="@+id/mnameEdit"></EditText>
+			<TextView android:text="Last Name:" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/lname"></TextView>
+			<EditText android:layout_height="wrap_content"
+				android:layout_width="match_parent" android:text="" android:id="@+id/lnameEdit"></EditText>
+			<TextView android:text="Birthday:" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/birthdayText"></TextView>
+			<DatePicker android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/birthday">
+			</DatePicker>
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/weightText"
+				android:text="Weight (in lbs):"></TextView>
+			<EditText android:layout_width="match_parent"
+				android:layout_height="wrap_content" android:id="@+id/weightEdit"></EditText>
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/heightText"
+				android:text="@string/height"></TextView>
+			<EditText android:layout_width="match_parent"
+				android:layout_height="wrap_content" android:id="@+id/heightEdit"></EditText>
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/bodyfatText"
+				android:text="@string/bodyfat"></TextView>
+			<EditText android:layout_width="match_parent"
+				android:layout_height="wrap_content" android:id="@+id/bodyfatEdit"></EditText>
+			<Button android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_gravity="center"
+				android:id="@+id/makeProfile" android:text="@string/createprofile"></Button>
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:stretchColumns="1">
+    <TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <CheckBox android:layout_height="wrap_content" android:text="@string/benchmark" android:id="@+id/checkBox1" android:layout_width="wrap_content"></CheckBox>
+    </TableRow>
+    <TableRow android:id="@+id/tableRow2" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <RadioGroup android:layout_height="wrap_content" android:orientation="horizontal" android:layout_width="wrap_content" android:id="@+id/radioGroup1">
+            <RadioButton android:id="@+id/radio0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="@string/amrap"></RadioButton>
+            <RadioButton android:id="@+id/radio1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/tabata"></RadioButton>
+            <RadioButton android:id="@+id/radio2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/other"></RadioButton>
+        </RadioGroup>
+    </TableRow>
+    <TableRow android:id="@+id/tableRow3" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TableRow android:id="@+id/tableRow4" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <CheckBox android:text="@string/prescribed" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/checkBox2"></CheckBox>
+            <CheckBox android:text="@string/adjusted" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/checkBox3"></CheckBox>
+        </TableRow>
+    </TableRow>
+    <TableRow android:id="@+id/tableRow5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1">
+        <TextView android:layout_height="wrap_content" android:text="TextView" android:id="@+id/textView1" android:layout_weight="1" android:layout_width="fill_parent"></TextView>
+        <EditText android:layout_height="wrap_content" android:id="@+id/editText1" android:text="EditText" android:layout_weight="0" android:layout_width="match_parent"></EditText>
+    </TableRow>
+</TableLayout>

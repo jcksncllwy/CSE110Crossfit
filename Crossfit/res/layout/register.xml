@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_height="wrap_content"
+	android:layout_width="match_parent">
+	<ScrollView android:id="@+id/ScrollView01"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<LinearLayout android:id="@+id/LinearLayout02"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:orientation="vertical">
+			<TextView android:layout_gravity="top" android:id="@+id/register"
+				android:layout_height="wrap_content" android:textSize="50dp"
+				android:layout_width="match_parent" android:gravity="center"
+				android:scrollbarAlwaysDrawVerticalTrack="true" android:text="Registration"></TextView>
+			<TextView android:text="Username:" android:id="@+id/usernameText"
+				android:layout_height="wrap_content" android:layout_width="wrap_content"></TextView>
+			<EditText android:layout_height="wrap_content"
+				android:layout_width="match_parent" android:singleLine="true"
+				android:password="false" android:id="@+id/usernameEdit"></EditText>
+			<TextView android:text="Password:" android:id="@+id/passwordText"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+			<EditText android:layout_height="wrap_content"
+				android:layout_width="match_parent" android:singleLine="true"
+				android:password="true" android:id="@+id/passwordEdit"></EditText>
+			<TextView android:text="Confirm Password:" android:id="@+id/confirmPasswordText"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+			<EditText android:layout_height="wrap_content"
+				android:layout_width="match_parent" android:singleLine="true"
+				android:password="true" android:id="@+id/confirmPasswordEdit"></EditText>
+			<TextView android:text="Email:" android:id="@+id/emailText"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+			<EditText android:layout_height="wrap_content"
+				android:layout_width="match_parent" android:singleLine="true"
+				android:password="true" android:id="@+id/emailEdit"></EditText>
+			<TextView android:text="Confirm Email:" android:id="@+id/confirmEmailText"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+			<EditText android:layout_height="wrap_content"
+				android:layout_width="match_parent" android:singleLine="true"
+				android:password="true" android:id="@+id/confirmEmailEdit"></EditText>
+			<TextView android:text="Security Question:" android:id="@+id/securityText"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+			<EditText android:layout_height="wrap_content"
+				android:layout_width="match_parent" android:singleLine="true"
+				android:password="true" android:id="@+id/securityEdit"></EditText>
+			<TextView android:text="Security Answer:" android:id="@+id/securityAnswerText"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+			<EditText android:layout_height="wrap_content"
+				android:layout_width="match_parent" android:singleLine="true"
+				android:password="true" android:id="@+id/securityAnsEdit"></EditText>
+			<Button android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Create Account"
+				android:id="@+id/createAccountButton"></Button>
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>
