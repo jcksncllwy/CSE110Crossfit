@@ -234,7 +234,7 @@ public class User {
 	 * @return - true if valid username set, false otherwise
 	 */
 	public boolean setUsername(String newUserName) {
-		if(validateUsername(newUserName)){
+		if(validateUsername(newUserName)) {
 			this.username = newUserName;
 			return true;
 		}

@@ -60,14 +60,18 @@ public class WOD {
 			tags.add("benchmark");
 		}
 		else {
-			tags.add("false");
+			tags.add("non-benchmark");
 		}
 		
 		if(rounds >= 0) {
 			tags.add("AMRAP");
 		}
 		
-		return true;
+		if(tags.size() == (4 + exercises.size()) {
+			return true;
+		}
+		
+		return false;
 	}
 
 	/**
@@ -80,7 +84,7 @@ public class WOD {
 
 	/**
 	 * Method to set name of WOD
-	 * @param - name of WOD to be set
+	 * @param - new name to be set
 	 */
 	public void setTitle(String newTitle) {
 		this.title = newTitle;
@@ -95,11 +99,19 @@ public class WOD {
 	}
 
 	/**
-	 * Method to set name of exercise associated with WOD
-	 * @param - name of exercise to be set
+	 * Method to append an exercise associated with WOD
+	 * @param - new exercise to be appended
 	 */
-	public void setExercises(String newExercise) {
+	public void addExercise(String newExercise) {
 		this.exercises.add(newExercise);
+	}
+	
+	/**
+	 * Method to set new list of exercise associated with WOD
+	 * @param - new list of exercises to be set
+	 */
+	public void setExercises(LinkedList<String> newExercises) {
+		this.exercises = newExercise;
 	}
 	
 	/**
@@ -111,11 +123,19 @@ public class WOD {
 	}
 
 	/**
+	 * Method to append a rep for an exercise in WOD
+	 * @param - new rep to be appended
+	 */
+	public void addRep(int newRep) {
+		this.reps.add(newRep);
+	}
+	
+	/**
 	 * Method to set number of reps for exercise in WOD
 	 * @param - number of reps to be set
 	 */
-	public void setReps(int newRep) {
-		this.reps.add(newRep);
+	public void setReps(LinkedList<int> newReps) {
+		this.reps = newRep;
 	}
 	
 	/**
@@ -127,11 +147,19 @@ public class WOD {
 	}
 	
 	/**
-	 * Method to set weights used for exercise in WOD
-	 * @param - weights to be set
+	 * Method to append weight used for exercise in WOD
+	 * @param - new weight to be appended
 	 */
-	public void setWeight(double newWeight) {
+	public void addWeight(double newWeight) {
 		this.weight.add(newWeight);
+	}
+	
+	/**
+	 * Method to set new list of weights used for exercise in WOD
+	 * @param - new list of weights to be set
+	 */
+	public void setWeights(LinkedList<double> newWeights) {
+		this.weight = newWeights;
 	}
 	
 	/**
@@ -264,7 +292,7 @@ public class WOD {
 
 	/**
 	 * Method to append tag to list of tags
-	 * @param - tags to be tag
+	 * @param - new tag to be appended
 	 */
 	public void addTags(String newTag) {
 		this.tags.add(newTag);
@@ -275,7 +303,6 @@ public class WOD {
 	 * @param - tags to be tag
 	 */
 	public void setTags(LinkedList<String> newTags) {
-		this.tags.clear();
 		this.tags = newTags;
 	}
 
@@ -285,9 +312,11 @@ public class WOD {
 	 */
 	public String toDate() {
 		String newDate;
+		
 		newDate += date.charAt(0) + date.charAt(1) + "/";
 		newDate += date.charAt(2) + date.charAt(3) + "/";
 		newDate += date.charAt(4) + date.charAt(5);
+		
 		return newDate;
 	}
 	
