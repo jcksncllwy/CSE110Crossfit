@@ -1,8 +1,11 @@
 package com.cs110.stdev.crossfit;
 
+import com.cs110.stdev.crossfit.backend.User;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -57,6 +60,12 @@ public class Register extends Activity implements OnClickListener {
 	}
 	
 	public void onClick(View v) {
+		User newUser = new User();
+		
+		Editable theUsername = usernameEdit.getText();
+		String stringUsername = theUsername.toString();
+		
+		
 		Intent i = new Intent(this, NewProfileActivity.class);
 		startActivity(i);
 	}

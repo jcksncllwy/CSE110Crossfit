@@ -25,11 +25,14 @@ public class Crossfit extends Activity implements OnClickListener {
 	EditText enterPassword;
 	Button loginButton;
 	Button createAccountButton;
+	Button forgotPasswordButton;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		//display the xml formatted page
 		setContentView(R.layout.login);
 
 		/* assign components */
@@ -40,11 +43,12 @@ public class Crossfit extends Activity implements OnClickListener {
 		enterPassword = (EditText) findViewById(R.id.enterPassword);
 		loginButton = (Button) findViewById(R.id.loginButton);
 		createAccountButton = (Button) findViewById(R.id.createAccountButton);
-
+		forgotPasswordButton = (Button) findViewById(R.id.forgotPasswordButton);
+		
 		/* button action */
 		loginButton.setOnClickListener(this);
-		//loginButton.setOnClickListener(this);
 		createAccountButton.setOnClickListener(this);
+		forgotPasswordButton.setOnClickListener(this);
 	}
 
 	@Override
@@ -58,6 +62,13 @@ public class Crossfit extends Activity implements OnClickListener {
 			Intent i = new Intent(this, Register.class);
 			startActivity(i);
 		}
+		
+		else if(v==forgotPasswordButton){
+			Intent i = new Intent(this, LostPasswordActivity.class);
+			startActivity(i);
+		}
+		
+		
 		/* get and log username and password */
 		/*
 		 * String usr = enterUsername.getText().toString(); String psswrd =
