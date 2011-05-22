@@ -59,6 +59,9 @@ public class WOD {
 		if(benchmark == true) {
 			tags.add("benchmark");
 		}
+		else {
+			tags.add("false");
+		}
 		
 		if(rounds >= 0) {
 			tags.add("AMRAP");
@@ -179,6 +182,14 @@ public class WOD {
 		this.date = newDate;
 	}
 
+	/**
+	 * Method to set date of WOD
+	 * @param - date to be set
+	 */
+	public void setDate(int month, int day, int year) {
+		this.date = Integer.toString(month) + Integer.toString(day) + Integer.toString(year);
+	}
+	
 	/**
 	 * Method to get the type of WOD
 	 * @return - type of WOD
