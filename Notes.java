@@ -5,7 +5,7 @@
  * This class is designed to create a Notes object, which holds all notes
  * pertaining to injuries, exercise, nutrition, etc.
  */
-package crossfitPlusPlus;
+package com.cs110.stdev.crossfit.backend;
 
 import java.util.*;
 
@@ -163,7 +163,7 @@ public class Notes {
 	 * @return - date (MM/DD/YY)
 	 */
 	public String toDate() {
-		String newDate;
+		String newDate = "";
 		
 		newDate += date.charAt(0) + date.charAt(1) + "/";
 		newDate += date.charAt(2) + date.charAt(3) + "/";
@@ -177,7 +177,7 @@ public class Notes {
 	 * @return - String of Notes info
 	 */
 	public String toString() {
-		String notesInfo;
+		String notesInfo = "";
 		
 		notesInfo += "Date of Notes: " + toDate() + "\n";
 		notesInfo += "Comments on Exercises:" + exerciseComments + "\n";

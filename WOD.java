@@ -5,7 +5,7 @@
  * This class is designed to create a Workout of the Day (WOD) object, 
  * which holds all of the info for a WOD.
  */
-package crossfitPlusPlus;
+package com.cs110.stdev.crossfit.backend;
 
 import java.util.*;
 
@@ -14,8 +14,8 @@ public class WOD {
 	//FIELDS
     private String title;
 	private LinkedList<String> exercises;
-	private LinkedList<int> reps;
-	private LinkedList<double> weight;
+	private LinkedList<Integer> reps;
+	private LinkedList<Double> weight;
 	private boolean benchmark;
 	private boolean scaled;
 	private String type;
@@ -31,9 +31,9 @@ public class WOD {
 	 */
 	public WOD() {
 		title = "";
-		exercises = new LinkedList();
-		reps = new LinkedList();
-		weight = newLinkedList();
+		exercises = new LinkedList<String>();
+		reps = new LinkedList<Integer>();
+		weight = new LinkedList<Double>();
 		benchmark = true;
 		scaled = true;
 		date = "";
@@ -68,7 +68,7 @@ public class WOD {
 			tags.add("AMRAP");
 		}
 		
-		if(tags.size() == (4 + exercises.size()) {
+		if(tags.size() == (4 + exercises.size())) {
 			return true;
 		}
 		
@@ -112,14 +112,14 @@ public class WOD {
 	 * @param - new list of exercises to be set
 	 */
 	public void setExercises(LinkedList<String> newExercises) {
-		this.exercises = newExercise;
+		this.exercises = newExercises;
 	}
 	
 	/**
 	 * Method to get reps used in each exercise for WOD
 	 * @return - linked list of reps
 	 */
-	public LinkedList<int> getReps() {
+	public LinkedList<Integer> getReps() {
 		return reps;
 	}
 
@@ -135,15 +135,15 @@ public class WOD {
 	 * Method to set number of reps for exercise in WOD
 	 * @param - number of reps to be set
 	 */
-	public void setReps(LinkedList<int> newReps) {
-		this.reps = newRep;
+	public void setReps(LinkedList<Integer> newReps) {
+		this.reps = newReps;
 	}
 	
 	/**
 	 * Method to get weights used for each exercise for WOD
 	 * @return - linked list of weights
 	 */
-	public LinkedList<double> getWeight() {
+	public LinkedList<Double> getWeight() {
 		return weight;
 	}
 	
@@ -159,7 +159,7 @@ public class WOD {
 	 * Method to set new list of weights used for exercise in WOD
 	 * @param - new list of weights to be set
 	 */
-	public void setWeights(LinkedList<double> newWeights) {
+	public void setWeights(LinkedList<Double> newWeights) {
 		this.weight = newWeights;
 	}
 	
@@ -314,7 +314,7 @@ public class WOD {
 	 * @return - date (MM/DD/YY)
 	 */
 	public String toDate() {
-		String newDate;
+		String newDate = "";
 		
 		newDate += date.charAt(0) + date.charAt(1) + "/";
 		newDate += date.charAt(2) + date.charAt(3) + "/";
@@ -338,7 +338,7 @@ public class WOD {
 	 * @return - String of WOD info
 	 */
 	public String toString() {
-		String wodInfo;
+		String wodInfo = "";
 		
 		wodInfo += "WOD Title: " + title + "\n";
 		wodInfo += "Date of WOD: " + toDate() + "\n";
@@ -354,7 +354,7 @@ public class WOD {
 			wodInfo += "\n" + "Benchmark workout.";
 		}
 		
-		if(prescribed == true) {
+		if(scaled == true) {
 			wodInfo += "\n" + "Prescribed workout.";
 		}
 		

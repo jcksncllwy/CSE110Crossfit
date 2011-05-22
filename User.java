@@ -5,7 +5,7 @@
  * This class is designed to create a User object, which holds all info
  * pertaining to the user's account.
  */
-package crossfitPlusPlus;
+package com.cs110.stdev.crossfit.backend;
 
 import java.util.*;
 
@@ -173,6 +173,7 @@ public class User {
 	 * @param - new age to be set
 	 * @return - true if valid age set, false otherwise
 	 */
+	/*
 	public boolean setAge(int newAge) {
 		GregorianCalendar now = new GregorianCalendar();
 		if(now.get(now.YEAR) - birthday.get(birthday.YEAR) == age){
@@ -181,6 +182,7 @@ public class User {
 		}
 		return false;
 	}
+	*/
 	//---------------------------------------------------------
 	
 	/**

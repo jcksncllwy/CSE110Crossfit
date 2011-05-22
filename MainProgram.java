@@ -4,7 +4,7 @@
  * 
  * This class is designed to 
  */
-package crossfitPlusPlus;
+package com.cs110.stdev.crossfit.backend;
 
 import java.util.*;
 

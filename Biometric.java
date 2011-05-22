@@ -5,7 +5,7 @@
  * This class is designed to create a Biometric object, which holds all info
  * pertaining to the user's health. 
  */
-package crossfitPlusPlus;
+package com.cs110.stdev.crossfit.backend;
 
 import java.util.*;
 
@@ -39,8 +39,8 @@ public class Biometric {
 	 * @return - true if autotag was successful, false otherwise
 	 */
 	public boolean autoTag() {
-		if(tags.add(weight) && tags.add(bodyFat) && tags.add(heartRate)
-			&& tags.add(bMI) && tags.add(date)) {
+		if(tags.add(Double.toString(weight)) && tags.add(Double.toString(bodyFat)) && tags.add(Double.toString(heartRate))
+			&& tags.add(Double.toString(bMI)) && tags.add(date)) {
 			return true;
 		}
 		
@@ -55,7 +55,7 @@ public class Biometric {
 	 * @return - calculated BMI
 	 */
 	public double calculateBMI(double calcWeight, double calcHeight) {
-		this.bMI = calcWeight/Math.pow(calcHeight, 2.0)
+		this.bMI = (calcWeight*703)/Math.pow(calcHeight, 2.0);
 		return this.bMI;
 	}
 
@@ -186,7 +186,7 @@ public class Biometric {
 	 * @return - date (MM/DD/YY)
 	 */
 	public String toDate() {
-		String newDate;
+		String newDate = "";
 		
 		newDate += date.charAt(0) + date.charAt(1) + "/";
 		newDate += date.charAt(2) + date.charAt(3) + "/";
@@ -200,12 +200,12 @@ public class Biometric {
 	 * @return - String of Biometric info
 	 */
 	public String toString() {
-		String bioInfo;
+		String bioInfo = "";
 		
 		bioInfo += "Date of Biometrics: " + date + "\n";
 		bioInfo += "Weight " + weight + "\n";
 		bioInfo += "Body Fat Percentage " + bodyFat + "\n";
-		bioInfo += "Heart Rate " + heartrate + "\n";
+		bioInfo += "Heart Rate " + heartRate + "\n";
 		bioInfo += "Body Mass Index " + bMI + "\n";
 		bioInfo += "\n_________________________________";
 		

@@ -5,7 +5,7 @@
  * This class is designed to create a Log object, which holds all info
  * entered by the user stored in the WOD, Biometric, and Notes classes.
  */
-package crossfitPlusPlus;
+package com.cs110.stdev.crossfit.backend;
 
 import java.util.*;
 import java.io.*;
@@ -72,29 +72,32 @@ public class Log {
 	 * @return - list of WODs, Notes, and Biometrics with said date
 	 */
 	public LinkedList<?> searchByDate(String logType,String date) {
-		LinkedList<?> results = new LinkedList();
+		LinkedList<?> results =  new LinkedList();
 		int i;
 		
-		if(logType == "WOD") {		
+		if(logType == "WOD") {	
+			results = new LinkedList<WOD>();
 			for(i = 0; i < wods.size(); i++) {
 				if(wods.get(i).getDate() == date) {
-					results.add(wods.get(i));
+					//results.add(wods.get(i));
 				}
 			}
 		}
 		
 		else if(logType == "Biometric") {
+			results = new LinkedList<Biometric>();
 			for(i = 0; i < biometrics.size(); i++) {
 				if(biometrics.get(i).getDate() == date) {
-					results.add(biometrics.get(i));
+					//results.add(biometrics.get(i));
 				}
 			}
 		}
 		
 		else if(logType == "Notes") {
+			results = new LinkedList<Notes>();
 			for(i = 0; i < notes.size(); i++) {
 				if(notes.get(i).getDate() == date) {
-					results.add(notes.get(i));
+					//results.add(notes.get(i));
 				}
 			}
 		}
@@ -110,16 +113,17 @@ public class Log {
 	 * @return - list of WODs, Notes, and Biometrics with said tags
 	 */
 	public LinkedList<?> searchByTags(String logType, String[] tags) {
-		LinkedList<?> results = new LinkedList();
+		LinkedList<?> results =  new LinkedList();
 		int findTags,infoIndex,infoTags,found = 0;
 		
-		if(logType == "WOD") {				
+		if(logType == "WOD") {	
+			results = new LinkedList<WOD>();
 			//loop through list of WODs
 			for(infoIndex = 0; infoIndex < wods.size(); infoIndex++) {				
 				//loop through tags to be found
 				for(findTags = 0; findTags < tags.length; findTags++) {
 					//loop through specific WOD's tags
-					for(infoTags = 0; infoTags < wods.get(infoIndex).size(); infoTags++) {
+					for(infoTags = 0; infoTags < wods.get(infoIndex).getTags().size(); infoTags++) {
 						//if WOD tag matches String[] tag
 						if(wods.get(infoIndex).getTags().get(infoTags) == tags[findTags]) {
 							found++;
@@ -129,11 +133,12 @@ public class Log {
 				}
 				
 				if(found == tags.length) {
-					results.add(wods.get(infoIndex));
+					//results.add(wods.get(infoIndex));
 				}
 			}
 		}
 		else if(logType == "Biometric") {
+			results = new LinkedList<Biometric>();
 			found = 0;
 			
 			//loop through list of WODs
@@ -141,7 +146,7 @@ public class Log {
 				//loop through tags to be found
 				for(findTags = 0; findTags < tags.length; findTags++) {
 					//loop through specific WOD's tags
-					for(infoTags = 0; infoTags < biometrics.get(infoIndex).size(); infoTags++) {
+					for(infoTags = 0; infoTags < biometrics.get(infoIndex).getTags().size(); infoTags++) {
 						//if WOD tag matches String[] tag
 						if(biometrics.get(infoIndex).getTags().get(infoTags) == tags[findTags]) {
 							found++;
@@ -151,11 +156,12 @@ public class Log {
 				}
 				
 				if(found == tags.length) {
-					results.add(biometrics.get(infoIndex));
+					//results.add(biometrics.get(infoIndex));
 				}
 			}
 		}
 		else if(logType == "Notes") {
+			results = new LinkedList<Notes>();
 			found = 0;
 			
 			//loop through list of WODs
@@ -163,7 +169,7 @@ public class Log {
 				//loop through tags to be found
 				for(findTags = 0; findTags < tags.length; findTags++) {
 					//loop through specific WOD's tags
-					for(infoTags = 0; infoTags < notes.get(infoIndex).size(); infoTags++) {
+					for(infoTags = 0; infoTags < notes.get(infoIndex).getTags().size(); infoTags++) {
 						//if WOD tag matches String[] tag
 						if(notes.get(infoIndex).getTags().get(infoTags) == tags[findTags]) {
 							found++;
@@ -173,7 +179,7 @@ public class Log {
 				}
 				
 				if(found == tags.length) {
-					results.add(notes.get(infoIndex));
+					//results.add(notes.get(infoIndex));
 				}
 			}
 		}
@@ -186,6 +192,7 @@ public class Log {
 	 * @param (String[] keywords) - list of keywords to search for
 	 * @return - list of WODs, Notes, and Biometrics with said keywords
 	 */
+	/*
 	public LinkedList<?> searchByContent(String logType, String[] keywords) {
 		LinkedList<?> results = new LinkedList();
 		int findKeyword,infoIndex,infoKeyword,found = 0;
@@ -196,7 +203,7 @@ public class Log {
 				//loop through tags to be found
 				for(findKeyword = 0; findKeyword < keywords.length; findKeyword++) {
 					//loop through specific WOD's tags
-					for(infoKeyword = 0; infoKeyword < wods.get(infoIndex).size(); infoKeyword++) {
+					for(infoKeyword = 0; infoKeyword < wods.get(infoIndex).getTags().size(); infoKeyword++) {
 						//if WOD tag matches String[] tag
 						if(wods.get(infoIndex).getTags().get(infoKeyword) == keywords[findKeyword]) {
 							found++;
@@ -206,7 +213,7 @@ public class Log {
 				}
 				
 				if(found == keywords.length) {
-					results.add(wods.get(infoIndex));
+					//results.add(wods.get(infoIndex));
 				}
 			}
 		}
@@ -218,9 +225,9 @@ public class Log {
 				//loop through tags to be found
 				for(findKeyword = 0; findKeyword < keywords.length; findKeyword++) {
 					//loop through specific WOD's tags
-					for(infoKeyword = 0; infoKeyword < biometrics.get(infoIndex).size(); infoKeyword++) {
+					for(infoKeyword = 0; infoKeyword < biometrics.get(infoIndex).getTags().size(); infoKeyword++) {
 						//if WOD tag matches String[] tag
-						if(biometrics.get(infoIndex).getTags().get(infoKeyword) == tags[findKeyword]) {
+						if(biometrics.get(infoIndex).getTags().get(infoKeyword) == tags.get(findKeyword)) {
 							found++;
 							break;
 						}
@@ -261,7 +268,7 @@ public class Log {
 		return results;
 	}
 	
-
+*/
 	/**
 	 * Method to get list of WODS
 	 * @return - list of WODS
@@ -314,7 +321,7 @@ public class Log {
 		String log = "";
 		int i;
 		
-		log += "WODs from " + wods.get(0).toDate() + "to " + wods.get(wods.size() - 1).toDate;
+		log += "WODs from " + wods.get(0).toDate() + "to " + wods.get(wods.size() - 1).toDate();
 		
 		for(i = 0; i < wods.size(); i++) {
 			log += "\n";
@@ -322,7 +329,7 @@ public class Log {
 		}
 		
 		log += "\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
-		log += "Biometrics from " + biometrics.get(0).toDate() + "to " + biometrics.get(wods.size() - 1).toDate;
+		log += "Biometrics from " + biometrics.get(0).toDate() + "to " + biometrics.get(wods.size() - 1).toDate();
 		
 		for(i = 0; i < biometrics.size(); i++) {
 			log += "\n";
@@ -330,7 +337,7 @@ public class Log {
 		}
 		
 		log += "\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
-		log += "Notes from " + notes.get(0).toDate() + "to " + notes.get(wods.size() - 1).toDate;
+		log += "Notes from " + notes.get(0).toDate() + "to " + notes.get(wods.size() - 1).toDate();
 		
 		for(i = 0; i < notes.size(); i++) {
 			log += "\n";
