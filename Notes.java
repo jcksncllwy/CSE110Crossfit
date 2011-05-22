@@ -34,7 +34,7 @@ public class Notes {
 	
 	//METHODS
 	/**
-	 * Method to autotag a WOD
+	 * Method to autotag info stored in Notes
 	 * @return - true if autotag was successful, false otherwise
 	 */
 	public boolean autoTag() {

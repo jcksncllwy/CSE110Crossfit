@@ -45,7 +45,7 @@ public class WOD {
 	
 	//METHODS
 	/**
-	 * Method to autotag a WOD
+	 * Method to autotag info stored in WOD
 	 * @return - true if autotag was successful, false otherwise
 	 */
 	public boolean autoTag() {
@@ -211,8 +211,10 @@ public class WOD {
 	}
 
 	/**
-	 * Method to set date of WOD
-	 * @param - date to be set
+	 * Method to set date of WOD using month, day, and year
+	 * @param (int month) - month to be set
+	 * @param (int day) - day to be set
+	 * @param (int year) - year to be set
 	 */
 	public void setDate(int month, int day, int year) {
 		this.date = Integer.toString(month) + Integer.toString(day) + Integer.toString(year);

@@ -35,7 +35,7 @@ public class Biometric {
 
 	//METHODS
 	/**
-	 * Method to autotag a WOD
+	 * Method to autotag info stored in Biometrics
 	 * @return - true if autotag was successful, false otherwise
 	 */
 	public boolean autoTag() {
@@ -50,12 +50,12 @@ public class Biometric {
 	/**
 	 * Method to calculate the body mass index (BMI) with
 	 * the given weight and height
-	 * @param (double weight) - weight used in calculation
-	 * @param (double height) - height used in calculation
+	 * @param (double weight) - weight used in BMI calculation
+	 * @param (double height) - height used in BMI calculation
 	 * @return - calculated BMI
 	 */
-	public double calculateBMI(double weight, double height) {
-		this.bMI = weight/Math.pow(height, 2.0)
+	public double calculateBMI(double calcWeight, double calcHeight) {
+		this.bMI = calcWeight/Math.pow(calcHeight, 2.0)
 		return this.bMI;
 	}
 
@@ -69,10 +69,10 @@ public class Biometric {
 
 	/**
 	 * Method to set weight
-	 * @param - weight to be set
+	 * @param - new weight to be set
 	 */
 	public void setWeight(double newWeight) {
-		if(weight > 0.0) {
+		if(newWeight > 0.0) {
 			this.weight = newWeight;
 		}
 	}
@@ -87,10 +87,10 @@ public class Biometric {
 
 	/**
 	 * Method to set body fat percentage
-	 * @param - body fat percentage to be set
+	 * @param - new body fat percentage to be set
 	 */
-	public void setbodyFat(double newBodyFat) {
-		if(bodyFat > 0.0) {
+	public void setBodyFat(double newBodyFat) {
+		if(newBodyFat > 0.0) {
 			this.bodyFat = newBodyFat;
 		}
 	}
@@ -105,7 +105,7 @@ public class Biometric {
 
 	/**
 	 * Method to set heart rate
-	 * @param - heart rate to be set
+	 * @param - new heart rate to be set
 	 */
 	public void setHeartRate(int newHeartRate) {
 		if(newHeartRate > 0) {
@@ -123,10 +123,10 @@ public class Biometric {
 
 	/**
 	 * Method to set BMI
-	 * @param - BMI to be set
+	 * @param - new BMI to be set
 	 */
-	public void setbMI(double newBMI) {
-		if(bMI > 0) {
+	public void setBMI(double newBMI) {
+		if(newBMI > 0) {
 				this.bMI = newBMI;
 		}
 	}
@@ -146,6 +146,16 @@ public class Biometric {
 	public void setDate(String newDate) {
 		this.date = newDate;
 	}
+	
+	/**
+	 * Method to set date using month, day, and year
+	 * @param (int month) - month to be set
+	 * @param (int day) - day to be set
+	 * @param (int year) - year to be set
+	 */
+	public void setDate(int month, int day, int year) {
+		this.date = Integer.toString(month) + Integer.toString(day) + Integer.toString(year);
+	}
 
 	/**
 	 * Method to get list of tags
@@ -157,7 +167,7 @@ public class Biometric {
 
 	/**
 	 * Method to append tag to list of tags
-	 * @param - tags to be tag
+	 * @param - new tag to be appended
 	 */
 	public void addTag(String newTag) {
 		this.tags.add(newTag);
@@ -165,10 +175,9 @@ public class Biometric {
 	
 	/**
 	 * Method to set new list of tags
-	 * @param - tags to be tag
+	 * @param - new list of tags to be set
 	 */
 	public void setTags(LinkedList<String> newTags) {
-		this.tags.clear();
 		this.tags = newTags;
 	}
 	
@@ -178,9 +187,11 @@ public class Biometric {
 	 */
 	public String toDate() {
 		String newDate;
+		
 		newDate += date.charAt(0) + date.charAt(1) + "/";
 		newDate += date.charAt(2) + date.charAt(3) + "/";
 		newDate += date.charAt(4) + date.charAt(5);
+		
 		return newDate;
 	}
 	
@@ -190,6 +201,7 @@ public class Biometric {
 	 */
 	public String toString() {
 		String bioInfo;
+		
 		bioInfo += "Date: " + date + "\n";
 		bioInfo += "Weight " + weight + "\n";
 		bioInfo += "Body Fat Percentage " + bodyFat + "\n";
