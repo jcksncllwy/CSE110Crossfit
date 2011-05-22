@@ -8,6 +8,7 @@
 package crossfitPlusPlus;
 
 import java.util.*;
+import java.io.*;
 
 public class Log {
 
@@ -35,6 +36,15 @@ public class Log {
 	 */
 	public boolean textDump() {
 		//TODO
+		/*
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter("CrossfitLog.txt"));
+			writer.write(this.toString());
+		} catch (Exception ex) {
+			SimpleOutput.showError("Error creating file.");
+			System.exit(1);
+		}
+		*/		
 		return true;
 	}
 	
@@ -313,5 +323,27 @@ public class Log {
 	 */
 	public void setNotes(LinkedList<Notes> newNotes) {
 		this.notes = newNotes;
+	}
+	
+	public void toString() {
+		String log = "";
+		log += "WODs from " + wods.get(0).toDate() + "to " + wods.get(wods.size() - 1).toDate;
+		for(int i = 0; i < wods.size(); i++) {
+			log += "\n";
+			log += wods.get(i).toString();
+		}
+		log += "\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+		log += "Biometrics from " + biometrics.get(0).toDate() + "to " + biometrics.get(wods.size() - 1).toDate;
+		for(int i = 0; i < biometrics.size(); i++) {
+			log += "\n";
+			log += biometrics.get(i).toString();
+		}
+		log += "\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+		log += "Notes from " + notes.get(0).toDate() + "to " + notes.get(wods.size() - 1).toDate;
+		for(int i = 0; i < notes.size(); i++) {
+			log += "\n";
+			log += notes.get(i).toString();
+		}
+		log += "\n>>>>>>>>>>>>>END OF LOG CONTENTS>>>>>>>>>>>>>>>>>";
 	}
 }

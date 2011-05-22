@@ -60,7 +60,7 @@ public class WOD {
 			tags.add("benchmark");
 		}
 		
-		if(rounds != 0) {
+		if(rounds >= 0) {
 			tags.add("AMRAP");
 		}
 		
@@ -313,7 +313,7 @@ public class WOD {
 			wodInfo += "Time taken: " + timeMin + ":" + timeSec;
 		}
 		
-		if(rounds > 0) {
+		if(rounds >= 0) {
 			wodInfo += "Rounds completed " + rounds;
 		}
 		

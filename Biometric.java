@@ -173,6 +173,18 @@ public class Biometric {
 	}
 	
 	/**
+	 * Method to convert date from MMDDYY to MM/DD/YY
+	 * @return - date (MM/DD/YY)
+	 */
+	public String toDate() {
+		String newDate;
+		newDate += date.charAt(0) + date.charAt(1) + "/";
+		newDate += date.charAt(2) + date.charAt(3) + "/";
+		newDate += date.charAt(4) + date.charAt(5);
+		return newDate;
+	}
+	
+	/**
 	 * Method to convert all of Biometric data info to string for text dump
 	 * @return - String of Biometric info
 	 */

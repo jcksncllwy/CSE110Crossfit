@@ -38,7 +38,9 @@ public class Notes {
 	 * @return - true if autotag was successful, false otherwise
 	 */
 	public boolean autoTag() {
-		//TODO
+		if(exerciseComments.contains("vomit")) {
+			tags.add("vomit");
+		}
 		return true;
 	}
 
