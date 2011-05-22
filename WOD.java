@@ -38,6 +38,7 @@ public class WOD {
 		scaled = true;
 		date = "";
 		type = "";
+		timeMin = 0;
 		timeSec = 0;
 		rounds = 0;
 		tags = new LinkedList<String>();
@@ -323,6 +324,16 @@ public class WOD {
 	}
 	
 	/**
+	 * Method to compile time in minutes and in seconds into a String
+	 * @return - time timeMin:timeSec
+	 */
+	public String toTime() {
+		String totalTime = "";
+		totalTime += Integer.toString(timeMin) + ":" + Integer.toString(timeSec);
+		return totalTime;
+	}
+	
+	/**
 	 * Method to convert all of WOD info to String for text dump
 	 * @return - String of WOD info
 	 */
@@ -352,7 +363,7 @@ public class WOD {
 		}
 		
 		if(timeMin > 0 || timeSec > 0) {
-			wodInfo += "Time taken: " + timeMin + ":" + timeSec;
+			wodInfo += "Time taken: " + toTime();
 		}
 		
 		if(rounds >= 0) {
