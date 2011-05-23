@@ -21,6 +21,8 @@
         <activity android:name="EnterWODActivity"></activity>
         <activity android:name="ViewWODActivity"></activity>
         <activity android:name="NewProfileActivity"></activity>
+        <activity android:name="LostPasswordActivity"></activity>
+        <activity android:name="Settings"></activity>
 
     </application>
 </manifest>

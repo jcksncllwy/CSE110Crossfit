@@ -1,25 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	android:stretchColumns="1">
-    <TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <CheckBox android:layout_height="wrap_content" android:text="@string/benchmark" android:id="@+id/checkBox1" android:layout_width="wrap_content"></CheckBox>
-    </TableRow>
-    <TableRow android:id="@+id/tableRow2" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <RadioGroup android:layout_height="wrap_content" android:orientation="horizontal" android:layout_width="wrap_content" android:id="@+id/radioGroup1">
-            <RadioButton android:id="@+id/radio0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="@string/amrap"></RadioButton>
-            <RadioButton android:id="@+id/radio1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/tabata"></RadioButton>
-            <RadioButton android:id="@+id/radio2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/other"></RadioButton>
-        </RadioGroup>
-    </TableRow>
-    <TableRow android:id="@+id/tableRow3" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TableRow android:id="@+id/tableRow4" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <CheckBox android:text="@string/prescribed" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/checkBox2"></CheckBox>
-            <CheckBox android:text="@string/adjusted" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/checkBox3"></CheckBox>
-        </TableRow>
-    </TableRow>
-    <TableRow android:id="@+id/tableRow5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1">
-        <TextView android:layout_height="wrap_content" android:text="TextView" android:id="@+id/textView1" android:layout_weight="1" android:layout_width="fill_parent"></TextView>
-        <EditText android:layout_height="wrap_content" android:id="@+id/editText1" android:text="EditText" android:layout_weight="0" android:layout_width="match_parent"></EditText>
-    </TableRow>
-</TableLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_height="wrap_content"
+	android:layout_width="match_parent">
+	<ScrollView android:id="@+id/ScrollView01"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:stretchColumns="1">
+			<TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				<CheckBox android:layout_height="wrap_content"
+					android:text="@string/benchmark" android:layout_width="wrap_content"
+					android:id="@+id/checkBoxBenchmark"></CheckBox>
+			</TableRow>
+			<TableRow android:id="@+id/tableRow2" android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				<RadioGroup android:layout_height="wrap_content"
+					android:orientation="horizontal" android:layout_width="wrap_content"
+					android:id="@+id/wodTypeRadio">
+					<RadioButton android:id="@+id/radio0"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:checked="true" android:text="@string/amrap"></RadioButton>
+					<RadioButton android:id="@+id/radio1"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:text="@string/tabata"></RadioButton>
+					<RadioButton android:id="@+id/radio2"
+						android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fortime"></RadioButton>
+				</RadioGroup>
+			</TableRow>
+			<TableRow android:id="@+id/tableRow3" android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				<RadioGroup android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:orientation="horizontal"
+					android:id="@+id/prescribedRadio">
+					<RadioButton android:layout_width="wrap_content"
+						android:id="@+id/radio0" android:layout_height="wrap_content"
+						android:checked="true" android:text="@string/prescribed"></RadioButton>
+					<RadioButton android:layout_width="wrap_content"
+						android:id="@+id/radio1" android:layout_height="wrap_content" android:text="@string/scaled"></RadioButton>
+				</RadioGroup>
+			</TableRow>
+			<TableRow android:id="@+id/tableRow5" android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				<EditText android:id="@+id/editText1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="2" android:hint="Exercise #1"></EditText>
+				<EditText android:id="@+id/editText2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Reps"></EditText>
+				<EditText android:id="@+id/editText3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Weight"></EditText>
+			</TableRow>
+			<TableRow android:id="@+id/tableRow7" android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				<EditText android:id="@+id/editText5"
+					android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="wrap_content" android:hint="Exercise #2"></EditText>
+				<EditText android:id="@+id/editText6"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Reps"></EditText>
+				<EditText android:id="@+id/editText4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Weight"></EditText>
+			</TableRow>
+			<TableRow android:layout_height="wrap_content" android:id="@+id/tableRow9"
+				android:layout_width="wrap_content">
+				<EditText android:id="@+id/editText8"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="2" android:hint="Exercise #3"></EditText>
+				<EditText android:id="@+id/editText9"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Reps"></EditText>
+				<EditText android:id="@+id/editText7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Weight"></EditText>
+			</TableRow>
+			<TableRow android:id="@+id/tableRow11" android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+				<EditText android:id="@+id/editText11"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="2" android:hint="Exercise #4"></EditText>
+				<EditText android:id="@+id/editText12"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Reps"></EditText>
+				<EditText android:id="@+id/editText10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Weight"></EditText>
+			</TableRow>
+			<TableRow android:id="@+id/tableRow13"
+				android:layout_height="wrap_content" android:layout_width="wrap_content">
+				<EditText android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:id="@+id/editText14" android:layout_weight="2" android:hint="Exercise #5"></EditText>
+				<EditText android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:id="@+id/editText15" android:hint="Reps"></EditText>
+				<EditText android:id="@+id/editText13" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Weight"></EditText>
+			</TableRow>
+			<TableRow android:id="@+id/tableRow4" android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<EditText android:hint="Rounds" android:id="@+id/editText19" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1200"></EditText>
+				<TextView android:id="@+id/textView2" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/timeText"></TextView>
+				<EditText android:id="@+id/editText17" android:layout_height="wrap_content" android:layout_width="wrap_content" android:hint="Min"></EditText>
+				<TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=":"></TextView>
+				<EditText android:id="@+id/editText18" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="Sec"></EditText>
+			</TableRow>
+			<EditText android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/editText16" android:hint="Tags (Separate by commas)"></EditText>
+			<Button android:layout_height="wrap_content"
+				android:layout_width="wrap_content" android:id="@+id/enterWODButton"
+				android:text="@string/recordwod"></Button>
+		</TableLayout>
+	</ScrollView>
+</LinearLayout>

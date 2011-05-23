@@ -1,8 +1,11 @@
 package com.cs110.stdev.crossfit;
 
 import com.cs110.stdev.crossfit.backend.User;
+import java.io.*;
+import java.util.LinkedList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -57,13 +60,27 @@ public class Register extends Activity implements OnClickListener {
 	    
 	    createAccountButton.setOnClickListener(this);
 	    
+	    String filename = "user.ser";
+	    
+		try {
+			FileOutputStream fos = openFileOutput(filename, Context.MODE_PRIVATE);
+			ObjectOutputStream out = new ObjectOutputStream(fos);
+			out.writeObject(/*insert the list here*/);
+			out.close();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 	
 	public void onClick(View v) {
-		User newUser = new User();
 		
-		Editable theUsername = usernameEdit.getText();
-		String stringUsername = theUsername.toString();
+		User theuser = new User();
+		String username = usernameEdit.getText().toString();
+		theuser.setUsername(username);
+		
+		LinkedList<User> userlist = new LinkedList<User>();
+		userlist.add(theuser);
+		
 		
 		
 		Intent i = new Intent(this, NewProfileActivity.class);

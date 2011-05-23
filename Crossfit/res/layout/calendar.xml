@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/linearLayout1" android:layout_width="match_parent"
+	android:layout_width="match_parent"
 	android:layout_height="match_parent" android:baselineAligned="true"
-	android:orientation="vertical">
+	android:orientation="vertical" android:id="@+id/calendarLayout">
 	<DatePicker android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:id="@+id/wodDay"></DatePicker>
 	<Button android:layout_height="wrap_content"
@@ -11,6 +11,7 @@
 	<Button android:layout_height="wrap_content"
 		android:text="@string/viewWOD"
 		android:id="@+id/viewwodButton" android:layout_gravity="center" android:layout_width="200dip"></Button>
+	<Button android:layout_gravity="center" android:id="@+id/searchButton" android:layout_height="wrap_content" android:layout_width="200dip" android:text="@string/searchbytags"></Button>
 	<TextView android:layout_width="wrap_content" android:text="TextView"
 		android:layout_height="wrap_content" android:id="@+id/lastcompletedwod"></TextView>
 </LinearLayout>

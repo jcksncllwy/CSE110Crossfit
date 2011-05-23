@@ -6,6 +6,11 @@ package com.cs110.stdev.crossfit;
  * 
  * 
  */
+import java.util.LinkedList;
+
+import com.cs110.stdev.crossfit.backend.PersistentUser;
+import com.cs110.stdev.crossfit.backend.User;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -49,12 +54,22 @@ public class Crossfit extends Activity implements OnClickListener {
 		loginButton.setOnClickListener(this);
 		createAccountButton.setOnClickListener(this);
 		forgotPasswordButton.setOnClickListener(this);
+		
+		
 	}
 
 	@Override
 	public void onClick(View v) {
 		
 		if(v==loginButton){
+			User theuser = new User();
+			String username = enterUsername.getText().toString();
+			theuser.setUsername(username);
+			
+			LinkedList<User> userlist = new LinkedList<User>();
+			
+			PersistentUser.insert(userlist);
+			
 			Intent i = new Intent(this, TabHoster.class);
 			startActivity(i);
 		}

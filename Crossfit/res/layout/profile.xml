@@ -10,20 +10,14 @@
 			<ImageView android:id="@+id/imageView1"
 				android:layout_height="wrap_content" android:src="@drawable/icon"
 				android:layout_width="wrap_content"></ImageView>
-			<TextView android:layout_width="wrap_content" android:text="TextView"
-				android:layout_height="wrap_content" android:id="@+id/thenameText"></TextView>
-			<TextView android:layout_width="wrap_content" android:text="TextView"
-				android:layout_height="wrap_content" android:id="@+id/birthdayText"></TextView>
-			<TextView android:layout_width="wrap_content" android:text="TextView"
-				android:layout_height="wrap_content" android:id="@+id/theageText"></TextView>
-			<TextView android:layout_width="wrap_content" android:text="TextView"
-				android:layout_height="wrap_content" android:id="@+id/heightText"></TextView>
-			<TextView android:layout_width="wrap_content" android:text="TextView"
-				android:layout_height="wrap_content" android:id="@+id/weightText"></TextView>
-			<TextView android:layout_width="wrap_content" android:text="TextView"
-				android:layout_height="wrap_content" android:id="@+id/thebmiText"></TextView>
-			<TextView android:layout_width="wrap_content" android:text="TextView"
-				android:layout_height="wrap_content" android:id="@+id/bodyfatText"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/thenameText"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/birthdayText" android:text="Birthday: March 10, 1940"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/theageText" android:text="Age: 71"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/heightText" android:text="Height: 5' 10&quot;"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/weightText" android:text="Weight: 170 lbs"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/thebmiText" android:text="BMI: 24.4"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/bodyfatText" android:text="Body Fat %: 0"></TextView>
 		</LinearLayout>
 	</ScrollView>
+	<Button android:layout_gravity="right" android:text="Edit Profile" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/editProfileButton"></Button>
 </LinearLayout>
