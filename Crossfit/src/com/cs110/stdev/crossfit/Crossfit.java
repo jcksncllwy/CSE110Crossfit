@@ -6,9 +6,12 @@ package com.cs110.stdev.crossfit;
  * 
  * 
  */
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.LinkedList;
 
-import com.cs110.stdev.crossfit.backend.PersistentUser;
 import com.cs110.stdev.crossfit.backend.User;
 
 import android.app.Activity;
@@ -36,8 +39,8 @@ public class Crossfit extends Activity implements OnClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		//display the xml formatted page
+
+		// display the xml formatted page
 		setContentView(R.layout.login);
 
 		/* assign components */
@@ -49,51 +52,54 @@ public class Crossfit extends Activity implements OnClickListener {
 		loginButton = (Button) findViewById(R.id.loginButton);
 		createAccountButton = (Button) findViewById(R.id.createAccountButton);
 		forgotPasswordButton = (Button) findViewById(R.id.forgotPasswordButton);
-		
+
 		/* button action */
 		loginButton.setOnClickListener(this);
 		createAccountButton.setOnClickListener(this);
 		forgotPasswordButton.setOnClickListener(this);
-		
-		
+
 	}
 
 	@Override
 	public void onClick(View v) {
-		
-		if(v==loginButton){
-			User theuser = new User();
+
+		if (v == loginButton) {
 			String username = enterUsername.getText().toString();
-			theuser.setUsername(username);
-			
+			String password = enterPassword.getText().toString();
+
 			LinkedList<User> userlist = new LinkedList<User>();
+			String filename = "user.ser";
+
+			try {
+				FileInputStream fis = openFileInput(filename);
+				ObjectInputStream in = new ObjectInputStream(fis);
+				userlist = (LinkedList<User>) in.readObject();
+				in.close();
+			} catch (FileNotFoundException ex) {
+				ex.printStackTrace();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			} catch (ClassNotFoundException ex) {
+				ex.printStackTrace();
+			}
+
+			User user = userlist.get(0);
+
+			if (user.getUsername().equals(username)
+					&& user.getPassword().equals(password)) {
+				Intent i = new Intent(this, TabHoster.class);
+				startActivity(i);
+			}
 			
-			PersistentUser.insert(userlist);
-			
-			Intent i = new Intent(this, TabHoster.class);
-			startActivity(i);
-		}
-		else if(v==createAccountButton){
+		} else if (v == createAccountButton) {
 			Intent i = new Intent(this, Register.class);
 			startActivity(i);
 		}
-		
-		else if(v==forgotPasswordButton){
+
+		else if (v == forgotPasswordButton) {
 			Intent i = new Intent(this, LostPasswordActivity.class);
 			startActivity(i);
 		}
-		
-		
-		/* get and log username and password */
-		/*
-		 * String usr = enterUsername.getText().toString(); String psswrd =
-		 * enterPassword.getText().toString();
-		 * Log.d("Crossfit","username is "+usr);
-		 * Log.d("Crossfit","password is "+psswrd);
-		 */
-		/* direct to the welcome page */
-		// setContentView(R.layout.register);
 	}
-
 
 }

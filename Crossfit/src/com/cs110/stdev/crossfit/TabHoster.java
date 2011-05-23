@@ -36,7 +36,7 @@ public class TabHoster extends TabActivity implements OnClickListener{
 	    tabHost.addTab(spec);
 
 	    // Do the same for the other tabs
-	    intent = new Intent().setClass(this, CalendarActivity.class);
+	    intent = new Intent().setClass(this, LogActivity.class);
 	    spec = tabHost.newTabSpec("calendar").setIndicator("Calendar",
 	                      res.getDrawable(R.drawable.calendar))
 	                  .setContent(intent);

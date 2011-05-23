@@ -16,11 +16,11 @@
         <activity android:name="Register"></activity>
         <activity android:name="ProfileActivity"></activity>
         <activity android:name="ProgressActivity"></activity>
-        <activity android:name="CalendarActivity"></activity>
+        <activity android:name="LogActivity"></activity>
         <activity android:name="TabHoster"></activity>
         <activity android:name="EnterWODActivity"></activity>
         <activity android:name="ViewWODActivity"></activity>
-        <activity android:name="NewProfileActivity"></activity>
+        <activity android:name="EditProfileActivity"></activity>
         <activity android:name="LostPasswordActivity"></activity>
         <activity android:name="Settings"></activity>
 

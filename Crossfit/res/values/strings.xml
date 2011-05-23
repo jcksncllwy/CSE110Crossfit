@@ -33,5 +33,6 @@
     <string name="confirmnewpassword">Confirm New Password:</string>
     <string name="deleteaccount">Delete Account</string>
     <string name="fortime">For Time</string>
-    <string name="searchbytags">Search by Tags</string>
+    <string name="invalidRegistration">One or more of your fields are invalid. Please fix before continuing.</string><string name="searchbytags">Search by Tags</string>
+    
 </resources>

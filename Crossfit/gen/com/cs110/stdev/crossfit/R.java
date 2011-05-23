@@ -172,6 +172,7 @@ public final class R {
         public static final int goback=0x7f040018;
         public static final int gobackButton=0x7f040015;
         public static final int height=0x7f040004;
+        public static final int invalidRegistration=0x7f040021;
         public static final int login=0x7f040001;
         public static final int logout=0x7f04001a;
         public static final int lostPassword=0x7f040019;
@@ -182,7 +183,7 @@ public final class R {
         public static final int recordwod=0x7f04000f;
         public static final int recoverpassword=0x7f040017;
         public static final int scaled=0x7f04000d;
-        public static final int searchbytags=0x7f040021;
+        public static final int searchbytags=0x7f040022;
         public static final int tabata=0x7f040008;
         public static final int timeText=0x7f040013;
         public static final int viewWOD=0x7f040003;

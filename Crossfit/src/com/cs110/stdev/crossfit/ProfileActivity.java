@@ -75,7 +75,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		if (v == editProfileButton) {
-			Intent i = new Intent(this, NewProfileActivity.class);
+			Intent i = new Intent(this, EditProfileActivity.class);
 			startActivity(i);
 		}
 	}
