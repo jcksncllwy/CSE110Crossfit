@@ -13,25 +13,25 @@ import android.widget.CheckBox;
  * from each one by indexing into the linked list
  */
 
-public class EnterWODActivity extends Activity implements OnClickListener{
+public class EnterWODActivity extends Activity implements OnClickListener {
 	Button enterWODButton;
 	CheckBox checkBoxBenchmark;
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.enterwod);
-	    
-	    enterWODButton = (Button) findViewById(R.id.enterWODButton);
-	    checkBoxBenchmark = (CheckBox) findViewById(R.id.checkBoxBenchmark);
-	    
-	    enterWODButton.setOnClickListener(this);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.enterwod);
+
+		enterWODButton = (Button) findViewById(R.id.enterWODButton);
+		checkBoxBenchmark = (CheckBox) findViewById(R.id.checkBoxBenchmark);
+
+		enterWODButton.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
-		Intent i = new Intent(this,TabHoster.class);
+		Intent i = new Intent(this, TabHosterActivity.class);
 		startActivity(i);
 	}
 

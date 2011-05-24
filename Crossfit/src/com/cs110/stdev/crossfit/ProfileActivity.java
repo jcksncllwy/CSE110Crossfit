@@ -50,7 +50,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		/* pulling the user from the database */
 		try {
 			FileInputStream fis = openFileInput(filename);
-			ObjectInputStream in= new ObjectInputStream(fis);
+			ObjectInputStream in = new ObjectInputStream(fis);
 			userlist = (LinkedList<User>) in.readObject();
 			in.close();
 		} catch (FileNotFoundException ex) {
@@ -63,15 +63,16 @@ public class ProfileActivity extends Activity implements OnClickListener {
 
 		User temp = userlist.get(0);
 		/* displaying the profile information */
-		thenameText.setText("Name: " + temp.getUsername());
+		thenameText.setText("Name: " + temp.getFirstName() + " "
+				+ temp.getLastName());
 		birthdayText.setText("Birthday: " + temp.getBirthday());
 		theageText.setText("Age: " + temp.getAge());
 		heightText.setText("Height: " + temp.getHeight());
 		weightText.setText("Weight: " + temp.getWeight());
 		thebmiText.setText("BMI: ");
 		bodyfatText.setText("Body Fat %: " + temp.getBodyFat());
-		
-		//handle clicking events
+
+		// handle clicking events
 		editProfileButton.setOnClickListener(this);
 	}
 

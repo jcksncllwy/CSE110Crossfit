@@ -30,7 +30,7 @@ public class ViewWODActivity extends Activity implements OnClickListener {
 			startActivity(i);
 		}
 		else if(v==goBackButton){
-			Intent i = new Intent(this,TabHoster.class);
+			Intent i = new Intent(this,TabHosterActivity.class);
 			startActivity(i);
 		}
 	}

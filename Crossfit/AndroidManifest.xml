@@ -13,16 +13,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="Register"></activity>
+        <activity android:name="RegisterActivity"></activity>
         <activity android:name="ProfileActivity"></activity>
         <activity android:name="ProgressActivity"></activity>
         <activity android:name="LogActivity"></activity>
-        <activity android:name="TabHoster"></activity>
+        <activity android:name="TabHosterActivity"></activity>
         <activity android:name="EnterWODActivity"></activity>
         <activity android:name="ViewWODActivity"></activity>
         <activity android:name="EditProfileActivity"></activity>
         <activity android:name="LostPasswordActivity"></activity>
-        <activity android:name="Settings"></activity>
+        <activity android:name="SettingsActivity"></activity>
 
     </application>
 </manifest>
