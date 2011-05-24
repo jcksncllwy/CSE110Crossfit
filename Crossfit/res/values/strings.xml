@@ -31,8 +31,9 @@
     <string name="oldpassword">Old Password:</string>
     <string name="newpassword">New Password:</string>
     <string name="confirmnewpassword">Confirm New Password:</string>
-    <string name="deleteaccount">Delete Account</string>
+    <string name="invalidLogin">Invalid Username/Password</string><string name="deleteaccount">Delete Account</string>
     <string name="fortime">For Time</string>
     <string name="invalidRegistration">One or more of your fields are invalid. Please fix before continuing.</string><string name="searchbytags">Search by Tags</string>
+    
     
 </resources>

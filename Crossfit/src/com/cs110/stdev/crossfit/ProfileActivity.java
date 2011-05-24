@@ -62,10 +62,11 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		}
 
 		User temp = userlist.get(0);
+
 		/* displaying the profile information */
 		thenameText.setText("Name: " + temp.getFirstName() + " "
 				+ temp.getLastName());
-		birthdayText.setText("Birthday: " + temp.getBirthday());
+		birthdayText.setText("Birthday: " + temp.printBirthday());
 		theageText.setText("Age: " + temp.getAge());
 		heightText.setText("Height: " + temp.getHeight());
 		weightText.setText("Weight: " + temp.getWeight());
@@ -76,11 +77,13 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		editProfileButton.setOnClickListener(this);
 	}
 
+	/* handles clicking events */
 	@Override
 	public void onClick(View view) {
+		// go to the edit profile page when the button is clicked
 		if (view == editProfileButton) {
-			Intent i = new Intent(this, EditProfileActivity.class);
-			startActivity(i);
+			Intent intent = new Intent(this, EditProfileActivity.class);
+			startActivity(intent);
 		}
 	}
 
