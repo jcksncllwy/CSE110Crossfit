@@ -61,7 +61,7 @@ public class TabHoster extends TabActivity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		if(v==logoutTabHost){
-			Intent i = new Intent(this,Crossfit.class);
+			Intent i = new Intent(this,LoginActivity.class);
 			startActivity(i);
 		}
 	}

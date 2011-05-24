@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 public class ProfileActivity extends Activity implements OnClickListener {
 
+	/* defining used components */
 	TextView thenameText;
 	TextView birthdayText;
 	TextView theageText;
@@ -34,6 +35,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profile);
 
+		/* assigning components */
 		thenameText = (TextView) findViewById(R.id.thenameText);
 		birthdayText = (TextView) findViewById(R.id.birthdayText);
 		theageText = (TextView) findViewById(R.id.theageText);
@@ -43,11 +45,9 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		bodyfatText = (TextView) findViewById(R.id.bodyfatText);
 		editProfileButton = (Button) findViewById(R.id.editProfileButton);
 
-		editProfileButton.setOnClickListener(this);
-
 		LinkedList<User> userlist = new LinkedList<User>();
 		String filename = "user.ser";
-	
+		/* pulling the user from the database */
 		try {
 			FileInputStream fis = openFileInput(filename);
 			ObjectInputStream in= new ObjectInputStream(fis);
@@ -60,21 +60,24 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();
 		}
-		// System.out.println(userlist.get(0).getUsername());
-		Log.d("thetag","Works");
-		Log.d("thetag",userlist.get(0).getUsername());
-		thenameText.setText("Name: " + userlist.get(0).getUsername());
 
-		/*
-		 * birthdayText.setText("Birthday: "); theageText.setText("Age: ");
-		 * heightText.setText("Height: "); weightText.setText("Weight: ");
-		 * thebmiText.setText("BMI: "); bodyfatText.setText("Body Fat %: ");
-		 */
+		User temp = userlist.get(0);
+		/* displaying the profile information */
+		thenameText.setText("Name: " + temp.getUsername());
+		birthdayText.setText("Birthday: " + temp.getBirthday());
+		theageText.setText("Age: " + temp.getAge());
+		heightText.setText("Height: " + temp.getHeight());
+		weightText.setText("Weight: " + temp.getWeight());
+		thebmiText.setText("BMI: ");
+		bodyfatText.setText("Body Fat %: " + temp.getBodyFat());
+		
+		//handle clicking events
+		editProfileButton.setOnClickListener(this);
 	}
 
 	@Override
-	public void onClick(View v) {
-		if (v == editProfileButton) {
+	public void onClick(View view) {
+		if (view == editProfileButton) {
 			Intent i = new Intent(this, EditProfileActivity.class);
 			startActivity(i);
 		}
