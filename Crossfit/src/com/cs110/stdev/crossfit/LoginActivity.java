@@ -96,25 +96,27 @@ public class LoginActivity extends Activity implements OnClickListener {
 					// go to the tabs layout
 					Intent i = new Intent(this, TabHosterActivity.class);
 					startActivity(i);
-				}
+				} else
+					Toast.makeText(this, R.string.invalidLogin,
+							Toast.LENGTH_LONG).show();
 			}
 			// displaying an error message
 			else
-				Toast.makeText(this, R.string.invalidLogin,
-						Toast.LENGTH_LONG).show();
+				Toast.makeText(this, R.string.invalidLogin, Toast.LENGTH_LONG)
+						.show();
 
 		}
 		/* if the create account button is clicked */
 		else if (view == createAccountButton) {
-			//go to the registration page
-			Intent i = new Intent(this, RegisterActivity.class);
-			startActivity(i);
+			// go to the registration page
+			Intent intent = new Intent(this, RegisterActivity.class);
+			startActivity(intent);
 		}
 		/* if forgot password button is clicked */
 		else if (view == forgotPasswordButton) {
-			//go to the retrieve password page
-			Intent i = new Intent(this, LostPasswordActivity.class);
-			startActivity(i);
+			// go to the retrieve password page
+			Intent intent = new Intent(this, LostPasswordActivity.class);
+			startActivity(intent);
 		}
 	}
 

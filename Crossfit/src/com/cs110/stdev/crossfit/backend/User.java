@@ -69,7 +69,7 @@ public class User implements Serializable {
 	 * @return - true if valid, false otherwise
 	 */
 	public boolean validatePassword(String password) {
-		String passRegex = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,15})";
+		String passRegex = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,})";
 		return password.matches(passRegex);
 	}
 
@@ -169,7 +169,7 @@ public class User implements Serializable {
 	 * Method to print user's birthday
 	 */
 	public String printBirthday() {
-		return birthday.getMonth() + " " + birthday.getDate() + ", "
+		return birthday.getMonth() + "/" + birthday.getDate() + "/"
 				+ birthday.getYear();
 	}
 
@@ -349,23 +349,5 @@ public class User implements Serializable {
 	 */
 	public void setMyLog(Log newLog) {
 		this.myLog = newLog;
-	}
-
-	/**
-	 * Method to check whether user is an administrator
-	 * 
-	 * @return - true if administrator, false otherwise
-	 */
-	public boolean isAdmin() {
-		return admin;
-	}
-
-	/**
-	 * Method to set user to be an administrator
-	 * 
-	 * @param - administrator to be set
-	 */
-	public void setAdmin(boolean isAdmin) {
-		this.admin = isAdmin;
 	}
 }

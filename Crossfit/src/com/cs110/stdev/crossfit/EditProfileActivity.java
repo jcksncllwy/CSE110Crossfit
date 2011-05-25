@@ -186,7 +186,7 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 
 					if (changeDate) {
 						int day = (int) birthday.getDayOfMonth();
-						int month = (int) birthday.getMonth();
+						int month = (int) birthday.getMonth()+1;
 						int year = (int) birthday.getYear();
 						Date theBirthday = new Date(year, month, day);
 						userlist.get(0).setBirthday(theBirthday);

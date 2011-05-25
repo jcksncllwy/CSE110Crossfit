@@ -26,16 +26,6 @@
 			<EditText android:layout_height="wrap_content"
 				android:layout_width="match_parent" android:singleLine="true"
 				android:password="true" android:id="@+id/confirmPasswordEdit"></EditText>
-			<TextView android:text="Email:" android:id="@+id/emailText"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-			<EditText android:layout_height="wrap_content"
-				android:layout_width="match_parent" android:singleLine="true"
-				android:password="true" android:id="@+id/emailEdit"></EditText>
-			<TextView android:text="Confirm Email:" android:id="@+id/confirmEmailText"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-			<EditText android:layout_height="wrap_content"
-				android:layout_width="match_parent" android:singleLine="true"
-				android:password="true" android:id="@+id/confirmEmailEdit"></EditText>
 			<TextView android:text="Security Question:" android:id="@+id/securityText"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 			<EditText android:layout_height="wrap_content"

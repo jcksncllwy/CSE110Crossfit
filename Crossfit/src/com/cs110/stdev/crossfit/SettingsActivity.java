@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class SettingsActivity extends Activity implements OnClickListener {
 
@@ -66,14 +67,24 @@ public class SettingsActivity extends Activity implements OnClickListener {
 			// checking for a user
 			if (!userlist.isEmpty()) {
 				//checking if the oldpassword is equal to the current one
-				if (oldpassword.length() < 20
+				if (userlist.get(0).validatePassword(oldpassword)
 						&& oldpassword.equals(userlist.get(0).getPassword())) {
 					// checking that the new password is valid and matches its confirmation
 					if (userlist.get(0).validatePassword(newpassword)
 							&& userlist.get(0).validatePassword(confirmpass)
-							&& newpassword.equals(confirmpass))
+							&& newpassword.equals(confirmpass)){
+						/************ NOT WORKING ***********/
 						userlist.get(0).setPassword(newpassword);
+						Toast.makeText(this, R.string.successfulchange,
+								Toast.LENGTH_LONG).show();
+					}
+					else
+						Toast.makeText(this, R.string.invalidRegistration,
+								Toast.LENGTH_LONG).show();
 				}
+				else
+					Toast.makeText(this, R.string.invalidRegistration,
+							Toast.LENGTH_LONG).show();
 			}
 		} else if (view == deleteAccountButton) {
 

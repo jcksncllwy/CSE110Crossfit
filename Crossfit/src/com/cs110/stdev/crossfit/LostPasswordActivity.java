@@ -83,6 +83,10 @@ public class LostPasswordActivity extends Activity implements OnClickListener {
 						&& securityQ.equals(user.getSecretQ())
 						&& securityA.equals(user.getSecretA()))
 					lostPassword.setText("Password: " + user.getPassword());
+				// error message
+				else
+					Toast.makeText(this, R.string.invalidRegistration,
+							Toast.LENGTH_LONG).show();
 			}
 			// error message
 			else

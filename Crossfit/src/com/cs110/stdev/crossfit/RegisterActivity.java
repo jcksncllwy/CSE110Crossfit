@@ -45,16 +45,12 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		usernameText = (TextView) findViewById(R.id.usernameText);
 		passwordText = (TextView) findViewById(R.id.passwordText);
 		confirmPasswordText = (TextView) findViewById(R.id.confirmPasswordText);
-		emailText = (TextView) findViewById(R.id.emailText);
-		confirmEmailText = (TextView) findViewById(R.id.confirmEmailText);
 		securityText = (TextView) findViewById(R.id.securityText);
 		securityAnswerText = (TextView) findViewById(R.id.securityAnswerText);
 
 		usernameEdit = (EditText) findViewById(R.id.usernameEdit);
 		passwordEdit = (EditText) findViewById(R.id.passwordEdit);
 		confirmPasswordEdit = (EditText) findViewById(R.id.confirmPasswordEdit);
-		emailEdit = (EditText) findViewById(R.id.emailEdit);
-		confirmEmailEdit = (EditText) findViewById(R.id.confirmEmailEdit);
 		securityEdit = (EditText) findViewById(R.id.securityEdit);
 		securityAnsEdit = (EditText) findViewById(R.id.securityAnsEdit);
 		createAccountButton = (Button) findViewById(R.id.createAccountButton);
@@ -83,7 +79,10 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 		/* getting the password and checking that it's valid */
 		String password = passwordEdit.getText().toString();
-		if (theuser.validatePassword(password))
+		String confirmPass = confirmPasswordEdit.getText().toString();
+		if (theuser.validatePassword(password)
+				&& theuser.validatePassword(confirmPass)
+				&& confirmPass.equals(password))
 			theuser.setPassword(password);
 		else
 			valid = false;

@@ -38,4 +38,5 @@
 		before continuing.</string>
 	<string name="searchbytags">Search by Tags</string>
 	<string name="changebirthday">Change Birthday</string>
+	<string name="successfulchange">Password has been successfully changed.</string>
 </resources>
