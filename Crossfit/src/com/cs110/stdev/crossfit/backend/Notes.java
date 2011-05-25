@@ -122,7 +122,15 @@ public class Notes implements Serializable {
 	 * @param - new tag to be appended
 	 */
 	public void addTags(String newTag) {
-		this.tags.add(newTag);
+		boolean found = false;
+		for(int i = 0; i < tags.size(); i++) {
+			if(tags.get(i).equals(newTag)) {
+				found = true;
+			}
+		}
+		if(found == false) {
+			this.tags.add(newTag.toLowerCase());
+		}
 	}
 	
 	/**

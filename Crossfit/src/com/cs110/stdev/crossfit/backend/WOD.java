@@ -51,11 +51,11 @@ public class WOD implements Serializable{
 	 * @return - true if autotag was successful, false otherwise
 	 */
 	public boolean autoTag() {
-		tags.add(title);
-		tags.add(type);
+		tags.add(title.toLowerCase());
+		tags.add(type.toLowerCase());
 		
 		for(int i = 0; i < exercises.size(); i++) {
-			tags.add(exercises.get(i));
+			tags.add(exercises.get(i).toLowerCase());
 		}
 		
 		if(benchmark == true) {
@@ -298,8 +298,16 @@ public class WOD implements Serializable{
 	 * Method to append tag to list of tags
 	 * @param - new tag to be appended
 	 */
-	public void addTags(String newTag) {
-		this.tags.add(newTag);
+	public void addTag(String newTag) {
+		boolean found = false;
+		for(int i = 0; i < tags.size(); i++) {
+			if(tags.get(i).equals(newTag)) {
+				found = true;
+			}
+		}
+		if(found == false) {
+			this.tags.add(newTag.toLowerCase());
+		}
 	}
 	
 	/**

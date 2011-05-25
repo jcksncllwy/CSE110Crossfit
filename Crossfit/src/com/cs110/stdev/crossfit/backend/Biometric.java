@@ -180,14 +180,22 @@ public class Biometric {
 	public LinkedList<String> getTags() {
 		return tags;
 	}
-
+	
 	/**
 	 * Method to append tag to list of tags
 	 * 
 	 * @param - new tag to be appended
 	 */
 	public void addTag(String newTag) {
-		this.tags.add(newTag);
+		boolean found = false;
+		for(int i = 0; i < tags.size(); i++) {
+			if(tags.get(i).equals(newTag)) {
+				found = true;
+			}
+		}
+		if(found == false) {
+			this.tags.add(newTag.toLowerCase());
+		}
 	}
 
 	/**

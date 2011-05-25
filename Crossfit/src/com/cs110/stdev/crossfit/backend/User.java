@@ -80,8 +80,13 @@ public class User implements Serializable {
 	 * @param - email to be validated
 	 * @return - true if valid, false otherwise
 	 */
-	public boolean validateEmail(String email) {
-		// TODO
+	public boolean validateEmail(String ema) {
+		if(!(ema.contains("@"))) {
+			return false;
+		}
+		if(!(ema.contains(".com"))) {
+			return false;
+		}
 		return true;
 	}
 
