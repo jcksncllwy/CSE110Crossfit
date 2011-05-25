@@ -118,7 +118,7 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 			Toast.makeText(
 					this,
 					"The changes will be reflected the next time you view your profile.",
-					Toast.LENGTH_LONG);
+					Toast.LENGTH_LONG).show();
 		} else if (view == makeProfile) {
 			boolean valid = true; // variable to keep track of valid entrie
 			double theWeight = -1;
@@ -190,6 +190,7 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 						int year = (int) birthday.getYear();
 						Date theBirthday = new Date(year, month, day);
 						userlist.get(0).setBirthday(theBirthday);
+						userlist.get(0).setAge();
 					}
 
 					/*

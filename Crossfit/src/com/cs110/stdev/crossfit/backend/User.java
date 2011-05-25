@@ -69,7 +69,7 @@ public class User implements Serializable {
 	 * @return - true if valid, false otherwise
 	 */
 	public boolean validatePassword(String password) {
-		String passRegex = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,})";
+		String passRegex = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,15})";
 		return password.matches(passRegex);
 	}
 

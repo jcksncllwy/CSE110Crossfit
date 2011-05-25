@@ -38,9 +38,10 @@
 				android:text="@string/bodyfat"></TextView>
 			<EditText android:layout_width="match_parent"
 				android:layout_height="wrap_content" android:id="@+id/bodyfatEdit"></EditText>
-			<Button android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:layout_gravity="center"
-				android:id="@+id/makeProfile" android:text="@string/createprofile"></Button>
+			<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout2">
+				<Button android:text="@string/createprofile" android:layout_gravity="center" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/makeProfile"></Button>
+				<Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/goBack" android:text="@string/goback"></Button>
+			</LinearLayout>
 		</LinearLayout>
 	</ScrollView>
 </LinearLayout>
