@@ -68,9 +68,9 @@ public class ProfileActivity extends Activity implements OnClickListener {
 				+ temp.getLastName());
 		birthdayText.setText("Birthday: " + temp.printBirthday());
 		theageText.setText("Age: " + temp.getAge());
-		heightText.setText("Height: " + temp.getHeight());
+		heightText.setText("Height: " + temp.printHeight());
 		weightText.setText("Weight: " + temp.getWeight());
-		thebmiText.setText("BMI: ");
+		thebmiText.setText("BMI: " + temp.getBMI().shortValue());
 		bodyfatText.setText("Body Fat %: " + temp.getBodyFat());
 
 		// handle clicking events

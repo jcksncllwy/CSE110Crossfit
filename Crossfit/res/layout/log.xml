@@ -3,8 +3,11 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent" android:baselineAligned="true"
 	android:orientation="vertical" android:id="@+id/calendarLayout">
-	<DatePicker android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:id="@+id/wodDay"></DatePicker>
+    <CalendarView android:id="@+id/calendarView1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <DatePicker android:id="@+id/wodDay">
+            <DatePicker android:id="@+id/wodDay"></DatePicker>
+        </DatePicker>
+    </CalendarView>
 	<Button android:layout_height="wrap_content"
 		android:text="@string/buttonEnterWOD"
 		android:id="@+id/enterwodButton" android:layout_gravity="center" android:layout_width="200dip"></Button>

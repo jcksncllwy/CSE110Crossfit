@@ -21,6 +21,7 @@ public class User implements Serializable {
 	private Date birthday;
 	private int age;
 	private double bodyFat;
+	private double BMI;
 	private String email;
 	private String username;
 	private String password;
@@ -41,6 +42,7 @@ public class User implements Serializable {
 		birthday = new Date();
 		age = 0;
 		bodyFat = 0.0;
+		BMI = 0.0;
 		email = "";
 		username = "";
 		password = "";
@@ -138,6 +140,9 @@ public class User implements Serializable {
 		this.height = newHeight;
 	}
 
+	public String printHeight(){
+		return ((int)height/12) +" feet "+((int) height%12) + " inches";
+	}
 	/**
 	 * Method to get user's weight
 	 * 
@@ -154,6 +159,11 @@ public class User implements Serializable {
 	 */
 	public void setWeight(double newWeight) {
 		this.weight = newWeight;
+	}
+
+	public Double getBMI() {
+		BMI = (weight * 703) / Math.pow(height, 2.0);
+		return BMI;
 	}
 
 	/**

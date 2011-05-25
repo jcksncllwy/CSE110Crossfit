@@ -51,7 +51,7 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.makeprofile);
+		setContentView(R.layout.editprofile);
 
 		/* assign used components */
 		makeProfile = (Button) findViewById(R.id.makeProfile);
