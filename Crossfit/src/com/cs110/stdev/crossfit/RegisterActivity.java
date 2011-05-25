@@ -8,7 +8,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -39,7 +38,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setting the view 
+		// setting the view
 		setContentView(R.layout.register);
 
 		/* assign components */
@@ -60,7 +59,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		securityAnsEdit = (EditText) findViewById(R.id.securityAnsEdit);
 		createAccountButton = (Button) findViewById(R.id.createAccountButton);
 
-		//creating an action for when the button is pressed
+		// creating an action for when the button is pressed
 		createAccountButton.setOnClickListener(this);
 	}
 
@@ -76,6 +75,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 		/* getting the user name and checking that it's valid */
 		String username = usernameEdit.getText().toString();
+
 		if (theuser.validateUsername(username))
 			theuser.setUsername(username);
 		else
@@ -124,10 +124,10 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 			Intent i = new Intent(this, EditProfileActivity.class);
 			startActivity(i);
-		}
-		else
-			//display a message to the user that the fields are invalid
-			Toast.makeText(this,R.string.invalidRegistration,Toast.LENGTH_LONG).show();
+		} else
+			// display a message to the user that the fields are invalid
+			Toast.makeText(this, R.string.invalidRegistration,
+					Toast.LENGTH_LONG).show();
 	}
 
 }

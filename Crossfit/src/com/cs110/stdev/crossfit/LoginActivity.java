@@ -61,6 +61,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onClick(View view) {
 		/* what to do if the login button is clicked */

@@ -14,19 +14,15 @@
 				android:layout_height="wrap_content" android:id="@+id/fname"></TextView>
 			<EditText android:layout_height="wrap_content"
 				android:layout_width="match_parent" android:text="" android:id="@+id/fnameEdit"></EditText>
-			<TextView android:text="Middle Name:" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:id="@+id/mname"></TextView>
-			<EditText android:layout_height="wrap_content"
-				android:layout_width="match_parent" android:text="" android:id="@+id/mnameEdit"></EditText>
 			<TextView android:text="Last Name:" android:layout_width="wrap_content"
 				android:layout_height="wrap_content" android:id="@+id/lname"></TextView>
 			<EditText android:layout_height="wrap_content"
 				android:layout_width="match_parent" android:text="" android:id="@+id/lnameEdit"></EditText>
-			<TextView android:text="Birthday:" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:id="@+id/birthdayText"></TextView>
-			<DatePicker android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:id="@+id/birthday">
-			</DatePicker>
+			<LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_width="match_parent" android:orientation="vertical">
+				<TextView android:text="Birthday:" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/birthdayText"></TextView>
+				<DatePicker android:layout_height="wrap_content" android:id="@+id/birthday" android:layout_width="wrap_content"></DatePicker>
+				<Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/changebirthday" android:id="@+id/thebdaybutton"></Button>
+			</LinearLayout>
 			<TextView android:layout_width="wrap_content"
 				android:layout_height="wrap_content" android:id="@+id/weightText"
 				android:text="Weight (in lbs):"></TextView>

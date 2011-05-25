@@ -11,7 +11,6 @@ import com.cs110.stdev.crossfit.backend.User;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -30,6 +29,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 	Button editProfileButton;
 
 	/** Called when the activity is first created. */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -39,6 +39,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		changePasswordButton.setOnClickListener(this);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onClick(View view) {
 		if (view == changePasswordButton) {
