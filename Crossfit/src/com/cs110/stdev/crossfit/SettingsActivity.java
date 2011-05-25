@@ -2,13 +2,16 @@ package com.cs110.stdev.crossfit;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 
 import com.cs110.stdev.crossfit.backend.User;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -66,22 +69,36 @@ public class SettingsActivity extends Activity implements OnClickListener {
 
 			// checking for a user
 			if (!userlist.isEmpty()) {
-				//checking if the oldpassword is equal to the current one
+				// checking if the oldpassword is equal to the current one
 				if (userlist.get(0).validatePassword(oldpassword)
 						&& oldpassword.equals(userlist.get(0).getPassword())) {
-					// checking that the new password is valid and matches its confirmation
+					// checking that the new password is valid and matches its
+					// confirmation
 					if (userlist.get(0).validatePassword(newpassword)
 							&& userlist.get(0).validatePassword(confirmpass)
-							&& newpassword.equals(confirmpass)){
-						/************ NOT WORKING ***********/
+							&& newpassword.equals(confirmpass)) {
+						// setting the password
 						userlist.get(0).setPassword(newpassword);
+						// displaying a success message
 						Toast.makeText(this, R.string.successfulchange,
 								Toast.LENGTH_LONG).show();
+						// writing the changes to the database
+						try {
+							FileOutputStream fos = openFileOutput(filename,
+									Context.MODE_PRIVATE);
+							ObjectOutputStream out = new ObjectOutputStream(fos);
+							out.writeObject(userlist);
+							out.close();
+						} catch (IOException ex) {
+							ex.printStackTrace();
+						}
 					}
+					// error message
 					else
 						Toast.makeText(this, R.string.invalidRegistration,
 								Toast.LENGTH_LONG).show();
 				}
+				// error message
 				else
 					Toast.makeText(this, R.string.invalidRegistration,
 							Toast.LENGTH_LONG).show();

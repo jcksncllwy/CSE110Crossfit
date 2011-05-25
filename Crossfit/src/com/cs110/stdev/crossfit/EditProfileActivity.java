@@ -12,8 +12,6 @@ import java.util.LinkedList;
 import com.cs110.stdev.crossfit.backend.User;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;

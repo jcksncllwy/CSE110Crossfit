@@ -9,7 +9,6 @@ package com.cs110.stdev.crossfit.backend;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.regex.*;
 
 public class User implements Serializable {
 
