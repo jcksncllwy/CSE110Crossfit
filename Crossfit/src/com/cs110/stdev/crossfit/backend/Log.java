@@ -354,9 +354,6 @@ public class Log implements Serializable {
 		resultWod.add(wods.get(i));
 		for(int i = 1; i < wods.size(); i++) {
 			WOD currWod = wods.get(i);
-			int currYear = currWod.getYear();
-			int currMonth = currWod.getMonth();
-			int currDay = currWod.getDay();
 			for(int j = 0; j < resultWod.size(); j++) {
 				WOD nowWod = resultWod.get(j);
 				if(currWod.getYear() < nowWod.getYear()) {
