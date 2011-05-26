@@ -67,7 +67,7 @@ public class ProgressActivity extends ListActivity {
 		} else {
 			intent = new Intent(this, GenerateChart.class);
 		}*/
-		intent = new Intent(this,WeightChart.class);
+		intent.setClass(this,WeightChart.class);
 		startActivity(intent);
 	}
 }

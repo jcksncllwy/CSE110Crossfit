@@ -22,6 +22,7 @@ public final class R {
     public static final class id {
         public static final int LinearLayout02=0x7f050002;
         public static final int ScrollView01=0x7f050001;
+        public static final int add=0x7f050080;
         public static final int addBiometric=0x7f05000f;
         public static final int appName=0x7f05004f;
         public static final int bioBF=0x7f050005;
@@ -41,6 +42,7 @@ public final class R {
         public static final int calendarLayout=0x7f050049;
         public static final int cancel=0x7f05001a;
         public static final int changePasswordButton=0x7f05006c;
+        public static final int chart=0x7f050081;
         public static final int checkBoxBenchmark=0x7f05001c;
         public static final int confirmNewEdit=0x7f05006b;
         public static final int confirmPasswordEdit=0x7f050063;
@@ -91,6 +93,7 @@ public final class R {
         public static final int lostPassword=0x7f050047;
         public static final int makeProfile=0x7f050019;
         public static final int newPasswordEdit=0x7f05006a;
+        public static final int new_series=0x7f050082;
         public static final int oldPasswordEdit=0x7f050069;
         public static final int passwordEdit=0x7f050061;
         public static final int passwordText=0x7f050052;
@@ -146,6 +149,8 @@ public final class R {
         public static final int weightText=0x7f05005b;
         public static final int wodDay=0x7f05004a;
         public static final int wodTypeRadio=0x7f05001e;
+        public static final int xValue=0x7f05007e;
+        public static final int yValue=0x7f05007f;
     }
     public static final class layout {
         public static final int biometric=0x7f030000;
@@ -161,6 +166,7 @@ public final class R {
         public static final int settings=0x7f03000a;
         public static final int tabhost=0x7f03000b;
         public static final int viewwod=0x7f03000c;
+        public static final int xy_chart=0x7f03000d;
     }
     public static final class string {
         public static final int amrap=0x7f040007;
