@@ -51,11 +51,11 @@ public class WOD implements Serializable{
 	 * @return - true if autotag was successful, false otherwise
 	 */
 	public boolean autoTag() {
-		tags.add(title);
-		tags.add(type);
+		tags.add(title.toLowerCase());
+		tags.add(type.toLowerCase());
 		
 		for(int i = 0; i < exercises.size(); i++) {
-			tags.add(exercises.get(i));
+			tags.add(exercises.get(i).toLowerCase());
 		}
 		
 		if(benchmark == true) {
@@ -222,6 +222,21 @@ public class WOD implements Serializable{
 		this.date = Integer.toString(month) + Integer.toString(day) + Integer.toString(year);
 	}
 	
+	public int getMonth() {
+		String strMonth = date.substring(0, 2);
+		return Integer.parseInt(strMonth);
+	}
+	
+	public int getDay() {
+		String strDay = date.substring(2, 4);
+		return Integer.parseInt(strDay);
+	}
+	
+	public int getYear() {
+		String strYear = date.substring(4, 8);
+		return Integer.parseInt(strYear);
+	}
+	
 	/**
 	 * Method to get the type of WOD
 	 * @return - type of WOD
@@ -298,8 +313,16 @@ public class WOD implements Serializable{
 	 * Method to append tag to list of tags
 	 * @param - new tag to be appended
 	 */
-	public void addTags(String newTag) {
-		this.tags.add(newTag);
+	public void addTag(String newTag) {
+		boolean found = false;
+		for(int i = 0; i < tags.size(); i++) {
+			if(tags.get(i).equals(newTag)) {
+				found = true;
+			}
+		}
+		if(found == false) {
+			this.tags.add(newTag.toLowerCase());
+		}
 	}
 	
 	/**
@@ -319,7 +342,7 @@ public class WOD implements Serializable{
 		
 		newDate += date.charAt(0) + date.charAt(1) + "/";
 		newDate += date.charAt(2) + date.charAt(3) + "/";
-		newDate += date.charAt(4) + date.charAt(5);
+		newDate += date.charAt(4) + date.charAt(5) + date.charAt(6) + date.charAt(7);
 		
 		return newDate;
 	}
@@ -375,4 +398,6 @@ public class WOD implements Serializable{
 		
 		return wodInfo;
 	}
+	
+	
 }

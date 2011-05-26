@@ -348,4 +348,42 @@ public class Log implements Serializable {
 		
 		return log;
 	}
+	
+	public void sortWodByDate() {
+		LinkedList<WOD> resultWod = new LinkedList<WOD>();
+		resultWod.add(wods.get(i));
+		for(int i = 1; i < wods.size(); i++) {
+			WOD currWod = wods.get(i);
+			int currYear = currWod.getYear();
+			int currMonth = currWod.getMonth();
+			int currDay = currWod.getDay();
+			for(int j = 0; j < resultWod.size(); j++) {
+				WOD nowWod = resultWod.get(j);
+				if(currWod.getYear() < nowWod.getYear()) {
+					resultWod.add(j, currWod);
+				}
+				else if(currWod.getYear() == currWod.getYear()) {
+					if(currWod.getMonth() < nowWod.getMonth()) {
+						resultWod.add(j, currWod);
+					}
+					else if(currWod.getMonth() == currWod.getMonth()) {
+						if(currWod.getDay() < nowWod.getDay()) {
+							resultWod.add(j, currWod);
+						}
+						else if(currWod.getDay() > currWod.getDay()) {
+							if(j == resultWod.size() - 1) {
+								resultWod.add(currWod);
+							}
+						}
+					}
+					else if(currWod.getMonth() > currWod.getMonth() && j == resultWod.size() - 1) {
+						resultWod.add(currWod);
+					}
+				}
+				else if(currWod.getYear() > currWod.getYear() && j == resultWod.size() - 1) {
+					resultWod.add(currWod);
+				}
+			}
+		}
+	}
 }

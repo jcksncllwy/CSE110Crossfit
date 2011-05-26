@@ -180,14 +180,22 @@ public class Biometric {
 	public LinkedList<String> getTags() {
 		return tags;
 	}
-
+	
 	/**
 	 * Method to append tag to list of tags
 	 * 
 	 * @param - new tag to be appended
 	 */
 	public void addTag(String newTag) {
-		this.tags.add(newTag);
+		boolean found = false;
+		for(int i = 0; i < tags.size(); i++) {
+			if(tags.get(i).equals(newTag)) {
+				found = true;
+			}
+		}
+		if(found == false) {
+			this.tags.add(newTag.toLowerCase());
+		}
 	}
 
 	/**
@@ -209,7 +217,7 @@ public class Biometric {
 
 		newDate += date.charAt(0) + date.charAt(1) + "/";
 		newDate += date.charAt(2) + date.charAt(3) + "/";
-		newDate += date.charAt(4) + date.charAt(5);
+		newDate += date.charAt(4) + date.charAt(5) + date.charAt(6) + date.charAt(7);
 
 		return newDate;
 	}
