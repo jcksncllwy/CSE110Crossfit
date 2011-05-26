@@ -11,16 +11,18 @@
 				android:layout_height="wrap_content" android:textSize="50dp"
 				android:layout_width="match_parent" android:gravity="center"
 				android:scrollbarAlwaysDrawVerticalTrack="true" android:text="Registration"></TextView>
-			<TextView android:text="Username:" android:id="@+id/usernameText"
-				android:layout_height="wrap_content" android:layout_width="wrap_content"></TextView>
+			<TextView android:id="@+id/usernameText"
+				android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Username:"></TextView>
 			<EditText android:layout_height="wrap_content"
 				android:layout_width="match_parent" android:singleLine="true"
 				android:password="false" android:id="@+id/usernameEdit"></EditText>
+			<TextView android:layout_height="wrap_content" android:id="@+id/textView1" android:text="@string/usernamerequirements" android:layout_width="wrap_content"></TextView>
 			<TextView android:text="Password:" android:id="@+id/passwordText"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 			<EditText android:layout_height="wrap_content"
 				android:layout_width="match_parent" android:singleLine="true"
 				android:password="true" android:id="@+id/passwordEdit"></EditText>
+			<TextView android:layout_height="wrap_content" android:id="@+id/textView2" android:text="@string/passwordrequirements" android:layout_width="wrap_content"></TextView>
 			<TextView android:text="Confirm Password:" android:id="@+id/confirmPasswordText"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 			<EditText android:layout_height="wrap_content"
@@ -30,12 +32,13 @@
 				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 			<EditText android:layout_height="wrap_content"
 				android:layout_width="match_parent" android:singleLine="true"
-				android:password="true" android:id="@+id/securityEdit"></EditText>
+				android:id="@+id/securityEdit"></EditText>
 			<TextView android:text="Security Answer:" android:id="@+id/securityAnswerText"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 			<EditText android:layout_height="wrap_content"
 				android:layout_width="match_parent" android:singleLine="true"
-				android:password="true" android:id="@+id/securityAnsEdit"></EditText>
+				android:id="@+id/securityAnsEdit"></EditText>
+			<TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/securityquestionreason"></TextView>
 			<Button android:layout_width="wrap_content"
 				android:layout_height="wrap_content" android:text="Create Account"
 				android:id="@+id/createAccountButton"></Button>
