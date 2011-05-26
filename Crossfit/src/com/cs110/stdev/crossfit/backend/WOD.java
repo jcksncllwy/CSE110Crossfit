@@ -222,6 +222,21 @@ public class WOD implements Serializable{
 		this.date = Integer.toString(month) + Integer.toString(day) + Integer.toString(year);
 	}
 	
+	public int getMonth() {
+		String strMonth = date.substring(0, 2);
+		return Integer.parseInt(strMonth);
+	}
+	
+	public int getDay() {
+		String strDay = date.substring(2, 4);
+		return Integer.parseInt(strDay);
+	}
+	
+	public int getYear() {
+		String strYear = date.substring(4, 8);
+		return Integer.parseInt(strYear);
+	}
+	
 	/**
 	 * Method to get the type of WOD
 	 * @return - type of WOD
@@ -327,7 +342,7 @@ public class WOD implements Serializable{
 		
 		newDate += date.charAt(0) + date.charAt(1) + "/";
 		newDate += date.charAt(2) + date.charAt(3) + "/";
-		newDate += date.charAt(4) + date.charAt(5);
+		newDate += date.charAt(4) + date.charAt(5) + date.charAt(6) + date.charAt(7);
 		
 		return newDate;
 	}
@@ -383,4 +398,6 @@ public class WOD implements Serializable{
 		
 		return wodInfo;
 	}
+	
+	
 }

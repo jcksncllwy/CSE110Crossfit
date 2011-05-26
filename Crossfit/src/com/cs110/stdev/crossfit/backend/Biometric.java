@@ -217,7 +217,7 @@ public class Biometric {
 
 		newDate += date.charAt(0) + date.charAt(1) + "/";
 		newDate += date.charAt(2) + date.charAt(3) + "/";
-		newDate += date.charAt(4) + date.charAt(5);
+		newDate += date.charAt(4) + date.charAt(5) + date.charAt(6) + date.charAt(7);
 
 		return newDate;
 	}
