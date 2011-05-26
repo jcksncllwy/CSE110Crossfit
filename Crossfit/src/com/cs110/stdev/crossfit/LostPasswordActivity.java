@@ -11,6 +11,7 @@ import com.cs110.stdev.crossfit.backend.User;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,10 +23,11 @@ public class LostPasswordActivity extends Activity implements OnClickListener {
 
 	/* define components */
 	EditText enterUsernameLost;
-	EditText enterSecurityQuestion;
+	TextView secQuestText;
 	EditText enterSecurityAnswer;
 	Button recoverPasswordButton;
 	Button goBackButton;
+	Button retrieveSQ;
 	TextView lostPassword;
 
 	/** Called when the activity is first created. */
@@ -38,13 +40,15 @@ public class LostPasswordActivity extends Activity implements OnClickListener {
 
 		/* assign components */
 		enterUsernameLost = (EditText) findViewById(R.id.enterUsernameLost);
-		enterSecurityQuestion = (EditText) findViewById(R.id.enterSecurityQuestion);
+		secQuestText = (TextView) findViewById(R.id.secQuestText);
 		enterSecurityAnswer = (EditText) findViewById(R.id.enterSecurityAnswer);
 		recoverPasswordButton = (Button) findViewById(R.id.recoverPasswordButton);
 		goBackButton = (Button) findViewById(R.id.goBackButton);
+		retrieveSQ = (Button) findViewById(R.id.retrieveSQ);
 		lostPassword = (TextView) findViewById(R.id.lostPassword);
 
 		/* button action */
+		retrieveSQ.setOnClickListener(this);
 		recoverPasswordButton.setOnClickListener(this);
 		goBackButton.setOnClickListener(this);
 	}
@@ -52,10 +56,37 @@ public class LostPasswordActivity extends Activity implements OnClickListener {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onClick(View view) {
-		if (view == recoverPasswordButton) {
-			/* getting the entries from the edit text boxes */
+		if (view == retrieveSQ) {
 			String username = enterUsernameLost.getText().toString();
-			String securityQ = enterSecurityQuestion.getText().toString();
+			Log.d("username value",username);
+			LinkedList<User> userlist = new LinkedList<User>();
+			String filename = "user.ser";
+			/* pulling the user from the database */
+			try {
+				FileInputStream fis = openFileInput(filename);
+				ObjectInputStream in = new ObjectInputStream(fis);
+				userlist = (LinkedList<User>) in.readObject();
+				in.close();
+			} catch (FileNotFoundException ex) {
+				ex.printStackTrace();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			} catch (ClassNotFoundException ex) {
+				ex.printStackTrace();
+			}
+
+			if (!userlist.isEmpty()) {
+				if (username.equals(userlist.get(0).getUsername()))
+					secQuestText.setText(userlist.get(0).getSecretQ());
+				else
+					Toast.makeText(this, R.string.invalidUsername,
+							Toast.LENGTH_LONG).show();
+			} else
+				Toast.makeText(this, R.string.invalidUsername,
+						Toast.LENGTH_LONG).show();
+
+		} else if (view == recoverPasswordButton) {
+			String username = enterUsernameLost.getText().toString();
 			String securityA = enterSecurityAnswer.getText().toString();
 
 			LinkedList<User> userlist = new LinkedList<User>();
@@ -76,29 +107,27 @@ public class LostPasswordActivity extends Activity implements OnClickListener {
 
 			User user = new User();
 			// check that there is actually a user in the database
-			if (!userlist.isEmpty()) {
+			if (!userlist.isEmpty() && username != null) {
 				user = userlist.get(0);
 				// checking that all the fields match
 				if (username.equals(user.getUsername())
-						&& securityQ.equals(user.getSecretQ())
 						&& securityA.equals(user.getSecretA()))
 					lostPassword.setText("Password: " + user.getPassword());
 				// error message
 				else
-					Toast.makeText(this, R.string.invalidRegistration,
+					Toast.makeText(this, R.string.invalidSecretA,
 							Toast.LENGTH_LONG).show();
 			}
 			// error message
 			else
-				Toast.makeText(this, R.string.invalidRegistration,
+				Toast.makeText(this, R.string.invalidUsername,
 						Toast.LENGTH_LONG).show();
 
 		}
 		/* if the user clicks go back, go back to the login page */
 		else if (view == goBackButton) {
-			Intent i = new Intent(this, LoginActivity.class);
-			startActivity(i);
+			Intent intent = new Intent(this, LoginActivity.class);
+			startActivity(intent);
 		}
 	}
-
 }
