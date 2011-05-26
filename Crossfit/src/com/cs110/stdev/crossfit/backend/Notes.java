@@ -174,9 +174,9 @@ public class Notes implements Serializable {
 	public String toDate() {
 		String newDate = "";
 		
-		newDate += date.subString(0,2) + "/";
-		newDate += date.subString(2,4) + "/";
-		newDate += date.subString(4,8);
+		newDate += date.substring(0,2) + "/";
+		newDate += date.substring(2,4) + "/";
+		newDate += date.substring(4,8);
 		
 		return newDate;
 	}
