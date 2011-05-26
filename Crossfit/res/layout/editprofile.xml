@@ -18,29 +18,26 @@
 				android:layout_height="wrap_content" android:id="@+id/lname"></TextView>
 			<EditText android:layout_height="wrap_content"
 				android:layout_width="match_parent" android:text="" android:id="@+id/lnameEdit"></EditText>
-			<LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_width="match_parent" android:orientation="vertical">
-				<TextView android:text="Birthday:" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/birthdayText"></TextView>
-				<DatePicker android:layout_height="wrap_content" android:id="@+id/birthday" android:layout_width="wrap_content"></DatePicker>
-				<Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/changebirthday" android:id="@+id/thebdaybutton"></Button>
+			<LinearLayout android:layout_height="wrap_content"
+				android:id="@+id/linearLayout1" android:layout_width="match_parent"
+				android:orientation="vertical">
+				<TextView android:text="Birthday:" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/birthdayText"></TextView>
+				<DatePicker android:layout_height="wrap_content"
+					android:id="@+id/birthday" android:layout_width="wrap_content"></DatePicker>
+				<Button android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:text="@string/changebirthday"
+					android:id="@+id/thebdaybutton"></Button>
 			</LinearLayout>
-			<TextView android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:id="@+id/weightText"
-				android:text="Weight (in lbs):"></TextView>
-			<EditText android:layout_width="match_parent"
-				android:layout_height="wrap_content" android:id="@+id/weightEdit"></EditText>
-			<TextView android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:id="@+id/heightText"
-				android:text="@string/height"></TextView>
-			<EditText android:layout_width="match_parent"
-				android:layout_height="wrap_content" android:id="@+id/heightEdit"></EditText>
-			<TextView android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:id="@+id/bodyfatText"
-				android:text="@string/bodyfat"></TextView>
-			<EditText android:layout_width="match_parent"
-				android:layout_height="wrap_content" android:id="@+id/bodyfatEdit"></EditText>
-			<Button android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:layout_gravity="center"
-				android:id="@+id/makeProfile" android:text="@string/createprofile"></Button>
+			<LinearLayout android:id="@+id/linearLayout2"
+				android:layout_width="match_parent" android:layout_height="wrap_content">
+				<Button android:id="@+id/makeProfile" android:layout_width="wrap_content"
+					android:text="@string/createprofile" android:layout_height="wrap_content"
+					android:layout_gravity="center"></Button>
+				<Button android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/cancel"
+					android:text="@string/cancel"></Button>
+			</LinearLayout>
 		</LinearLayout>
 	</ScrollView>
 </LinearLayout>

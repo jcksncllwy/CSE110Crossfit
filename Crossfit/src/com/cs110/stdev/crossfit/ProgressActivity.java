@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.cs110.stdev.crossfit.IChart;
 import com.cs110.stdev.crossfit.WeightChart;
-import com.cs110.stdev.crossfit.XYChartBuilder;
+//import com.cs110.stdev.crossfit.XYChartBuilder;
 
 import android.app.ListActivity;
 import android.content.Intent;

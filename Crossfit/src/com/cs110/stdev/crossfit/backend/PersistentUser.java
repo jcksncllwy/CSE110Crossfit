@@ -70,25 +70,4 @@ public class PersistentUser {
 		return user;
 	}
 
-	public static void main(String[] args) {
-		/*
-		 * User test1 = new User(); User test2=new User(); User test3=new
-		 * User(); test1.setFirstName("Kevin"); test1.setLastName("Chon");
-		 * test1.setHeight(80); test2.setFirstName("Ant");
-		 * test2.setLastName("Hill"); test2.setHeight(380);
-		 * test3.setFirstName("Suck"); test3.setLastName("It");
-		 * test3.setHeight(99); LinkedList<User> store = new LinkedList<User>();
-		 * store.add(test1); store.add(test2); store.add(test3); insert(store);
-		 * test1.setFirstName("Changed"); test2.setFirstName("Changed");
-		 * test3.setFirstName("Changed");
-		 */
-		LinkedList<User> store = restore();
-		for (int i = 0; i < 3; i++) {
-			System.out.println(store.get(i).getFirstName());
-			System.out.println(store.get(i).getLastName());
-			System.out.println(store.get(i).getHeight());
-		}
-
-	}
-
 }

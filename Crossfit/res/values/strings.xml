@@ -44,4 +44,6 @@
 	<string name="heartrate">Heart Rate:</string>
 	<string name="tags">Tags: </string>
 	<string name="record">Record</string>
+	<string name="cancel">Cancel</string>
+	<string name="recordbiometric">Record Biometrics</string>
 </resources>

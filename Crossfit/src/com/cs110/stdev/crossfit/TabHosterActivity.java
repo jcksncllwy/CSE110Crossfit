@@ -43,7 +43,7 @@ public class TabHosterActivity extends TabActivity implements OnClickListener {
 		tabHost.addTab(spec);
 
 
-		intent = new Intent().setClass(this, BiometricActivity.class);
+		intent = new Intent().setClass(this, BiometricTabActivity.class);
 		spec = tabHost.newTabSpec("biometrics")
 				.setIndicator("Biometrics", res.getDrawable(R.drawable.stethoscope))
 				.setContent(intent);
