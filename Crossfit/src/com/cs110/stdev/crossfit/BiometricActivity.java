@@ -13,6 +13,7 @@ import com.cs110.stdev.crossfit.backend.User;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -192,10 +193,10 @@ public class BiometricActivity extends Activity implements OnClickListener {
 
 					Toast.makeText(this, "WIN!!!!!!1", Toast.LENGTH_LONG)
 							.show();
-					/*
-					 * Intent intent = new Intent(this,TabHosterActivity.class);
-					 * startActivity(intent);
-					 */
+					
+					 Intent intent = new Intent(this,TabHosterActivity.class);
+					 startActivity(intent);
+					 
 				}
 				// displaying error message to the user
 				else
