@@ -39,4 +39,9 @@
 	<string name="searchbytags">Search by Tags</string>
 	<string name="changebirthday">Change Birthday</string>
 	<string name="successfulchange">Password has been successfully changed.</string>
+	<string name="weight">Weight (in lbs): </string>
+	<string name="separatebycommas">Separate tags by commas</string>
+	<string name="heartrate">Heart Rate:</string>
+	<string name="tags">Tags: </string>
+	<string name="record">Record</string>
 </resources>

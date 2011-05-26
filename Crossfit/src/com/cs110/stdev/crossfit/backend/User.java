@@ -21,13 +21,11 @@ public class User implements Serializable {
 	private int age;
 	private double bodyFat;
 	private double BMI;
-	private String email;
 	private String username;
 	private String password;
 	private String secretQ;
 	private String secretA;
 	private Log myLog;
-	private boolean admin;
 
 	// CONSTRUCTORS
 	/**
@@ -41,14 +39,11 @@ public class User implements Serializable {
 		birthday = new Date();
 		age = 0;
 		bodyFat = 0.0;
-		BMI = 0.0;
-		email = "";
 		username = "";
 		password = "";
 		secretQ = "";
 		secretA = "";
 		myLog = new Log();
-		admin = false;
 	}
 
 	// METHODS
@@ -70,7 +65,7 @@ public class User implements Serializable {
 	 * @return - true if valid, false otherwise
 	 */
 	public boolean validatePassword(String password) {
-		String passRegex = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,})";
+		String passRegex = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,15})";
 		return password.matches(passRegex);
 	}
 
@@ -235,29 +230,6 @@ public class User implements Serializable {
 	 */
 	public void setBodyFat(double newBodyFat) {
 		this.bodyFat = newBodyFat;
-	}
-
-	/**
-	 * Method to get user's email
-	 * 
-	 * @return - user's email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * Method to set user's email
-	 * 
-	 * @param - new email to be set
-	 * @return - true if valid email set, false otherwise
-	 */
-	public boolean setEmail(String newEmail) {
-		if (validateEmail(newEmail)) {
-			this.email = newEmail;
-			return true;
-		}
-		return false;
 	}
 
 	/**

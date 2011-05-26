@@ -42,6 +42,13 @@ public class TabHosterActivity extends TabActivity implements OnClickListener {
 				.setContent(intent);
 		tabHost.addTab(spec);
 
+
+		intent = new Intent().setClass(this, BiometricActivity.class);
+		spec = tabHost.newTabSpec("biometrics")
+				.setIndicator("Biometrics", res.getDrawable(R.drawable.stethoscope))
+				.setContent(intent);
+		tabHost.addTab(spec);
+		
 		intent = new Intent().setClass(this, ProgressActivity.class);
 		spec = tabHost.newTabSpec("progress")
 				.setIndicator("Progress", res.getDrawable(R.drawable.graph))
@@ -54,6 +61,7 @@ public class TabHosterActivity extends TabActivity implements OnClickListener {
 				.setContent(intent);
 		tabHost.addTab(spec);
 
+		
 		tabHost.setCurrentTab(0);
 
 		logoutTabHost.setOnClickListener(this);

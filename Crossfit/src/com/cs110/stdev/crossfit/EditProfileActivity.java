@@ -59,7 +59,7 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 		heightEdit = (EditText) findViewById(R.id.heightEdit);
 		bodyfatEdit = (EditText) findViewById(R.id.bodyfatEdit);
 		birthday = (DatePicker) findViewById(R.id.birthday);
-		// could be a prblem
+		// could be a problem
 		thebdaybutton = (Button) findViewById(R.id.thebdaybutton);
 
 		LinkedList<User> userlist = new LinkedList<User>();
@@ -192,8 +192,7 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 					}
 
 					/*
-					 * could be problematic, need to ask about what if you store
-					 * again
+					 * putting in the user back in the database
 					 */
 					if (valid) {
 						try {
@@ -220,7 +219,7 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 			catch (NumberFormatException exception) {
 				Toast.makeText(
 						this,
-						"Enter a numerical" + "value for weight/height/body"
+						"Enter a numerical" + " value for weight/height/body"
 								+ "fat percentage!", Toast.LENGTH_LONG).show();
 			}
 
