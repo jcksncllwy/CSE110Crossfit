@@ -9,7 +9,6 @@ package com.cs110.stdev.crossfit.backend;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class User implements Serializable {
@@ -49,6 +48,7 @@ public class User implements Serializable {
 	 * @return - true if valid, false otherwise
 	 */
 	public boolean validateUsername(String username) {
+		// length of 3-15, a-z,0-9,_ characters only
 		String regex = "^[a-z0-9_-]{3,15}$";
 		return username.matches(regex);
 	}
@@ -60,6 +60,7 @@ public class User implements Serializable {
 	 * @return - true if valid, false otherwise
 	 */
 	public boolean validatePassword(String password) {
+		// 6-15 length, a-z,A-Z,at least one number
 		String passRegex = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,15})";
 		return password.matches(passRegex);
 	}
@@ -154,16 +155,15 @@ public class User implements Serializable {
 		int bdayMonth = Integer.parseInt(getBirthday().substring(0, 2));
 		int day = calendar.get(Calendar.DAY_OF_MONTH);
 		int bdayDay = Integer.parseInt(getBirthday().substring(2, 4));
-		
+
 		if (month == bdayMonth) {
 			if (day < bdayDay)
 				this.age = year - bdayYear - 1;
 			else
 				this.age = year - bdayYear;
-		}
-		else if(month < bdayMonth)
+		} else if (month < bdayMonth)
 			this.age = year - bdayYear - 1;
-		else 
+		else
 			this.age = year - bdayYear;
 
 		return true;

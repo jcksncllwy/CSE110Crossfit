@@ -46,4 +46,7 @@
 	<string name="record">Record</string>
 	<string name="cancel">Cancel</string>
 	<string name="recordbiometric">Record Biometrics</string>
+	<string name="usernamerequirements">Must contain 3-13 characters (a-z,0-9,_)</string>
+	<string name="passwordrequirements">Must contain 6-15 characters (at least one of each a-z,A-Z,0-9)</string>
+	<string name="securityquestionreason">If you forget your security password, we will verify your identity with your secret answer.</string>
 </resources>

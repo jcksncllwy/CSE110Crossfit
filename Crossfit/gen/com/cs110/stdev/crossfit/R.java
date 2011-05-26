@@ -197,6 +197,7 @@ public final class R {
         public static final int newpassword=0x7f04001d;
         public static final int oldpassword=0x7f04001c;
         public static final int other=0x7f040009;
+        public static final int passwordrequirements=0x7f04002e;
         public static final int prescribed=0x7f04000c;
         public static final int record=0x7f04002a;
         public static final int recordbiometric=0x7f04002c;
@@ -204,11 +205,13 @@ public final class R {
         public static final int recoverpassword=0x7f040017;
         public static final int scaled=0x7f04000d;
         public static final int searchbytags=0x7f040023;
+        public static final int securityquestionreason=0x7f04002f;
         public static final int separatebycommas=0x7f040027;
         public static final int successfulchange=0x7f040025;
         public static final int tabata=0x7f040008;
         public static final int tags=0x7f040029;
         public static final int timeText=0x7f040013;
+        public static final int usernamerequirements=0x7f04002d;
         public static final int viewWOD=0x7f040003;
         public static final int weight=0x7f040026;
         public static final int wodlength=0x7f04000b;
