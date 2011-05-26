@@ -68,11 +68,21 @@ public class ProfileActivity extends Activity implements OnClickListener {
 				+ temp.getLastName());
 		birthdayText.setText("Birthday: " + temp.printBirthday());
 		theageText.setText("Age: " + temp.getAge());
-		heightText.setText("Height: " + temp.printHeight());
-		weightText.setText("Weight: " + temp.getWeight());
-		thebmiText.setText("BMI: " + temp.getBMI().shortValue());
-		bodyfatText.setText("Body Fat %: " + temp.getBodyFat());
-
+		if (!temp.getMyLog().getBiometrics().isEmpty()) {
+			heightText.setText("Height: "
+					+ temp.getMyLog().getBiometrics().getLast().printHeight());
+			weightText.setText("Weight: "
+					+ temp.getMyLog().getBiometrics().getLast().getWeight());
+			thebmiText.setText("BMI: "
+					+ (int) temp.getMyLog().getBiometrics().getLast().getbMI());
+			bodyfatText.setText("Body Fat %: "
+					+ temp.getMyLog().getBiometrics().getLast().getbodyFat());
+		} else {
+			heightText.setText("Height: ");
+			weightText.setText("Weight: ");
+			thebmiText.setText("BMI: ");
+			bodyfatText.setText("Body Fat %: ");
+		}
 		// handle clicking events
 		editProfileButton.setOnClickListener(this);
 	}

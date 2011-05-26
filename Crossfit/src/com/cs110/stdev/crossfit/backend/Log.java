@@ -348,7 +348,7 @@ public class Log implements Serializable {
 		
 		return log;
 	}
-	
+	/*
 	public void sortWodByDate() {
 		LinkedList<WOD> resultWod = new LinkedList<WOD>();
 		resultWod.add(wods.get(i));
@@ -383,4 +383,5 @@ public class Log implements Serializable {
 			}
 		}
 	}
+	*/
 }

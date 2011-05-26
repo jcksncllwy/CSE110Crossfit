@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Date;
 import java.util.LinkedList;
 
 import com.cs110.stdev.crossfit.backend.User;
@@ -28,19 +27,11 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 	/* define all components */
 	Button makeProfile;
 	Button thebdaybutton;
+	Button cancel;
 	EditText fnameEdit;
 	EditText lnameEdit;
-	EditText weightEdit;
-	EditText heightEdit;
-	EditText bodyfatEdit;
 	DatePicker birthday;
-	TextView fname;
-	TextView lname;
-	TextView profInfo;
 	TextView birthdayText;
-	TextView weightText;
-	TextView heightText;
-	TextView bodyfatText;
 
 	private boolean changeDate;
 
@@ -53,14 +44,13 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 
 		/* assign used components */
 		makeProfile = (Button) findViewById(R.id.makeProfile);
+		cancel = (Button) findViewById(R.id.cancel);
 		fnameEdit = (EditText) findViewById(R.id.fnameEdit);
 		lnameEdit = (EditText) findViewById(R.id.lnameEdit);
-		weightEdit = (EditText) findViewById(R.id.weightEdit);
-		heightEdit = (EditText) findViewById(R.id.heightEdit);
-		bodyfatEdit = (EditText) findViewById(R.id.bodyfatEdit);
 		birthday = (DatePicker) findViewById(R.id.birthday);
-		// could be a prblem
+		// could be a problem
 		thebdaybutton = (Button) findViewById(R.id.thebdaybutton);
+		birthdayText = (TextView) findViewById(R.id.birthdayText);
 
 		LinkedList<User> userlist = new LinkedList<User>();
 		String filename = "user.ser";
@@ -89,18 +79,8 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 				fnameEdit.setText(user.getFirstName());
 			if (!user.getLastName().equals(""))
 				lnameEdit.setText(user.getLastName());
-			if (!(user.getWeight() == 0)) {
-				Double userWeight = user.getWeight();
-				weightEdit.setText(userWeight.toString());
-			}
-			if (!((user.getHeight()) == 0)) {
-				Double userHeight = user.getHeight();
-				heightEdit.setText(userHeight.toString());
-			}
-			if (!(user.getBodyFat() == 0)) {
-				Double userBF = user.getBodyFat();
-				bodyfatEdit.setText(userBF.toString());
-			}
+			if (!user.getBirthday().equals(""))
+				birthdayText.setText("Birthday: " + user.printBirthday());
 		}
 
 		// give the button functionality
@@ -118,112 +98,85 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 					"The changes will be reflected the next time you view your profile.",
 					Toast.LENGTH_LONG).show();
 		} else if (view == makeProfile) {
-			boolean valid = true; // variable to keep track of valid entrie
-			double theWeight = -1;
-			double theHeight = -1;
-			double theBodyFat = -1;
+			boolean valid = true; // variable to keep track of valid entries
 
 			String fname = fnameEdit.getText().toString();
 			String lname = lnameEdit.getText().toString();
-			String weight = weightEdit.getText().toString();
-			String height = heightEdit.getText().toString();
-			String bodyfat = bodyfatEdit.getText().toString();
 
-			// try to parse the fields that are numbers
+			LinkedList<User> userlist = new LinkedList<User>();
+			String filename = "user.ser";
+			/* pulling the user from the database */
 			try {
-				theWeight = Double.parseDouble(weight);
-				theHeight = Double.parseDouble(height);
-				theBodyFat = Double.parseDouble(bodyfat);
-
-				LinkedList<User> userlist = new LinkedList<User>();
-				String filename = "user.ser";
-				/* pulling the user from the database */
-				try {
-					FileInputStream fis = openFileInput(filename);
-					ObjectInputStream in = new ObjectInputStream(fis);
-					userlist = (LinkedList<User>) in.readObject();
-					in.close();
-				} catch (FileNotFoundException ex) {
-					ex.printStackTrace();
-				} catch (IOException ex) {
-					ex.printStackTrace();
-				} catch (ClassNotFoundException ex) {
-					ex.printStackTrace();
-				}
-
-				// checking that a user exists
-				if (!userlist.isEmpty()) {
-
-					// checking first name
-					if (fname != null && fname.length() > 1
-							&& fname.length() < 20) {
-						userlist.get(0).setFirstName(fname);
-					} else
-						valid = false;
-
-					// checking last name
-					if (lname != null && lname.length() > 1
-							&& lname.length() < 20) {
-						userlist.get(0).setLastName(lname);
-					} else
-						valid = false;
-					// checking and setting weight
-					if (theWeight > 0) {
-						userlist.get(0).setWeight(theWeight);
-					} else
-						valid = false;
-					// checking and setting height
-					if (theHeight > 0) {
-						userlist.get(0).setHeight(theHeight);
-					} else
-						valid = false;
-					// checking and setting body fat percentage
-					if (theBodyFat > 0) {
-						userlist.get(0).setBodyFat(theBodyFat);
-					}
-
-					if (changeDate) {
-						int day = (int) birthday.getDayOfMonth();
-						int month = (int) birthday.getMonth()+1;
-						int year = (int) birthday.getYear();
-						Date theBirthday = new Date(year, month, day);
-						userlist.get(0).setBirthday(theBirthday);
-						userlist.get(0).setAge();
-					}
-
-					/*
-					 * could be problematic, need to ask about what if you store
-					 * again
-					 */
-					if (valid) {
-						try {
-							FileOutputStream fos = openFileOutput(filename,
-									Context.MODE_PRIVATE);
-							ObjectOutputStream out = new ObjectOutputStream(fos);
-							out.writeObject(userlist);
-							out.close();
-						} catch (IOException ex) {
-							ex.printStackTrace();
-						}
-
-						Intent intent = new Intent(this,
-								TabHosterActivity.class);
-						startActivity(intent);
-					}
-					// displaying error message to the user
-					else
-						Toast.makeText(this, R.string.invalidRegistration,
-								Toast.LENGTH_LONG).show();
-				}
-			}
-			// catching for when there is no numerical value entered
-			catch (NumberFormatException exception) {
-				Toast.makeText(
-						this,
-						"Enter a numerical" + "value for weight/height/body"
-								+ "fat percentage!", Toast.LENGTH_LONG).show();
+				FileInputStream fis = openFileInput(filename);
+				ObjectInputStream in = new ObjectInputStream(fis);
+				userlist = (LinkedList<User>) in.readObject();
+				in.close();
+			} catch (FileNotFoundException ex) {
+				ex.printStackTrace();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			} catch (ClassNotFoundException ex) {
+				ex.printStackTrace();
 			}
 
+			// checking that a user exists
+			if (!userlist.isEmpty()) {
+
+				// checking first name
+				if (fname != null && fname.length() > 1 && fname.length() < 20) {
+					userlist.get(0).setFirstName(fname);
+				} else
+					valid = false;
+
+				// checking last name
+				if (lname != null && lname.length() > 1 && lname.length() < 20) {
+					userlist.get(0).setLastName(lname);
+				} else
+					valid = false;
+
+				if (changeDate) {
+					int day = (int) birthday.getDayOfMonth();
+					int month = (int) birthday.getMonth() + 1;
+					int year = (int) birthday.getYear();
+
+					String theDay = Integer.toString(day);
+					String theMonth = Integer.toString(month);
+
+					if (day < 10)
+						theDay = "0" + Integer.toString(day);
+
+					if (month < 10)
+						theMonth = "0" + Integer.toString(month);
+
+					String theBirthday = theMonth + theDay + year;
+					userlist.get(0).setBirthday(theBirthday);
+					userlist.get(0).setAge();
+				}
+
+				/*
+				 * putting in the user back in the database
+				 */
+				if (valid) {
+					try {
+						FileOutputStream fos = openFileOutput(filename,
+								Context.MODE_PRIVATE);
+						ObjectOutputStream out = new ObjectOutputStream(fos);
+						out.writeObject(userlist);
+						out.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+
+					Intent intent = new Intent(this, TabHosterActivity.class);
+					startActivity(intent);
+				}
+				// displaying error message to the user
+				else
+					Toast.makeText(this, R.string.invalidRegistration,
+							Toast.LENGTH_LONG).show();
+			}
 		}
+
 	}
+
 }

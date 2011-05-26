@@ -8,26 +8,22 @@
 package com.cs110.stdev.crossfit.backend;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class User implements Serializable {
 
 	// FIELDS
 	private String firstName;
 	private String lastName;
-	private double height;
-	private double weight;
-	private Date birthday;
+	private String birthday;
 	private int age;
-	private double bodyFat;
-	private double BMI;
-	private String email;
 	private String username;
 	private String password;
 	private String secretQ;
 	private String secretA;
 	private Log myLog;
-	private boolean admin;
 
 	// CONSTRUCTORS
 	/**
@@ -36,19 +32,13 @@ public class User implements Serializable {
 	public User() {
 		firstName = "";
 		lastName = "";
-		height = 0.0;
-		weight = 0.0;
-		birthday = new Date();
+		birthday = "";
 		age = 0;
-		bodyFat = 0.0;
-		BMI = 0.0;
-		email = "";
 		username = "";
 		password = "";
 		secretQ = "";
 		secretA = "";
 		myLog = new Log();
-		admin = false;
 	}
 
 	// METHODS
@@ -70,24 +60,8 @@ public class User implements Serializable {
 	 * @return - true if valid, false otherwise
 	 */
 	public boolean validatePassword(String password) {
-		String passRegex = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,})";
+		String passRegex = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,15})";
 		return password.matches(passRegex);
-	}
-
-	/**
-	 * Method to check if email is valid
-	 * 
-	 * @param - email to be validated
-	 * @return - true if valid, false otherwise
-	 */
-	public boolean validateEmail(String ema) {
-		if(!(ema.contains("@"))) {
-			return false;
-		}
-		if(!(ema.contains(".com"))) {
-			return false;
-		}
-		return true;
 	}
 
 	/**
@@ -127,55 +101,11 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * Method to get user's height
-	 * 
-	 * @return - user's height
-	 */
-	public double getHeight() {
-		return height;
-	}
-
-	/**
-	 * Method to set user's height
-	 * 
-	 * @param - new height to be set
-	 */
-	public void setHeight(double newHeight) {
-		this.height = newHeight;
-	}
-
-	public String printHeight(){
-		return ((int)height/12) +" feet "+((int) height%12) + " inches";
-	}
-	/**
-	 * Method to get user's weight
-	 * 
-	 * @return - user's weight
-	 */
-	public double getWeight() {
-		return weight;
-	}
-
-	/**
-	 * Method to set user's weight
-	 * 
-	 * @param - new weight to be set
-	 */
-	public void setWeight(double newWeight) {
-		this.weight = newWeight;
-	}
-
-	public Double getBMI() {
-		BMI = (weight * 703) / Math.pow(height, 2.0);
-		return BMI;
-	}
-
-	/**
 	 * Method to get user's birthday
 	 * 
 	 * @return - user's birthday
 	 */
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
@@ -183,8 +113,13 @@ public class User implements Serializable {
 	 * Method to print user's birthday
 	 */
 	public String printBirthday() {
-		return birthday.getMonth() + "/" + birthday.getDate() + "/"
-				+ birthday.getYear();
+		String birthdayPrint = "";
+
+		if (!birthday.equals("")) {
+			birthdayPrint = birthday.substring(0, 2) + "/"
+					+ birthday.substring(2, 4) + "/" + birthday.substring(4, 8);
+		}
+		return birthdayPrint;
 	}
 
 	/**
@@ -192,7 +127,7 @@ public class User implements Serializable {
 	 * 
 	 * @param - new birthday to be set
 	 */
-	public void setBirthday(Date newBirthday) {
+	public void setBirthday(String newBirthday) {
 		this.birthday = newBirthday;
 	}
 
@@ -211,58 +146,27 @@ public class User implements Serializable {
 	 * @param - new age to be set
 	 * @return - true if valid age set, false otherwise
 	 */
-
 	public boolean setAge() {
-		Date present = new Date();
-
-		if (present.getMonth() - getBirthday().getMonth() < 0) {
-			if (present.getDay() - getBirthday().getDay() < 0)
-				age = present.getYear() - getBirthday().getYear() - 1;
-		} else
-			age = present.getYear() - getBirthday().getYear();
+		Calendar calendar = new GregorianCalendar();
+		int year = calendar.get(Calendar.YEAR);
+		int bdayYear = Integer.parseInt(getBirthday().substring(4, 8));
+		int month = calendar.get(Calendar.MONTH);
+		int bdayMonth = Integer.parseInt(getBirthday().substring(0, 2));
+		int day = calendar.get(Calendar.DAY_OF_MONTH);
+		int bdayDay = Integer.parseInt(getBirthday().substring(2, 4));
+		
+		if (month == bdayMonth) {
+			if (day < bdayDay)
+				this.age = year - bdayYear - 1;
+			else
+				this.age = year - bdayYear;
+		}
+		else if(month < bdayMonth)
+			this.age = year - bdayYear - 1;
+		else 
+			this.age = year - bdayYear;
 
 		return true;
-	}
-
-	/**
-	 * Method to get user's body fat percentage
-	 * 
-	 * @return - user's body fat percentage
-	 */
-	public double getBodyFat() {
-		return bodyFat;
-	}
-
-	/**
-	 * Method to set user's body fat percentage
-	 * 
-	 * @param - new body fat percentage to be set
-	 */
-	public void setBodyFat(double newBodyFat) {
-		this.bodyFat = newBodyFat;
-	}
-
-	/**
-	 * Method to get user's email
-	 * 
-	 * @return - user's email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * Method to set user's email
-	 * 
-	 * @param - new email to be set
-	 * @return - true if valid email set, false otherwise
-	 */
-	public boolean setEmail(String newEmail) {
-		if (validateEmail(newEmail)) {
-			this.email = newEmail;
-			return true;
-		}
-		return false;
 	}
 
 	/**

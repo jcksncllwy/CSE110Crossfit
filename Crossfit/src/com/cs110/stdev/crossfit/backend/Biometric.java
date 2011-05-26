@@ -7,12 +7,14 @@
  */
 package com.cs110.stdev.crossfit.backend;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Biometric {
+public class Biometric implements Serializable {
 
 	// FIELDS
 	private double weight;
+	private double height;
 	private double bodyFat;
 	private int heartRate;
 	private double bMI;
@@ -26,6 +28,7 @@ public class Biometric {
 	public Biometric() {
 		weight = 0.0;
 		bodyFat = 0.0;
+		height = 0.0;
 		heartRate = 0;
 		bMI = 0.0;
 		date = "";
@@ -57,8 +60,8 @@ public class Biometric {
 	 * @param (double height) - height used in BMI calculation
 	 * @return - calculated BMI
 	 */
-	public double calculateBMI(double calcWeight, double calcHeight) {
-		this.bMI = (calcWeight * 703) / Math.pow(calcHeight, 2.0);
+	public double calculateBMI() {
+		this.bMI = (weight * 703) / Math.pow(height, 2.0);
 		return this.bMI;
 	}
 
@@ -123,6 +126,28 @@ public class Biometric {
 	}
 
 	/**
+	 * Method to get user's height
+	 * 
+	 * @return - user's height
+	 */
+	public double getHeight() {
+		return height;
+	}
+
+	/**
+	 * Method to set user's height
+	 * 
+	 * @param - new height to be set
+	 */
+	public void setHeight(double newHeight) {
+		this.height = newHeight;
+	}
+
+	public String printHeight() {
+		return ((int) height / 12) + " feet " + ((int) height % 12) + " inches";
+	}
+
+	/**
 	 * Method to get BMI
 	 * 
 	 * @return - BMI
@@ -136,10 +161,8 @@ public class Biometric {
 	 * 
 	 * @param - new BMI to be set
 	 */
-	public void setBMI(double newBMI) {
-		if (newBMI > 0) {
-			this.bMI = newBMI;
-		}
+	public void setBMI() {
+		this.bMI = (weight * 703) / Math.pow(height, 2.0);
 	}
 
 	/**
@@ -180,22 +203,14 @@ public class Biometric {
 	public LinkedList<String> getTags() {
 		return tags;
 	}
-	
+
 	/**
 	 * Method to append tag to list of tags
 	 * 
 	 * @param - new tag to be appended
 	 */
 	public void addTag(String newTag) {
-		boolean found = false;
-		for(int i = 0; i < tags.size(); i++) {
-			if(tags.get(i).equals(newTag)) {
-				found = true;
-			}
-		}
-		if(found == false) {
-			this.tags.add(newTag.toLowerCase());
-		}
+		this.tags.add(newTag);
 	}
 
 	/**
@@ -215,9 +230,9 @@ public class Biometric {
 	public String toDate() {
 		String newDate = "";
 
-		newDate += date.subString(0,2) + "/";
-		newDate += date.subString(2,4) + "/";
-		newDate += date.subString(4,8);
+		newDate += date.charAt(0) + date.charAt(1) + "/";
+		newDate += date.charAt(2) + date.charAt(3) + "/";
+		newDate += date.charAt(4) + date.charAt(5);
 
 		return newDate;
 	}
