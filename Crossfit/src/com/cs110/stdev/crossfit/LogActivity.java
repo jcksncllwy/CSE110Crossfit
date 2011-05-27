@@ -18,6 +18,11 @@ public class LogActivity extends Activity implements OnClickListener {
 	DatePicker wodDay;
 	TextView lastcompletedwod;
 	
+	//get userListID from intent
+	int userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
+	
+	static final int ENTER_WOD_REQUEST = 0;
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -40,11 +45,30 @@ public class LogActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		if(v==enterwodButton){
 			Intent i = new Intent(this, EnterWODActivity.class);
-			startActivity(i);
+			i.putExtra("USER_LIST_ID", userListID);
+			int dayOfMonth = wodDay.getDayOfMonth();
+			int month = wodDay.getMonth();
+			int year = wodDay.getYear();
+			String wod_Date = Integer.toString(month) + '/' + Integer.toString(dayOfMonth) + '/' + Integer.toString(year);
+			i.putExtra("WOD_DATE", wod_Date);
+			startActivityForResult(i, ENTER_WOD_REQUEST);
 		}
 		else if(v==viewwodButton){
 			Intent i = new Intent(this, ViewWODActivity.class);
+			i.putExtra("USER_LIST_ID", userListID);
 			startActivity(i);
 		}
 	}
+	
+	@Override
+	 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(requestCode == ENTER_WOD_REQUEST){
+			Intent i = new Intent(this, ViewWODActivity.class);
+			i.putExtra("USER_LIST_ID", userListID);
+			startActivity(i);
+		}
+		
+	}
+
+	
 }

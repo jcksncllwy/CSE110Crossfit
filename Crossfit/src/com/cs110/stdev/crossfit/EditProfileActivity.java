@@ -32,6 +32,9 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 	EditText lnameEdit;
 	DatePicker birthday;
 	TextView birthdayText;
+	
+	//get userListID from intent
+	int userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 
 	private boolean changeDate;
 
@@ -72,7 +75,7 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 
 		// checking if there is a user
 		if (!userlist.isEmpty()) {
-			user = userlist.get(0);
+			user = userlist.get(userListID);
 
 			/* displaying his current profile information */
 			if (!user.getFirstName().equals(""))
@@ -124,13 +127,13 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 
 				// checking first name
 				if (fname != null && fname.length() > 1 && fname.length() < 20) {
-					userlist.get(0).setFirstName(fname);
+					userlist.get(userListID).setFirstName(fname);
 				} else
 					valid = false;
 
 				// checking last name
 				if (lname != null && lname.length() > 1 && lname.length() < 20) {
-					userlist.get(0).setLastName(lname);
+					userlist.get(userListID).setLastName(lname);
 				} else
 					valid = false;
 
@@ -149,8 +152,8 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 						theMonth = "0" + Integer.toString(month);
 
 					String theBirthday = theMonth + theDay + year;
-					userlist.get(0).setBirthday(theBirthday);
-					userlist.get(0).setAge();
+					userlist.get(userListID).setBirthday(theBirthday);
+					userlist.get(userListID).setAge();
 				}
 
 				/*
@@ -168,6 +171,7 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 					}
 
 					Intent intent = new Intent(this, TabHosterActivity.class);
+					intent.putExtra("USER_LIST_ID", userListID);
 					startActivity(intent);
 				}
 				// displaying error message to the user
