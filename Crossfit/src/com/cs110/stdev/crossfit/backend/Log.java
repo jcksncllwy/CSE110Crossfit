@@ -186,6 +186,47 @@ public class Log implements Serializable {
 		return results;
 	}
 	
+	/*This is a method I wrote up relatively quickly, so there is most likely a problem
+	* in the logic. But I figured we need this to plot points on the graph "from" one
+	* date "to" another (of couse after sorting the information) - James*/
+	/**
+	 * Method to get a LinkedList of WODs in a range of dates
+	 * @param (String from) - start of date range
+	 * @param (String to) - end of date range
+	 * @return - list of WODs within the range
+	 */
+	 /*
+	public LinkedList<WOD> getWODsFromTo(String from, String to)
+	{
+		LinkedList<WOD> resultList = new LinkedList<WOD>;
+		int start, end = 0;
+		while(wods.get(start).getYear() <= Integer.parseInt(from.substring(4,8)))
+		{
+			while(wods.get(start).getMonth() <= Integer.parseInt(from.substring(2,4)))
+			{
+				while(wods.get(start).getDay() <= Integer.parseInt(from.substring(0,2)))
+				{
+					start++;
+				}
+			}
+		}
+		while(wods.get(end).getYear() <= Integer.parseInt(to.substring(4,8)))
+		{
+			while(wods.get(end).getMonth() <= Integer.parseInt(to.substring(2,4)))
+			{
+				while(wods.get(end).getDay() <= Integer.parseInt(to.substring(0,2)))
+				{
+					end++;
+				}
+			}
+		}
+		for(start; start <= end; start++)
+		{
+			resultList.add(wods.get(start));
+		}
+		return resultList;
+	}*/
+	
 	/**
 	 * Method to search through WOD, Notes, and Biometrics by content
 	 * @param (String logType) - type of log info to search through
