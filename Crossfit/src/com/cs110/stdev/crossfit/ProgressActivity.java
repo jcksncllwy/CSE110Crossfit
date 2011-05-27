@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.cs110.stdev.crossfit.IChart;
-import com.cs110.stdev.crossfit.WeightChart;
+import com.cs110.stdev.crossfit.WeightChartActivity;
 //import com.cs110.stdev.crossfit.XYChartBuilder;
 
 import android.app.ListActivity;
@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 public class ProgressActivity extends ListActivity {
-	private IChart[] mCharts = new IChart[] { new WeightChart() };
+	private IChart[] mCharts = new IChart[] { new WeightChartActivity() };
 
 	private String[] mMenuText;
 
@@ -59,15 +59,14 @@ public class ProgressActivity extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		Intent intent = null;
-		/*if (position == 0) {
-			intent = new Intent(this, XYChartBuilder.class);
-		} else if (position <= mCharts.length) {
-			intent = mCharts[position - 1].execute(this);
-		} else {
-			intent = new Intent(this, GenerateChart.class);
-		}*/
-		intent.setClass(this,WeightChart.class);
+		Intent intent = new Intent();
+		/*
+		 * if (position == 0) { intent = new Intent(this, XYChartBuilder.class);
+		 * } else if (position <= mCharts.length) { intent = mCharts[position -
+		 * 1].execute(this); } else { intent = new Intent(this,
+		 * GenerateChart.class); }
+		 */
+		intent.setClass(this, XYChartBuilderActivity.class);
 		startActivity(intent);
 	}
 }
