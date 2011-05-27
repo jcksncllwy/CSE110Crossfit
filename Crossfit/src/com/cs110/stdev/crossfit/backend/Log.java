@@ -528,5 +528,143 @@ public class Log implements Serializable {
 		}
 		wods = resultWod;
 	}
+	
+	public void sortBiomByDate() {
+		LinkedList<Biometric> resultBiom = new LinkedList<Biometric>();
+		resultBiom.add(biometrics.get(i));
+		for(int i = 0; i < biometrics.size(); i++) {
+			Biometric currBiom = biometrics.get(i);
+			boolean inserted = false;
+			int left = 0;
+			int right = resultBiom.size() - 1;
+			int mid = resultBiom.size()/2;
+			while(inserted == false) {
+				Biometric nowBiom = resultBiom.get(mid);
+				if(currBiom.getYear() < nowBiom.getYear()) {
+					right = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						inserted = true;
+					}
+				}
+				else if(currBiom.getYear() == currBiom.getYear()) {
+					if(currBiom.getMonth() < nowBiom.getMonth()) {
+						right = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							resultBiom.add(mid, currBiom);
+							inserted = true;
+						}
+					}
+					else if(currBiom.getMonth() == nowBiom.getMonth()) {
+						if(currBiom.getDay() < nowBiom.getDay()) {
+							right = mid;
+							mid = (right + left)/2;
+							if(left == mid || right == mid) {
+								resultBiom.add(mid, currBiom);
+								inserted = true;
+							}
+						}
+						else if(currBiom.getDay() > nowBiom.getDay()) {
+							if(j == resultBiom.size() - 1) {
+								left = mid;
+								mid = (right + left)/2;
+								if(left == mid || right == mid) {
+									resultBiom.add(mid + 1, currBiom);
+									inserted = true;
+								}
+							}
+						}
+					}
+					else if(currBiom.getMonth() > nowBiom.getMonth()) {
+						left = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							resultBiom.add(mid + 1, currBiom);
+							inserted = true;
+						}
+					}
+				}
+				else if(currBiom.getYear() > nowBiom.getYear()) {
+					left = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						resultBiom.add(mid + 1, currBiom);
+						inserted = true;
+					}
+				}
+			}
+		}
+		biometrics = resultBiom;
+	}
+	
+	public void sortNoteByDate() {
+		LinkedList<Notes> resultNote = new LinkedList<Notes>();
+		resultNote.add(notes.get(i));
+		for(int i = 0; i < notes.size(); i++) {
+			Notes currNote = notes.get(i);
+			boolean inserted = false;
+			int left = 0;
+			int right = resultNote.size() - 1;
+			int mid = resultNote.size()/2;
+			while(inserted == false) {
+				Notes nowNote = resultNote.get(mid);
+				if(currNote.getYear() < nowNote.getYear()) {
+					right = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						inserted = true;
+					}
+				}
+				else if(currNote.getYear() == currNote.getYear()) {
+					if(currNote.getMonth() < nowNote.getMonth()) {
+						right = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							resultNote.add(mid, currNote);
+							inserted = true;
+						}
+					}
+					else if(currNote.getMonth() == nowNote.getMonth()) {
+						if(currNote.getDay() < nowNote.getDay()) {
+							right = mid;
+							mid = (right + left)/2;
+							if(left == mid || right == mid) {
+								resultNote.add(mid, currNote);
+								inserted = true;
+							}
+						}
+						else if(currNote.getDay() > nowNote.getDay()) {
+							if(j == resultNote.size() - 1) {
+								left = mid;
+								mid = (right + left)/2;
+								if(left == mid || right == mid) {
+									resultNote.add(mid + 1, currNote);
+									inserted = true;
+								}
+							}
+						}
+					}
+					else if(currNote.getMonth() > nowNote.getMonth()) {
+						left = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							resultNote.add(mid + 1, currNote);
+							inserted = true;
+						}
+					}
+				}
+				else if(currNote.getYear() > nowNote.getYear()) {
+					left = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						resultNote.add(mid + 1, currNote);
+						inserted = true;
+					}
+				}
+			}
+		}
+		notes = resultNote;
+	}
 	*/
 }
