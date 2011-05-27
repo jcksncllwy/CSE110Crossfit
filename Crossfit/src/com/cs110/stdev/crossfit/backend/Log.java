@@ -360,29 +360,30 @@ public class Log implements Serializable {
 				if(currWod.getYear() < nowWod.getYear()) {
 					resultWod.add(j, currWod);
 				}
-				else if(currWod.getYear() == currWod.getYear()) {
+				else if(currWod.getYear() == nowWod.getYear()) {
 					if(currWod.getMonth() < nowWod.getMonth()) {
 						resultWod.add(j, currWod);
 					}
-					else if(currWod.getMonth() == currWod.getMonth()) {
+					else if(currWod.getMonth() == nowWod.getMonth()) {
 						if(currWod.getDay() < nowWod.getDay()) {
 							resultWod.add(j, currWod);
 						}
-						else if(currWod.getDay() > currWod.getDay()) {
+						else if(currWod.getDay() > nowWod.getDay()) {
 							if(j == resultWod.size() - 1) {
 								resultWod.add(currWod);
 							}
 						}
 					}
-					else if(currWod.getMonth() > currWod.getMonth() && j == resultWod.size() - 1) {
+					else if(currWod.getMonth() > nowWod.getMonth() && j == resultWod.size() - 1) {
 						resultWod.add(currWod);
 					}
 				}
-				else if(currWod.getYear() > currWod.getYear() && j == resultWod.size() - 1) {
+				else if(currWod.getYear() > nowWod.getYear() && j == resultWod.size() - 1) {
 					resultWod.add(currWod);
 				}
 			}
 		}
+		wods = resultWod;
 	}
 	
 	public void sortBiomByDate() {
@@ -395,29 +396,30 @@ public class Log implements Serializable {
 				if(currBiom.getYear() < nowBiom.getYear()) {
 					resultBiom.add(j, currBiom);
 				}
-				else if(currBiom.getYear() == currBiom.getYear()) {
+				else if(currBiom.getYear() == nowBiom.getYear()) {
 					if(currBiom.getMonth() < nowBiom.getMonth()) {
 						resultBiom.add(j, currBiom);
 					}
-					else if(currBiom.getMonth() == currBiom.getMonth()) {
+					else if(currBiom.getMonth() == nowBiom.getMonth()) {
 						if(currBiom.getDay() < nowBiom.getDay()) {
 							resultBiom.add(j, currBiom);
 						}
-						else if(currBiom.getDay() > currBiom.getDay()) {
+						else if(currBiom.getDay() > nowBiom.getDay()) {
 							if(j == resultBiom.size() - 1) {
 								resultBiom.add(currBiom);
 							}
 						}
 					}
-					else if(currBiom.getMonth() > currBiom.getMonth() && j == resultBiom.size() - 1) {
+					else if(currBiom.getMonth() > nowBiom.getMonth() && j == resultBiom.size() - 1) {
 						resultBiom.add(currBiom);
 					}
 				}
-				else if(currBiom.getYear() > currBiom.getYear() && j == resultBiom.size() - 1) {
+				else if(currBiom.getYear() > nowBiom.getYear() && j == resultBiom.size() - 1) {
 					resultBiom.add(currBiom);
 				}
 			}
 		}
+		biometrics = resultBiom;
 	}
 	
 	public void sortNotesByDate() {
@@ -430,29 +432,30 @@ public class Log implements Serializable {
 				if(currNote.getYear() < nowNote.getYear()) {
 					resultNote.add(j, currNote);
 				}
-				else if(currNote.getYear() == currNote.getYear()) {
+				else if(currNote.getYear() == nowNote.getYear()) {
 					if(currNote.getMonth() < nowNote.getMonth()) {
 						resultNote.add(j, currNote);
 					}
-					else if(currNote.getMonth() == currNote.getMonth()) {
+					else if(currNote.getMonth() == nowNote.getMonth()) {
 						if(currNote.getDay() < nowNote.getDay()) {
 							resultNote.add(j, currNote);
 						}
-						else if(currNote.getDay() > currNote.getDay()) {
+						else if(currNote.getDay() > nowNote.getDay()) {
 							if(j == resultNote.size() - 1) {
 								resultNote.add(currNote);
 							}
 						}
 					}
-					else if(currNote.getMonth() > currNote.getMonth() && j == resultNote.size() - 1) {
+					else if(currNote.getMonth() > nowNote.getMonth() && j == resultNote.size() - 1) {
 						resultNote.add(currNote);
 					}
 				}
-				else if(currNote.getYear() > currNote.getYear() && j == resultNote.size() - 1) {
+				else if(currNote.getYear() > nowNote.getYear() && j == resultNote.size() - 1) {
 					resultNote.add(currNote);
 				}
 			}
 		}
+		notes = resultNote;
 	}
 	
 	
@@ -463,12 +466,67 @@ public class Log implements Serializable {
 		for(int i = 0; i < wods.size(); i++) {
 			WOD currWod = wods.get(i);
 			boolean inserted = false;
-			int j = resultWod.size()/2;
+			int left = 0;
+			int right = resultWod.size() - 1;
+			int mid = resultWod.size()/2;
 			while(inserted == false) {
-				WOD nowWod = resultWod.get(j);
-				if(curr
+				WOD nowWod = resultWod.get(mid);
+				if(currWod.getYear() < nowWod.getYear()) {
+					right = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						inserted = true;
+					}
+				}
+				else if(currWod.getYear() == currWod.getYear()) {
+					if(currWod.getMonth() < nowWod.getMonth()) {
+						right = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							resultWod.add(mid, currWod);
+							inserted = true;
+						}
+					}
+					else if(currWod.getMonth() == nowWod.getMonth()) {
+						if(currWod.getDay() < nowWod.getDay()) {
+							right = mid;
+							mid = (right + left)/2;
+							if(left == mid || right == mid) {
+								resultWod.add(mid, currWod);
+								inserted = true;
+							}
+						}
+						else if(currWod.getDay() > nowWod.getDay()) {
+							if(j == resultWod.size() - 1) {
+								left = mid;
+								mid = (right + left)/2;
+								if(left == mid || right == mid) {
+									resultWod.add(mid + 1, currWod);
+									inserted = true;
+								}
+							}
+						}
+					}
+					else if(currWod.getMonth() > nowWod.getMonth()) {
+						left = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							resultWod.add(mid + 1, currWod);
+							inserted = true;
+						}
+					}
+				}
+				else if(currWod.getYear() > nowWod.getYear()) {
+					left = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						resultWod.add(mid + 1, currWod);
+						inserted = true;
+					}
+				}
 			}
 		}
+		wods = resultWod;
 	}
 	*/
 }
