@@ -16,8 +16,8 @@ public class Log implements Serializable {
 	private LinkedList<WOD> wods;
 	private LinkedList<Biometric> biometrics;
 	private LinkedList<Notes> notes;
-	
-	
+
+
 	//CONSTRUCTORS
 	/**
 	 * Default Constructor
@@ -47,7 +47,7 @@ public class Log implements Serializable {
 		*/		
 		return true;
 	}
-	
+
 	/**
 	 * Method to clear all log info
 	 * @return - true if successful, false otherwise
@@ -56,14 +56,14 @@ public class Log implements Serializable {
 		wods.clear();
 		biometrics.clear();
 		notes.clear();
-		
+
 		if(wods.size() == 0 && biometrics.size() == 0 && notes.size() == 0) {
 			return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
 	 * Method to search through WOD, Notes, or Biometrics by dates
 	 * and return all relevant info
@@ -74,7 +74,7 @@ public class Log implements Serializable {
 	public LinkedList<?> searchByDate(String logType,String date) {
 		LinkedList<?> results =  new LinkedList();
 		int i;
-		
+
 		if(logType == "WOD") {	
 			results = new LinkedList<WOD>();
 			for(i = 0; i < wods.size(); i++) {
@@ -83,7 +83,7 @@ public class Log implements Serializable {
 				}
 			}
 		}
-		
+
 		else if(logType == "Biometric") {
 			results = new LinkedList<Biometric>();
 			for(i = 0; i < biometrics.size(); i++) {
@@ -92,7 +92,7 @@ public class Log implements Serializable {
 				}
 			}
 		}
-		
+
 		else if(logType == "Notes") {
 			results = new LinkedList<Notes>();
 			for(i = 0; i < notes.size(); i++) {
@@ -101,10 +101,10 @@ public class Log implements Serializable {
 				}
 			}
 		}
-		
+
 		return results;
 	}
-	
+
 	/**
 	 * Method to search through WOD, Notes, and Biometrics by tags
 	 * and return all relevant info
@@ -112,14 +112,9 @@ public class Log implements Serializable {
 	 * @param (String[] tags) - list of tags to search for
 	 * @return - list of WODs, Notes, and Biometrics with said tags
 	 */
-<<<<<<< HEAD
 	 /*
 	public LinkedList<?> searchByTags(String logType, String[] tags) {
 		LinkedList<?> results;
-=======
-	public LinkedList<?> searchByTags(String logType, String[] tags) {
-		LinkedList<?> results =  new LinkedList();
->>>>>>> a2d0688c3b301510bcd4143c385f9f6adfee6cd0
 		int findTags,infoIndex,infoTags,found = 0;
 		
 		if(logType == "WOD") {	
@@ -191,9 +186,8 @@ public class Log implements Serializable {
 		}
 		return results;
 	}
-<<<<<<< HEAD
 	*/
-	
+
 	public LinkedList<WOD> searchWODTags(String[] tags) {
 		LinkedList<WOD> results = new LinkedList<WOD>();
 		int findTags,infoIndex,infoTags,found = 0;
@@ -210,14 +204,14 @@ public class Log implements Serializable {
 					}
 				}
 			}
-			
+
 			if(found == tags.length) {
 				results.add(wods.get(infoIndex));
 			}
 		}
 		return results;
 	}
-	
+
 	public LinkedList<Biometric> searchBiomTags(String[] tags) {
 		LinkedList<Biometric> results = new LinkedList<Biometric>();
 		int findTags,infoIndex,infoTags,found = 0;
@@ -234,14 +228,14 @@ public class Log implements Serializable {
 					}
 				}
 			}
-			
+
 			if(found == tags.length) {
 				results.add(biometrics.get(infoIndex));
 			}
 		}
 		return results;
 	}
-	
+
 	public LinkedList<Notes> searchNoteTags(String[] tags) {
 		LinkedList<Notes> results = new LinkedList<Notes>();
 		int findTags,infoIndex,infoTags,found = 0;
@@ -258,15 +252,15 @@ public class Log implements Serializable {
 					}
 				}
 			}
-			
+
 			if(found == tags.length) {
 				results.add(notes.get(infoIndex));
 			}
 		}
 		return results;
 	}
-	
-	
+
+
 	/*This is a method I wrote up relatively quickly, so there is most likely a problem
 	* in the logic. But I figured we need this to plot points on the graph "from" one
 	* date "to" another (of couse after sorting the information) - James*/
@@ -307,9 +301,7 @@ public class Log implements Serializable {
 		}
 		return resultList;
 	}*/
-=======
->>>>>>> a2d0688c3b301510bcd4143c385f9f6adfee6cd0
-	
+
 	/**
 	 * Method to search through WOD, Notes, and Biometrics by content
 	 * @param (String logType) - type of log info to search through
@@ -318,18 +310,11 @@ public class Log implements Serializable {
 	 */
 	/*
 	public LinkedList<?> searchByContent(String logType, String[] keywords) {
-<<<<<<< HEAD
 		LinkedList<?> results;
 		int findKeyword,infoIndex,infoKeyword,found = 0;
 		
 		if(logType == "WOD") {
 			results = new LinkedList<WOD>();
-=======
-		LinkedList<?> results = new LinkedList();
-		int findKeyword,infoIndex,infoKeyword,found = 0;
-		
-		if(logType == "WOD") {
->>>>>>> a2d0688c3b301510bcd4143c385f9f6adfee6cd0
 			//loop through list of WODs
 			for(infoIndex = 0; infoIndex < wods.size(); infoIndex++) {
 				//loop through tags to be found
@@ -351,11 +336,7 @@ public class Log implements Serializable {
 		}
 		else if(logType == "Biometric") {
 			found = 0;
-<<<<<<< HEAD
 			results = new LinkedList<Biometric>();
-=======
-			
->>>>>>> a2d0688c3b301510bcd4143c385f9f6adfee6cd0
 			//loop through list of WODs
 			for(infoIndex = 0; infoIndex < biometrics.size(); infoIndex++) {
 				//loop through tags to be found
@@ -378,11 +359,7 @@ public class Log implements Serializable {
 		
 		else if(logType == "Notes") {
 			found = 0;
-<<<<<<< HEAD
 			results = new LinkedList<Notes>();
-=======
-
->>>>>>> a2d0688c3b301510bcd4143c385f9f6adfee6cd0
 			//loop through list of WODs
 			for(infoIndex = 0; infoIndex < notes.size(); infoIndex++) {
 				int found = 0;
@@ -456,36 +433,36 @@ public class Log implements Serializable {
 	public void setNotes(LinkedList<Notes> newNotes) {
 		this.notes = newNotes;
 	}
-	
+
 	public String toString() {
 		String log = "";
 		int i;
-		
+
 		log += "WODs from " + wods.get(0).toDate() + "to " + wods.get(wods.size() - 1).toDate();
-		
+
 		for(i = 0; i < wods.size(); i++) {
 			log += "\n";
 			log += wods.get(i).toString();
 		}
-		
+
 		log += "\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
 		log += "Biometrics from " + biometrics.get(0).toDate() + "to " + biometrics.get(wods.size() - 1).toDate();
-		
+
 		for(i = 0; i < biometrics.size(); i++) {
 			log += "\n";
 			log += biometrics.get(i).toString();
 		}
-		
+
 		log += "\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
 		log += "Notes from " + notes.get(0).toDate() + "to " + notes.get(wods.size() - 1).toDate();
-		
+
 		for(i = 0; i < notes.size(); i++) {
 			log += "\n";
 			log += notes.get(i).toString();
 		}
-		
+
 		log += "\n>>>>>>>>>>>>>END OF LOG CONTENTS>>>>>>>>>>>>>>>>>";
-		
+
 		return log;
 	}
 
@@ -527,9 +504,9 @@ public class Log implements Serializable {
 			}
 		}
 	}
-	
+
 	/**
-	 * Method to sort the list of Biometrics by their dates (increasing index
+	 * Method to sort the list of Biometricss by their dates (increasing index
 	 * for later dates)
 	 */
 	public void sortBiomByDate() {
@@ -566,7 +543,7 @@ public class Log implements Serializable {
 			}
 		}
 	}
-	
+
 	/**
 	 * Method to sort the list of Notes by their dates (increasing index
 	 * for later dates)
@@ -605,9 +582,9 @@ public class Log implements Serializable {
 			}
 		}
 	}
-	
+
 	//Binary sort methods are below
-	
+
 	/*
 	public void sortWodByDate() {
 		LinkedList<WOD> resultWod = new LinkedList<WOD>();
@@ -765,7 +742,7 @@ public class Log implements Serializable {
 						inserted = true;
 					}
 				}
-				else if(currNote.getYear() == currNote.getYear()) {
+				else if(currNote.getYear() == nowNote.getYear()) {
 					if(currNote.getMonth() < nowNote.getMonth()) {
 						right = mid;
 						mid = (right + left)/2;
