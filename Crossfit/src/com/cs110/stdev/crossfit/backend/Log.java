@@ -472,7 +472,7 @@ public class Log implements Serializable {
 	 */
 	public void sortWodByDate() {
 		LinkedList<WOD> resultWod = new LinkedList<WOD>();
-		resultWod.add(wods.get(i));
+		resultWod.add(wods.get(0));
 		for(int i = 1; i < wods.size(); i++) {
 			WOD currWod = wods.get(i);
 			for(int j = 0; j < resultWod.size(); j++) {
@@ -511,7 +511,7 @@ public class Log implements Serializable {
 	 */
 	public void sortBiomByDate() {
 		LinkedList<Biometric> resultBiom = new LinkedList<Biometric>();
-		resultBiom.add(biometrics.get(i));
+		resultBiom.add(biometrics.get(0));
 		for(int i = 1; i < biometrics.size(); i++) {
 			Biometric currBiom = biometrics.get(i);
 			for(int j = 0; j < resultBiom.size(); j++) {
@@ -550,7 +550,7 @@ public class Log implements Serializable {
 	 */
 	public void sortNotesByDate() {
 		LinkedList<Notes> resultNote = new LinkedList<Notes>();
-		resultNote.add(notes.get(i));
+		resultNote.add(notes.get(0));
 		for(int i = 1; i < notes.size(); i++) {
 			Notes currNote = notes.get(i);
 			for(int j = 0; j < resultNote.size(); j++) {
@@ -588,8 +588,8 @@ public class Log implements Serializable {
 	/*
 	public void sortWodByDate() {
 		LinkedList<WOD> resultWod = new LinkedList<WOD>();
-		resultWod.add(wods.get(i));
-		for(int i = 0; i < wods.size(); i++) {
+		resultWod.add(wods.get(0));
+		for(int i = 1; i < wods.size(); i++) {
 			WOD currWod = wods.get(i);
 			boolean inserted = false;
 			int left = 0;
@@ -657,8 +657,8 @@ public class Log implements Serializable {
 	
 	public void sortBiomByDate() {
 		LinkedList<Biometric> resultBiom = new LinkedList<Biometric>();
-		resultBiom.add(biometrics.get(i));
-		for(int i = 0; i < biometrics.size(); i++) {
+		resultBiom.add(biometrics.get(0));
+		for(int i = 1; i < biometrics.size(); i++) {
 			Biometric currBiom = biometrics.get(i);
 			boolean inserted = false;
 			int left = 0;
@@ -726,8 +726,8 @@ public class Log implements Serializable {
 	
 	public void sortNoteByDate() {
 		LinkedList<Notes> resultNote = new LinkedList<Notes>();
-		resultNote.add(notes.get(i));
-		for(int i = 0; i < notes.size(); i++) {
+		resultNote.add(notes.get(0));
+		for(int i = 1; i < notes.size(); i++) {
 			Notes currNote = notes.get(i);
 			boolean inserted = false;
 			int left = 0;
