@@ -605,7 +605,7 @@ public class Log implements Serializable {
 						inserted = true;
 					}
 				}
-				else if(currWod.getYear() == currWod.getYear()) {
+				else if(currWod.getYear() == nowWod.getYear()) {
 					if(currWod.getMonth() < nowWod.getMonth()) {
 						right = mid;
 						mid = (right + left)/2;
@@ -674,7 +674,7 @@ public class Log implements Serializable {
 						inserted = true;
 					}
 				}
-				else if(currBiom.getYear() == currBiom.getYear()) {
+				else if(currBiom.getYear() == nowBiom.getYear()) {
 					if(currBiom.getMonth() < nowBiom.getMonth()) {
 						right = mid;
 						mid = (right + left)/2;
