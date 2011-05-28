@@ -112,79 +112,6 @@ public class Log implements Serializable {
 	 * @param (String[] tags) - list of tags to search for
 	 * @return - list of WODs, Notes, and Biometrics with said tags
 	 */
-	public LinkedList<?> searchByTags(String logType, String[] tags) {
-		LinkedList<?> results;
-		int findTags,infoIndex,infoTags,found = 0;
-		
-		if(logType == "WOD") {	
-			results = new LinkedList<WOD>();
-			//loop through list of WODs
-			for(infoIndex = 0; infoIndex < wods.size(); infoIndex++) {				
-				//loop through tags to be found
-				for(findTags = 0; findTags < tags.length; findTags++) {
-					//loop through specific WOD's tags
-					for(infoTags = 0; infoTags < wods.get(infoIndex).getTags().size(); infoTags++) {
-						//if WOD tag matches String[] tag
-						if(wods.get(infoIndex).getTags().get(infoTags) == tags[findTags]) {
-							found++;
-							break;
-						}
-					}
-				}
-				
-				if(found == tags.length) {
-					//results.add(wods.get(infoIndex));
-				}
-			}
-		}
-		else if(logType == "Biometric") {
-			results = new LinkedList<Biometric>();
-			found = 0;
-			
-			//loop through list of WODs
-			for(infoIndex = 0; infoIndex < biometrics.size(); infoIndex++) {
-				//loop through tags to be found
-				for(findTags = 0; findTags < tags.length; findTags++) {
-					//loop through specific WOD's tags
-					for(infoTags = 0; infoTags < biometrics.get(infoIndex).getTags().size(); infoTags++) {
-						//if WOD tag matches String[] tag
-						if(biometrics.get(infoIndex).getTags().get(infoTags) == tags[findTags]) {
-							found++;
-							break;
-						}
-					}
-				}
-				
-				if(found == tags.length) {
-					//results.add(biometrics.get(infoIndex));
-				}
-			}
-		}
-		else if(logType == "Notes") {
-			results = new LinkedList<Notes>();
-			found = 0;
-			
-			//loop through list of WODs
-			for(infoIndex = 0; infoIndex < notes.size(); infoIndex++) {
-				//loop through tags to be found
-				for(findTags = 0; findTags < tags.length; findTags++) {
-					//loop through specific WOD's tags
-					for(infoTags = 0; infoTags < notes.get(infoIndex).getTags().size(); infoTags++) {
-						//if WOD tag matches String[] tag
-						if(notes.get(infoIndex).getTags().get(infoTags) == tags[findTags]) {
-							found++;
-							break;
-						}
-					}
-				}
-				
-				if(found == tags.length) {
-					//results.add(notes.get(infoIndex));
-				}
-			}
-		}
-		return results;
-	}
 	
 	public LinkedList<WOD> searchWODTags(String[] tags) {
 		LinkedList<WOD> results = new LinkedList<WOD>();
@@ -470,7 +397,7 @@ public class Log implements Serializable {
 	 */
 	public void sortWodByDate() {
 		LinkedList<WOD> resultWod = new LinkedList<WOD>();
-		resultWod.add(wods.get(i));
+		resultWod.add(wods.get(0));
 		for(int i = 1; i < wods.size(); i++) {
 			WOD currWod = wods.get(i);
 			for(int j = 0; j < resultWod.size(); j++) {
@@ -509,7 +436,7 @@ public class Log implements Serializable {
 	 */
 	public void sortBiomByDate() {
 		LinkedList<Biometric> resultBiom = new LinkedList<Biometric>();
-		resultBiom.add(biometrics.get(i));
+		resultBiom.add(biometrics.get(0));
 		for(int i = 1; i < biometrics.size(); i++) {
 			Biometric currBiom = biometrics.get(i);
 			for(int j = 0; j < resultBiom.size(); j++) {
@@ -548,7 +475,7 @@ public class Log implements Serializable {
 	 */
 	public void sortNotesByDate() {
 		LinkedList<Notes> resultNote = new LinkedList<Notes>();
-		resultNote.add(notes.get(i));
+		resultNote.add(notes.get(0));
 		for(int i = 1; i < notes.size(); i++) {
 			Notes currNote = notes.get(i);
 			for(int j = 0; j < resultNote.size(); j++) {
