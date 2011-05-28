@@ -334,8 +334,8 @@ public class WOD implements Serializable{
 	}
 
 	/**
-	 * Method to convert date from MMDDYY to MM/DD/YY
-	 * @return - date (MM/DD/YY)
+	 * Method to convert date from MMDDYYYY to MM/DD/YYYY
+	 * @return - date (MM/DD/YYYY)
 	 */
 	public String toDate() {
 		String newDate = "";

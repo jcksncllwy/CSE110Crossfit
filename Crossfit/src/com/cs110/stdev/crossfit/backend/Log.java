@@ -112,6 +112,7 @@ public class Log implements Serializable {
 	 * @param (String[] tags) - list of tags to search for
 	 * @return - list of WODs, Notes, and Biometrics with said tags
 	 */
+	 /*
 	public LinkedList<?> searchByTags(String logType, String[] tags) {
 		LinkedList<?> results;
 		int findTags,infoIndex,infoTags,found = 0;
@@ -185,6 +186,7 @@ public class Log implements Serializable {
 		}
 		return results;
 	}
+	*/
 	
 	public LinkedList<WOD> searchWODTags(String[] tags) {
 		LinkedList<WOD> results = new LinkedList<WOD>();
@@ -478,25 +480,25 @@ public class Log implements Serializable {
 				if(currWod.getYear() < nowWod.getYear()) {
 					resultWod.add(j, currWod);
 				}
-				else if(currWod.getYear() == currWod.getYear()) {
+				else if(currWod.getYear() == nowWod.getYear()) {
 					if(currWod.getMonth() < nowWod.getMonth()) {
 						resultWod.add(j, currWod);
 					}
-					else if(currWod.getMonth() == currWod.getMonth()) {
+					else if(currWod.getMonth() == nowWod.getMonth()) {
 						if(currWod.getDay() < nowWod.getDay()) {
 							resultWod.add(j, currWod);
 						}
-						else if(currWod.getDay() > currWod.getDay()) {
+						else if(currWod.getDay() > nowWod.getDay()) {
 							if(j == resultWod.size() - 1) {
 								resultWod.add(currWod);
 							}
 						}
 					}
-					else if(currWod.getMonth() > currWod.getMonth() && j == resultWod.size() - 1) {
+					else if(currWod.getMonth() > nowWod.getMonth() && j == resultWod.size() - 1) {
 						resultWod.add(currWod);
 					}
 				}
-				else if(currWod.getYear() > currWod.getYear() && j == resultWod.size() - 1) {
+				else if(currWod.getYear() > nowWod.getYear() && j == resultWod.size() - 1) {
 					resultWod.add(currWod);
 				}
 			}
@@ -517,25 +519,25 @@ public class Log implements Serializable {
 				if(currBiom.getYear() < nowBiom.getYear()) {
 					resultBiom.add(j, currBiom);
 				}
-				else if(currBiom.getYear() == currBiom.getYear()) {
+				else if(currBiom.getYear() == nowBiom.getYear()) {
 					if(currBiom.getMonth() < nowBiom.getMonth()) {
 						resultBiom.add(j, currBiom);
 					}
-					else if(currBiom.getMonth() == currBiom.getMonth()) {
+					else if(currBiom.getMonth() == nowBiom.getMonth()) {
 						if(currBiom.getDay() < nowBiom.getDay()) {
 							resultBiom.add(j, currBiom);
 						}
-						else if(currBiom.getDay() > currBiom.getDay()) {
+						else if(currBiom.getDay() > nowBiom.getDay()) {
 							if(j == resultBiom.size() - 1) {
 								resultBiom.add(currBiom);
 							}
 						}
 					}
-					else if(currBiom.getMonth() > currBiom.getMonth() && j == resultBiom.size() - 1) {
+					else if(currBiom.getMonth() > nowBiom.getMonth() && j == resultBiom.size() - 1) {
 						resultBiom.add(currBiom);
 					}
 				}
-				else if(currBiom.getYear() > currBiom.getYear() && j == resultBiom.size() - 1) {
+				else if(currBiom.getYear() > nowBiom.getYear() && j == resultBiom.size() - 1) {
 					resultBiom.add(currBiom);
 				}
 			}
@@ -556,25 +558,25 @@ public class Log implements Serializable {
 				if(currNote.getYear() < nowNote.getYear()) {
 					resultNote.add(j, currNote);
 				}
-				else if(currNote.getYear() == currNote.getYear()) {
+				else if(currNote.getYear() == nowNote.getYear()) {
 					if(currNote.getMonth() < nowNote.getMonth()) {
 						resultNote.add(j, currNote);
 					}
-					else if(currNote.getMonth() == currNote.getMonth()) {
+					else if(currNote.getMonth() == nowNote.getMonth()) {
 						if(currNote.getDay() < nowNote.getDay()) {
 							resultNote.add(j, currNote);
 						}
-						else if(currNote.getDay() > currNote.getDay()) {
+						else if(currNote.getDay() > nowNote.getDay()) {
 							if(j == resultNote.size() - 1) {
 								resultNote.add(currNote);
 							}
 						}
 					}
-					else if(currNote.getMonth() > currNote.getMonth() && j == resultNote.size() - 1) {
+					else if(currNote.getMonth() > nowNote.getMonth() && j == resultNote.size() - 1) {
 						resultNote.add(currNote);
 					}
 				}
-				else if(currNote.getYear() > currNote.getYear() && j == resultNote.size() - 1) {
+				else if(currNote.getYear() > nowNote.getYear() && j == resultNote.size() - 1) {
 					resultNote.add(currNote);
 				}
 			}
