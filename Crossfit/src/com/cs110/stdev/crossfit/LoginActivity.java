@@ -118,13 +118,17 @@ public class LoginActivity extends Activity implements OnClickListener {
 		/* if the create account button is clicked */
 		else if (view == createAccountButton) {
 			// go to the registration page
+			int userListID = -1;
 			Intent intent = new Intent(this, RegisterActivity.class);
+			intent.putExtra("USER_LIST_ID", userListID);
 			startActivity(intent);
 		}
 		/* if forgot password button is clicked */
 		else if (view == forgotPasswordButton) {
 			// go to the retrieve password page
+			int userListID = -1;
 			Intent intent = new Intent(this, LostPasswordActivity.class);
+			intent.putExtra("USER_LIST_ID", userListID);
 			startActivity(intent);
 		}
 	}

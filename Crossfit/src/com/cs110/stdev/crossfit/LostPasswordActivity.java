@@ -58,7 +58,7 @@ public class LostPasswordActivity extends Activity implements OnClickListener {
 	public void onClick(View view) {
 		if (view == retrieveSQ) {
 			String username = enterUsernameLost.getText().toString();
-			Log.d("username value",username);
+			Log.d("username value", username);
 			LinkedList<User> userlist = new LinkedList<User>();
 			String filename = "user.ser";
 			/* pulling the user from the database */
@@ -75,12 +75,19 @@ public class LostPasswordActivity extends Activity implements OnClickListener {
 				ex.printStackTrace();
 			}
 
+			boolean usernameExists = false;
+
 			if (!userlist.isEmpty()) {
-				if (username.equals(userlist.get(0).getUsername()))
-					secQuestText.setText(userlist.get(0).getSecretQ());
-				else
+				for (int i = 0; i < userlist.size(); ++i) {
+					if (username.equals(userlist.get(i).getUsername())) {
+						secQuestText.setText(userlist.get(i).getSecretQ());
+						usernameExists = true;
+					}
+				}
+				if (!usernameExists) {
 					Toast.makeText(this, R.string.invalidUsername,
 							Toast.LENGTH_LONG).show();
+				}
 			} else
 				Toast.makeText(this, R.string.invalidUsername,
 						Toast.LENGTH_LONG).show();
@@ -106,15 +113,22 @@ public class LostPasswordActivity extends Activity implements OnClickListener {
 			}
 
 			User user = new User();
+			boolean validAnswer = false;
+
 			// check that there is actually a user in the database
 			if (!userlist.isEmpty() && username != null) {
-				user = userlist.get(0);
-				// checking that all the fields match
-				if (username.equals(user.getUsername())
-						&& securityA.equals(user.getSecretA()))
-					lostPassword.setText("Password: " + user.getPassword());
+				for (int i = 0; i < userlist.size(); i++) {
+					user = userlist.get(i);
+					// checking that all the fields match
+					if (username.equals(user.getUsername())
+							&& securityA.equals(user.getSecretA())) {
+						lostPassword.setText("Password: " + user.getPassword());
+						validAnswer = true;
+					}
+				}
 				// error message
-				else
+				// else
+				if (!validAnswer)
 					Toast.makeText(this, R.string.invalidSecretA,
 							Toast.LENGTH_LONG).show();
 			}

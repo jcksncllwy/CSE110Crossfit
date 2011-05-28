@@ -19,7 +19,7 @@ public class LogActivity extends Activity implements OnClickListener {
 	TextView lastcompletedwod;
 	
 	//get userListID from intent
-	int userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
+	int userListID;
 	
 	static final int ENTER_WOD_REQUEST = 0;
 	
@@ -36,6 +36,8 @@ public class LogActivity extends Activity implements OnClickListener {
 		wodDay = (DatePicker) findViewById(R.id.wodDay);
 		lastcompletedwod = (TextView) findViewById(R.id.lastcompletedwod);
 		lastcompletedwod.setText("Last completed WOD: ");
+		
+		 userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 		
 		enterwodButton.setOnClickListener(this);
 		viewwodButton.setOnClickListener(this);

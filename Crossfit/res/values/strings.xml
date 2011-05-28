@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<string name="hello">Hello World, SimpleCalendar!</string>
+    <string name="calendar_app_name">SimpleCalendarImp</string>
 	<string name="app_name">CrossFit++</string>
 	<string name="login">Login</string>
 	<string name="buttonEnterWOD">Enter WOD</string>
