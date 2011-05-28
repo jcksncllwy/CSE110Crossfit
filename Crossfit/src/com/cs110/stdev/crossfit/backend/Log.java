@@ -113,7 +113,7 @@ public class Log implements Serializable {
 	 * @return - list of WODs, Notes, and Biometrics with said tags
 	 */
 	public LinkedList<?> searchByTags(String logType, String[] tags) {
-		LinkedList<?> results =  new LinkedList();
+		LinkedList<?> results;
 		int findTags,infoIndex,infoTags,found = 0;
 		
 		if(logType == "WOD") {	
@@ -194,10 +194,11 @@ public class Log implements Serializable {
 	 */
 	/*
 	public LinkedList<?> searchByContent(String logType, String[] keywords) {
-		LinkedList<?> results = new LinkedList();
+		LinkedList<?> results;
 		int findKeyword,infoIndex,infoKeyword,found = 0;
 		
 		if(logType == "WOD") {
+			results = new LinkedList<WOD>();
 			//loop through list of WODs
 			for(infoIndex = 0; infoIndex < wods.size(); infoIndex++) {
 				//loop through tags to be found
@@ -219,7 +220,7 @@ public class Log implements Serializable {
 		}
 		else if(logType == "Biometric") {
 			found = 0;
-			
+			results = new LinkedList<Biometric>();
 			//loop through list of WODs
 			for(infoIndex = 0; infoIndex < biometrics.size(); infoIndex++) {
 				//loop through tags to be found
@@ -242,7 +243,7 @@ public class Log implements Serializable {
 		
 		else if(logType == "Notes") {
 			found = 0;
-
+			results = new LinkedList<Notes>();
 			//loop through list of WODs
 			for(infoIndex = 0; infoIndex < notes.size(); infoIndex++) {
 				int found = 0;
@@ -349,7 +350,10 @@ public class Log implements Serializable {
 		return log;
 	}
 	
-	
+	/**
+	 * Method to sort the list of WODs by their dates (increasing index
+	 * for later dates)
+	 */
 	public void sortWodByDate() {
 		LinkedList<WOD> resultWod = new LinkedList<WOD>();
 		resultWod.add(wods.get(i));
@@ -386,6 +390,10 @@ public class Log implements Serializable {
 		wods = resultWod;
 	}
 	
+	/**
+	 * Method to sort the list of Biometricss by their dates (increasing index
+	 * for later dates)
+	 */
 	public void sortBiomByDate() {
 		LinkedList<Biometric> resultBiom = new LinkedList<Biometric>();
 		resultBiom.add(biometrics.get(i));
@@ -422,6 +430,10 @@ public class Log implements Serializable {
 		biometrics = resultBiom;
 	}
 	
+	/**
+	 * Method to sort the list of Notes by their dates (increasing index
+	 * for later dates)
+	 */
 	public void sortNotesByDate() {
 		LinkedList<Notes> resultNote = new LinkedList<Notes>();
 		resultNote.add(notes.get(i));
@@ -458,6 +470,7 @@ public class Log implements Serializable {
 		notes = resultNote;
 	}
 	
+	//Binary sort methods are below
 	
 	/*
 	public void sortWodByDate() {
