@@ -393,7 +393,7 @@ public class Log implements Serializable {
 	
 	public void sortWodByDate() {
 		LinkedList<WOD> resultWod = new LinkedList<WOD>();
-		//resultWod.add(wods.get(i));
+		resultWod.add(wods.get(i));
 		for(int i = 1; i < wods.size(); i++) {
 			WOD currWod = wods.get(i);
 			for(int j = 0; j < resultWod.size(); j++) {
@@ -426,7 +426,7 @@ public class Log implements Serializable {
 		}
 	}
 	
-	/*public void sortBiomByDate() {
+	public void sortBiomByDate() {
 		LinkedList<Biometric> resultBiom = new LinkedList<Biometric>();
 		resultBiom.add(biometrics.get(i));
 		for(int i = 1; i < biometrics.size(); i++) {
