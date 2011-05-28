@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_height="wrap_content"
+	android:layout_width="match_parent">
+	<ScrollView android:id="@+id/ScrollView01"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<LinearLayout android:id="@+id/LinearLayout02"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:orientation="vertical">
+			<ImageView android:id="@+id/imageView1"
+				android:layout_height="wrap_content" android:src="@drawable/icon"
+				android:layout_width="wrap_content"></ImageView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/thenameText"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/birthdayText"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/theageText"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/heightText"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/weightText"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/thebmiText"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/bodyfatText"></TextView>
+		</LinearLayout>
+	</ScrollView>
+	<Button android:layout_gravity="right" android:text="Edit Profile" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/editProfileButton"></Button>
+</LinearLayout>

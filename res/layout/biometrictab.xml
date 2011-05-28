@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/linearLayout1" android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical">
+        <Button android:layout_height="wrap_content" android:id="@+id/addBiometric" android:text="@string/recordbiometric" android:layout_width="150dp" android:layout_gravity="center"></Button>
+    </LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="wrap_content" android:background="@drawable/chains">
+	<TextView android:id="@+id/appName" android:layout_height="wrap_content"
+		android:text="@string/app_name" android:layout_width="wrap_content"
+		android:layout_gravity="center" android:textSize="50dp"></TextView>
+	<TextView android:text="Username:" android:id="@+id/usernameText"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+	<EditText android:layout_height="wrap_content" android:id="@+id/enterUsername"
+		android:layout_width="match_parent" android:text=""></EditText>
+	<TextView android:text="Password:" android:id="@+id/passwordText"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:password="false"></TextView>
+	<EditText android:layout_height="wrap_content" android:id="@+id/enterPassword"
+		android:layout_width="match_parent" android:text="" android:password="true"></EditText>
+	<Button android:layout_gravity="center" android:layout_height="wrap_content"
+		android:layout_width="150dip" android:text="@string/login" android:id="@+id/loginButton"></Button>
+	<Button android:text="Create Account" android:layout_height="wrap_content"
+		android:layout_gravity="center" android:layout_width="150dip"
+		android:id="@+id/createAccountButton"></Button>
+	<Button android:layout_gravity="center" android:id="@+id/forgotPasswordButton" android:layout_height="wrap_content" android:layout_width="150dip" android:text="@string/forgotpassword"></Button>
+</LinearLayout>
