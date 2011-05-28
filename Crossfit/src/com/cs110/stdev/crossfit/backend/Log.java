@@ -584,6 +584,7 @@ public class Log implements Serializable {
 	}
 	
 	//Binary sort methods are below
+	//meow
 	
 	/*
 	public void sortWodByDate() {
