@@ -45,7 +45,7 @@ public class Biometric implements Serializable {
 		if (tags.add(Double.toString(weight))
 				&& tags.add(Double.toString(bodyFat))
 				&& tags.add(Double.toString(heartRate))
-				&& tags.add(Double.toString(bMI)) && tags.add(date.toDate())) {
+				&& tags.add(Double.toString(bMI)) && tags.add(this.toDate())) {
 			return true;
 		}
 
