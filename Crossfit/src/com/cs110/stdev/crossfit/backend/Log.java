@@ -188,6 +188,7 @@ public class Log implements Serializable {
 	
 	public LinkedList<WOD> searchWODTags(String[] tags) {
 		LinkedList<WOD> results = new LinkedList<WOD>();
+		int findTags,infoIndex,infoTags,found = 0;
 		//loop through list of WODs
 		for(infoIndex = 0; infoIndex < wods.size(); infoIndex++) {				
 			//loop through tags to be found
@@ -211,8 +212,52 @@ public class Log implements Serializable {
 	
 	public LinkedList<Biometric> searchBiomTags(String[] tags) {
 		LinkedList<Biometric> results = new LinkedList<Biometric>();
+		int findTags,infoIndex,infoTags,found = 0;
+		//loop through list of WODs
+		for(infoIndex = 0; infoIndex < biometrics.size(); infoIndex++) {
+			//loop through tags to be found
+			for(findTags = 0; findTags < tags.length; findTags++) {
+				//loop through specific WOD's tags
+				for(infoTags = 0; infoTags < biometrics.get(infoIndex).getTags().size(); infoTags++) {
+					//if WOD tag matches String[] tag
+					if(biometrics.get(infoIndex).getTags().get(infoTags) == tags[findTags]) {
+						found++;
+						break;
+					}
+				}
+			}
+			
+			if(found == tags.length) {
+				results.add(biometrics.get(infoIndex));
+			}
+		}
 		return results;
 	}
+	
+	public LinkedList<Notes> searchNoteTags(String[] tags) {
+		LinkedList<Notes> results = new LinkedList<Notes>();
+		int findTags,infoIndex,infoTags,found = 0;
+		//loop through list of WODs
+		for(infoIndex = 0; infoIndex < notes.size(); infoIndex++) {
+			//loop through tags to be found
+			for(findTags = 0; findTags < tags.length; findTags++) {
+				//loop through specific WOD's tags
+				for(infoTags = 0; infoTags < notes.get(infoIndex).getTags().size(); infoTags++) {
+					//if WOD tag matches String[] tag
+					if(notes.get(infoIndex).getTags().get(infoTags) == tags[findTags]) {
+						found++;
+						break;
+					}
+				}
+			}
+			
+			if(found == tags.length) {
+				results.add(notes.get(infoIndex));
+			}
+		}
+		return results;
+	}
+	
 	
 	/*This is a method I wrote up relatively quickly, so there is most likely a problem
 	* in the logic. But I figured we need this to plot points on the graph "from" one
