@@ -112,9 +112,14 @@ public class Log implements Serializable {
 	 * @param (String[] tags) - list of tags to search for
 	 * @return - list of WODs, Notes, and Biometrics with said tags
 	 */
+<<<<<<< HEAD
 	 /*
 	public LinkedList<?> searchByTags(String logType, String[] tags) {
 		LinkedList<?> results;
+=======
+	public LinkedList<?> searchByTags(String logType, String[] tags) {
+		LinkedList<?> results =  new LinkedList();
+>>>>>>> a2d0688c3b301510bcd4143c385f9f6adfee6cd0
 		int findTags,infoIndex,infoTags,found = 0;
 		
 		if(logType == "WOD") {	
@@ -186,6 +191,7 @@ public class Log implements Serializable {
 		}
 		return results;
 	}
+<<<<<<< HEAD
 	*/
 	
 	public LinkedList<WOD> searchWODTags(String[] tags) {
@@ -301,6 +307,8 @@ public class Log implements Serializable {
 		}
 		return resultList;
 	}*/
+=======
+>>>>>>> a2d0688c3b301510bcd4143c385f9f6adfee6cd0
 	
 	/**
 	 * Method to search through WOD, Notes, and Biometrics by content
@@ -310,11 +318,18 @@ public class Log implements Serializable {
 	 */
 	/*
 	public LinkedList<?> searchByContent(String logType, String[] keywords) {
+<<<<<<< HEAD
 		LinkedList<?> results;
 		int findKeyword,infoIndex,infoKeyword,found = 0;
 		
 		if(logType == "WOD") {
 			results = new LinkedList<WOD>();
+=======
+		LinkedList<?> results = new LinkedList();
+		int findKeyword,infoIndex,infoKeyword,found = 0;
+		
+		if(logType == "WOD") {
+>>>>>>> a2d0688c3b301510bcd4143c385f9f6adfee6cd0
 			//loop through list of WODs
 			for(infoIndex = 0; infoIndex < wods.size(); infoIndex++) {
 				//loop through tags to be found
@@ -336,7 +351,11 @@ public class Log implements Serializable {
 		}
 		else if(logType == "Biometric") {
 			found = 0;
+<<<<<<< HEAD
 			results = new LinkedList<Biometric>();
+=======
+			
+>>>>>>> a2d0688c3b301510bcd4143c385f9f6adfee6cd0
 			//loop through list of WODs
 			for(infoIndex = 0; infoIndex < biometrics.size(); infoIndex++) {
 				//loop through tags to be found
@@ -359,7 +378,11 @@ public class Log implements Serializable {
 		
 		else if(logType == "Notes") {
 			found = 0;
+<<<<<<< HEAD
 			results = new LinkedList<Notes>();
+=======
+
+>>>>>>> a2d0688c3b301510bcd4143c385f9f6adfee6cd0
 			//loop through list of WODs
 			for(infoIndex = 0; infoIndex < notes.size(); infoIndex++) {
 				int found = 0;
@@ -465,7 +488,7 @@ public class Log implements Serializable {
 		
 		return log;
 	}
-	
+
 	/**
 	 * Method to sort the list of WODs by their dates (increasing index
 	 * for later dates)
@@ -506,7 +529,7 @@ public class Log implements Serializable {
 	}
 	
 	/**
-	 * Method to sort the list of Biometricss by their dates (increasing index
+	 * Method to sort the list of Biometrics by their dates (increasing index
 	 * for later dates)
 	 */
 	public void sortBiomByDate() {
@@ -584,7 +607,6 @@ public class Log implements Serializable {
 	}
 	
 	//Binary sort methods are below
-	//meow
 	
 	/*
 	public void sortWodByDate() {
