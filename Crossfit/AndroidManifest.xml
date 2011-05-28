@@ -25,7 +25,7 @@
         <activity android:name="SettingsActivity"></activity>
         <activity android:name="BiometricActivity"></activity>
         <activity android:name="BiometricTabActivity"></activity>
-        <activity android:name="XYChartBuilderActivity"></activity>
+        <activity android:name="SimpleCalendarViewActivity"></activity>
 
     </application>
 </manifest>

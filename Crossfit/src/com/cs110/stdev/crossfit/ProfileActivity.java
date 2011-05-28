@@ -29,7 +29,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 	Button editProfileButton;
 	
 	//get userListID from intent
-	int userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
+	int userListID;
 
 	/** Called when the activity is first created. */
 	@SuppressWarnings("unchecked")
@@ -47,6 +47,8 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		thebmiText = (TextView) findViewById(R.id.thebmiText);
 		bodyfatText = (TextView) findViewById(R.id.bodyfatText);
 		editProfileButton = (Button) findViewById(R.id.editProfileButton);
+		
+		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 
 		LinkedList<User> userlist = new LinkedList<User>();
 		String filename = "user.ser";

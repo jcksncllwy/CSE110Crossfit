@@ -186,47 +186,6 @@ public class Log implements Serializable {
 		return results;
 	}
 	
-	/*This is a method I wrote up relatively quickly, so there is most likely a problem
-	* in the logic. But I figured we need this to plot points on the graph "from" one
-	* date "to" another (of couse after sorting the information) - James*/
-	/**
-	 * Method to get a LinkedList of WODs in a range of dates
-	 * @param (String from) - start of date range
-	 * @param (String to) - end of date range
-	 * @return - list of WODs within the range
-	 */
-	 /*
-	public LinkedList<WOD> getWODsFromTo(String from, String to)
-	{
-		LinkedList<WOD> resultList = new LinkedList<WOD>;
-		int start, end = 0;
-		while(wods.get(start).getYear() <= Integer.parseInt(from.substring(4,8)))
-		{
-			while(wods.get(start).getMonth() <= Integer.parseInt(from.substring(2,4)))
-			{
-				while(wods.get(start).getDay() <= Integer.parseInt(from.substring(0,2)))
-				{
-					start++;
-				}
-			}
-		}
-		while(wods.get(end).getYear() <= Integer.parseInt(to.substring(4,8)))
-		{
-			while(wods.get(end).getMonth() <= Integer.parseInt(to.substring(2,4)))
-			{
-				while(wods.get(end).getDay() <= Integer.parseInt(to.substring(0,2)))
-				{
-					end++;
-				}
-			}
-		}
-		for(start; start <= end; start++)
-		{
-			resultList.add(wods.get(start));
-		}
-		return resultList;
-	}*/
-	
 	/**
 	 * Method to search through WOD, Notes, and Biometrics by content
 	 * @param (String logType) - type of log info to search through
@@ -389,8 +348,7 @@ public class Log implements Serializable {
 		
 		return log;
 	}
-	
-	
+	/*
 	public void sortWodByDate() {
 		LinkedList<WOD> resultWod = new LinkedList<WOD>();
 		resultWod.add(wods.get(i));
@@ -422,92 +380,6 @@ public class Log implements Serializable {
 				else if(currWod.getYear() > currWod.getYear() && j == resultWod.size() - 1) {
 					resultWod.add(currWod);
 				}
-			}
-		}
-	}
-	
-	public void sortBiomByDate() {
-		LinkedList<Biometric> resultBiom = new LinkedList<Biometric>();
-		resultBiom.add(biometrics.get(i));
-		for(int i = 1; i < biometrics.size(); i++) {
-			Biometric currBiom = biometrics.get(i);
-			for(int j = 0; j < resultBiom.size(); j++) {
-				Biometric nowBiom = resultBiom.get(j);
-				if(currBiom.getYear() < nowBiom.getYear()) {
-					resultBiom.add(j, currBiom);
-				}
-				else if(currBiom.getYear() == currBiom.getYear()) {
-					if(currBiom.getMonth() < nowBiom.getMonth()) {
-						resultBiom.add(j, currBiom);
-					}
-					else if(currBiom.getMonth() == currBiom.getMonth()) {
-						if(currBiom.getDay() < nowBiom.getDay()) {
-							resultBiom.add(j, currBiom);
-						}
-						else if(currBiom.getDay() > currBiom.getDay()) {
-							if(j == resultBiom.size() - 1) {
-								resultBiom.add(currBiom);
-							}
-						}
-					}
-					else if(currBiom.getMonth() > currBiom.getMonth() && j == resultBiom.size() - 1) {
-						resultBiom.add(currBiom);
-					}
-				}
-				else if(currBiom.getYear() > currBiom.getYear() && j == resultBiom.size() - 1) {
-					resultBiom.add(currBiom);
-				}
-			}
-		}
-	}
-	
-	public void sortNotesByDate() {
-		LinkedList<Notes> resultNote = new LinkedList<Notes>();
-		resultNote.add(notes.get(i));
-		for(int i = 1; i < notes.size(); i++) {
-			Notes currNote = notes.get(i);
-			for(int j = 0; j < resultNote.size(); j++) {
-				Notes nowNote = resultNote.get(j);
-				if(currNote.getYear() < nowNote.getYear()) {
-					resultNote.add(j, currNote);
-				}
-				else if(currNote.getYear() == currNote.getYear()) {
-					if(currNote.getMonth() < nowNote.getMonth()) {
-						resultNote.add(j, currNote);
-					}
-					else if(currNote.getMonth() == currNote.getMonth()) {
-						if(currNote.getDay() < nowNote.getDay()) {
-							resultNote.add(j, currNote);
-						}
-						else if(currNote.getDay() > currNote.getDay()) {
-							if(j == resultNote.size() - 1) {
-								resultNote.add(currNote);
-							}
-						}
-					}
-					else if(currNote.getMonth() > currNote.getMonth() && j == resultNote.size() - 1) {
-						resultNote.add(currNote);
-					}
-				}
-				else if(currNote.getYear() > currNote.getYear() && j == resultNote.size() - 1) {
-					resultNote.add(currNote);
-				}
-			}
-		}
-	}
-	
-	
-	/*
-	public void sortWodByDate() {
-		LinkedList<WOD> resultWod = new LinkedList<WOD>();
-		resultWod.add(wods.get(i));
-		for(int i = 0; i < wods.size(); i++) {
-			WOD currWod = wods.get(i);
-			boolean inserted = false;
-			int j = resultWod.size()/2;
-			while(inserted == false) {
-				WOD nowWod = resultWod.get(j);
-				if(curr
 			}
 		}
 	}

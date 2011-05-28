@@ -34,7 +34,7 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 	TextView birthdayText;
 	
 	//get userListID from intent
-	int userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
+	int userListID;
 
 	private boolean changeDate;
 
@@ -54,6 +54,8 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 		// could be a problem
 		thebdaybutton = (Button) findViewById(R.id.thebdaybutton);
 		birthdayText = (TextView) findViewById(R.id.birthdayText);
+		
+		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 
 		LinkedList<User> userlist = new LinkedList<User>();
 		String filename = "user.ser";

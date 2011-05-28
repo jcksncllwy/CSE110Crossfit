@@ -121,7 +121,9 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				ex.printStackTrace();
 			}
 
+			int userListID = userlist.indexOf(theuser);
 			Intent i = new Intent(this, EditProfileActivity.class);
+			i.putExtra("USER_LIST_ID", userListID);
 			startActivity(i);
 		} else
 			// display a message to the user that the fields are invalid

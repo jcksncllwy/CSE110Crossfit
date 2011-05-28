@@ -9,11 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TabHost;
+import android.widget.Toast;
+import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 
 public class TabHosterActivity extends TabActivity implements OnClickListener {
 
 	TextView logoutTabHost;
+	int userListID;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -28,7 +31,7 @@ public class TabHosterActivity extends TabActivity implements OnClickListener {
 		 * is ever -1, that means it was never *
 		 * passed                              *
 		 ***************************************/
-		int userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
+		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 		
 		logoutTabHost = (TextView) findViewById(R.id.logoutTabHost);
 
@@ -38,7 +41,7 @@ public class TabHosterActivity extends TabActivity implements OnClickListener {
 		Intent intent; // Reusable Intent for each tab
 
 		// Create an Intent to launch an Activity for the tab (to be reused)
-		intent = new Intent().setClass(this, ProfileActivity.class);
+		intent = new Intent(this, ProfileActivity.class);
 		intent.putExtra("USER_LIST_ID", userListID);
 
 		// Initialize a TabSpec for each tab and add it to the TabHost
@@ -48,36 +51,34 @@ public class TabHosterActivity extends TabActivity implements OnClickListener {
 		tabHost.addTab(spec);
 
 		// Do the same for the other tabs
-		intent = new Intent().setClass(this, LogActivity.class);
+		intent = new Intent(this, LogActivity.class);
 		intent.putExtra("USER_LIST_ID", userListID);
 		spec = tabHost.newTabSpec("Log")
 				.setIndicator("Log", res.getDrawable(R.drawable.calendar))
 				.setContent(intent);
 		tabHost.addTab(spec);
 
-
-		intent = new Intent().setClass(this, BiometricTabActivity.class);
+		intent = new Intent(this, BiometricTabActivity.class);
 		intent.putExtra("USER_LIST_ID", userListID);
 		spec = tabHost.newTabSpec("biometrics")
 				.setIndicator("Biometrics", res.getDrawable(R.drawable.stethoscope))
 				.setContent(intent);
 		tabHost.addTab(spec);
 		
-		intent = new Intent().setClass(this, ProgressActivity.class);
+		intent = new Intent(this, ProgressActivity.class);
 		intent.putExtra("USER_LIST_ID", userListID);
 		spec = tabHost.newTabSpec("progress")
 				.setIndicator("Progress", res.getDrawable(R.drawable.graph))
 				.setContent(intent);
 		tabHost.addTab(spec);
 
-		intent = new Intent().setClass(this, SettingsActivity.class);
+		intent = new Intent(this, SettingsActivity.class);
 		intent.putExtra("USER_LIST_ID", userListID);
 		spec = tabHost.newTabSpec("settings")
 				.setIndicator("Settings", res.getDrawable(R.drawable.settings))
 				.setContent(intent);
 		tabHost.addTab(spec);
 
-		
 		tabHost.setCurrentTab(0);
 
 		logoutTabHost.setOnClickListener(this);
