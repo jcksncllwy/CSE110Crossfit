@@ -181,6 +181,21 @@ public class Notes implements Serializable {
 		return newDate;
 	}
 	
+	public int getMonth() {
+		String strMonth = date.substring(0, 2);
+		return Integer.parseInt(strMonth);
+	}
+	
+	public int getDay() {
+		String strDay = date.substring(2, 4);
+		return Integer.parseInt(strDay);
+	}
+	
+	public int getYear() {
+		String strYear = date.substring(4, 8);
+		return Integer.parseInt(strYear);
+	}
+	
 	/**
 	 * Method to convert all of Notes info to String for text dump
 	 * @return - String of Notes info

@@ -186,6 +186,34 @@ public class Log implements Serializable {
 		return results;
 	}
 	
+	public LinkedList<WOD> searchWODTags(String[] tags) {
+		LinkedList<WOD> results = new LinkedList<WOD>();
+		//loop through list of WODs
+		for(infoIndex = 0; infoIndex < wods.size(); infoIndex++) {				
+			//loop through tags to be found
+			for(findTags = 0; findTags < tags.length; findTags++) {
+				//loop through specific WOD's tags
+				for(infoTags = 0; infoTags < wods.get(infoIndex).getTags().size(); infoTags++) {
+					//if WOD tag matches String[] tag
+					if(wods.get(infoIndex).getTags().get(infoTags) == tags[findTags]) {
+						found++;
+						break;
+					}
+				}
+			}
+			
+			if(found == tags.length) {
+				results.add(wods.get(infoIndex));
+			}
+		}
+		return results;
+	}
+	
+	public LinkedList<Biometric> searchBiomTags(String[] tags) {
+		LinkedList<Biometric> results = new LinkedList<Biometric>();
+		return results;
+	}
+	
 	/*This is a method I wrote up relatively quickly, so there is most likely a problem
 	* in the logic. But I figured we need this to plot points on the graph "from" one
 	* date "to" another (of couse after sorting the information) - James*/
@@ -517,12 +545,205 @@ public class Log implements Serializable {
 		for(int i = 0; i < wods.size(); i++) {
 			WOD currWod = wods.get(i);
 			boolean inserted = false;
-			int j = resultWod.size()/2;
+			int left = 0;
+			int right = resultWod.size() - 1;
+			int mid = resultWod.size()/2;
 			while(inserted == false) {
-				WOD nowWod = resultWod.get(j);
-				if(curr
+				WOD nowWod = resultWod.get(mid);
+				if(currWod.getYear() < nowWod.getYear()) {
+					right = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						inserted = true;
+					}
+				}
+				else if(currWod.getYear() == currWod.getYear()) {
+					if(currWod.getMonth() < nowWod.getMonth()) {
+						right = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							resultWod.add(mid, currWod);
+							inserted = true;
+						}
+					}
+					else if(currWod.getMonth() == nowWod.getMonth()) {
+						if(currWod.getDay() < nowWod.getDay()) {
+							right = mid;
+							mid = (right + left)/2;
+							if(left == mid || right == mid) {
+								resultWod.add(mid, currWod);
+								inserted = true;
+							}
+						}
+						else if(currWod.getDay() > nowWod.getDay()) {
+							if(j == resultWod.size() - 1) {
+								left = mid;
+								mid = (right + left)/2;
+								if(left == mid || right == mid) {
+									resultWod.add(mid + 1, currWod);
+									inserted = true;
+								}
+							}
+						}
+					}
+					else if(currWod.getMonth() > nowWod.getMonth()) {
+						left = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							resultWod.add(mid + 1, currWod);
+							inserted = true;
+						}
+					}
+				}
+				else if(currWod.getYear() > nowWod.getYear()) {
+					left = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						resultWod.add(mid + 1, currWod);
+						inserted = true;
+					}
+				}
 			}
 		}
+		wods = resultWod;
+	}
+	
+	public void sortBiomByDate() {
+		LinkedList<Biometric> resultBiom = new LinkedList<Biometric>();
+		resultBiom.add(biometrics.get(i));
+		for(int i = 0; i < biometrics.size(); i++) {
+			Biometric currBiom = biometrics.get(i);
+			boolean inserted = false;
+			int left = 0;
+			int right = resultBiom.size() - 1;
+			int mid = resultBiom.size()/2;
+			while(inserted == false) {
+				Biometric nowBiom = resultBiom.get(mid);
+				if(currBiom.getYear() < nowBiom.getYear()) {
+					right = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						inserted = true;
+					}
+				}
+				else if(currBiom.getYear() == currBiom.getYear()) {
+					if(currBiom.getMonth() < nowBiom.getMonth()) {
+						right = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							resultBiom.add(mid, currBiom);
+							inserted = true;
+						}
+					}
+					else if(currBiom.getMonth() == nowBiom.getMonth()) {
+						if(currBiom.getDay() < nowBiom.getDay()) {
+							right = mid;
+							mid = (right + left)/2;
+							if(left == mid || right == mid) {
+								resultBiom.add(mid, currBiom);
+								inserted = true;
+							}
+						}
+						else if(currBiom.getDay() > nowBiom.getDay()) {
+							if(j == resultBiom.size() - 1) {
+								left = mid;
+								mid = (right + left)/2;
+								if(left == mid || right == mid) {
+									resultBiom.add(mid + 1, currBiom);
+									inserted = true;
+								}
+							}
+						}
+					}
+					else if(currBiom.getMonth() > nowBiom.getMonth()) {
+						left = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							resultBiom.add(mid + 1, currBiom);
+							inserted = true;
+						}
+					}
+				}
+				else if(currBiom.getYear() > nowBiom.getYear()) {
+					left = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						resultBiom.add(mid + 1, currBiom);
+						inserted = true;
+					}
+				}
+			}
+		}
+		biometrics = resultBiom;
+	}
+	
+	public void sortNoteByDate() {
+		LinkedList<Notes> resultNote = new LinkedList<Notes>();
+		resultNote.add(notes.get(i));
+		for(int i = 0; i < notes.size(); i++) {
+			Notes currNote = notes.get(i);
+			boolean inserted = false;
+			int left = 0;
+			int right = resultNote.size() - 1;
+			int mid = resultNote.size()/2;
+			while(inserted == false) {
+				Notes nowNote = resultNote.get(mid);
+				if(currNote.getYear() < nowNote.getYear()) {
+					right = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						inserted = true;
+					}
+				}
+				else if(currNote.getYear() == currNote.getYear()) {
+					if(currNote.getMonth() < nowNote.getMonth()) {
+						right = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							resultNote.add(mid, currNote);
+							inserted = true;
+						}
+					}
+					else if(currNote.getMonth() == nowNote.getMonth()) {
+						if(currNote.getDay() < nowNote.getDay()) {
+							right = mid;
+							mid = (right + left)/2;
+							if(left == mid || right == mid) {
+								resultNote.add(mid, currNote);
+								inserted = true;
+							}
+						}
+						else if(currNote.getDay() > nowNote.getDay()) {
+							if(j == resultNote.size() - 1) {
+								left = mid;
+								mid = (right + left)/2;
+								if(left == mid || right == mid) {
+									resultNote.add(mid + 1, currNote);
+									inserted = true;
+								}
+							}
+						}
+					}
+					else if(currNote.getMonth() > nowNote.getMonth()) {
+						left = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							resultNote.add(mid + 1, currNote);
+							inserted = true;
+						}
+					}
+				}
+				else if(currNote.getYear() > nowNote.getYear()) {
+					left = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						resultNote.add(mid + 1, currNote);
+						inserted = true;
+					}
+				}
+			}
+		}
+		notes = resultNote;
 	}
 	*/
 }
