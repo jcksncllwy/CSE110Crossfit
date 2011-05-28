@@ -89,16 +89,25 @@ public class LoginActivity extends Activity implements OnClickListener {
 			User user = new User();
 			// making sure there are users
 			if (!userlist.isEmpty()) {
-				user = userlist.get(0);
-				// checking username and password are valid
-				if (user.getUsername().equals(username)
-						&& user.getPassword().equals(password)) {
-					// go to the tabs layout
-					Intent i = new Intent(this, TabHosterActivity.class);
-					startActivity(i);
-				} else
-					Toast.makeText(this, R.string.invalidLogin,
-							Toast.LENGTH_LONG).show();
+				for(int i = 0; i<userlist.size(); i++){
+					user = userlist.get(i);
+					// checking username and password are valid
+					if (user.getUsername().equals(username)
+							&& user.getPassword().equals(password)) {
+						// go to the tabs layout
+						Intent intent = new Intent(this, TabHosterActivity.class);
+						/**************************************
+						 * USER_LIST_ID will be passed through*
+						 * every activity. It is essentially a*
+						 * global variable that every activity*
+						 * should have access to.             *
+						 **************************************/
+						intent.putExtra("USER_LIST_ID", i);
+						startActivity(intent);
+					} else
+						Toast.makeText(this, R.string.invalidLogin,
+								Toast.LENGTH_LONG).show();
+				}
 			}
 			// displaying an error message
 			else

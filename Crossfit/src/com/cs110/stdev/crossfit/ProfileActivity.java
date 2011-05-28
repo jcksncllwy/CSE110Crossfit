@@ -27,6 +27,9 @@ public class ProfileActivity extends Activity implements OnClickListener {
 	TextView thebmiText;
 	TextView bodyfatText;
 	Button editProfileButton;
+	
+	//get userListID from intent
+	int userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 
 	/** Called when the activity is first created. */
 	@SuppressWarnings("unchecked")
@@ -61,7 +64,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 			ex.printStackTrace();
 		}
 
-		User temp = userlist.get(0);
+		User temp = userlist.get(userListID);
 
 		/* displaying the profile information */
 		thenameText.setText("Name: " + temp.getFirstName() + " "
@@ -93,6 +96,7 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		// go to the edit profile page when the button is clicked
 		if (view == editProfileButton) {
 			Intent intent = new Intent(this, EditProfileActivity.class);
+			intent.putExtra("USER_LIST_ID", userListID);
 			startActivity(intent);
 		}
 	}
