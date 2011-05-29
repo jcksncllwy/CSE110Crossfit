@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Notes implements Serializable {
-
+	
 	//FIELDS
     private String injury;
 	private String exerciseComments;
@@ -32,7 +32,7 @@ public class Notes implements Serializable {
 		tags = new LinkedList<String>();
 		date = "";
 	}
-
+	
 	//METHODS
 	/**
 	 * Method to autotag info stored in Notes
@@ -116,7 +116,7 @@ public class Notes implements Serializable {
 	public LinkedList<String> getTags() {
 		return tags;
 	}
-
+	
 	/**
 	 * Method to append tag to list of tags
 	 * @param - new tag to be appended
@@ -132,7 +132,7 @@ public class Notes implements Serializable {
 			this.tags.add(newTag.toLowerCase());
 		}
 	}
-
+	
 	/**
 	 * Method to set new list of tags
 	 * @param - new list of tags to be set
@@ -156,7 +156,7 @@ public class Notes implements Serializable {
 	public void setDate(String newDate) {
 		this.date = newDate;
 	}
-
+	
 	/**
 	 * Method to set date using month, day, and year
 	 * @param (int month) - new month to be set
@@ -168,48 +168,33 @@ public class Notes implements Serializable {
 	}
 
 	/**
-	 * Method to convert date from MMDDYYYY to MM/DD/YYYY
-	 * @return - date (MM/DD/YYYY)
+	 * Method to convert date from MMDDYY to MM/DD/YY
+	 * @return - date (MM/DD/YY)
 	 */
 	public String toDate() {
 		String newDate = "";
-
+		
 		newDate += date.substring(0,2) + "/";
 		newDate += date.substring(2,4) + "/";
 		newDate += date.substring(4,8);
-
+		
 		return newDate;
 	}
-
-	public int getMonth() {
-		String strMonth = date.substring(0, 2);
-		return Integer.parseInt(strMonth);
-	}
-
-	public int getDay() {
-		String strDay = date.substring(2, 4);
-		return Integer.parseInt(strDay);
-	}
-
-	public int getYear() {
-		String strYear = date.substring(4, 8);
-		return Integer.parseInt(strYear);
-	}
-
+	
 	/**
 	 * Method to convert all of Notes info to String for text dump
 	 * @return - String of Notes info
 	 */
 	public String toString() {
 		String notesInfo = "";
-
+		
 		notesInfo += "Date of Notes: " + toDate() + "\n";
 		notesInfo += "Comments on Exercises:" + exerciseComments + "\n";
 		notesInfo += "Nutrition:" + nutrition + "\n";
 		notesInfo += "Injuries:" + injury + "\n";
 		notesInfo += "Other:" + other + "\n";
 		notesInfo += "\n_________________________________";
-
+		
 		return notesInfo;
 	}
 }

@@ -62,7 +62,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	/**
 	 * The method to handle when the create account button is clicked.
 	 */
-	@SuppressWarnings("unchecked")
 	public void onClick(View view) {
 		// a variable to check if all the information entered is valid
 		boolean valid = true;
@@ -109,22 +108,8 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		 */
 		if (valid) {
 			LinkedList<User> userlist = new LinkedList<User>();
-			String filename = "user.ser";
-			/* pulling the user from the database */
-			try {
-				FileInputStream fis = openFileInput(filename);
-				ObjectInputStream in = new ObjectInputStream(fis);
-				userlist = (LinkedList<User>) in.readObject();
-				in.close();
-			} catch (FileNotFoundException ex) {
-				ex.printStackTrace();
-			} catch (IOException ex) {
-				ex.printStackTrace();
-			} catch (ClassNotFoundException ex) {
-				ex.printStackTrace();
-			}
-			
 			userlist.add(theuser);
+			String filename = "user.ser";
 
 			try {
 				FileOutputStream fos = openFileOutput(filename,

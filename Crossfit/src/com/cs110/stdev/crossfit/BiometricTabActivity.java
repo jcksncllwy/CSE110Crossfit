@@ -10,9 +10,6 @@ import android.widget.Button;
 public class BiometricTabActivity extends Activity implements OnClickListener{
 
 	Button addBiometric;
-	
-	int userListID;
-	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -20,15 +17,12 @@ public class BiometricTabActivity extends Activity implements OnClickListener{
 	    setContentView(R.layout.biometrictab);
 	    addBiometric = (Button) findViewById(R.id.addBiometric);
 	    
-	    userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
-	    
 	    addBiometric.setOnClickListener(this);
 	}
 	@Override
 	public void onClick(View view) {
 		if(view == addBiometric){
 			Intent intent = new Intent(this,BiometricActivity.class);
-			intent.putExtra("USER_LIST_ID", userListID);
 			startActivity(intent);
 		}
 		

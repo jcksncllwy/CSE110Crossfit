@@ -6,37 +6,86 @@
 		android:layout_width="fill_parent" android:layout_height="fill_parent">
 		<TableLayout android:layout_width="match_parent" android:id="@+id/tableLayout1" android:layout_height="match_parent">
 			<TableRow android:id="@+id/tableRow1" android:layout_height="wrap_content" android:layout_width="wrap_content">
-				<TextView android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/benchmarkview" android:layout_weight="0"></TextView>
-				<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/textView1" android:text="Yes"></TextView>
+				<TextView android:id="@+id/benchmark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/benchmarkview" android:layout_weight="0"></TextView>
+				<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/isBenchmark" android:text="Yes"></TextView>
 			</TableRow>
 			<TableRow android:id="@+id/tableRow2" android:layout_width="wrap_content" android:layout_height="wrap_content">
-				<TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wodtypeview"></TextView>
-				<TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fran"></TextView>
+				<TextView android:id="@+id/wodType" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wodtypeview"></TextView>
+				<TextView android:id="@+id/theWodType" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fran"></TextView>
 			</TableRow>
 			<TableRow android:id="@+id/tableRow3" android:layout_height="wrap_content" android:layout_width="wrap_content">
-				<TextView android:id="@+id/textView5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/asprescribedview"></TextView>
-				<TextView android:id="@+id/textView6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes"></TextView>
+				<TextView android:id="@+id/prescribed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/asprescribedview"></TextView>
+				<TextView android:id="@+id/isPrescribed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes"></TextView>
 			</TableRow>
-			<TableRow android:id="@+id/tableRow4" android:layout_width="wrap_content" android:layout_height="wrap_content">
-				<TextView android:id="@+id/textView7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Thrusters 21 reps 95 lbs"></TextView>
+			<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/tableRow22">
+				<TextView android:id="@+id/exercise1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Exercise #1"></TextView>
 			</TableRow>
-			<TableRow android:layout_height="wrap_content" android:id="@+id/tableRow5" android:layout_width="wrap_content">
-				<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/textView8" android:text="Pull ups 21 reps 0 lbs"></TextView>
+			<TableRow android:id="@+id/tableRow5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center_vertical|center_horizontal">
+				<TextView android:id="@+id/exercise1name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Midget Toss"></TextView>
+				<TextView android:id="@+id/exercise1reps" android:layout_height="wrap_content" android:text="9001 Reps     " android:layout_width="wrap_content"></TextView>
+				<TextView android:id="@+id/exercise1weight" android:layout_height="wrap_content" android:text="9001 kg" android:layout_width="wrap_content"></TextView>
 			</TableRow>
-			<TableRow android:layout_height="wrap_content" android:id="@+id/tableRow6" android:layout_width="wrap_content">
-				<TextView android:id="@+id/textView9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Thrusters 15 reps 95 lbs"></TextView>
+			<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/tableRow21">
+				<TextView android:id="@+id/exercise2" android:layout_height="wrap_content" android:text="Exercise #2" android:layout_width="wrap_content"></TextView>
 			</TableRow>
-			<TableRow android:id="@+id/tableRow7" android:layout_width="wrap_content" android:layout_height="wrap_content">
-				<TextView android:id="@+id/textView10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pull ups 15 reps 0 lbs"></TextView>
+			<TableRow android:id="@+id/tableRow6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center_vertical|center_horizontal">
+				<TextView android:id="@+id/exercise2name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Midget Toss"></TextView>
+				<TextView android:id="@+id/exercise2reps" android:layout_height="wrap_content" android:text="9001 Reps     " android:layout_width="wrap_content"></TextView>
+				<TextView android:id="@+id/exercise2weight" android:layout_height="wrap_content" android:text="9001 kg" android:layout_width="wrap_content"></TextView>
 			</TableRow>
-			<TableRow android:id="@+id/tableRow8" android:layout_height="wrap_content" android:layout_width="wrap_content">
-				<TextView android:id="@+id/textView11" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Thrusters 9 reps 95 lbs"></TextView>
+			<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/tableRow20">
+				<TextView android:id="@+id/exercise3" android:layout_height="wrap_content" android:text="Exercise #3" android:layout_width="wrap_content"></TextView>
 			</TableRow>
-			<TableRow android:layout_height="wrap_content" android:id="@+id/tableRow9" android:layout_width="wrap_content">
-				<TextView android:id="@+id/textView12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pull ups 9 reps 0 lbs"></TextView>
+			<TableRow android:id="@+id/tableRow7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center_vertical|center_horizontal">
+				<TextView android:id="@+id/exercise3name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Midget Toss"></TextView>
+				<TextView android:id="@+id/exercise3reps" android:layout_height="wrap_content" android:text="9001 Reps     " android:layout_width="wrap_content"></TextView>
+				<TextView android:id="@+id/exercise3weight" android:layout_height="wrap_content" android:text="9001 kg" android:layout_width="wrap_content"></TextView>
+			</TableRow>
+			<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/tableRow19">
+				<TextView android:id="@+id/exercise4" android:layout_height="wrap_content" android:text="Exercise #4" android:layout_width="wrap_content"></TextView>
+			</TableRow>
+			<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/tableRow8" android:gravity="center_vertical|center_horizontal">
+				<TextView android:id="@+id/exercise4name" android:layout_height="wrap_content" android:text="Midget Toss" android:layout_width="wrap_content"></TextView>
+				<TextView android:id="@+id/exercise4reps" android:layout_height="wrap_content" android:text="9001 Reps     " android:layout_width="wrap_content"></TextView>
+				<TextView android:id="@+id/exercise4weight" android:layout_height="wrap_content" android:text="9001 kg" android:layout_width="wrap_content"></TextView>
+			</TableRow>
+			<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/tableRow18">
+				<TextView android:id="@+id/exercise5" android:layout_height="wrap_content" android:text="Exercise #5" android:layout_width="wrap_content"></TextView>
+			</TableRow>
+			<TableRow android:id="@+id/tableRow9" android:layout_height="wrap_content" android:layout_width="wrap_content" android:gravity="center_vertical|center_horizontal">
+				<TextView android:id="@+id/exercise5name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Midget Toss"></TextView>
+				<TextView android:id="@+id/exercise5reps" android:layout_height="wrap_content" android:text="9001 Reps     " android:layout_width="wrap_content"></TextView>
+				<TextView android:id="@+id/exercise5weight" android:layout_height="wrap_content" android:text="9001 kg" android:layout_width="wrap_content"></TextView>
+			</TableRow>
+			<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/tableRow17">
+				<TextView android:id="@+id/exercise6" android:layout_height="wrap_content" android:text="Exercise #6" android:layout_width="wrap_content"></TextView>
+			</TableRow>
+			<TableRow android:id="@+id/tableRow12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center_vertical|center_horizontal">
+				<TextView android:id="@+id/exercise6name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Midget Toss"></TextView>
+				<TextView android:id="@+id/exercise6reps" android:layout_height="wrap_content" android:text="9001 Reps     " android:layout_width="wrap_content"></TextView>
+				<TextView android:id="@+id/exercise6weight" android:layout_height="wrap_content" android:text="9001 kg" android:layout_width="wrap_content"></TextView>
+			</TableRow>
+			<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/tableRow16">
+				<TextView android:id="@+id/exercise7" android:layout_height="wrap_content" android:text="Exercise #7" android:layout_width="wrap_content"></TextView>
+			</TableRow>
+			<TableRow android:id="@+id/tableRow13" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center_vertical|center_horizontal">
+				<TextView android:id="@+id/exercise7name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Midget Toss"></TextView>
+				<TextView android:id="@+id/exercise7reps" android:layout_height="wrap_content" android:text="9001 Reps     " android:layout_width="wrap_content"></TextView>
+				<TextView android:id="@+id/exercise7weight" android:layout_height="wrap_content" android:text="9001 kg" android:layout_width="wrap_content"></TextView>
+			</TableRow>
+			<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/tableRow15">
+				<TextView android:id="@+id/exercise8" android:layout_height="wrap_content" android:text="Exercise #8" android:layout_width="wrap_content"></TextView>
+			</TableRow>
+			<TableRow android:id="@+id/tableRow14" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center_vertical|center_horizontal">
+				<TextView android:id="@+id/exercise8name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Midget Toss"></TextView>
+				<TextView android:id="@+id/exercise8reps" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="9001 Reps     "></TextView>
+				<TextView android:id="@+id/exercise8weight" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="9001 kg"></TextView>
 			</TableRow>
 			<TableRow android:id="@+id/tableRow10" android:layout_width="wrap_content" android:layout_height="wrap_content">
-				<TextView android:id="@+id/textView14" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Time: 1:30   Rounds: 3"></TextView>
+				<TextView android:id="@+id/time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Time: 1:30"></TextView>
+			</TableRow>
+			<TableRow android:id="@+id/tableRow4" android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<TextView android:id="@+id/rounds" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Rounds: 3"></TextView>
 			</TableRow>
 			<TableRow android:id="@+id/tableRow11" android:layout_width="wrap_content" android:layout_height="wrap_content">
 				<TextView android:id="@+id/textView13" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tags: fran, vomit, world record"></TextView>

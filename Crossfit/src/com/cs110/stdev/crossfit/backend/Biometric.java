@@ -45,7 +45,7 @@ public class Biometric implements Serializable {
 		if (tags.add(Double.toString(weight))
 				&& tags.add(Double.toString(bodyFat))
 				&& tags.add(Double.toString(heartRate))
-				&& tags.add(Double.toString(bMI)) && tags.add(this.toDate())) {
+				&& tags.add(Double.toString(bMI)) && tags.add(date)) {
 			return true;
 		}
 
@@ -223,33 +223,18 @@ public class Biometric implements Serializable {
 	}
 
 	/**
-	 * Method to convert date from MMDDYY to MM/DD/YYYY
+	 * Method to convert date from MMDDYY to MM/DD/YY
 	 * 
-	 * @return - date (MM/DD/YYYY)
+	 * @return - date (MM/DD/YY)
 	 */
 	public String toDate() {
 		String newDate = "";
 
-		newDate += date.substring(0,2) + "/";
-		newDate += date.substring(2,4) + "/";
-		newDate += date.substring(4,8);
+		newDate += date.charAt(0) + date.charAt(1) + "/";
+		newDate += date.charAt(2) + date.charAt(3) + "/";
+		newDate += date.charAt(4) + date.charAt(5);
 
 		return newDate;
-	}
-
-	public int getMonth() {
-		String strMonth = date.substring(0, 2);
-		return Integer.parseInt(strMonth);
-	}
-
-	public int getDay() {
-		String strDay = date.substring(2, 4);
-		return Integer.parseInt(strDay);
-	}
-
-	public int getYear() {
-		String strYear = date.substring(4, 8);
-		return Integer.parseInt(strYear);
 	}
 
 	/**

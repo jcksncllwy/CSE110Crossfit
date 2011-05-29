@@ -32,7 +32,6 @@ public class BiometricActivity extends Activity implements OnClickListener {
 	EditText bioHeightEdit;
 	DatePicker dayPicker;
 	Button bioSubmit;
-
 	int userListID;
 
 	/** Called when the activity is first created. */
@@ -50,7 +49,7 @@ public class BiometricActivity extends Activity implements OnClickListener {
 		bioHeightEdit = (EditText) findViewById(R.id.bioHeightEdit);
 		dayPicker = (DatePicker) findViewById(R.id.dayPicker);
 		bioSubmit = (Button) findViewById(R.id.bioSubmit);
-
+		
 		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 
 		LinkedList<User> userlist = new LinkedList<User>();
@@ -71,7 +70,7 @@ public class BiometricActivity extends Activity implements OnClickListener {
 
 		if (!userlist.isEmpty()) {
 			if (!userlist.get(userListID).getMyLog().getBiometrics().isEmpty()) {
-				Double height = userlist.get(userListID).getMyLog().getBiometrics()
+				Double height = userlist.get(0).getMyLog().getBiometrics()
 						.getLast().getHeight();
 				bioHeightEdit.setText(height.toString());
 			}
@@ -162,8 +161,8 @@ public class BiometricActivity extends Activity implements OnClickListener {
 				LinkedList<String> theTags = new LinkedList<String>();
 				String tokens[] = tags.split(",");
 
-				for (int j = 0; j < tokens.length; j++) {
-					theTags.add(tokens[j]);
+				for (int i = 0; i < tokens.length; i++) {
+					theTags.add(tokens[i]);
 				}
 
 				bio.setTags(theTags);
@@ -195,16 +194,19 @@ public class BiometricActivity extends Activity implements OnClickListener {
 						ex.printStackTrace();
 					}
 
-					Toast.makeText(this, "Your biometrics have been recorded!",
-							Toast.LENGTH_LONG).show();
-
-					Intent intent = new Intent(this, TabHosterActivity.class);
-					intent.putExtra("USER_LIST_ID", userListID);
-					startActivity(intent);
-
-				} else
-					Toast.makeText(this,
-							"Please enter only positive numerical values!",
+					Toast.makeText(this, "WIN!!!!!!1", Toast.LENGTH_LONG)
+							.show();
+					
+					 Intent intent = new Intent(this,TabHosterActivity.class);
+					 intent.putExtra("USER_LIST_ID", userListID);
+					 startActivity(intent);
+					 
+				}
+				// displaying error message to the user
+				else
+					Toast.makeText(
+							this,
+							"Please enter " + "only positive numerical values!",
 							Toast.LENGTH_LONG).show();
 			}
 		}

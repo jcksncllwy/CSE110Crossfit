@@ -71,8 +71,6 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 	int userListID;
 	//get the date of the wod to be entered/edited
 	String wod_Date;
-	
-	static final int ENTER_WOD_REQUEST = 0;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -80,26 +78,21 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.enterwod);
 
-		wod_Date = getIntent().getStringExtra("WOD_DATE");
-		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
-			
 		enterWODButton = (Button) findViewById(R.id.enterWODButton);
 		checkBoxBenchmark = (CheckBox) findViewById(R.id.checkBoxBenchmark);
 		amrap = (RadioButton) findViewById(R.id.AMRAP);
 		tabata = (RadioButton) findViewById(R.id.Tabata);
 		forTime = (RadioButton) findViewById(R.id.forTime);
 		wodType = (RadioGroup) findViewById(R.id.wodTypeRadio);
-		wodType.addView(amrap, 0);
-		wodType.addView(tabata, 1);
-		wodType.addView(forTime, 2);
 		prescribed = (RadioButton) findViewById(R.id.prescribed);
 		scaled = (RadioButton) findViewById(R.id.scaled);
 		adjustments = (RadioGroup) findViewById(R.id.prescribedRadio);
-		adjustments.addView(prescribed, 0);
-		adjustments.addView(scaled, 0);
 		rounds = (EditText) findViewById(R.id.rounds);
 		timeMin = (EditText) findViewById(R.id.timeMin);
 		timeSec = (EditText) findViewById(R.id.timeSec);
+		
+		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
+		wod_Date = getIntent().getStringExtra("WOD_DATE");
 		
 		exercise1 = (EditText) findViewById(R.id.exercise1);
 		exercise2 = (EditText) findViewById(R.id.exercise2);
@@ -131,9 +124,8 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 
 	
 	
-	@SuppressWarnings("unchecked")
 	@Override
-	public void onClick(View view) {
+	public void onClick(View v) {
 		LinkedList<User> userlist = new LinkedList<User>();
 		String filename = "user.ser";
 		/* pulling the user from the database */
@@ -217,10 +209,10 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 			ex.printStackTrace();
 		}
 		
-		Intent intent = new Intent();
+		Intent intent = new Intent(this, ViewWODActivity.class);
 		intent.putExtra("enteredWOD_Date", wod_Date);
-		setResult(RESULT_OK, intent);
-		finish();
+		intent.putExtra("USER_LIST_ID", userListID);
+		startActivity(intent);
 	}
 	
 
