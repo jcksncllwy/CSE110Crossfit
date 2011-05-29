@@ -69,7 +69,7 @@ public class WOD implements Serializable{
 			tags.add("AMRAP");
 		}
 
-		if(tags.size() == (4 + exercises.size())) {
+		if(tags.size() >= (4 + exercises.size())) {
 			return true;
 		}
 

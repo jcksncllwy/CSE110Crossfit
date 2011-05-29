@@ -37,14 +37,32 @@ public class Log implements Serializable {
 	public boolean textDump() {
 		//TODO
 		/*
-		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter("CrossfitLog.txt"));
-			writer.write(this.toString());
-		} catch (Exception ex) {
-			SimpleOutput.showError("Error creating file.");
-			System.exit(1);
+		try{
+			File cardRoot = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/CrossfitLogs");
+			if (!cardRoot.exists()) {
+				cardRoot.mkdirs();
+			}
+			String filename = "Log" + wods.get(0).getDate()
+				+ "to" + wods.get(wods.size()-1).getDate() + ".txt";
+			File gpxfile = new File(cardRoot, filename);
+			if(gpxfile.canWrite()) {		
+				FileWriter writer = new FileWriter(gpxfile);
+				writer.append(this.toString());
+				writer.flush();
+				writer.close();
+				Toast.makeText(this, "Log information has been saved on your SD card.", Toast.LENGTH_SHORT).show();
+			} else {
+				return false;
+			}
 		}
-		*/		
+		catch(IOException e)
+		{
+			 e.printStackTrace();
+			 importError = e.getMessage();
+			 iError();
+			 return false;
+		}
+		*/
 		return true;
 	}
 
@@ -60,7 +78,7 @@ public class Log implements Serializable {
 		if(wods.size() == 0 && biometrics.size() == 0 && notes.size() == 0) {
 			return true;
 		}
-
+		
 		return false;
 	}
 
@@ -270,37 +288,120 @@ public class Log implements Serializable {
 	 * @param (String to) - end of date range
 	 * @return - list of WODs within the range
 	 */
-	 /*
+	 
 	public LinkedList<WOD> getWODsFromTo(String from, String to)
-	{
-		LinkedList<WOD> resultList = new LinkedList<WOD>;
-		int start, end = 0;
-		while(wods.get(start).getYear() <= Integer.parseInt(from.substring(4,8)))
-		{
-			while(wods.get(start).getMonth() <= Integer.parseInt(from.substring(2,4)))
-			{
-				while(wods.get(start).getDay() <= Integer.parseInt(from.substring(0,2)))
-				{
-					start++;
-				}
-			}
-		}
-		while(wods.get(end).getYear() <= Integer.parseInt(to.substring(4,8)))
-		{
-			while(wods.get(end).getMonth() <= Integer.parseInt(to.substring(2,4)))
-			{
-				while(wods.get(end).getDay() <= Integer.parseInt(to.substring(0,2)))
-				{
-					end++;
-				}
-			}
-		}
-		for(start; start <= end; start++)
-		{
-			resultList.add(wods.get(start));
-		}
-		return resultList;
-	}*/
+    {
+        LinkedList<WOD> resultList = new LinkedList<WOD>();
+        int start, i = 0;
+        int end = 0;
+        for(i = 0; i < wods.size(); i++)
+        {
+            if(wods.get(i).getYear() == Integer.parseInt(from.substring(4,8)))
+            {
+                if(wods.get(i).getMonth() > Integer.parseInt(from.substring(2,4)))
+                {
+                    break;
+                }
+                else if(wods.get(i).getMonth() == Integer.parseInt(from.substring(2,4)))
+                {
+                    if(wods.get(i).getDay() >= Integer.parseInt(from.substring(0,2)))
+                    {
+                        break;
+                    }
+                }
+            }
+            if(wods.get(i).getYear() > Integer.parseInt(from.substring(4,8)))
+            {
+                    break;
+            }
+            
+        }
+        start = i;
+        for(i = 0; i < wods.size(); i++)
+        {
+            if(wods.get(i).getYear() == Integer.parseInt(from.substring(4,8)))
+            {
+                if(wods.get(i).getMonth() > Integer.parseInt(from.substring(2,4)))
+                {
+                    break;
+                }
+                else if(wods.get(i).getMonth() == Integer.parseInt(from.substring(2,4)))
+                {
+                    if(wods.get(i).getDay() >= Integer.parseInt(from.substring(0,2)))
+                    {
+                        break;
+                    }
+                }
+            }
+            if(wods.get(i).getYear() > Integer.parseInt(from.substring(4,8)))
+            {
+                    break;
+            }
+        }
+        end = i;
+        for(i = 0; start <= end; start++)
+        {
+            resultList.add(wods.get(start));
+        }
+        return resultList;
+    }
+    
+    public LinkedList<Biometric> getBIOsFromTo(String from, String to)
+    {
+        LinkedList<Biometric> resultList = new LinkedList<Biometric>();
+        int start, i = 0;
+        int end = 0;
+        for(i = 0; i < wods.size(); i++)
+        {
+            if(biometrics.get(i).getYear() == Integer.parseInt(from.substring(4,8)))
+            {
+                if(biometrics.get(i).getMonth() > Integer.parseInt(from.substring(2,4)))
+                {
+                    break;
+                }
+                else if(biometrics.get(i).getMonth() == Integer.parseInt(from.substring(2,4)))
+                {
+                    if(biometrics.get(i).getDay() >= Integer.parseInt(from.substring(0,2)))
+                    {
+                        break;
+                    }
+                }
+            }
+            if(biometrics.get(i).getYear() > Integer.parseInt(from.substring(4,8)))
+            {
+                    break;
+            }
+            
+        }
+        start = i;
+        for(i = 0; i < biometrics.size(); i++)
+        {
+            if(biometrics.get(i).getYear() == Integer.parseInt(from.substring(4,8)))
+            {
+                if(biometrics.get(i).getMonth() > Integer.parseInt(from.substring(2,4)))
+                {
+                    break;
+                }
+                else if(biometrics.get(i).getMonth() == Integer.parseInt(from.substring(2,4)))
+                {
+                    if(biometrics.get(i).getDay() >= Integer.parseInt(from.substring(0,2)))
+                    {
+                        break;
+                    }
+                }
+            }
+            if(biometrics.get(i).getYear() > Integer.parseInt(from.substring(4,8)))
+            {
+                    break;
+            }
+        }
+        end = i;
+        for(i = 0; start <= end; start++)
+        {
+            resultList.add(biometrics.get(start));
+        }
+        return resultList;
+    }
 
 	/**
 	 * Method to search through WOD, Notes, and Biometrics by content
