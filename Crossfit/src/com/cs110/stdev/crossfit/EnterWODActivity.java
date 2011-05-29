@@ -68,9 +68,9 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 	
 	
 	//get userListID from intent
-	int userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
+	int userListID;
 	//get the date of the wod to be entered/edited
-	String wod_Date = getIntent().getStringExtra("WOD_DATE");
+	String wod_Date;
 	
 	static final int ENTER_WOD_REQUEST = 0;
 
@@ -80,6 +80,9 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.enterwod);
 
+		wod_Date = getIntent().getStringExtra("WOD_DATE");
+		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
+			
 		enterWODButton = (Button) findViewById(R.id.enterWODButton);
 		checkBoxBenchmark = (CheckBox) findViewById(R.id.checkBoxBenchmark);
 		amrap = (RadioButton) findViewById(R.id.AMRAP);
@@ -128,8 +131,9 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public void onClick(View v) {
+	public void onClick(View view) {
 		LinkedList<User> userlist = new LinkedList<User>();
 		String filename = "user.ser";
 		/* pulling the user from the database */

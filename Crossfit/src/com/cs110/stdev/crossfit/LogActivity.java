@@ -44,30 +44,30 @@ public class LogActivity extends Activity implements OnClickListener {
 	}
 
 	@Override
-	public void onClick(View v) {
-		if(v==enterwodButton){
-			Intent i = new Intent(this, EnterWODActivity.class);
-			i.putExtra("USER_LIST_ID", userListID);
+	public void onClick(View view) {
+		if(view==enterwodButton){
+			Intent intent = new Intent(this, EnterWODActivity.class);
+			intent.putExtra("USER_LIST_ID", userListID);
 			int dayOfMonth = wodDay.getDayOfMonth();
 			int month = wodDay.getMonth();
 			int year = wodDay.getYear();
-			String wod_Date = Integer.toString(month) + '/' + Integer.toString(dayOfMonth) + '/' + Integer.toString(year);
-			i.putExtra("WOD_DATE", wod_Date);
-			startActivityForResult(i, ENTER_WOD_REQUEST);
+			String wod_Date = Integer.toString(month)+Integer.toString(dayOfMonth)+Integer.toString(year);
+			intent.putExtra("WOD_DATE", wod_Date);
+			startActivityForResult(intent, ENTER_WOD_REQUEST);
 		}
-		else if(v==viewwodButton){
-			Intent i = new Intent(this, ViewWODActivity.class);
-			i.putExtra("USER_LIST_ID", userListID);
-			startActivity(i);
+		else if(view==viewwodButton){
+			Intent intent = new Intent(this, ViewWODActivity.class);
+			intent.putExtra("USER_LIST_ID", userListID);
+			startActivity(intent);
 		}
 	}
 	
 	@Override
 	 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == ENTER_WOD_REQUEST){
-			Intent i = new Intent(this, ViewWODActivity.class);
-			i.putExtra("USER_LIST_ID", userListID);
-			startActivity(i);
+			Intent intent = new Intent(this, ViewWODActivity.class);
+			intent.putExtra("USER_LIST_ID", userListID);
+			startActivity(intent);
 		}
 		
 	}

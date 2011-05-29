@@ -59,7 +59,7 @@ public class ProgressActivity extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		Intent intent = null;
+		Intent intent = new Intent(this,WeightChart.class);
 		/*if (position == 0) {
 			intent = new Intent(this, XYChartBuilder.class);
 		} else if (position <= mCharts.length) {
@@ -67,7 +67,6 @@ public class ProgressActivity extends ListActivity {
 		} else {
 			intent = new Intent(this, GenerateChart.class);
 		}*/
-		intent.setClass(this,WeightChart.class);
 		startActivity(intent);
 	}
 }
