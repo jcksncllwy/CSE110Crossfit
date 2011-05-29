@@ -27,6 +27,8 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	Button deleteAccountButton;
 	Button changePasswordButton;
 
+	int userListID;
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,8 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		confirmNewEdit = (EditText) findViewById(R.id.confirmNewEdit);
 		deleteAccountButton = (Button) findViewById(R.id.deleteAccountButton);
 		changePasswordButton = (Button) findViewById(R.id.changePasswordButton);
+
+		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 
 		deleteAccountButton.setOnClickListener(this);
 		changePasswordButton.setOnClickListener(this);
@@ -70,15 +74,17 @@ public class SettingsActivity extends Activity implements OnClickListener {
 			// checking for a user
 			if (!userlist.isEmpty()) {
 				// checking if the oldpassword is equal to the current one
-				if (userlist.get(0).validatePassword(oldpassword)
-						&& oldpassword.equals(userlist.get(0).getPassword())) {
+				if (userlist.get(userListID).validatePassword(oldpassword)
+						&& oldpassword.equals(userlist.get(userListID)
+								.getPassword())) {
 					// checking that the new password is valid and matches its
 					// confirmation
-					if (userlist.get(0).validatePassword(newpassword)
-							&& userlist.get(0).validatePassword(confirmpass)
+					if (userlist.get(userListID).validatePassword(newpassword)
+							&& userlist.get(userListID).validatePassword(
+									confirmpass)
 							&& newpassword.equals(confirmpass)) {
 						// setting the password
-						userlist.get(0).setPassword(newpassword);
+						userlist.get(userListID).setPassword(newpassword);
 						// displaying a success message
 						Toast.makeText(this, R.string.successfulchange,
 								Toast.LENGTH_LONG).show();

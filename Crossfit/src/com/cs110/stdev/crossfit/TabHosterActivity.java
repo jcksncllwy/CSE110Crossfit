@@ -1,6 +1,5 @@
 package com.cs110.stdev.crossfit;
 
-import com.cs110.stdev.crossfit.backend.User;
 
 import android.app.TabActivity;
 import android.content.Intent;
@@ -9,8 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TabHost;
-import android.widget.Toast;
-import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 
 public class TabHosterActivity extends TabActivity implements OnClickListener {

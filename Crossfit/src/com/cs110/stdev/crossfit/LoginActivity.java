@@ -69,7 +69,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			/* grabbing the username and password fields from the screen */
 			String username = enterUsername.getText().toString();
 			String password = enterPassword.getText().toString();
-
+			boolean validLogin = false;
 			LinkedList<User> userlist = new LinkedList<User>();
 			String filename = "user.ser";
 			/* pulling the user from the database */
@@ -87,29 +87,37 @@ public class LoginActivity extends Activity implements OnClickListener {
 			}
 
 			User user = new User();
+			int userListID = -1;
 			// making sure there are users
 			if (!userlist.isEmpty()) {
-				for(int i = 0; i<userlist.size(); i++){
+				for (int i = 0; i < userlist.size(); i++) {
 					user = userlist.get(i);
 					// checking username and password are valid
 					if (user.getUsername().equals(username)
 							&& user.getPassword().equals(password)) {
 						// go to the tabs layout
-						Intent intent = new Intent(this, TabHosterActivity.class);
-						/**************************************
-						 * USER_LIST_ID will be passed through*
-						 * every activity. It is essentially a*
-						 * global variable that every activity*
-						 * should have access to.             *
-						 **************************************/
-						intent.putExtra("USER_LIST_ID", i);
-						startActivity(intent);
-					} else
-						Toast.makeText(this, R.string.invalidLogin,
-								Toast.LENGTH_LONG).show();
+						validLogin = true;
+						userListID = i;
+					}
 				}
+				// if the login info is valid, login
+				if (validLogin) {
+					Intent intent = new Intent(this, TabHosterActivity.class);
+					/**************************************
+					 * USER_LIST_ID will be passed through* every activity. It
+					 * is essentially a* global variable that every activity*
+					 * should have access to. *
+					 **************************************/
+					intent.putExtra("USER_LIST_ID", userListID);
+					startActivity(intent);
+				}
+				// displaying error message if login info doesn't match any in
+				// the database
+				else
+					Toast.makeText(this, R.string.invalidLogin,
+							Toast.LENGTH_LONG).show();
 			}
-			// displaying an error message
+			// displaying an error message if the list is empty
 			else
 				Toast.makeText(this, R.string.invalidLogin, Toast.LENGTH_LONG)
 						.show();

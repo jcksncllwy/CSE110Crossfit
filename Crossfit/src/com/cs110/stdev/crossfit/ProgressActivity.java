@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.cs110.stdev.crossfit.IChart;
-import com.cs110.stdev.crossfit.WeightChart;
+import com.cs110.stdev.crossfit.WeightChartActivity;
 //import com.cs110.stdev.crossfit.XYChartBuilder;
 
 import android.app.ListActivity;
@@ -17,13 +17,11 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 public class ProgressActivity extends ListActivity {
-	private IChart[] mCharts = new IChart[] { new WeightChart() };
+	private IChart[] mCharts = new IChart[] { new WeightChartActivity() };
 
 	private String[] mMenuText;
 
 	private String[] mMenuSummary;
-	
-	int userListID;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -34,7 +32,6 @@ public class ProgressActivity extends ListActivity {
 		mMenuSummary = new String[length + 2];
 		mMenuText[0] = "Weight Chart";
 		mMenuSummary[0] = "Your progress on weight";
-		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 		for (int i = 0; i < length; i++) {
 			mMenuText[i + 1] = mCharts[i].getName();
 			mMenuSummary[i + 1] = mCharts[i].getDesc();
@@ -62,7 +59,7 @@ public class ProgressActivity extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		Intent intent = null;
+		Intent intent = new Intent();
 		/*if (position == 0) {
 			intent = new Intent(this, XYChartBuilder.class);
 		} else if (position <= mCharts.length) {
@@ -70,7 +67,11 @@ public class ProgressActivity extends ListActivity {
 		} else {
 			intent = new Intent(this, GenerateChart.class);
 		}*/
-		intent.setClass(this,WeightChart.class);
+		if(position == 0){
+			//intent.setClass(this, XYChartBuilderActivity.class);
+			intent = mCharts[0].execute(this);
+		}
+		
 		startActivity(intent);
 	}
 }
