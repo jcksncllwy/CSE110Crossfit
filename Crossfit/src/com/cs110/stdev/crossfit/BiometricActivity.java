@@ -70,8 +70,8 @@ public class BiometricActivity extends Activity implements OnClickListener {
 		}
 
 		if (!userlist.isEmpty()) {
-			if (!userlist.get(0).getMyLog().getBiometrics().isEmpty()) {
-				Double height = userlist.get(0).getMyLog().getBiometrics()
+			if (!userlist.get(userListID).getMyLog().getBiometrics().isEmpty()) {
+				Double height = userlist.get(userListID).getMyLog().getBiometrics()
 						.getLast().getHeight();
 				bioHeightEdit.setText(height.toString());
 			}
