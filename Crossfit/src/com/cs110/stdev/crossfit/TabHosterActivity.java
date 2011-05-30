@@ -1,6 +1,5 @@
 package com.cs110.stdev.crossfit;
 
-
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -20,16 +19,14 @@ public class TabHosterActivity extends TabActivity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tabhost);
-		
+
 		/***************************************
-		 * This is how you get the USER_LIST_ID*
-		 * from the Intent Object. The -1 is a *
-		 * default value. If the USER_LIST_ID  *
-		 * is ever -1, that means it was never *
-		 * passed                              *
+		 * This is how you get the USER_LIST_ID* from the Intent Object. The -1
+		 * is a * default value. If the USER_LIST_ID * is ever -1, that means it
+		 * was never * passed *
 		 ***************************************/
 		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
-		
+
 		logoutTabHost = (TextView) findViewById(R.id.logoutTabHost);
 
 		Resources res = getResources(); // Resource object to get Drawables
@@ -40,7 +37,6 @@ public class TabHosterActivity extends TabActivity implements OnClickListener {
 		// Create an Intent to launch an Activity for the tab (to be reused)
 		intent = new Intent(this, ProfileActivity.class);
 		intent.putExtra("USER_LIST_ID", userListID);
-
 		// Initialize a TabSpec for each tab and add it to the TabHost
 		spec = tabHost.newTabSpec("profile")
 				.setIndicator("Profile", res.getDrawable(R.drawable.profile))
@@ -57,11 +53,13 @@ public class TabHosterActivity extends TabActivity implements OnClickListener {
 
 		intent = new Intent(this, BiometricTabActivity.class);
 		intent.putExtra("USER_LIST_ID", userListID);
-		spec = tabHost.newTabSpec("biometrics")
-				.setIndicator("Biometrics", res.getDrawable(R.drawable.stethoscope))
+		spec = tabHost
+				.newTabSpec("biometrics")
+				.setIndicator("Biometrics",
+						res.getDrawable(R.drawable.stethoscope))
 				.setContent(intent);
 		tabHost.addTab(spec);
-		
+
 		intent = new Intent(this, ProgressActivity.class);
 		intent.putExtra("USER_LIST_ID", userListID);
 		spec = tabHost.newTabSpec("progress")
@@ -82,10 +80,10 @@ public class TabHosterActivity extends TabActivity implements OnClickListener {
 	}
 
 	@Override
-	public void onClick(View v) {
-		if (v == logoutTabHost) {
-			Intent i = new Intent(this, LoginActivity.class);
-			startActivity(i);
+	public void onClick(View view) {
+		if (view == logoutTabHost) {
+			Intent intent = new Intent(this, LoginActivity.class);
+			startActivity(intent);
 		}
 	}
 

@@ -70,9 +70,10 @@ public class LoginActivity extends Activity implements OnClickListener {
 			String username = enterUsername.getText().toString();
 			String password = enterPassword.getText().toString();
 			boolean validLogin = false;
+			
 			LinkedList<User> userlist = new LinkedList<User>();
 			String filename = "user.ser";
-			/* pulling the user from the database */
+			// pulling the user from the database
 			try {
 				FileInputStream fis = openFileInput(filename);
 				ObjectInputStream in = new ObjectInputStream(fis);

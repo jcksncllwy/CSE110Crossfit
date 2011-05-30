@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,6 +23,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 /* make a linked list of exercise edittexts and then use an i to keep
  * track of how many have been used and we can use that to get the texts
@@ -41,6 +43,8 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 	EditText rounds;
 	EditText timeMin;
 	EditText timeSec;
+	EditText notes;
+	EditText tags;
 	EditText exercise1;
 	EditText exercise2;
 	EditText exercise3;
@@ -65,14 +69,11 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 	EditText exercise6weight;
 	EditText exercise7weight;
 	EditText exercise8weight;
-	
-	
-	//get userListID from intent
+
+	// get userListID from intent
 	int userListID;
-	//get the date of the wod to be entered/edited
+	// get the date of the wod to be entered/edited
 	String wod_Date;
-	
-	static final int ENTER_WOD_REQUEST = 0;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -80,27 +81,24 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.enterwod);
 
-		wod_Date = getIntent().getStringExtra("WOD_DATE");
-		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
-			
 		enterWODButton = (Button) findViewById(R.id.enterWODButton);
 		checkBoxBenchmark = (CheckBox) findViewById(R.id.checkBoxBenchmark);
 		amrap = (RadioButton) findViewById(R.id.AMRAP);
 		tabata = (RadioButton) findViewById(R.id.Tabata);
 		forTime = (RadioButton) findViewById(R.id.forTime);
 		wodType = (RadioGroup) findViewById(R.id.wodTypeRadio);
-		wodType.addView(amrap, 0);
-		wodType.addView(tabata, 1);
-		wodType.addView(forTime, 2);
 		prescribed = (RadioButton) findViewById(R.id.prescribed);
 		scaled = (RadioButton) findViewById(R.id.scaled);
 		adjustments = (RadioGroup) findViewById(R.id.prescribedRadio);
-		adjustments.addView(prescribed, 0);
-		adjustments.addView(scaled, 0);
 		rounds = (EditText) findViewById(R.id.rounds);
 		timeMin = (EditText) findViewById(R.id.timeMin);
 		timeSec = (EditText) findViewById(R.id.timeSec);
-		
+		notes = (EditText) findViewById(R.id.notes);
+		tags = (EditText) findViewById(R.id.tags);
+
+		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
+		wod_Date = getIntent().getStringExtra("WOD_DATE");
+
 		exercise1 = (EditText) findViewById(R.id.exercise1);
 		exercise2 = (EditText) findViewById(R.id.exercise2);
 		exercise3 = (EditText) findViewById(R.id.exercise3);
@@ -129,8 +127,6 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 		enterWODButton.setOnClickListener(this);
 	}
 
-	
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onClick(View view) {
@@ -151,39 +147,143 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 		}
 
 		User user = userlist.get(userListID);
-		
-		//Create a new WOD object to be added
+
+		// Create a new WOD object to be added
 		WOD theWOD = new WOD();
-		//Set it's fields from input
+		// Set it's fields from input
 		theWOD.setDate(wod_Date);
 		theWOD.setBenchmark(checkBoxBenchmark.isChecked());
-		//Set each exercise and it's reps and weight
-		theWOD.getExercises().add(exercise1.getText().toString());
-		theWOD.getReps().add(Integer.getInteger(exercise1reps.getText().toString()));
-		theWOD.getWeight().add(Double.valueOf(exercise1weight.getText().toString()));
-		theWOD.getExercises().add(exercise2.getText().toString());
-		theWOD.getReps().add(Integer.getInteger(exercise2reps.getText().toString()));
-		theWOD.getWeight().add(Double.valueOf(exercise2weight.getText().toString()));
-		theWOD.getExercises().add(exercise3.getText().toString());
-		theWOD.getReps().add(Integer.getInteger(exercise3reps.getText().toString()));
-		theWOD.getWeight().add(Double.valueOf(exercise3weight.getText().toString()));
-		theWOD.getExercises().add(exercise4.getText().toString());
-		theWOD.getReps().add(Integer.getInteger(exercise4reps.getText().toString()));
-		theWOD.getWeight().add(Double.valueOf(exercise4weight.getText().toString()));
-		theWOD.getExercises().add(exercise5.getText().toString());
-		theWOD.getReps().add(Integer.getInteger(exercise5reps.getText().toString()));
-		theWOD.getWeight().add(Double.valueOf(exercise5weight.getText().toString()));
-		theWOD.getExercises().add(exercise6.getText().toString());
-		theWOD.getReps().add(Integer.getInteger(exercise6reps.getText().toString()));
-		theWOD.getWeight().add(Double.valueOf(exercise6weight.getText().toString()));
-		theWOD.getExercises().add(exercise7.getText().toString());
-		theWOD.getReps().add(Integer.getInteger(exercise7reps.getText().toString()));
-		theWOD.getWeight().add(Double.valueOf(exercise7weight.getText().toString()));
-		theWOD.getExercises().add(exercise8.getText().toString());
-		theWOD.getReps().add(Integer.getInteger(exercise8reps.getText().toString()));
-		theWOD.getWeight().add(Double.valueOf(exercise8weight.getText().toString()));
-		
-		switch(wodType.getCheckedRadioButtonId()){
+		// Set each exercise and it's reps and weight
+		try {
+			String exercise = exercise1.getText().toString().toLowerCase()
+					.trim();
+			if (!exercise.equals("")) {
+				theWOD.getExercises().add(exercise);
+				theWOD.getReps().add(
+						Integer.getInteger(exercise1reps.getText().toString()));
+				theWOD.getWeight().add(
+						Double.valueOf(exercise1weight.getText().toString()));
+			}
+		} catch (java.lang.NumberFormatException nfe) {
+			Toast.makeText(
+					this,
+					"Please Enter Only Numbers into the Reps and Weight Fields",
+					Toast.LENGTH_LONG).show();
+		}
+		try {
+			String exercise = exercise2.getText().toString().toLowerCase()
+					.trim();
+			if (!exercise.equals("")) {
+				theWOD.getExercises().add(exercise);
+				theWOD.getReps().add(
+						Integer.getInteger(exercise2reps.getText().toString()));
+				theWOD.getWeight().add(
+						Double.valueOf(exercise2weight.getText().toString()));
+			}
+		} catch (java.lang.NumberFormatException nfe) {
+			Toast.makeText(
+					this,
+					"Please Enter Only Numbers into the Reps and Weight Fields",
+					Toast.LENGTH_LONG).show();
+		}
+		try {
+			String exercise = exercise3.getText().toString().toLowerCase()
+					.trim();
+			if (!exercise.equals("")) {
+				theWOD.getExercises().add(exercise);
+				theWOD.getReps().add(
+						Integer.getInteger(exercise3reps.getText().toString()));
+				theWOD.getWeight().add(
+						Double.valueOf(exercise3weight.getText().toString()));
+			}
+		} catch (java.lang.NumberFormatException nfe) {
+			Toast.makeText(
+					this,
+					"Please Enter Only Numbers into the Reps and Weight Fields",
+					Toast.LENGTH_LONG).show();
+		}
+		try {
+			String exercise = exercise4.getText().toString().toLowerCase()
+					.trim();
+			if (!exercise.equals("")) {
+				theWOD.getExercises().add(exercise);
+				theWOD.getReps().add(
+						Integer.getInteger(exercise4reps.getText().toString()));
+				theWOD.getWeight().add(
+						Double.valueOf(exercise4weight.getText().toString()));
+			}
+		} catch (java.lang.NumberFormatException nfe) {
+			Toast.makeText(
+					this,
+					"Please Enter Only Numbers into the Reps and Weight Fields",
+					Toast.LENGTH_LONG).show();
+		}
+		try {
+			String exercise = exercise5.getText().toString().toLowerCase()
+					.trim();
+			if (!exercise.equals("")) {
+				theWOD.getExercises().add(exercise);
+				theWOD.getReps().add(
+						Integer.getInteger(exercise5reps.getText().toString()));
+				theWOD.getWeight().add(
+						Double.valueOf(exercise5weight.getText().toString()));
+			}
+		} catch (java.lang.NumberFormatException nfe) {
+			Toast.makeText(
+					this,
+					"Please Enter Only Numbers into the Reps and Weight Fields",
+					Toast.LENGTH_LONG).show();
+		}
+		try {
+			String exercise = exercise6.getText().toString().toLowerCase()
+					.trim();
+			if (!exercise.equals("")) {
+				theWOD.getExercises().add(exercise);
+				theWOD.getReps().add(
+						Integer.getInteger(exercise6reps.getText().toString()));
+				theWOD.getWeight().add(
+						Double.valueOf(exercise6weight.getText().toString()));
+			}
+		} catch (java.lang.NumberFormatException nfe) {
+			Toast.makeText(
+					this,
+					"Please Enter Only Numbers into the Reps and Weight Fields",
+					Toast.LENGTH_LONG).show();
+		}
+		try {
+			String exercise = exercise7.getText().toString().toLowerCase()
+					.trim();
+			if (!exercise.equals("")) {
+				theWOD.getExercises().add(exercise);
+				theWOD.getReps().add(
+						Integer.getInteger(exercise7reps.getText().toString()));
+				theWOD.getWeight().add(
+						Double.valueOf(exercise7weight.getText().toString()));
+			}
+		} catch (java.lang.NumberFormatException nfe) {
+			Toast.makeText(
+					this,
+					"Please Enter Only Numbers into the Reps and Weight Fields",
+					Toast.LENGTH_LONG).show();
+		}
+		try {
+			String exercise = exercise8.getText().toString().toLowerCase()
+					.trim();
+			if (!exercise.equals("")) {
+				theWOD.getExercises().add(exercise);
+				theWOD.getReps().add(
+						Integer.getInteger(exercise8reps.getText().toString()));
+				theWOD.getWeight().add(
+						Double.valueOf(exercise8weight.getText().toString()));
+			}
+		} catch (java.lang.NumberFormatException nfe) {
+			Toast.makeText(
+					this,
+					"Please Enter Only Numbers into the Reps and Weight Fields",
+					Toast.LENGTH_LONG).show();
+		}
+
+		switch (wodType.getCheckedRadioButtonId()) {
 		case 0:
 			theWOD.setType("AMRAP");
 		case 1:
@@ -191,22 +291,53 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 		case 2:
 			theWOD.setType("For Time");
 		}
-		
-		switch(adjustments.getCheckedRadioButtonId()){
+
+		switch (adjustments.getCheckedRadioButtonId()) {
 		case 0:
 			theWOD.setScaled(false);
 		case 1:
 			theWOD.setScaled(true);
 		}
+
+		try {
+			theWOD.setRounds(Integer.parseInt(rounds.getText().toString()));
+		} catch (java.lang.NumberFormatException nfe) {
+			Toast.makeText(this,
+					"Please Enter Only Numbers into Rounds and Time",
+					Toast.LENGTH_LONG).show();
+		}
+		try {
+			theWOD.setTimeMin(Integer.parseInt(timeMin.getText().toString()));
+		} catch (java.lang.NumberFormatException nfe) {
+			Toast.makeText(this,
+					"Please Enter Only Numbers into Rounds and Time",
+					Toast.LENGTH_LONG).show();
+		}
+		try {
+			theWOD.setTimeSec(Integer.parseInt(timeSec.getText().toString()));
+		} catch (java.lang.NumberFormatException nfe) {
+			Toast.makeText(this,
+					"Please Enter Only Numbers into Rounds and Time",
+					Toast.LENGTH_LONG).show();
+		}
 		
-		theWOD.setRounds(Integer.parseInt(rounds.getText().toString()));
-		theWOD.setTimeMin(Integer.parseInt(timeMin.getText().toString()));
-		theWOD.setTimeSec(Integer.parseInt(timeSec.getText().toString()));
+		// set list of tags
+		String tagsString = tags.getText().toString();
 		
-		//Add new wod to the database
+		LinkedList<String> theTags = new LinkedList<String>();
+		String tokens[] = tagsString.split(",");
+
+		for (int j = 0; j < tokens.length; j++) {
+			theTags.add(tokens[j]);
+		}
+		
+		theWOD.setTags(theTags);
+		theWOD.autoTag();
+		
+		// Add new wod to the database
 		user.getMyLog().getWods().add(theWOD);
-		
-		//serialize changed data
+
+		// serialize changed data
 		try {
 			FileOutputStream fos = openFileOutput(filename,
 					Context.MODE_PRIVATE);
@@ -216,12 +347,12 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
-		
-		Intent intent = new Intent();
+
+		Intent intent = new Intent(this, ViewWODActivity.class);
+		Log.d("wod date",wod_Date);
 		intent.putExtra("enteredWOD_Date", wod_Date);
-		setResult(RESULT_OK, intent);
-		finish();
+		intent.putExtra("USER_LIST_ID", userListID);
+		startActivity(intent);
 	}
-	
 
 }

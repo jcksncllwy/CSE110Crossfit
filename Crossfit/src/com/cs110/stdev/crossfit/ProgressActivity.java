@@ -22,6 +22,8 @@ public class ProgressActivity extends ListActivity {
 	private String[] mMenuText;
 
 	private String[] mMenuSummary;
+	
+	int userListID;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -32,6 +34,7 @@ public class ProgressActivity extends ListActivity {
 		mMenuSummary = new String[length + 2];
 		mMenuText[0] = "Weight Chart";
 		mMenuSummary[0] = "Your progress on weight";
+		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 		for (int i = 0; i < length; i++) {
 			mMenuText[i + 1] = mCharts[i].getName();
 			mMenuSummary[i + 1] = mCharts[i].getDesc();
@@ -59,7 +62,7 @@ public class ProgressActivity extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		Intent intent = new Intent(this,WeightChart.class);
+		Intent intent = null;
 		/*if (position == 0) {
 			intent = new Intent(this, XYChartBuilder.class);
 		} else if (position <= mCharts.length) {
@@ -67,6 +70,7 @@ public class ProgressActivity extends ListActivity {
 		} else {
 			intent = new Intent(this, GenerateChart.class);
 		}*/
+		intent.setClass(this,WeightChart.class);
 		startActivity(intent);
 	}
 }

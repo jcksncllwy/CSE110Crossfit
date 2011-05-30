@@ -16,17 +16,17 @@ public class WeightChartActivity extends AbstractDemoChart {
 
 	@Override
 	public String getName() {
-		return "Body Fat %";
+		return "Weight";
 	}
 
 	@Override
 	public String getDesc() {
-		return "The change in body fat %.";
+		return "The change in weight.";
 	}
 
 	@Override
 	public Intent execute(Context context) {
-		String[] titles = new String[] { "Body Fat % from 1995 to 2000" };
+		String[] titles = new String[] { "Weight from 1995 to 2000" };
 		List<Date[]> dates = new ArrayList<Date[]>();
 		List<double[]> values = new ArrayList<double[]>();
 		Date[] dateValues = new Date[] { new Date(95, 0, 1),
@@ -46,7 +46,7 @@ public class WeightChartActivity extends AbstractDemoChart {
 		int[] colors = new int[] { Color.BLUE };
 		PointStyle[] styles = new PointStyle[] { PointStyle.POINT };
 		XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
-		setChartSettings(renderer, "Body Fat %", "Date", "%",
+		setChartSettings(renderer, "Weight", "Date", "%",
 				dateValues[0].getTime(),
 				dateValues[dateValues.length - 1].getTime(), 6, 20, Color.GRAY,
 				Color.LTGRAY);

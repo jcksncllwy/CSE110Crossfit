@@ -17,12 +17,10 @@ public class LogActivity extends Activity implements OnClickListener {
 	Button searchButton;
 	DatePicker wodDay;
 	TextView lastcompletedwod;
-	
-	//get userListID from intent
+
+	// get userListID from intent
 	int userListID;
-	
-	static final int ENTER_WOD_REQUEST = 0;
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,41 +34,46 @@ public class LogActivity extends Activity implements OnClickListener {
 		wodDay = (DatePicker) findViewById(R.id.wodDay);
 		lastcompletedwod = (TextView) findViewById(R.id.lastcompletedwod);
 		lastcompletedwod.setText("Last completed WOD: ");
-		
-		 userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
-		
+
+		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
+
 		enterwodButton.setOnClickListener(this);
 		viewwodButton.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View view) {
-		if(view==enterwodButton){
+		if (view == enterwodButton) {
 			Intent intent = new Intent(this, EnterWODActivity.class);
+			intent.putExtra("USER_LIST_ID", userListID);
+
+			int day = (int) wodDay.getDayOfMonth();
+			int month = (int) wodDay.getMonth() + 1;
+			int year = (int) wodDay.getYear();
+
+			String theDay = Integer.toString(day);
+			String theMonth = Integer.toString(month);
+
+			if (day < 10)
+				theDay = "0" + Integer.toString(day);
+
+			if (month < 10)
+				theMonth = "0" + Integer.toString(month);
+
+			String wod_Date = theMonth + theDay + year;
+
+			intent.putExtra("WOD_DATE", wod_Date);
+			startActivity(intent);
+		} else if (view == viewwodButton) {
+			Intent intent = new Intent(this, ViewWODActivity.class);
 			intent.putExtra("USER_LIST_ID", userListID);
 			int dayOfMonth = wodDay.getDayOfMonth();
 			int month = wodDay.getMonth();
 			int year = wodDay.getYear();
-			String wod_Date = Integer.toString(month)+Integer.toString(dayOfMonth)+Integer.toString(year);
+			String wod_Date = Integer.toString(month)
+					+ Integer.toString(dayOfMonth) + Integer.toString(year);
 			intent.putExtra("WOD_DATE", wod_Date);
-			startActivityForResult(intent, ENTER_WOD_REQUEST);
-		}
-		else if(view==viewwodButton){
-			Intent intent = new Intent(this, ViewWODActivity.class);
-			intent.putExtra("USER_LIST_ID", userListID);
 			startActivity(intent);
 		}
 	}
-	
-	@Override
-	 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode == ENTER_WOD_REQUEST){
-			Intent intent = new Intent(this, ViewWODActivity.class);
-			intent.putExtra("USER_LIST_ID", userListID);
-			startActivity(intent);
-		}
-		
-	}
-
-	
 }

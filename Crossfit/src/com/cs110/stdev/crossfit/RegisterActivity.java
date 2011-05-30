@@ -99,13 +99,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		theuser.setSecretA(securityAnswer);
 
 		/*
-		 * don't worry about how this works, this just stores it into the
-		 * database. just remember to make a LinkedList of Users and then add
-		 * the user to it. Also, before adding it, we need to make sure all the
-		 * stuff is valid. So if there is a field that isn't valid do not do let
-		 * this happen or the intent stuff. Just leave it for now and I'll do
-		 * the else part -- basically i'll display a message saying that there's
-		 * a field that's invalid.
+		 * pulling user from database
 		 */
 		if (valid) {
 			LinkedList<User> userlist = new LinkedList<User>();
@@ -123,7 +117,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 			} catch (ClassNotFoundException ex) {
 				ex.printStackTrace();
 			}
-			
+
 			userlist.add(theuser);
 
 			try {

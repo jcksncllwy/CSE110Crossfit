@@ -69,7 +69,7 @@ public class WOD implements Serializable{
 			tags.add("AMRAP");
 		}
 
-		if(tags.size() == (4 + exercises.size())) {
+		if(tags.size() >= (4 + exercises.size())) {
 			return true;
 		}
 
@@ -219,7 +219,17 @@ public class WOD implements Serializable{
 	 * @param (int year) - new year to be set
 	 */
 	public void setDate(int month, int day, int year) {
-		this.date = Integer.toString(month) + Integer.toString(day) + Integer.toString(year);
+		String newDate = "";
+		if(month < 10) {
+			newDate += "0";
+		}
+		newDate += Integer.toString(month);
+		if(day < 10) {
+			newDate += "0";
+		}
+		newDate += Integer.toString(day);
+		newDate += Integer.toString(year);
+		this.date = newDate;
 	}
 
 	public int getMonth() {
@@ -233,7 +243,8 @@ public class WOD implements Serializable{
 	}
 
 	public int getYear() {
-		String strYear = date.substring(4, 8);
+		System.out.println(date);
+		String strYear = date.substring(4,8);
 		return Integer.parseInt(strYear);
 	}
 

@@ -71,8 +71,8 @@ public class BiometricActivity extends Activity implements OnClickListener {
 
 		if (!userlist.isEmpty()) {
 			if (!userlist.get(userListID).getMyLog().getBiometrics().isEmpty()) {
-				Double height = userlist.get(userListID).getMyLog().getBiometrics()
-						.getLast().getHeight();
+				Double height = userlist.get(userListID).getMyLog()
+						.getBiometrics().getLast().getHeight();
 				bioHeightEdit.setText(height.toString());
 			}
 		}
@@ -100,7 +100,7 @@ public class BiometricActivity extends Activity implements OnClickListener {
 		int day = (int) dayPicker.getDayOfMonth();
 		int month = (int) dayPicker.getMonth() + 1;
 		int year = (int) dayPicker.getYear();
-		String date = Integer.toString(day) + Integer.toString(month)
+		String date = Integer.toString(month) + Integer.toString(day)
 				+ Integer.toString(year);
 
 		// try to parse the fields that are numbers
@@ -167,9 +167,8 @@ public class BiometricActivity extends Activity implements OnClickListener {
 				}
 
 				bio.setTags(theTags);
-
 				bio.setBMI();
-
+				
 				// set date
 				if (date.length() > 0) {
 					bio.setDate(date);
@@ -177,6 +176,7 @@ public class BiometricActivity extends Activity implements OnClickListener {
 					valid = false;
 				}
 
+				bio.autoTag();
 				/*
 				 * putting in the user back in the database
 				 */
