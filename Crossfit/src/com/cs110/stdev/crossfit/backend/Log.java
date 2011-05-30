@@ -520,13 +520,14 @@ public class Log implements Serializable {
 	 * @param (String to) - end of date range
 	 * @return - list of weights from biometrics
 	 */
-	public double[] returnWeightRange(String from, String to) {\
+	public double[] returnWeightRange(String from, String to) {
 		LinkedList<Biometric> resultList = getBIOsFromTo(from, to);
 		double[] weights = new double[resultList.size()];
 		for(int i = 0; i < resultList.size(); i++) {
 			weights[i] = resultList.get(i).getWeight();
 		}
-	
+		
+		return weights;
 	}
 	
 	/**
