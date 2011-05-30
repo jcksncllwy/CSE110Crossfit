@@ -288,6 +288,7 @@ public class Log implements Serializable {
 	 * @param (String to) - end of date range
 	 * @return - list of WODs within the range
 	 */
+	 
 	public LinkedList<WOD> getWODsFromTo(String from, String to)
     {
         LinkedList<WOD> resultList = new LinkedList<WOD>();
@@ -318,21 +319,21 @@ public class Log implements Serializable {
         start = i;
         for(i = 0; i < wods.size(); i++)
         {
-            if(wods.get(i).getYear() == Integer.parseInt(to.substring(4,8)))
+            if(wods.get(i).getYear() == Integer.parseInt(from.substring(4,8)))
             {
-                if(wods.get(i).getMonth() > Integer.parseInt(to.substring(2,4)))
+                if(wods.get(i).getMonth() > Integer.parseInt(from.substring(2,4)))
                 {
                     break;
                 }
-                else if(wods.get(i).getMonth() == Integer.parseInt(to.substring(2,4)))
+                else if(wods.get(i).getMonth() == Integer.parseInt(from.substring(2,4)))
                 {
-                    if(wods.get(i).getDay() >= Integer.parseInt(to.substring(0,2)))
+                    if(wods.get(i).getDay() >= Integer.parseInt(from.substring(0,2)))
                     {
                         break;
                     }
                 }
             }
-            if(wods.get(i).getYear() > Integer.parseInt(to.substring(4,8)))
+            if(wods.get(i).getYear() > Integer.parseInt(from.substring(4,8)))
             {
                     break;
             }
@@ -342,29 +343,9 @@ public class Log implements Serializable {
         {
             resultList.add(wods.get(start));
         }
-		WOD checkFirst = resultList.get(0);
-		if(checkFirst.getYear() < Integer.parseInt(from.substring(4,8))) {
-			resultList.clear();
-		} 
-		else if(checkFirst.getYear() == Integer.parseInt(from.substring(4,8))) {
-			if(checkFirst.getMonth() < Integer.parseInt(from.substring(0,2))) {
-				resultList.clear();
-			} 
-			else if(checkFirst.getMonth() == Integer.parseInt(from.substring(0,2))) {
-				if(checkFirst.getDay() < Integer.parseInt(from.substring(2,4))) {
-					resultList.clear();
-				}				
-			}
-		}
         return resultList;
     }
     
-	/**
-	 * Method to get a LinkedList of biometrics in a range of dates
-	 * @param (String from) - start of date range
-	 * @param (String to) - end of date range
-	 * @return - list of biometrics within the range
-	 */
     public LinkedList<Biometric> getBIOsFromTo(String from, String to)
     {
         LinkedList<Biometric> resultList = new LinkedList<Biometric>();
@@ -395,21 +376,21 @@ public class Log implements Serializable {
         start = i;
         for(i = 0; i < biometrics.size(); i++)
         {
-            if(biometrics.get(i).getYear() == Integer.parseInt(to.substring(4,8)))
+            if(biometrics.get(i).getYear() == Integer.parseInt(from.substring(4,8)))
             {
-                if(biometrics.get(i).getMonth() > Integer.parseInt(to.substring(2,4)))
+                if(biometrics.get(i).getMonth() > Integer.parseInt(from.substring(2,4)))
                 {
                     break;
                 }
-                else if(biometrics.get(i).getMonth() == Integer.parseInt(to.substring(2,4)))
+                else if(biometrics.get(i).getMonth() == Integer.parseInt(from.substring(2,4)))
                 {
-                    if(biometrics.get(i).getDay() >= Integer.parseInt(to.substring(0,2)))
+                    if(biometrics.get(i).getDay() >= Integer.parseInt(from.substring(0,2)))
                     {
                         break;
                     }
                 }
             }
-            if(biometrics.get(i).getYear() > Integer.parseInt(to.substring(4,8)))
+            if(biometrics.get(i).getYear() > Integer.parseInt(from.substring(4,8)))
             {
                     break;
             }
@@ -419,117 +400,9 @@ public class Log implements Serializable {
         {
             resultList.add(biometrics.get(start));
         }
-		Biometric checkFirst = resultList.get(0);
-		if(checkFirst.getYear() < Integer.parseInt(from.substring(4,8))) {
-			resultList.clear();
-		} 
-		else if(checkFirst.getYear() == Integer.parseInt(from.substring(4,8))) {
-			if(checkFirst.getMonth() < Integer.parseInt(from.substring(0,2))) {
-				resultList.clear();
-			} 
-			else if(checkFirst.getMonth() == Integer.parseInt(from.substring(0,2))) {
-				if(checkFirst.getDay() < Integer.parseInt(from.substring(2,4))) {
-					resultList.clear();
-				}				
-			}
-		}
         return resultList;
     }
 
-	/**
-	 * Method to get a LinkedList of Notes in a range of dates
-	 * @param (String from) - start of date range
-	 * @param (String to) - end of date range
-	 * @return - list of WODs within the range
-	 */
-	public LinkedList<Notes> getNotesFromTo(String from, String to)
-    {
-        LinkedList<Notes> resultList = new LinkedList<Notes>();
-        int start, i = 0;
-        int end = 0;
-        for(i = 0; i < wods.size(); i++)
-        {
-            if(notes.get(i).getYear() == Integer.parseInt(from.substring(4,8)))
-            {
-                if(notes.get(i).getMonth() > Integer.parseInt(from.substring(2,4)))
-                {
-                    break;
-                }
-                else if(notes.get(i).getMonth() == Integer.parseInt(from.substring(2,4)))
-                {
-                    if(notes.get(i).getDay() >= Integer.parseInt(from.substring(0,2)))
-                    {
-                        break;
-                    }
-                }
-            }
-            if(notes.get(i).getYear() > Integer.parseInt(from.substring(4,8)))
-            {
-                    break;
-            }
-            
-        }
-        start = i;
-        for(i = 0; i < notes.size(); i++)
-        {
-            if(notes.get(i).getYear() == Integer.parseInt(to.substring(4,8)))
-            {
-                if(notes.get(i).getMonth() > Integer.parseInt(to.substring(2,4)))
-                {
-                    break;
-                }
-                else if(notes.get(i).getMonth() == Integer.parseInt(to.substring(2,4)))
-                {
-                    if(notes.get(i).getDay() >= Integer.parseInt(to.substring(0,2)))
-                    {
-                        break;
-                    }
-                }
-            }
-            if(notes.get(i).getYear() > Integer.parseInt(to.substring(4,8)))
-            {
-                    break;
-            }
-        }
-        end = i;
-        for(i = 0; start <= end; start++)
-        {
-            resultList.add(notes.get(start));
-        }
-		Notes checkFirst = resultList.get(0);
-		if(checkFirst.getYear() < Integer.parseInt(from.substring(4,8))) {
-			resultList.clear();
-		} 
-		else if(checkFirst.getYear() == Integer.parseInt(from.substring(4,8))) {
-			if(checkFirst.getMonth() < Integer.parseInt(from.substring(0,2))) {
-				resultList.clear();
-			} 
-			else if(checkFirst.getMonth() == Integer.parseInt(from.substring(0,2))) {
-				if(checkFirst.getDay() < Integer.parseInt(from.substring(2,4))) {
-					resultList.clear();
-				}				
-			}
-		}
-        return resultList;
-    }
-	
-	/**
-	 * Method to get an array of recorded body weights within a date range
-	 * Used for graphing purposes
-	 * @param (String from) - start of date range
-	 * @param (String to) - end of date range
-	 * @return - list of weights from biometrics
-	 */
-	public double[] returnWeightRange(String from, String to) {
-		LinkedList<Biometric> resultList = getBIOsFromTo(from, to);
-		double[] weights = new double[resultList.size()];
-		for(int i = 0; i < resultList.size(); i++) {
-			weights[i] = resultList.get(i).getWeight();
-		}
-		
-		return weights;
-	}
-	
 	/**
 	 * Method to search through WOD, Notes, and Biometrics by content
 	 * @param (String logType) - type of log info to search through

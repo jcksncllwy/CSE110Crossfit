@@ -27,30 +27,25 @@ public class ViewWODActivity extends Activity implements OnClickListener {
 	TextView isBenchmark;
 	TextView theWodType;
 	TextView isPrescribed;
-	TextView exercise1name;
-	TextView exercise2name;
-	TextView exercise3name;
-	TextView exercise4name;
-	TextView exercise5name;
-	TextView exercise6name;
-	TextView exercise7name;
-	TextView exercise8name;
-	TextView exercise1reps;
-	TextView exercise2reps;
-	TextView exercise3reps;
-	TextView exercise4reps;
-	TextView exercise5reps;
-	TextView exercise6reps;
-	TextView exercise7reps;
-	TextView exercise8reps;
-	TextView exercise1weight;
-	TextView exercise2weight;
-	TextView exercise3weight;
-	TextView exercise4weight;
-	TextView exercise5weight;
-	TextView exercise6weight;
-	TextView exercise7weight;
-	TextView exercise8weight;
+	TextView exercise1;
+	TextView exercise2;
+	TextView exercise3;
+	TextView exercise4;
+	TextView exercise5;
+	TextView exercise6;
+	TextView exercise7;
+	TextView exercise8;
+	String isBenchmarkString;
+	String theWodTypeString;
+	String isPrescribedString;
+	String exercise1String;
+	String exercise2String;
+	String exercise3String;
+	String exercise4String;
+	String exercise5String;
+	String exercise6String;
+	String exercise7String;
+	String exercise8String;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -64,30 +59,26 @@ public class ViewWODActivity extends Activity implements OnClickListener {
 	    isBenchmark = (TextView) findViewById(R.id.isBenchmark);
 		theWodType = (TextView) findViewById(R.id.theWodType);
 		isPrescribed = (TextView) findViewById(R.id.isPrescribed);
-	    exercise1name = (TextView) findViewById(R.id.exercise1);
-		exercise2name = (TextView) findViewById(R.id.exercise2);
-		exercise3name = (TextView) findViewById(R.id.exercise3);
-		exercise4name = (TextView) findViewById(R.id.exercise4);
-		exercise5name = (TextView) findViewById(R.id.exercise5);
-		exercise6name = (TextView) findViewById(R.id.exercise6);
-		exercise7name = (TextView) findViewById(R.id.exercise7);
-		exercise8name = (TextView) findViewById(R.id.exercise8);
-		exercise1reps = (TextView) findViewById(R.id.exercise1reps);
-		exercise2reps = (TextView) findViewById(R.id.exercise2reps);
-		exercise3reps = (TextView) findViewById(R.id.exercise3reps);
-		exercise4reps = (TextView) findViewById(R.id.exercise4reps);
-		exercise5reps = (TextView) findViewById(R.id.exercise5reps);
-		exercise6reps = (TextView) findViewById(R.id.exercise6reps);
-		exercise7reps = (TextView) findViewById(R.id.exercise7reps);
-		exercise8reps = (TextView) findViewById(R.id.exercise8reps);
-		exercise1weight = (TextView) findViewById(R.id.exercise1weight);
-		exercise2weight = (TextView) findViewById(R.id.exercise2weight);
-		exercise3weight = (TextView) findViewById(R.id.exercise3weight);
-		exercise4weight = (TextView) findViewById(R.id.exercise4weight);
-		exercise5weight = (TextView) findViewById(R.id.exercise5weight);
-		exercise6weight = (TextView) findViewById(R.id.exercise6weight);
-		exercise7weight = (TextView) findViewById(R.id.exercise7weight);
-		exercise8weight = (TextView) findViewById(R.id.exercise8weight);
+	    exercise1 = (TextView) findViewById(R.id.exercise1);
+		exercise2 = (TextView) findViewById(R.id.exercise2);
+		exercise3 = (TextView) findViewById(R.id.exercise3);
+		exercise4 = (TextView) findViewById(R.id.exercise4);
+		exercise5 = (TextView) findViewById(R.id.exercise5);
+		exercise6 = (TextView) findViewById(R.id.exercise6);
+		exercise7 = (TextView) findViewById(R.id.exercise7);
+		exercise8 = (TextView) findViewById(R.id.exercise8);
+		
+		String isBenchmarkString = "";
+		String theWodTypeString = "";
+		String isPrescribedString = "";
+		String exercise1String = "";
+		String exercise2String = "";
+		String exercise3String = "";
+		String exercise4String = "";
+		String exercise5String = "";
+		String exercise6String = "";
+		String exercise7String = "";
+		String exercise8String = "";
 	    
 	    userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 	    try{
@@ -114,13 +105,56 @@ public class ViewWODActivity extends Activity implements OnClickListener {
 		}
 
 		User user = userlist.get(userListID);
+		WOD theWod = user.getMyLog().getWODsFromTo(wod_Date, wod_Date).getFirst();
+		if(theWod.isBenchmark()){
+			isBenchmarkString = "Yes";
+		}
+		if(theWod.isScaled()){
+			isPrescribedString = "No";
+		}
+		theWodTypeString = theWod.getType();
+		//Exercise names
+		exercise1String.concat(theWod.getExercises().get(0) + "  ");
+		exercise2String.concat(theWod.getExercises().get(1) + "  ");
+		exercise3String.concat(theWod.getExercises().get(2) + "  ");
+		exercise4String.concat(theWod.getExercises().get(3) + "  ");
+		exercise5String.concat(theWod.getExercises().get(4) + "  ");
+		exercise6String.concat(theWod.getExercises().get(5) + "  ");
+		exercise7String.concat(theWod.getExercises().get(6) + "  ");
+		exercise8String.concat(theWod.getExercises().get(7) + "  ");
 		
+		//Exercise Reps
+		exercise1String.concat(Integer.toString(theWod.getReps().get(0)) + "  ");
+		exercise2String.concat(Integer.toString(theWod.getReps().get(1)) + "  ");
+		exercise3String.concat(Integer.toString(theWod.getReps().get(2)) + "  ");
+		exercise4String.concat(Integer.toString(theWod.getReps().get(3)) + "  ");
+		exercise5String.concat(Integer.toString(theWod.getReps().get(4)) + "  ");
+		exercise6String.concat(Integer.toString(theWod.getReps().get(5)) + "  ");
+		exercise7String.concat(Integer.toString(theWod.getReps().get(6)) + "  ");
+		exercise8String.concat(Integer.toString(theWod.getReps().get(7)) + "  ");
+		
+		//Exercise Weights
+		exercise1String.concat(Double.toString(theWod.getWeight().get(0)) + "  ");
+		exercise2String.concat(Double.toString(theWod.getWeight().get(1)) + "  ");
+		exercise3String.concat(Double.toString(theWod.getWeight().get(2)) + "  ");
+		exercise4String.concat(Double.toString(theWod.getWeight().get(3)) + "  ");
+		exercise5String.concat(Double.toString(theWod.getWeight().get(4)) + "  ");
+		exercise6String.concat(Double.toString(theWod.getWeight().get(5)) + "  ");
+		exercise7String.concat(Double.toString(theWod.getWeight().get(6)) + "  ");
+		exercise8String.concat(Double.toString(theWod.getWeight().get(7)) + "  ");
 	    
-	    
-	    
-	    
-	    
-	    
+		//Set TextViews text to the strings
+	    isBenchmark.setText(isBenchmarkString);
+	    theWodType.setText(theWodTypeString);
+	    isPrescribed.setText(isPrescribedString);
+	    exercise1.setText(exercise1String);
+	    exercise2.setText(exercise2String);
+	    exercise3.setText(exercise3String);
+	    exercise4.setText(exercise4String);
+	    exercise5.setText(exercise5String);
+	    exercise6.setText(exercise6String);
+	    exercise7.setText(exercise7String);
+	    exercise8.setText(exercise8String);
 	    
 	    editWODButton.setOnClickListener(this);
 	    goBackButton.setOnClickListener(this);
@@ -132,6 +166,7 @@ public class ViewWODActivity extends Activity implements OnClickListener {
 		if(v==editWODButton){
 			Intent i = new Intent(this,EnterWODActivity.class);
 			i.putExtra("USER_LIST_ID", userListID);
+			i.putExtra("WOD_DATE", wod_Date);
 			startActivity(i);
 		}
 		else if(v==goBackButton){
