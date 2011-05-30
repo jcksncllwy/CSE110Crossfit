@@ -350,7 +350,7 @@ public class Log implements Serializable {
 			if(checkFirst.getMonth() < Integer.parseInt(from.substring(0,2))) {
 				resultList.clear();
 			} 
-			else if(checkFirst.getYear() == Integer.parseInt(from.substring(0,2))) {
+			else if(checkFirst.getMonth() == Integer.parseInt(from.substring(0,2))) {
 				if(checkFirst.getDay() < Integer.parseInt(from.substring(2,4))) {
 					resultList.clear();
 				}				
@@ -427,7 +427,7 @@ public class Log implements Serializable {
 			if(checkFirst.getMonth() < Integer.parseInt(from.substring(0,2))) {
 				resultList.clear();
 			} 
-			else if(checkFirst.getYear() == Integer.parseInt(from.substring(0,2))) {
+			else if(checkFirst.getMonth() == Integer.parseInt(from.substring(0,2))) {
 				if(checkFirst.getDay() < Integer.parseInt(from.substring(2,4))) {
 					resultList.clear();
 				}				
@@ -504,7 +504,7 @@ public class Log implements Serializable {
 			if(checkFirst.getMonth() < Integer.parseInt(from.substring(0,2))) {
 				resultList.clear();
 			} 
-			else if(checkFirst.getYear() == Integer.parseInt(from.substring(0,2))) {
+			else if(checkFirst.getMonth() == Integer.parseInt(from.substring(0,2))) {
 				if(checkFirst.getDay() < Integer.parseInt(from.substring(2,4))) {
 					resultList.clear();
 				}				
