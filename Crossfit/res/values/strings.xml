@@ -55,4 +55,9 @@
 	<string name="invalidSecretA">Your security answer is incorrect. Please try again.</string>
 	<string name="invalidUsername">Invalid username. Please enter a valid username and retrieve your security question.</string>
 	<string name="rounds">Rounds</string>
+	<string name="exerciseNameDefault">Exercise Name</string>
+	<string name="reps">Reps</string>
+	<string name="exerciseWeight">Weight</string>
+	<string name="min">Minutes</string>
+	<string name="sec">Seconds</string>
 </resources>

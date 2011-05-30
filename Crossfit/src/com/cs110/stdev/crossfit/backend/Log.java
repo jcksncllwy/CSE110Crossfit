@@ -288,6 +288,7 @@ public class Log implements Serializable {
 	 * @param (String to) - end of date range
 	 * @return - list of WODs within the range
 	 */
+	 
 	public LinkedList<WOD> getWODsFromTo(String from, String to)
     {
         LinkedList<WOD> resultList = new LinkedList<WOD>();
@@ -318,7 +319,7 @@ public class Log implements Serializable {
         start = i;
         for(i = 0; i < wods.size(); i++)
         {
-            if(wods.get(i).getYear() == Integer.parseInt(to.substring(4,8)))
+            if(wods.get(i).getYear() == Integer.parseInt(from.substring(4,8)))
             {
                 if(wods.get(i).getMonth() > Integer.parseInt(to.substring(0,2)))
                 {
@@ -332,7 +333,7 @@ public class Log implements Serializable {
                     }
                 }
             }
-            if(wods.get(i).getYear() > Integer.parseInt(to.substring(4,8)))
+            if(wods.get(i).getYear() > Integer.parseInt(from.substring(4,8)))
             {
                     break;
             }
@@ -342,29 +343,9 @@ public class Log implements Serializable {
         {
             resultList.add(wods.get(i));
         }
-		WOD checkFirst = resultList.get(0);
-		if(checkFirst.getYear() < Integer.parseInt(from.substring(4,8))) {
-			resultList.clear();
-		} 
-		else if(checkFirst.getYear() == Integer.parseInt(from.substring(4,8))) {
-			if(checkFirst.getMonth() < Integer.parseInt(from.substring(0,2))) {
-				resultList.clear();
-			} 
-			else if(checkFirst.getMonth() == Integer.parseInt(from.substring(0,2))) {
-				if(checkFirst.getDay() < Integer.parseInt(from.substring(2,4))) {
-					resultList.clear();
-				}				
-			}
-		}
         return resultList;
     }
     
-	/**
-	 * Method to get a LinkedList of biometrics in a range of dates
-	 * @param (String from) - start of date range
-	 * @param (String to) - end of date range
-	 * @return - list of biometrics within the range
-	 */
     public LinkedList<Biometric> getBIOsFromTo(String from, String to)
     {
         LinkedList<Biometric> resultList = new LinkedList<Biometric>();
@@ -395,7 +376,7 @@ public class Log implements Serializable {
         start = i;
         for(i = 0; i < biometrics.size(); i++)
         {
-            if(biometrics.get(i).getYear() == Integer.parseInt(to.substring(4,8)))
+            if(biometrics.get(i).getYear() == Integer.parseInt(from.substring(4,8)))
             {
                 if(biometrics.get(i).getMonth() > Integer.parseInt(to.substring(0,2)))
                 {
@@ -409,7 +390,7 @@ public class Log implements Serializable {
                     }
                 }
             }
-            if(biometrics.get(i).getYear() > Integer.parseInt(to.substring(4,8)))
+            if(biometrics.get(i).getYear() > Integer.parseInt(from.substring(4,8)))
             {
                     break;
             }
@@ -419,20 +400,6 @@ public class Log implements Serializable {
         {
             resultList.add(biometrics.get(i));
         }
-		Biometric checkFirst = resultList.get(0);
-		if(checkFirst.getYear() < Integer.parseInt(from.substring(4,8))) {
-			resultList.clear();
-		} 
-		else if(checkFirst.getYear() == Integer.parseInt(from.substring(4,8))) {
-			if(checkFirst.getMonth() < Integer.parseInt(from.substring(0,2))) {
-				resultList.clear();
-			} 
-			else if(checkFirst.getMonth() == Integer.parseInt(from.substring(0,2))) {
-				if(checkFirst.getDay() < Integer.parseInt(from.substring(2,4))) {
-					resultList.clear();
-				}				
-			}
-		}
         return resultList;
     }
 
