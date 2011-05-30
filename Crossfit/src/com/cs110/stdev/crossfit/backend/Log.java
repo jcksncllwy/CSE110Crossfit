@@ -297,13 +297,13 @@ public class Log implements Serializable {
         {
             if(wods.get(i).getYear() == Integer.parseInt(from.substring(4,8)))
             {
-                if(wods.get(i).getMonth() > Integer.parseInt(from.substring(2,4)))
+                if(wods.get(i).getMonth() > Integer.parseInt(from.substring(0,2)))
                 {
                     break;
                 }
-                else if(wods.get(i).getMonth() == Integer.parseInt(from.substring(2,4)))
+                else if(wods.get(i).getMonth() == Integer.parseInt(from.substring(0,2)))
                 {
-                    if(wods.get(i).getDay() >= Integer.parseInt(from.substring(0,2)))
+                    if(wods.get(i).getDay() >= Integer.parseInt(from.substring(2,4)))
                     {
                         break;
                     }
@@ -320,13 +320,13 @@ public class Log implements Serializable {
         {
             if(wods.get(i).getYear() == Integer.parseInt(to.substring(4,8)))
             {
-                if(wods.get(i).getMonth() > Integer.parseInt(to.substring(2,4)))
+                if(wods.get(i).getMonth() > Integer.parseInt(to.substring(0,2)))
                 {
                     break;
                 }
-                else if(wods.get(i).getMonth() == Integer.parseInt(to.substring(2,4)))
+                else if(wods.get(i).getMonth() == Integer.parseInt(to.substring(0,2)))
                 {
-                    if(wods.get(i).getDay() >= Integer.parseInt(to.substring(0,2)))
+                    if(wods.get(i).getDay() >= Integer.parseInt(to.substring(2,4)))
                     {
                         break;
                     }
@@ -338,9 +338,9 @@ public class Log implements Serializable {
             }
         }
         end = i;
-        for(i = 0; start <= end; start++)
+        for(i = start; i <= end; i++)
         {
-            resultList.add(wods.get(start));
+            resultList.add(wods.get(i));
         }
 		WOD checkFirst = resultList.get(0);
 		if(checkFirst.getYear() < Integer.parseInt(from.substring(4,8))) {
@@ -374,13 +374,13 @@ public class Log implements Serializable {
         {
             if(biometrics.get(i).getYear() == Integer.parseInt(from.substring(4,8)))
             {
-                if(biometrics.get(i).getMonth() > Integer.parseInt(from.substring(2,4)))
+                if(biometrics.get(i).getMonth() > Integer.parseInt(from.substring(0,2)))
                 {
                     break;
                 }
-                else if(biometrics.get(i).getMonth() == Integer.parseInt(from.substring(2,4)))
+                else if(biometrics.get(i).getMonth() == Integer.parseInt(from.substring(0,2)))
                 {
-                    if(biometrics.get(i).getDay() >= Integer.parseInt(from.substring(0,2)))
+                    if(biometrics.get(i).getDay() >= Integer.parseInt(from.substring(2,4)))
                     {
                         break;
                     }
@@ -397,13 +397,13 @@ public class Log implements Serializable {
         {
             if(biometrics.get(i).getYear() == Integer.parseInt(to.substring(4,8)))
             {
-                if(biometrics.get(i).getMonth() > Integer.parseInt(to.substring(2,4)))
+                if(biometrics.get(i).getMonth() > Integer.parseInt(to.substring(0,2)))
                 {
                     break;
                 }
-                else if(biometrics.get(i).getMonth() == Integer.parseInt(to.substring(2,4)))
+                else if(biometrics.get(i).getMonth() == Integer.parseInt(to.substring(0,2)))
                 {
-                    if(biometrics.get(i).getDay() >= Integer.parseInt(to.substring(0,2)))
+                    if(biometrics.get(i).getDay() >= Integer.parseInt(to.substring(2,4)))
                     {
                         break;
                     }
@@ -415,9 +415,9 @@ public class Log implements Serializable {
             }
         }
         end = i;
-        for(i = 0; start <= end; start++)
+        for(i = start; i <= end; i++)
         {
-            resultList.add(biometrics.get(start));
+            resultList.add(biometrics.get(i));
         }
 		Biometric checkFirst = resultList.get(0);
 		if(checkFirst.getYear() < Integer.parseInt(from.substring(4,8))) {
@@ -451,13 +451,13 @@ public class Log implements Serializable {
         {
             if(notes.get(i).getYear() == Integer.parseInt(from.substring(4,8)))
             {
-                if(notes.get(i).getMonth() > Integer.parseInt(from.substring(2,4)))
+                if(notes.get(i).getMonth() > Integer.parseInt(from.substring(0,2)))
                 {
                     break;
                 }
-                else if(notes.get(i).getMonth() == Integer.parseInt(from.substring(2,4)))
+                else if(notes.get(i).getMonth() == Integer.parseInt(from.substring(0,2)))
                 {
-                    if(notes.get(i).getDay() >= Integer.parseInt(from.substring(0,2)))
+                    if(notes.get(i).getDay() >= Integer.parseInt(from.substring(2,4)))
                     {
                         break;
                     }
@@ -474,13 +474,13 @@ public class Log implements Serializable {
         {
             if(notes.get(i).getYear() == Integer.parseInt(to.substring(4,8)))
             {
-                if(notes.get(i).getMonth() > Integer.parseInt(to.substring(2,4)))
+                if(notes.get(i).getMonth() > Integer.parseInt(to.substring(0,2)))
                 {
                     break;
                 }
-                else if(notes.get(i).getMonth() == Integer.parseInt(to.substring(2,4)))
+                else if(notes.get(i).getMonth() == Integer.parseInt(to.substring(0,2)))
                 {
-                    if(notes.get(i).getDay() >= Integer.parseInt(to.substring(0,2)))
+                    if(notes.get(i).getDay() >= Integer.parseInt(to.substring(2,4)))
                     {
                         break;
                     }
@@ -492,9 +492,9 @@ public class Log implements Serializable {
             }
         }
         end = i;
-        for(i = 0; start <= end; start++)
+        for(i = start; i <= end; i++)
         {
-            resultList.add(notes.get(start));
+            resultList.add(notes.get(i));
         }
 		Notes checkFirst = resultList.get(0);
 		if(checkFirst.getYear() < Integer.parseInt(from.substring(4,8))) {
