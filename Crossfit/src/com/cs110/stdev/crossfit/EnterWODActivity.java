@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 public class EnterWODActivity extends Activity implements OnClickListener {
 	Button enterWODButton;
+	Button viewWodButton;
 	CheckBox checkBoxBenchmark;
 	RadioGroup wodType;
 	RadioButton amrap;
@@ -80,6 +81,7 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.enterwod);
 
 		enterWODButton = (Button) findViewById(R.id.enterWODButton);
+		viewWodButton = (Button) findViewById(R.id.viewWodButton);
 		checkBoxBenchmark = (CheckBox) findViewById(R.id.checkBoxBenchmark);
 		amrap = (RadioButton) findViewById(R.id.AMRAP);
 		tabata = (RadioButton) findViewById(R.id.Tabata);
@@ -121,165 +123,171 @@ public class EnterWODActivity extends Activity implements OnClickListener {
 		exercise8weight = (EditText) findViewById(R.id.exercise8weight);
 
 		enterWODButton.setOnClickListener(this);
+		viewWodButton.setOnClickListener(this);
 	}
 
 	
 	
 	@Override
 	public void onClick(View v) {
-		LinkedList<User> userlist = new LinkedList<User>();
-		String filename = "user.ser";
-		/* pulling the user from the database */
-		try {
-			FileInputStream fis = openFileInput(filename);
-			ObjectInputStream in = new ObjectInputStream(fis);
-			userlist = (LinkedList<User>) in.readObject();
-			in.close();
-		} catch (FileNotFoundException ex) {
-			ex.printStackTrace();
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} catch (ClassNotFoundException ex) {
-			ex.printStackTrace();
+		if(v == enterWODButton){
+			LinkedList<User> userlist = new LinkedList<User>();
+			String filename = "user.ser";
+			/* pulling the user from the database */
+			try {
+				FileInputStream fis = openFileInput(filename);
+				ObjectInputStream in = new ObjectInputStream(fis);
+				userlist = (LinkedList<User>) in.readObject();
+				in.close();
+			} catch (FileNotFoundException ex) {
+				ex.printStackTrace();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			} catch (ClassNotFoundException ex) {
+				ex.printStackTrace();
+			}
+	
+			User user = userlist.get(userListID);
+			
+			//Create a new WOD object to be added
+			WOD theWOD = new WOD();
+			//Set it's fields from input
+			theWOD.setDate(wod_Date);
+			theWOD.setBenchmark(checkBoxBenchmark.isChecked());
+			//Set each exercise and it's reps and weight
+			try{
+				theWOD.getExercises().add(exercise1.getText().toString());
+				theWOD.getReps().add(Integer.getInteger(exercise1reps.getText().toString()));
+				theWOD.getWeight().add(Double.valueOf(exercise1weight.getText().toString()));
+			}
+			catch(java.lang.NumberFormatException nfe){
+				Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
+						Toast.LENGTH_LONG).show();
+			}
+			try{
+				theWOD.getExercises().add(exercise2.getText().toString());
+				theWOD.getReps().add(Integer.getInteger(exercise2reps.getText().toString()));
+				theWOD.getWeight().add(Double.valueOf(exercise2weight.getText().toString()));
+			}
+			catch(java.lang.NumberFormatException nfe){
+				Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
+						Toast.LENGTH_LONG).show();
+			}
+			try{
+				theWOD.getExercises().add(exercise3.getText().toString());
+				theWOD.getReps().add(Integer.getInteger(exercise3reps.getText().toString()));
+				theWOD.getWeight().add(Double.valueOf(exercise3weight.getText().toString()));
+			}
+			catch(java.lang.NumberFormatException nfe){
+				Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
+						Toast.LENGTH_LONG).show();
+			}
+			try{
+				theWOD.getExercises().add(exercise4.getText().toString());
+				theWOD.getReps().add(Integer.getInteger(exercise4reps.getText().toString()));
+				theWOD.getWeight().add(Double.valueOf(exercise4weight.getText().toString()));
+			}
+			catch(java.lang.NumberFormatException nfe){
+				Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
+						Toast.LENGTH_LONG).show();
+			}
+			try{
+				theWOD.getExercises().add(exercise5.getText().toString());
+				theWOD.getReps().add(Integer.getInteger(exercise5reps.getText().toString()));
+				theWOD.getWeight().add(Double.valueOf(exercise5weight.getText().toString()));
+			}
+			catch(java.lang.NumberFormatException nfe){
+				Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
+						Toast.LENGTH_LONG).show();
+			}
+			try{
+				theWOD.getExercises().add(exercise6.getText().toString());
+				theWOD.getReps().add(Integer.getInteger(exercise6reps.getText().toString()));
+				theWOD.getWeight().add(Double.valueOf(exercise6weight.getText().toString()));
+			}
+			catch(java.lang.NumberFormatException nfe){
+				Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
+						Toast.LENGTH_LONG).show();
+			}
+			try{
+				theWOD.getExercises().add(exercise7.getText().toString());
+				theWOD.getReps().add(Integer.getInteger(exercise7reps.getText().toString()));
+				theWOD.getWeight().add(Double.valueOf(exercise7weight.getText().toString()));
+			}
+			catch(java.lang.NumberFormatException nfe){
+				Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
+						Toast.LENGTH_LONG).show();
+			}
+			try{
+				theWOD.getExercises().add(exercise8.getText().toString());
+				theWOD.getReps().add(Integer.getInteger(exercise8reps.getText().toString()));
+				theWOD.getWeight().add(Double.valueOf(exercise8weight.getText().toString()));
+			}
+			catch(java.lang.NumberFormatException nfe){
+				Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
+						Toast.LENGTH_LONG).show();
+			}
+			
+			switch(wodType.getCheckedRadioButtonId()){
+			case 0:
+				theWOD.setType("AMRAP");
+			case 1:
+				theWOD.setType("Tabata");
+			case 2:
+				theWOD.setType("For Time");
+			}
+			
+			switch(adjustments.getCheckedRadioButtonId()){
+			case 0:
+				theWOD.setScaled(false);
+			case 1:
+				theWOD.setScaled(true);
+			}
+			
+			try{
+				theWOD.setRounds(Integer.parseInt(rounds.getText().toString()));
+			}
+			catch(java.lang.NumberFormatException nfe){
+				Toast.makeText(this, "Please Enter Only Numbers into Rounds and Time",
+						Toast.LENGTH_LONG).show();
+			}
+			try{
+				theWOD.setTimeMin(Integer.parseInt(timeMin.getText().toString()));
+			}
+			catch(java.lang.NumberFormatException nfe){
+				Toast.makeText(this, "Please Enter Only Numbers into Rounds and Time",
+						Toast.LENGTH_LONG).show();
+			}
+			try{
+				theWOD.setTimeSec(Integer.parseInt(timeSec.getText().toString()));
+			}
+			catch(java.lang.NumberFormatException nfe){
+				Toast.makeText(this, "Please Enter Only Numbers into Rounds and Time",
+						Toast.LENGTH_LONG).show();
+			}
+			
+			//Add new wod to the database
+			user.getMyLog().getWods().add(theWOD);
+			
+			//serialize changed data
+			try {
+				FileOutputStream fos = openFileOutput(filename,
+						Context.MODE_PRIVATE);
+				ObjectOutputStream out = new ObjectOutputStream(fos);
+				out.writeObject(userlist);
+				out.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+			
 		}
-
-		User user = userlist.get(userListID);
 		
-		//Create a new WOD object to be added
-		WOD theWOD = new WOD();
-		//Set it's fields from input
-		theWOD.setDate(wod_Date);
-		theWOD.setBenchmark(checkBoxBenchmark.isChecked());
-		//Set each exercise and it's reps and weight
-		try{
-			theWOD.getExercises().add(exercise1.getText().toString());
-			theWOD.getReps().add(Integer.getInteger(exercise1reps.getText().toString()));
-			theWOD.getWeight().add(Double.valueOf(exercise1weight.getText().toString()));
+		else if(v == viewWodButton){
+			Intent intent = new Intent(this, TabHosterActivity.class);
+			intent.putExtra("enteredWOD_Date", wod_Date);
+			intent.putExtra("USER_LIST_ID", userListID);
+			startActivity(intent);
 		}
-		catch(java.lang.NumberFormatException nfe){
-			Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
-					Toast.LENGTH_LONG).show();
-		}
-		try{
-			theWOD.getExercises().add(exercise2.getText().toString());
-			theWOD.getReps().add(Integer.getInteger(exercise2reps.getText().toString()));
-			theWOD.getWeight().add(Double.valueOf(exercise2weight.getText().toString()));
-		}
-		catch(java.lang.NumberFormatException nfe){
-			Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
-					Toast.LENGTH_LONG).show();
-		}
-		try{
-			theWOD.getExercises().add(exercise3.getText().toString());
-			theWOD.getReps().add(Integer.getInteger(exercise3reps.getText().toString()));
-			theWOD.getWeight().add(Double.valueOf(exercise3weight.getText().toString()));
-		}
-		catch(java.lang.NumberFormatException nfe){
-			Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
-					Toast.LENGTH_LONG).show();
-		}
-		try{
-			theWOD.getExercises().add(exercise4.getText().toString());
-			theWOD.getReps().add(Integer.getInteger(exercise4reps.getText().toString()));
-			theWOD.getWeight().add(Double.valueOf(exercise4weight.getText().toString()));
-		}
-		catch(java.lang.NumberFormatException nfe){
-			Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
-					Toast.LENGTH_LONG).show();
-		}
-		try{
-			theWOD.getExercises().add(exercise5.getText().toString());
-			theWOD.getReps().add(Integer.getInteger(exercise5reps.getText().toString()));
-			theWOD.getWeight().add(Double.valueOf(exercise5weight.getText().toString()));
-		}
-		catch(java.lang.NumberFormatException nfe){
-			Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
-					Toast.LENGTH_LONG).show();
-		}
-		try{
-			theWOD.getExercises().add(exercise6.getText().toString());
-			theWOD.getReps().add(Integer.getInteger(exercise6reps.getText().toString()));
-			theWOD.getWeight().add(Double.valueOf(exercise6weight.getText().toString()));
-		}
-		catch(java.lang.NumberFormatException nfe){
-			Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
-					Toast.LENGTH_LONG).show();
-		}
-		try{
-			theWOD.getExercises().add(exercise7.getText().toString());
-			theWOD.getReps().add(Integer.getInteger(exercise7reps.getText().toString()));
-			theWOD.getWeight().add(Double.valueOf(exercise7weight.getText().toString()));
-		}
-		catch(java.lang.NumberFormatException nfe){
-			Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
-					Toast.LENGTH_LONG).show();
-		}
-		try{
-			theWOD.getExercises().add(exercise8.getText().toString());
-			theWOD.getReps().add(Integer.getInteger(exercise8reps.getText().toString()));
-			theWOD.getWeight().add(Double.valueOf(exercise8weight.getText().toString()));
-		}
-		catch(java.lang.NumberFormatException nfe){
-			Toast.makeText(this, "Please Enter Only Numbers into the Reps and Weight Fields",
-					Toast.LENGTH_LONG).show();
-		}
-		
-		switch(wodType.getCheckedRadioButtonId()){
-		case 0:
-			theWOD.setType("AMRAP");
-		case 1:
-			theWOD.setType("Tabata");
-		case 2:
-			theWOD.setType("For Time");
-		}
-		
-		switch(adjustments.getCheckedRadioButtonId()){
-		case 0:
-			theWOD.setScaled(false);
-		case 1:
-			theWOD.setScaled(true);
-		}
-		
-		try{
-			theWOD.setRounds(Integer.parseInt(rounds.getText().toString()));
-		}
-		catch(java.lang.NumberFormatException nfe){
-			Toast.makeText(this, "Please Enter Only Numbers into Rounds and Time",
-					Toast.LENGTH_LONG).show();
-		}
-		try{
-			theWOD.setTimeMin(Integer.parseInt(timeMin.getText().toString()));
-		}
-		catch(java.lang.NumberFormatException nfe){
-			Toast.makeText(this, "Please Enter Only Numbers into Rounds and Time",
-					Toast.LENGTH_LONG).show();
-		}
-		try{
-			theWOD.setTimeSec(Integer.parseInt(timeSec.getText().toString()));
-		}
-		catch(java.lang.NumberFormatException nfe){
-			Toast.makeText(this, "Please Enter Only Numbers into Rounds and Time",
-					Toast.LENGTH_LONG).show();
-		}
-		
-		//Add new wod to the database
-		user.getMyLog().getWods().add(theWOD);
-		
-		//serialize changed data
-		try {
-			FileOutputStream fos = openFileOutput(filename,
-					Context.MODE_PRIVATE);
-			ObjectOutputStream out = new ObjectOutputStream(fos);
-			out.writeObject(userlist);
-			out.close();
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
-		
-		Intent intent = new Intent(this, ViewWODActivity.class);
-		intent.putExtra("enteredWOD_Date", wod_Date);
-		intent.putExtra("USER_LIST_ID", userListID);
-		startActivity(intent);
 	}
 	
 

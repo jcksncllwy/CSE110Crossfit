@@ -98,10 +98,12 @@
 				<EditText android:hint="Min" android:layout_height="wrap_content" android:id="@+id/timeMin" android:layout_width="wrap_content" android:text="@string/min"></EditText>
 				<EditText android:hint="Sec" android:layout_height="wrap_content" android:id="@+id/timeSec" android:layout_width="wrap_content" android:text="@string/sec"></EditText>
 			</TableRow>
-			<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/tableRow12"></TableRow>
 			<Button android:layout_height="wrap_content"
 				android:layout_width="wrap_content" android:id="@+id/enterWODButton"
 				android:text="@string/recordwod"></Button>
+			<Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/viewWodButton" android:text="@string/viewWOD"></Button>
+			<TableRow android:id="@+id/tableRow16" android:layout_width="wrap_content" android:layout_height="wrap_content">
+			</TableRow>
 		</TableLayout>
 	</ScrollView>
 </LinearLayout>
