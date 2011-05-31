@@ -17,6 +17,7 @@
 			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/weightText"></TextView>
 			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/thebmiText"></TextView>
 			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/bodyfatText"></TextView>
+			<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/theHRText"></TextView>
 		</LinearLayout>
 	</ScrollView>
 	<Button android:layout_gravity="right" android:text="Edit Profile" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/editProfileButton"></Button>

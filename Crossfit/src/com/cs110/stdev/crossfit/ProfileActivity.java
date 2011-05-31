@@ -26,9 +26,10 @@ public class ProfileActivity extends Activity implements OnClickListener {
 	TextView weightText;
 	TextView thebmiText;
 	TextView bodyfatText;
+	TextView theHRText;
 	Button editProfileButton;
-	
-	//get userListID from intent
+
+	// get userListID from intent
 	int userListID;
 
 	/** Called when the activity is first created. */
@@ -46,8 +47,9 @@ public class ProfileActivity extends Activity implements OnClickListener {
 		weightText = (TextView) findViewById(R.id.weightText);
 		thebmiText = (TextView) findViewById(R.id.thebmiText);
 		bodyfatText = (TextView) findViewById(R.id.bodyfatText);
+		theHRText = (TextView) findViewById(R.id.theHRText);
 		editProfileButton = (Button) findViewById(R.id.editProfileButton);
-		
+
 		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 
 		LinkedList<User> userlist = new LinkedList<User>();
@@ -82,11 +84,15 @@ public class ProfileActivity extends Activity implements OnClickListener {
 					+ (int) temp.getMyLog().getBiometrics().getLast().getbMI());
 			bodyfatText.setText("Body Fat %: "
 					+ temp.getMyLog().getBiometrics().getLast().getbodyFat());
+			theHRText.setText("Resting Heart Rate: "
+					+ temp.getMyLog().getBiometrics().getLast().getHeartRate());
+
 		} else {
 			heightText.setText("Height: ");
 			weightText.setText("Weight: ");
 			thebmiText.setText("BMI: ");
 			bodyfatText.setText("Body Fat %: ");
+			theHRText.setText("Resting Heart Rate: ");
 		}
 		// handle clicking events
 		editProfileButton.setOnClickListener(this);

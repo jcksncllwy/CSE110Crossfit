@@ -144,7 +144,7 @@ public class User implements Serializable {
 	/**
 	 * Method to set user's age
 	 * 
-	 * @param - new age to be set
+	 * 
 	 * @return - true if valid age set, false otherwise
 	 */
 	public boolean setAge() {
@@ -167,6 +167,21 @@ public class User implements Serializable {
 			this.age = year - bdayYear;
 
 		return true;
+	}
+
+	/**
+	 * Method to set user's age
+	 * 
+	 * @param - new age to be set
+	 * @return - true if valid age set, false otherwise
+	 */
+	public boolean setAge(int newAge) {
+		if (newAge > 0) {
+			this.age = newAge;
+			return true;
+		}
+		else
+			return false;
 	}
 
 	/**

@@ -25,6 +25,7 @@ public class WOD implements Serializable{
 	private int rounds;
 	private LinkedList<String> tags;
 	private String date;
+    private String notes;
     
 	//CONSTRUCTORS
 	/**
@@ -42,6 +43,7 @@ public class WOD implements Serializable{
 		timeMin = 0;
 		timeSec = 0;
 		rounds = 0;
+		notes = "";
 		tags = new LinkedList<String>();
 	}
 
@@ -311,6 +313,21 @@ public class WOD implements Serializable{
 		this.rounds = newRounds;
 	}
 
+	/**
+	 * Method to get notes for WOD
+	 * @return - the notes for a WOD
+	 */
+	public String getNotes(){
+		return notes;
+	}
+	
+	/**
+	 * Method to set notes for WOD
+	 * @param - notes to be set
+	 */
+	public void setNotes(String newNotes){
+		this.notes = newNotes;
+	}
 	/**
 	 * Method to get list of tags
 	 * @return - list of tags

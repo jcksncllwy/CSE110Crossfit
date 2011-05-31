@@ -12,6 +12,7 @@ import com.cs110.stdev.crossfit.backend.User;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,11 +28,15 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	Button deleteAccountButton;
 	Button changePasswordButton;
 
+	int userListID;
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.settings);
+
+		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 
 		oldPasswordEdit = (EditText) findViewById(R.id.oldPasswordEdit);
 		newPasswordEdit = (EditText) findViewById(R.id.newPasswordEdit);
@@ -70,18 +75,19 @@ public class SettingsActivity extends Activity implements OnClickListener {
 			// checking for a user
 			if (!userlist.isEmpty()) {
 				// checking if the oldpassword is equal to the current one
-				if (userlist.get(0).validatePassword(oldpassword)
-						&& oldpassword.equals(userlist.get(0).getPassword())) {
+				if (userlist.get(userListID).validatePassword(oldpassword)
+						&& oldpassword.equals(userlist.get(userListID)
+								.getPassword())) {
 					// checking that the new password is valid and matches its
 					// confirmation
-					if (userlist.get(0).validatePassword(newpassword)
+					if (userlist.get(userListID).validatePassword(newpassword)
 							&& userlist.get(0).validatePassword(confirmpass)
 							&& newpassword.equals(confirmpass)) {
 						// setting the password
-						userlist.get(0).setPassword(newpassword);
+						userlist.get(userListID).setPassword(newpassword);
 						// displaying a success message
 						Toast.makeText(this, R.string.successfulchange,
-								Toast.LENGTH_LONG).show();
+								Toast.LENGTH_SHORT).show();
 						// writing the changes to the database
 						try {
 							FileOutputStream fos = openFileOutput(filename,
@@ -96,15 +102,50 @@ public class SettingsActivity extends Activity implements OnClickListener {
 					// error message
 					else
 						Toast.makeText(this, R.string.invalidRegistration,
-								Toast.LENGTH_LONG).show();
+								Toast.LENGTH_SHORT).show();
 				}
 				// error message
 				else
 					Toast.makeText(this, R.string.invalidRegistration,
-							Toast.LENGTH_LONG).show();
+							Toast.LENGTH_SHORT).show();
 			}
 		} else if (view == deleteAccountButton) {
+			LinkedList<User> userlist = new LinkedList<User>();
+			String filename = "user.ser";
+			/* pulling the user from the database */
+			try {
+				FileInputStream fis = openFileInput(filename);
+				ObjectInputStream in = new ObjectInputStream(fis);
+				userlist = (LinkedList<User>) in.readObject();
+				in.close();
+			} catch (FileNotFoundException ex) {
+				ex.printStackTrace();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			} catch (ClassNotFoundException ex) {
+				ex.printStackTrace();
+			}
 
+			// deleting the account
+			userlist.remove(userListID);
+
+			// saving the changes
+			try {
+				FileOutputStream fos = openFileOutput(filename,
+						Context.MODE_PRIVATE);
+				ObjectOutputStream out = new ObjectOutputStream(fos);
+				out.writeObject(userlist);
+				out.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+
+			Toast.makeText(this, "Your account has been deleted!",
+					Toast.LENGTH_SHORT).show();
+
+			// logout
+			Intent intent = new Intent(this, LoginActivity.class);
+			startActivity(intent);
 		}
 	}
 }

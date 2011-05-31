@@ -156,6 +156,8 @@ public class EditProfileActivity extends Activity implements OnClickListener {
 					String theBirthday = theMonth + theDay + year;
 					userlist.get(userListID).setBirthday(theBirthday);
 					userlist.get(userListID).setAge();
+					if(userlist.get(userListID).getAge()<0)
+						userlist.get(userListID).setAge(0);
 				}
 
 				/*
