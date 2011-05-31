@@ -62,15 +62,11 @@ public class ProgressActivity extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		Intent intent = null;
-		/*if (position == 0) {
-			intent = new Intent(this, XYChartBuilder.class);
-		} else if (position <= mCharts.length) {
-			intent = mCharts[position - 1].execute(this);
-		} else {
-			intent = new Intent(this, GenerateChart.class);
-		}*/
-		intent.setClass(this,WeightChart.class);
+		Intent intent = new Intent();
+		
+		if(position == 0){
+			intent=mCharts[0].execute(this);
+		}
 		startActivity(intent);
 	}
 }

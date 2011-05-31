@@ -1,7 +1,17 @@
 package com.cs110.stdev.crossfit;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.achartengine.ChartFactory;
@@ -12,42 +22,111 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 
-public class WeightChart extends AbstractDemoChart{
+import com.cs110.stdev.crossfit.backend.Biometric;
+import com.cs110.stdev.crossfit.backend.Log;
+import com.cs110.stdev.crossfit.backend.User;
+import com.cs110.stdev.crossfit.backend.WOD;
+
+public class WeightChart extends AbstractDemoChart {
+
+	int userListID;
 
 	@Override
 	public String getName() {
-		return "Body Fat %";
+		return "Weight";
 	}
 
 	@Override
 	public String getDesc() {
-		return "The change in body fat %.";
+		return "The change in weight.";
 	}
 
+	@SuppressWarnings({ "unchecked", "null" })
 	@Override
 	public Intent execute(Context context) {
-		    String[] titles = new String[] { "Body Fat % from 1995 to 2000" };
-		    List<Date[]> dates = new ArrayList<Date[]>();
-		    List<double[]> values = new ArrayList<double[]>();
-		    Date[]
-		         dateValues = new Date[] { new Date(95, 0, 1), new Date(95, 3, 1), new Date(95, 6, 1),
-		        new Date(95, 9, 1), new Date(96, 0, 1), new Date(96, 3, 1), new Date(96, 6, 1),
-		        new Date(96, 9, 1), new Date(97, 0, 1), new Date(97, 3, 1), new Date(97, 6, 1),
-		        new Date(97, 9, 1), new Date(98, 0, 1), new Date(98, 3, 1), new Date(98, 6, 1),
-		        new Date(98, 9, 1), new Date(99, 0, 1), new Date(99, 3, 1), new Date(99, 6, 1),
-		        new Date(99, 9, 1), new Date(100, 0, 1), new Date(100, 3, 1), new Date(100, 6, 1),
-		        new Date(100, 9, 1), new Date(100, 11, 1) };
-		    dates.add(dateValues);
+		// String[] titles = new String[] {};
+		List<Date[]> dates = new ArrayList<Date[]>();
+		List<double[]> values = new ArrayList<double[]>();
+		Log log = new Log();
+		double[] weight;
+		List<double[]> weightRange = null;
+		WOD wods = new WOD();
+		String start; // start date
+		String end; // end date
 
-		    values.add(new double[] { 6.9, 7.3, 9.2, 8.5, 6.5, 6.7, 6.8, 7.3, 8, 9.3, 7.5, 8.9, 9.2, 6.5,
-		        8.6, 9.4, 12.3, 7.2, 9, 7.4, 12.5, 13.4, 8.5, 9.3, 20 });
-		    int[] colors = new int[] { Color.BLUE };
-		    PointStyle[] styles = new PointStyle[] { PointStyle.POINT };
-		    XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
-		    setChartSettings(renderer, "Body Fat %", "Date", "%", dateValues[0].getTime(),
-		        dateValues[dateValues.length - 1].getTime(), 6, 20, Color.GRAY, Color.LTGRAY);
-		    renderer.setYLabels(10);
-		    return ChartFactory.getTimeChartIntent(context, buildDateDataset(titles, dates, values),
-		        renderer, "MMM yyyy");
-		  }
+		/* get the current user */
+		LinkedList<User> userlist = new LinkedList<User>();
+		String filename = "com/cs110/stdev/crossfit/backend/user.ser";
+
+		/* pulling the user from the database */
+		try {
+			//FileReader fis = new FileReader(filename);
+			FileInputStream in = new FileInputStream(filename);
+			ObjectInputStream ois = new ObjectInputStream(in);
+			userlist = (LinkedList<User>) (((ObjectInput) in).readObject());
+			in.close();
+		} catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} catch (ClassNotFoundException ex) {
+			ex.printStackTrace();
+		}
+
+		if (!userlist.isEmpty()) {
+			if (!userlist.get(userListID).getMyLog().getBiometrics().isEmpty()) {
+				Double height = userlist.get(0).getMyLog().getBiometrics()
+						.getLast().getHeight();
+			}
+		}
+
+		/* get the start and end date */
+		start = userlist.get(0).getMyLog().getWods().get(0).getDate();
+		end = userlist.get(0).getMyLog().getWods()
+				.get(userlist.get(0).getMyLog().getWods().size() - 1).getDate();
+
+		String[] titles = new String[] { "Weight from ", start, "to ", end };
+
+		/* get the date range */
+		DateFormat df = DateFormat.getInstance();
+		//Date startDate = df.parse(start);
+		//Date endDate = df.parse(end);
+		
+		/* get dates */
+		LinkedList<Biometric> biolist = userlist.get(0).getMyLog().getBIOsFromTo(start, end);		
+		Date[] dateValues = new Date[]{};
+		Date biodate;
+		int year, month, day;
+		//adding the dates from the user's biometric list
+		for(int i = 0; i < biolist.size(); i++)
+		{
+			year = biolist.get(i).getYear() - 1900;
+			month = biolist.get(i).getMonth() - 1;
+			day = biolist.get(i).getDay();
+			biodate = new Date(year,month,day);
+			dateValues[i] = biodate;
+		}
+		dates.add(dateValues);
+		
+		
+		//Date[] dateValues = new Date[] {};
+		//dates.add(dateValues);
+
+		/* get the range of weights */
+		weight = userlist.get(0).getMyLog().returnWeightRange(start, end);
+		weightRange.add(weight);
+
+		/* generate the chart */
+		int[] colors = new int[] { Color.BLUE };
+		PointStyle[] styles = new PointStyle[] { PointStyle.POINT };
+		XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
+		setChartSettings(renderer, "Weight", "Date", "lbs",
+				dateValues[0].getTime(),
+				dateValues[dateValues.length - 1].getTime(), 80, 200,
+				Color.GRAY, Color.LTGRAY);
+		renderer.setYLabels(1);
+		return ChartFactory.getTimeChartIntent(context,
+				buildDateDataset(titles, dates, weightRange), renderer,
+				"MMM yyyy");
 	}
+}
