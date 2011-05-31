@@ -62,7 +62,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	/**
 	 * The method to handle when the create account button is clicked.
 	 */
-	@SuppressWarnings("unchecked")
 	public void onClick(View view) {
 		// a variable to check if all the information entered is valid
 		boolean valid = true;
@@ -99,26 +98,18 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		theuser.setSecretA(securityAnswer);
 
 		/*
-		 * pulling user from database
+		 * don't worry about how this works, this just stores it into the
+		 * database. just remember to make a LinkedList of Users and then add
+		 * the user to it. Also, before adding it, we need to make sure all the
+		 * stuff is valid. So if there is a field that isn't valid do not do let
+		 * this happen or the intent stuff. Just leave it for now and I'll do
+		 * the else part -- basically i'll display a message saying that there's
+		 * a field that's invalid.
 		 */
 		if (valid) {
 			LinkedList<User> userlist = new LinkedList<User>();
-			String filename = "user.ser";
-			/* pulling the user from the database */
-			try {
-				FileInputStream fis = openFileInput(filename);
-				ObjectInputStream in = new ObjectInputStream(fis);
-				userlist = (LinkedList<User>) in.readObject();
-				in.close();
-			} catch (FileNotFoundException ex) {
-				ex.printStackTrace();
-			} catch (IOException ex) {
-				ex.printStackTrace();
-			} catch (ClassNotFoundException ex) {
-				ex.printStackTrace();
-			}
-
 			userlist.add(theuser);
+			String filename = "user.ser";
 
 			try {
 				FileOutputStream fos = openFileOutput(filename,

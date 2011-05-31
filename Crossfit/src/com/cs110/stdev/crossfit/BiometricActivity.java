@@ -71,8 +71,8 @@ public class BiometricActivity extends Activity implements OnClickListener {
 
 		if (!userlist.isEmpty()) {
 			if (!userlist.get(userListID).getMyLog().getBiometrics().isEmpty()) {
-				Double height = userlist.get(userListID).getMyLog()
-						.getBiometrics().getLast().getHeight();
+				Double height = userlist.get(userListID).getMyLog().getBiometrics()
+						.getLast().getHeight();
 				bioHeightEdit.setText(height.toString());
 			}
 		}
@@ -96,12 +96,21 @@ public class BiometricActivity extends Activity implements OnClickListener {
 		String heartRate = bioHREdit.getText().toString();
 		String height = bioHeightEdit.getText().toString();
 		String tags = bioTagEdit.getText().toString();
-
+		
 		int day = (int) dayPicker.getDayOfMonth();
 		int month = (int) dayPicker.getMonth() + 1;
 		int year = (int) dayPicker.getYear();
-		String date = Integer.toString(month) + Integer.toString(day)
-				+ Integer.toString(year);
+
+		String theDay = Integer.toString(day);
+		String theMonth = Integer.toString(month);
+
+		if (day < 10)
+			theDay = "0" + Integer.toString(day);
+
+		if (month < 10)
+			theMonth = "0" + Integer.toString(month);
+
+		String date = theMonth + theDay + year;
 
 		// try to parse the fields that are numbers
 		try {
@@ -167,8 +176,9 @@ public class BiometricActivity extends Activity implements OnClickListener {
 				}
 
 				bio.setTags(theTags);
-				bio.setBMI();
 				
+				bio.setBMI();
+
 				// set date
 				if (date.length() > 0) {
 					bio.setDate(date);

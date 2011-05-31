@@ -46,6 +46,27 @@ public class LogActivity extends Activity implements OnClickListener {
 		if (view == enterwodButton) {
 			Intent intent = new Intent(this, EnterWODActivity.class);
 			intent.putExtra("USER_LIST_ID", userListID);
+			
+			int day = (int) wodDay.getDayOfMonth();
+			int month = (int) wodDay.getMonth() + 1;
+			int year = (int) wodDay.getYear();
+
+			String theDay = Integer.toString(day);
+			String theMonth = Integer.toString(month);
+
+			if (day < 10)
+				theDay = "0" + Integer.toString(day);
+
+			if (month < 10)
+				theMonth = "0" + Integer.toString(month);
+
+			String wod_Date = theMonth + theDay + year;
+			
+			intent.putExtra("WOD_DATE", wod_Date);
+			startActivity(intent);
+		} else if (view == viewwodButton) {
+			Intent intent = new Intent(this, ViewWODActivity.class);
+			intent.putExtra("USER_LIST_ID", userListID);
 
 			int day = (int) wodDay.getDayOfMonth();
 			int month = (int) wodDay.getMonth() + 1;
@@ -62,16 +83,6 @@ public class LogActivity extends Activity implements OnClickListener {
 
 			String wod_Date = theMonth + theDay + year;
 
-			intent.putExtra("WOD_DATE", wod_Date);
-			startActivity(intent);
-		} else if (view == viewwodButton) {
-			Intent intent = new Intent(this, ViewWODActivity.class);
-			intent.putExtra("USER_LIST_ID", userListID);
-			int dayOfMonth = wodDay.getDayOfMonth();
-			int month = wodDay.getMonth();
-			int year = wodDay.getYear();
-			String wod_Date = Integer.toString(month)
-					+ Integer.toString(dayOfMonth) + Integer.toString(year);
 			intent.putExtra("WOD_DATE", wod_Date);
 			startActivity(intent);
 		}

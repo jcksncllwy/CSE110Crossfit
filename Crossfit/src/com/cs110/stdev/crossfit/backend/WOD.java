@@ -243,8 +243,7 @@ public class WOD implements Serializable{
 	}
 
 	public int getYear() {
-		System.out.println(date);
-		String strYear = date.substring(4,8);
+		String strYear = date.substring(4, 8);
 		return Integer.parseInt(strYear);
 	}
 
