@@ -35,6 +35,10 @@ public class Log implements Serializable {
 		int left = 0;
 		int right = wods.size() - 1;
 		int mid = wods.size()/2;
+		if(wods.size() == 0) {
+			wods.add(currWod);
+			return;
+		}
 		while(inserted == false) {
 			WOD nowWod = wods.get(mid);
 			if(currWod.getYear() < nowWod.getYear()) {
@@ -63,14 +67,13 @@ public class Log implements Serializable {
 						}
 					}
 					else if(currWod.getDay() > nowWod.getDay()) {
-						if(j == wods.size() - 1) {
-							left = mid;
-							mid = (right + left)/2;
-							if(left == mid || right == mid) {
-								wods.add(mid + 1, currWod);
-								inserted = true;
-							}
+						left = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							wods.add(mid + 1, currWod);
+							inserted = true;
 						}
+						
 					}
 				}
 				else if(currWod.getMonth() > nowWod.getMonth()) {
