@@ -29,6 +29,70 @@ public class Log implements Serializable {
 	}
 
 	//METHODS
+	
+	public void addWodSort(WOD currWod) {
+		boolean inserted = false;
+		int left = 0;
+		int right = wods.size() - 1;
+		int mid = wods.size()/2;
+		while(inserted == false) {
+			WOD nowWod = wods.get(mid);
+			if(currWod.getYear() < nowWod.getYear()) {
+				right = mid;
+				mid = (right + left)/2;
+				if(left == mid || right == mid) {
+					inserted = true;
+				}
+			}
+			else if(currWod.getYear() == nowWod.getYear()) {
+				if(currWod.getMonth() < nowWod.getMonth()) {
+					right = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						wods.add(mid, currWod);
+						inserted = true;
+					}
+				}
+				else if(currWod.getMonth() == nowWod.getMonth()) {
+					if(currWod.getDay() < nowWod.getDay()) {
+						right = mid;
+						mid = (right + left)/2;
+						if(left == mid || right == mid) {
+							wods.add(mid, currWod);
+							inserted = true;
+						}
+					}
+					else if(currWod.getDay() > nowWod.getDay()) {
+						if(j == wods.size() - 1) {
+							left = mid;
+							mid = (right + left)/2;
+							if(left == mid || right == mid) {
+								wods.add(mid + 1, currWod);
+								inserted = true;
+							}
+						}
+					}
+				}
+				else if(currWod.getMonth() > nowWod.getMonth()) {
+					left = mid;
+					mid = (right + left)/2;
+					if(left == mid || right == mid) {
+						wods.add(mid + 1, currWod);
+						inserted = true;
+					}
+				}
+			}
+			else if(currWod.getYear() > nowWod.getYear()) {
+				left = mid;
+				mid = (right + left)/2;
+				if(left == mid || right == mid) {
+					wods.add(mid + 1, currWod);
+					inserted = true;
+				}
+			}
+		}
+	}
+	
 	/**
 	 * Method to store all of the user's info (WOD, Notes, Biometrics)
 	 * in a text file
@@ -229,6 +293,29 @@ public class Log implements Serializable {
 		}
 		return results;
 	}
+	
+	public LinkedList<WOD> searchWODTags(String tag) {
+		LinkedList<WOD> results = new LinkedList<WOD>();
+		int findTags,infoIndex,infoTags = 0;
+		boolean found = false;
+		//loop through list of WODs
+		for(infoIndex = 0; infoIndex < wods.size(); infoIndex++) {
+			found = false;
+			//loop through specific WOD's tags
+			for(infoTags = 0; infoTags < wods.get(infoIndex).getTags().size(); infoTags++) {
+				//if a WOD tag matches tag
+				if(wods.get(infoIndex).getTags().get(infoTags).equals(tag)) {
+					found = true;
+					break;
+				}
+			}
+			//Add the WOD if it was found
+			if(found == true) {
+				results.add(wods.get(infoIndex));
+			}
+		}
+		return results;
+	}
 
 	public LinkedList<Biometric> searchBiomTags(String[] tags) {
 		LinkedList<Biometric> results = new LinkedList<Biometric>();
@@ -254,6 +341,29 @@ public class Log implements Serializable {
 		return results;
 	}
 
+	public LinkedList<Biometric> searchBiomTags(String tag) {
+		LinkedList<Biometric> results = new LinkedList<Biometric>();
+		int findTags,infoIndex,infoTags = 0;
+		boolean found = false;
+		//loop through list of Biometrics
+		for(infoIndex = 0; infoIndex < biometrics.size(); infoIndex++) {
+			found = false;
+			//loop through specific Biometric's tags
+			for(infoTags = 0; infoTags < biometrics.get(infoIndex).getTags().size(); infoTags++) {
+				//if a Biometric tag matches tag
+				if(biometrics.get(infoIndex).getTags().get(infoTags).equals(tag)) {
+					found = true;
+					break;
+				}
+			}
+			//Add the Biometric if it was found
+			if(found == true) {
+				results.add(biometrics.get(infoIndex));
+			}
+		}
+		return results;
+	}
+	
 	public LinkedList<Notes> searchNoteTags(String[] tags) {
 		LinkedList<Notes> results = new LinkedList<Notes>();
 		int findTags,infoIndex,infoTags,found = 0;
@@ -278,6 +388,28 @@ public class Log implements Serializable {
 		return results;
 	}
 
+	public LinkedList<Notes> searchNoteTags(String tag) {
+		LinkedList<Notes> results = new LinkedList<Notes>();
+		int findTags,infoIndex,infoTags = 0;
+		boolean found = false;
+		//loop through list of Notess
+		for(infoIndex = 0; infoIndex < notes.size(); infoIndex++) {
+			found = false;
+			//loop through specific Notes's tags
+			for(infoTags = 0; infoTags < notes.get(infoIndex).getTags().size(); infoTags++) {
+				//if a Notes tag matches tag
+				if(notes.get(infoIndex).getTags().get(infoTags).equals(tag)) {
+					found = true;
+					break;
+				}
+			}
+			//Add the Notes if it was found
+			if(found == true) {
+				results.add(notes.get(infoIndex));
+			}
+		}
+		return results;
+	}
 
 	/*This is a method I wrote up relatively quickly, so there is most likely a problem
 	* in the logic. But I figured we need this to plot points on the graph "from" one
