@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:id="@+id/linearLayout1"
+	android:layout_height="fill_parent">
+	<ScrollView android:id="@+id/ScrollView01"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<LinearLayout android:id="@+id/LinearLayout02"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:orientation="vertical">
+			<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/bioWeightText"></TextView>
+			<TextView android:layout_height="wrap_content" android:id="@+id/bioBFText" android:layout_width="wrap_content"></TextView>
+			<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/bioHRText"></TextView>
+			<TextView android:layout_height="wrap_content" android:id="@+id/bioHeightText" android:layout_width="wrap_content"></TextView>
+			<TextView android:layout_height="wrap_content" android:id="@+id/bioBMIText" android:layout_width="wrap_content"></TextView>
+			<TextView android:layout_height="wrap_content" android:id="@+id/bioTagsText" android:layout_width="wrap_content"></TextView>
+			<Button android:id="@+id/editBioButton" android:text="@string/editBiometrics" android:layout_height="wrap_content" android:layout_width="match_parent"></Button>
+			<Button android:layout_height="wrap_content" android:id="@+id/deleteBioButton" android:text="@string/deleteBiometrics" android:layout_width="match_parent"></Button>
+			<Button android:layout_height="wrap_content" android:id="@+id/goBackBioButton" android:text="@string/gobackButton" android:layout_width="match_parent"></Button>
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>
