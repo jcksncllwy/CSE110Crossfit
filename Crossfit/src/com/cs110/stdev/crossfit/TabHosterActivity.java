@@ -1,6 +1,6 @@
 package com.cs110.stdev.crossfit;
 
-import com.cs110.stdev.crossfit.backend.User;
+
 
 import android.app.TabActivity;
 import android.content.Intent;
@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TabHost;
-import android.widget.Toast;
-import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 
 public class TabHosterActivity extends TabActivity implements OnClickListener {
@@ -85,10 +83,10 @@ public class TabHosterActivity extends TabActivity implements OnClickListener {
 	}
 
 	@Override
-	public void onClick(View v) {
-		if (v == logoutTabHost) {
-			Intent i = new Intent(this, LoginActivity.class);
-			startActivity(i);
+	public void onClick(View view) {
+		if (view == logoutTabHost) {
+			Intent intent = new Intent(this, LoginActivity.class);
+			startActivity(intent);
 		}
 	}
 

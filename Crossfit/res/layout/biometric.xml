@@ -28,10 +28,8 @@
 				android:text="@string/tags"></TextView>
 			<EditText android:layout_width="match_parent"
 				android:layout_height="wrap_content" android:hint="@string/separatebycommas" android:id="@+id/bioTagEdit"></EditText>
-			<DatePicker android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/dayPicker">
-			</DatePicker>
-			<Button android:id="@+id/bioSubmit" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text="@string/record"></Button>
+			<Button android:id="@+id/bioSubmit" android:layout_height="wrap_content" android:text="@string/record" android:layout_width="match_parent"></Button>
+			<Button android:layout_height="wrap_content" android:id="@+id/bioCancel" android:text="@string/cancel" android:layout_width="match_parent"></Button>
 		</LinearLayout>
 	</ScrollView>
 </LinearLayout>

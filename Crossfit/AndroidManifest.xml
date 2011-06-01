@@ -23,12 +23,18 @@
         <activity android:name="EditProfileActivity"></activity>
         <activity android:name="LostPasswordActivity"></activity>
         <activity android:name="SettingsActivity"></activity>
-        <activity android:name="BiometricActivity"></activity>
+        <activity android:name="EnterBiometricActivity"></activity>
         <activity android:name="BiometricTabActivity"></activity>
         <activity android:name="SimpleCalendarViewActivity"></activity>
         <activity android:name="XYChartBuilderActivity"></activity>
         <activity android:name="GenerateChart"></activity>
         <activity android:name="org.achartengine.GraphicalActivity" />
-
+        <activity android:name="ViewBiometricsActivity"></activity>
+        <activity android:name=".WeightChart2"></activity>
+		<activity android:name=".BMIChart"></activity>
+		<activity android:name=".HeartRateChart"></activity>
+		<activity android:name=".BodyFatChart"></activity>
+		<activity android:name="SearchPageActivity"></activity>
+		<activity android:name="SearchResultsActivity"></activity>
     </application>
 </manifest>

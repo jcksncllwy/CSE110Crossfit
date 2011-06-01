@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.cs110.stdev.crossfit.IChart;
-import com.cs110.stdev.crossfit.WeightChart;
-//import com.cs110.stdev.crossfit.XYChartBuilder;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -17,30 +15,34 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 public class ProgressActivity extends ListActivity {
-	private IChart[] mCharts = new IChart[] { new WeightChart() };
+	private IChart[] mCharts = new IChart[] { new HeartRateChart(),
+			new BodyFatChart() };
 
 	private String[] mMenuText;
 
 	private String[] mMenuSummary;
-	
+
 	int userListID;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
+
 		int length = mCharts.length;
 		mMenuText = new String[length + 2];
 		mMenuSummary = new String[length + 2];
-		mMenuText[0] = "Weight Chart";
-		mMenuSummary[0] = "Your progress on weight";
+		mMenuText[0] = "Weight Progression";
+		mMenuSummary[0] = "Your progress on weight.";
 		userListID = getIntent().getIntExtra("USER_LIST_ID", -1);
 		for (int i = 0; i < length; i++) {
 			mMenuText[i + 1] = mCharts[i].getName();
 			mMenuSummary[i + 1] = mCharts[i].getDesc();
 		}
-		mMenuText[length + 1] = "Random values charts";
-		mMenuSummary[length + 1] = "Chart demos using randomly generated values";
+		mMenuText[length + 1] = "BMI Progression";
+		mMenuSummary[length + 1] = "Your BMI progress.";
 		setListAdapter(new SimpleAdapter(this, getListValues(),
 				android.R.layout.simple_list_item_2, new String[] {
 						IChart.NAME, IChart.DESC }, new int[] {
@@ -62,15 +64,21 @@ public class ProgressActivity extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		Intent intent = null;
-		/*if (position == 0) {
-			intent = new Intent(this, XYChartBuilder.class);
-		} else if (position <= mCharts.length) {
-			intent = mCharts[position - 1].execute(this);
+
+		Intent intent;
+
+		if (position == 0) {
+			intent = new Intent(this, WeightChart2.class);
+		} else if (position == 1) {
+			intent = new Intent(this, HeartRateChart.class);
+		} else if (position == 2) {
+			intent = new Intent(this, BodyFatChart.class);
 		} else {
-			intent = new Intent(this, GenerateChart.class);
-		}*/
-		intent.setClass(this,WeightChart.class);
+			intent = new Intent(this, BMIChart.class);
+		}
+
+		intent.putExtra("USER_LIST_ID", userListID);
 		startActivity(intent);
+
 	}
 }

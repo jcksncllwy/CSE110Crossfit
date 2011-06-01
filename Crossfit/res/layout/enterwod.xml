@@ -8,32 +8,11 @@
 			android:stretchColumns="1">
 			<TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content"
 				android:layout_height="wrap_content">
-				<CheckBox android:layout_height="wrap_content"
-					android:text="@string/benchmark" android:layout_width="wrap_content" android:id="@+id/checkBoxBenchmark"></CheckBox>
-			</TableRow>
-			<TableRow android:id="@+id/tableRow2" android:layout_width="wrap_content"
-				android:layout_height="wrap_content">
-				<RadioGroup android:layout_height="wrap_content"
-					android:orientation="horizontal" android:layout_width="wrap_content"
-					android:id="@+id/wodTypeRadio">
-					<RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-						android:checked="true" android:text="@string/amrap" android:id="@+id/AMRAP"></RadioButton>
-					<RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
-						android:text="@string/tabata" android:id="@+id/Tabata"></RadioButton>
-					<RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fortime" android:id="@+id/forTime"></RadioButton>
-				</RadioGroup>
-			</TableRow>
-			<TableRow android:id="@+id/tableRow3" android:layout_width="wrap_content"
-				android:layout_height="wrap_content">
-				<RadioGroup android:layout_height="wrap_content"
-					android:layout_width="wrap_content" android:orientation="horizontal"
-					android:id="@+id/prescribedRadio">
-					<RadioButton android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:checked="true" android:text="@string/prescribed" android:id="@+id/prescribed"></RadioButton>
-					<RadioButton android:layout_width="wrap_content"
-						android:layout_height="wrap_content" android:text="@string/scaled" android:id="@+id/scaled"></RadioButton>
-				</RadioGroup>
+				<LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:layout_height="wrap_content">
+					<CheckBox android:id="@+id/checkBoxBenchmark" android:text="@string/benchmark" android:layout_height="wrap_content" android:layout_width="wrap_content"></CheckBox>
+					<CheckBox android:layout_height="wrap_content" android:text="@string/scaled" android:layout_width="wrap_content" android:id="@+id/scaledCheck"></CheckBox>
+					<CheckBox android:layout_height="wrap_content" android:text="@string/amrap" android:layout_width="wrap_content" android:id="@+id/amrapCheck"></CheckBox>
+				</LinearLayout>
 			</TableRow>
 			<TableRow android:id="@+id/tableRow5" android:layout_width="wrap_content"
 				android:layout_height="wrap_content">
@@ -99,12 +78,16 @@
 					<EditText android:layout_height="wrap_content" android:hint="Sec" android:layout_width="wrap_content" android:id="@+id/timeSec"></EditText>
 				</LinearLayout>
 			</TableRow>
+			<TableRow android:id="@+id/tableRow2" android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/notesEdit" android:hint="Enter Workout Notes"></EditText>
+			</TableRow>
 			<TableRow android:id="@+id/tableRow4" android:layout_width="wrap_content" android:layout_height="wrap_content">
 				<EditText android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/tagsWOD" android:hint="Tags (Separate tags by commas)"></EditText>
 			</TableRow>
 			<Button android:layout_height="wrap_content"
 				android:layout_width="wrap_content" android:id="@+id/enterWODButton"
 				android:text="@string/recordwod"></Button>
+			<Button android:layout_width="wrap_content" android:id="@+id/cancelWOD" android:layout_height="wrap_content" android:text="@string/cancel"></Button>
 		</TableLayout>
 	</ScrollView>
 </LinearLayout>

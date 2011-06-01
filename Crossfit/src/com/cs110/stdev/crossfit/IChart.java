@@ -15,6 +15,8 @@
  */
 package com.cs110.stdev.crossfit;
 
+import com.cs110.stdev.crossfit.backend.User;
+
 import android.content.Context;
 import android.content.Intent;
 
@@ -47,6 +49,6 @@ public interface IChart {
    * @param context the context
    * @return the built intent
    */
-  Intent execute(Context context);
+  Intent execute(Context context, User user);
 
 }

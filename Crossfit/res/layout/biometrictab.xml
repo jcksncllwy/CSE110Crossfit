@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/linearLayout1" android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical">
-        <Button android:layout_height="wrap_content" android:id="@+id/addBiometric" android:text="@string/recordbiometric" android:layout_width="150dp" android:layout_gravity="center"></Button>
-    </LinearLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/linearLayout1" android:layout_height="fill_parent"
+	android:layout_width="fill_parent" android:orientation="vertical">
+	<ScrollView android:id="@+id/ScrollView01"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout android:id="@+id/LinearLayout02"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:orientation="vertical">
+			<TextView android:layout_height="wrap_content"
+				android:layout_width="wrap_content" android:text="@string/biometricDescription"
+				android:id="@+id/textView1" android:gravity="center"></TextView>
+			<DatePicker android:layout_gravity="center" android:layout_height="wrap_content" android:id="@+id/bioDatePicker" android:layout_width="wrap_content"></DatePicker>
+			<Button android:layout_height="wrap_content" android:id="@+id/addBiometric"
+				android:text="@string/recordbiometric" android:layout_width="150dp"
+				android:layout_gravity="center"></Button>
+			<Button android:layout_gravity="center" android:layout_height="wrap_content" android:layout_width="150dp" android:text="@string/viewBiometrics" android:id="@+id/viewBiometric"></Button>
+			<TextView android:layout_height="wrap_content" android:id="@+id/lastBiometric" android:layout_width="wrap_content" android:text="@string/lastBiometric"></TextView>
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>

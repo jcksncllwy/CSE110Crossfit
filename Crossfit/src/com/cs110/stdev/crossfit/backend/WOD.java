@@ -10,10 +10,10 @@ package com.cs110.stdev.crossfit.backend;
 import java.io.Serializable;
 import java.util.*;
 
-public class WOD implements Serializable{
+public class WOD implements Serializable {
 
-	//FIELDS
-    private String title;
+	// FIELDS
+	private String title;
 	private LinkedList<String> exercises;
 	private LinkedList<Integer> reps;
 	private LinkedList<Double> weight;
@@ -25,8 +25,9 @@ public class WOD implements Serializable{
 	private int rounds;
 	private LinkedList<String> tags;
 	private String date;
-    
-	//CONSTRUCTORS
+	private String notes;
+
+	// CONSTRUCTORS
 	/**
 	 * Default Constructor
 	 */
@@ -42,42 +43,54 @@ public class WOD implements Serializable{
 		timeMin = 0;
 		timeSec = 0;
 		rounds = 0;
+		notes = "";
 		tags = new LinkedList<String>();
 	}
 
-	//METHODS
+	// METHODS
 	/**
 	 * Method to autotag info stored in WOD
+	 * 
 	 * @return - true if autotag was successful, false otherwise
 	 */
 	public boolean autoTag() {
 		tags.add(title.toLowerCase());
 		tags.add(type.toLowerCase());
 
-		for(int i = 0; i < exercises.size(); i++) {
-			tags.add(exercises.get(i).toLowerCase());
+		for (int i = 0; i < exercises.size(); i++) {
+			if (!checkExistTag(exercises.get(i).toLowerCase()))
+				tags.add(exercises.get(i).toLowerCase());
 		}
 
-		if(benchmark == true) {
+		if (benchmark == true) {
 			tags.add("benchmark");
-		}
-		else {
+		} else {
 			tags.add("non-benchmark");
 		}
 
-		if(rounds >= 0) {
+		if (rounds >= 0) {
 			tags.add("AMRAP");
 		}
 
-		if(tags.size() >= (4 + exercises.size())) {
+		if (tags.size() >= (4 + exercises.size())) {
 			return true;
 		}
 
 		return false;
 	}
 
+	public boolean checkExistTag(String toTag) {
+		for (int i = 0; i < tags.size(); i++) {
+			if (tags.get(i).equals(toTag)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * Method to get name of WOD
+	 * 
 	 * @return - name of WOD
 	 */
 	public String getTitle() {
@@ -86,6 +99,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to set name of WOD
+	 * 
 	 * @param - new name to be set
 	 */
 	public void setTitle(String newTitle) {
@@ -94,6 +108,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to get list of exercises associated with WOD
+	 * 
 	 * @return - linked list of exercises
 	 */
 	public LinkedList<String> getExercises() {
@@ -102,6 +117,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to append an exercise associated with WOD
+	 * 
 	 * @param - new exercise to be appended
 	 */
 	public void addExercise(String newExercise) {
@@ -110,6 +126,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to set new list of exercise associated with WOD
+	 * 
 	 * @param - new list of exercises to be set
 	 */
 	public void setExercises(LinkedList<String> newExercises) {
@@ -118,6 +135,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to get reps used in each exercise for WOD
+	 * 
 	 * @return - linked list of reps
 	 */
 	public LinkedList<Integer> getReps() {
@@ -126,6 +144,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to append a rep for an exercise in WOD
+	 * 
 	 * @param - new rep to be appended
 	 */
 	public void addRep(int newRep) {
@@ -134,6 +153,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to set number of reps for exercise in WOD
+	 * 
 	 * @param - number of reps to be set
 	 */
 	public void setReps(LinkedList<Integer> newReps) {
@@ -142,6 +162,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to get weights used for each exercise for WOD
+	 * 
 	 * @return - linked list of weights
 	 */
 	public LinkedList<Double> getWeight() {
@@ -150,6 +171,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to append weight used for exercise in WOD
+	 * 
 	 * @param - new weight to be appended
 	 */
 	public void addWeight(double newWeight) {
@@ -158,6 +180,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to set new list of weights used for exercise in WOD
+	 * 
 	 * @param - new list of weights to be set
 	 */
 	public void setWeights(LinkedList<Double> newWeights) {
@@ -166,6 +189,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to check if WOD is a benchmark
+	 * 
 	 * @return - true if WOD is benchmark, false otherwise
 	 */
 	public boolean isBenchmark() {
@@ -174,6 +198,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to set WOD to be a benchmark
+	 * 
 	 * @param - benchmark to be set
 	 */
 	public void setBenchmark(boolean isBenchmark) {
@@ -182,6 +207,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to check if scaled weights were used for WOD
+	 * 
 	 * @return - true if scaled weights used, false otherwise
 	 */
 	public boolean isScaled() {
@@ -190,6 +216,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to set WOD to have used scaled weights
+	 * 
 	 * @param - scaled weights to be set
 	 */
 	public void setScaled(boolean isScaled) {
@@ -198,6 +225,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to get date of WOD
+	 * 
 	 * @return - date
 	 */
 	public String getDate() {
@@ -206,6 +234,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to set date of WOD
+	 * 
 	 * @param - date to be set
 	 */
 	public void setDate(String newDate) {
@@ -214,17 +243,18 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to set date of WOD using month, day, and year
+	 * 
 	 * @param (int month) - new month to be set
 	 * @param (int day) - new day to be set
 	 * @param (int year) - new year to be set
 	 */
 	public void setDate(int month, int day, int year) {
 		String newDate = "";
-		if(month < 10) {
+		if (month < 10) {
 			newDate += "0";
 		}
 		newDate += Integer.toString(month);
-		if(day < 10) {
+		if (day < 10) {
 			newDate += "0";
 		}
 		newDate += Integer.toString(day);
@@ -249,6 +279,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to get the type of WOD
+	 * 
 	 * @return - type of WOD
 	 */
 	public String getType() {
@@ -257,6 +288,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to set the type of WOD
+	 * 
 	 * @param - type to be set
 	 */
 	public void setType(String newType) {
@@ -265,6 +297,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to get seconds portion of time to complete WOD
+	 * 
 	 * @return - seconds portion of time
 	 */
 	public int getTimeSec() {
@@ -273,6 +306,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to set seconds portion of time to complete WOD
+	 * 
 	 * @param - seconds to be set
 	 */
 	public void setTimeSec(int newTimeSec) {
@@ -281,6 +315,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to get minutes portion of time to complete WOD
+	 * 
 	 * @return - minutes portion of time
 	 */
 	public int getTimeMin() {
@@ -289,6 +324,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to set minutes portion of time to complete WOD
+	 * 
 	 * @param - minutes to be set
 	 */
 	public void setTimeMin(int newTimeMin) {
@@ -297,6 +333,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to get number of rounds for WOD
+	 * 
 	 * @return - number of rounds
 	 */
 	public int getRounds() {
@@ -305,6 +342,7 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to set number of rounds for WOD
+	 * 
 	 * @param - number of rounds to be set
 	 */
 	public void setRounds(int newRounds) {
@@ -312,7 +350,26 @@ public class WOD implements Serializable{
 	}
 
 	/**
+	 * Method to get notes for WOD
+	 * 
+	 * @return - the notes for a WOD
+	 */
+	public String getNotes() {
+		return notes;
+	}
+
+	/**
+	 * Method to set notes for WOD
+	 * 
+	 * @param - notes to be set
+	 */
+	public void setNotes(String newNotes) {
+		this.notes = newNotes;
+	}
+
+	/**
 	 * Method to get list of tags
+	 * 
 	 * @return - list of tags
 	 */
 	public LinkedList<String> getTags() {
@@ -321,22 +378,24 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to append tag to list of tags
+	 * 
 	 * @param - new tag to be appended
 	 */
 	public void addTag(String newTag) {
 		boolean found = false;
-		for(int i = 0; i < tags.size(); i++) {
-			if(tags.get(i).equals(newTag)) {
+		for (int i = 0; i < tags.size(); i++) {
+			if (tags.get(i).equals(newTag)) {
 				found = true;
 			}
 		}
-		if(found == false) {
+		if (found == false) {
 			this.tags.add(newTag.toLowerCase());
 		}
 	}
 
 	/**
 	 * Method to set new list of tags
+	 * 
 	 * @param - tags to be tag
 	 */
 	public void setTags(LinkedList<String> newTags) {
@@ -345,30 +404,34 @@ public class WOD implements Serializable{
 
 	/**
 	 * Method to convert date from MMDDYYYY to MM/DD/YYYY
+	 * 
 	 * @return - date (MM/DD/YYYY)
 	 */
 	public String toDate() {
 		String newDate = "";
 
-		newDate += date.substring(0,2) + "/";
-		newDate += date.substring(2,4) + "/";
-		newDate += date.substring(4,8);
+		newDate += date.substring(0, 2) + "/";
+		newDate += date.substring(2, 4) + "/";
+		newDate += date.substring(4, 8);
 
 		return newDate;
 	}
 
 	/**
 	 * Method to compile time in minutes and in seconds into a String
+	 * 
 	 * @return - time timeMin:timeSec
 	 */
 	public String toTime() {
 		String totalTime = "";
-		totalTime += Integer.toString(timeMin) + ":" + Integer.toString(timeSec);
+		totalTime += Integer.toString(timeMin) + ":"
+				+ Integer.toString(timeSec);
 		return totalTime;
 	}
 
 	/**
 	 * Method to convert all of WOD info to String for text dump
+	 * 
 	 * @return - String of WOD info
 	 */
 	public String toString() {
@@ -378,17 +441,17 @@ public class WOD implements Serializable{
 		wodInfo += "Date of WOD: " + toDate() + "\n";
 		wodInfo += "Exercises Done:" + "\n";
 
-		for(int i = 0; i < exercises.size(); i++) {
+		for (int i = 0; i < exercises.size(); i++) {
 			wodInfo += "\n\t" + "Name: " + exercises.get(i) + "-";
 			wodInfo += "\t" + "Reps: " + reps.get(i) + ",";
 			wodInfo += "\t" + "Weight: " + weight.get(i) + ";";
 		}
 
-		if(benchmark == true) {
+		if (benchmark == true) {
 			wodInfo += "\n" + "Benchmark workout.";
 		}
 
-		if(scaled == true) {
+		if (scaled == true) {
 			wodInfo += "\n" + "Prescribed workout.";
 		}
 
@@ -396,11 +459,11 @@ public class WOD implements Serializable{
 			wodInfo += "\n" + "Scaled workout.";
 		}
 
-		if(timeMin > 0 || timeSec > 0) {
+		if (timeMin > 0 || timeSec > 0) {
 			wodInfo += "Time taken: " + toTime();
 		}
 
-		if(rounds >= 0) {
+		if (rounds >= 0) {
 			wodInfo += "Rounds completed " + rounds;
 		}
 
@@ -408,6 +471,5 @@ public class WOD implements Serializable{
 
 		return wodInfo;
 	}
-
 
 }

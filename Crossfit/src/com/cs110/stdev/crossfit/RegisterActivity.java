@@ -62,14 +62,33 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	/**
 	 * The method to handle when the create account button is clicked.
 	 */
+	@SuppressWarnings("unchecked")
 	public void onClick(View view) {
+
+		LinkedList<User> userlist = new LinkedList<User>();
+		String filename = "user.ser";
+		// pulling up the user database
+		try {
+			FileInputStream fis = openFileInput(filename);
+			ObjectInputStream in = new ObjectInputStream(fis);
+			userlist = (LinkedList<User>) in.readObject();
+			in.close();
+		} catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} catch (ClassNotFoundException ex) {
+			ex.printStackTrace();
+		}
+
 		// a variable to check if all the information entered is valid
 		boolean valid = true;
+		boolean validUsername = true;
 
 		// the user to be added to the database given that everything is valid
 		User theuser = new User();
 
-		/* getting the user name and checking that it's valid */
+		// getting the user name and checking that it's valid
 		String username = usernameEdit.getText().toString();
 
 		if (theuser.validateUsername(username))
@@ -77,7 +96,14 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		else
 			valid = false;
 
-		/* getting the password and checking that it's valid */
+		if (valid) {
+			for (int i = 0; i < userlist.size(); i++) {
+				if ((username.equals(userlist.get(i).getUsername())))
+					validUsername = false;
+			}
+		}
+
+		// getting the password and checking that it's valid
 		String password = passwordEdit.getText().toString();
 		String confirmPass = confirmPasswordEdit.getText().toString();
 		if (theuser.validatePassword(password)
@@ -87,7 +113,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		else
 			valid = false;
 
-		/* getting the security question and checking it's valid */
+		// getting the security question and checking it's valid
 		String securityQuestion = securityEdit.getText().toString();
 		// need to check security question
 		theuser.setSecretQ(securityQuestion);
@@ -97,20 +123,11 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		// need to check the security answer
 		theuser.setSecretA(securityAnswer);
 
-		/*
-		 * don't worry about how this works, this just stores it into the
-		 * database. just remember to make a LinkedList of Users and then add
-		 * the user to it. Also, before adding it, we need to make sure all the
-		 * stuff is valid. So if there is a field that isn't valid do not do let
-		 * this happen or the intent stuff. Just leave it for now and I'll do
-		 * the else part -- basically i'll display a message saying that there's
-		 * a field that's invalid.
-		 */
-		if (valid) {
-			LinkedList<User> userlist = new LinkedList<User>();
+		// checking that everything was valid and no duplicate username
+		if (valid && validUsername) {
+			// adding the new user to the existing database
 			userlist.add(theuser);
-			String filename = "user.ser";
-
+			// saving the changes
 			try {
 				FileOutputStream fos = openFileOutput(filename,
 						Context.MODE_PRIVATE);
@@ -122,13 +139,15 @@ public class RegisterActivity extends Activity implements OnClickListener {
 			}
 
 			int userListID = userlist.indexOf(theuser);
-			Intent i = new Intent(this, EditProfileActivity.class);
-			i.putExtra("USER_LIST_ID", userListID);
-			startActivity(i);
+			Intent intent = new Intent(this, EditProfileActivity.class);
+			intent.putExtra("USER_LIST_ID", userListID);
+			startActivity(intent);
+		} else if (!validUsername) {
+			Toast.makeText(this, "This username has been taken!",
+					Toast.LENGTH_SHORT).show();
 		} else
 			// display a message to the user that the fields are invalid
 			Toast.makeText(this, R.string.invalidRegistration,
-					Toast.LENGTH_LONG).show();
+					Toast.LENGTH_SHORT).show();
 	}
-
 }

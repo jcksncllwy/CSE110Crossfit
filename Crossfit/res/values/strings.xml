@@ -43,7 +43,7 @@
 	<string name="successfulchange">Password has been successfully changed.</string>
 	<string name="weight">Weight (in lbs): </string>
 	<string name="separatebycommas">Separate tags by commas</string>
-	<string name="heartrate">Heart Rate:</string>
+	<string name="heartrate">Resting Heart Rate:</string>
 	<string name="tags">Tags: </string>
 	<string name="record">Record</string>
 	<string name="cancel">Cancel</string>
@@ -60,4 +60,14 @@
 	<string name="exerciseWeight">Weight</string>
 	<string name="min">Minutes</string>
 	<string name="sec">Seconds</string>
+	<string name="biometricDescription">Description: This tab allows you to enter, edit, and delete your biometrics. Biometrics include height, weight, resting heart rate, and body fat percentage.</string>
+	<string name="deleteWOD">Delete WOD</string>
+	<string name="viewBiometrics">View Biometrics</string>
+	<string name="editBiometrics">Edit Biometrics</string>
+	<string name="deleteBiometrics">Delete Biometrics</string>
+	<string name="logDescription">Description: This tab allows you to enter and view WODs. You can also delete WODs by first viewing the WOD you would like to delete.</string>
+	<string name="lastBiometric">Last recorded Biometrics: </string>
+	<string name="lastWOD">Last recorded WOD:</string>
+	<string name="wods">WODs</string>
+	<string name="biometrics">Biometrics</string>
 </resources>
